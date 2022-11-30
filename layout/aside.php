@@ -29,3 +29,7 @@
 		</ul>
 	</nav>
 	<!--.side-menu-->
+
+	<div class="page-content"><!-- Inicio del page-content-->
+	    
+	

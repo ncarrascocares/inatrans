@@ -1,10 +1,10 @@
 <?php
 
-    function controllers_autoload($nombreClase){
-        include 'controllers/'.$nombreClase.".php";
+    function controllers_autoload($classname){
+        include 'controllers/'.$classname.".php";
     }
 
-    spl_autoload_register('controller_autoload');
+    spl_autoload_register('controllers_autoload');
 
 
 
