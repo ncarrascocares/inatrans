@@ -2,7 +2,7 @@
 
 RewriteEngine On
 
-ErrorDocument 404 http://localhost/MastePHP/proyecto-php-poo/error/
+ErrorDocument 404 http://localhost/Pro_Inatrans/Inatrans/error
 
 RewriteCond %{SCRIPT_FILENAME} !-d
 
