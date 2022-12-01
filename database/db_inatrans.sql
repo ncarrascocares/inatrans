@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 29-11-2022 a las 22:15:57
+-- Tiempo de generación: 01-12-2022 a las 22:11:00
 -- Versión del servidor: 10.4.24-MariaDB
 -- Versión de PHP: 8.1.6
 
@@ -29,10 +29,12 @@ USE `db_inatrans`;
 -- Estructura de tabla para la tabla `categoria_licencia`
 --
 
-CREATE TABLE `categoria_licencia` (
-  `id` int(11) NOT NULL,
-  `Nombre` varchar(100) COLLATE utf8mb4_spanish_ci NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
+DROP TABLE IF EXISTS `categoria_licencia`;
+CREATE TABLE IF NOT EXISTS `categoria_licencia` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `Nombre` varchar(100) COLLATE utf8mb4_spanish_ci NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
 
 --
 -- Volcado de datos para la tabla `categoria_licencia`
@@ -49,13 +51,16 @@ INSERT INTO `categoria_licencia` (`id`, `Nombre`) VALUES
 -- Estructura de tabla para la tabla `licencia`
 --
 
-CREATE TABLE `licencia` (
-  `id` int(11) NOT NULL,
+DROP TABLE IF EXISTS `licencia`;
+CREATE TABLE IF NOT EXISTS `licencia` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `Nombre` varchar(100) COLLATE utf8mb4_spanish_ci NOT NULL,
   `Ley` varchar(100) COLLATE utf8mb4_spanish_ci NOT NULL,
   `Descripcion` varchar(255) COLLATE utf8mb4_spanish_ci NOT NULL,
-  `categoria_licencia_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
+  `categoria_licencia_id` int(11) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `categoria_licencia_id` (`categoria_licencia_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
 
 --
 -- Volcado de datos para la tabla `licencia`
@@ -74,18 +79,65 @@ INSERT INTO `licencia` (`id`, `Nombre`, `Ley`, `Descripcion`, `categoria_licenci
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `reporte`
+--
+
+DROP TABLE IF EXISTS `reporte`;
+CREATE TABLE IF NOT EXISTS `reporte` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id_interno` varchar(100) COLLATE utf8mb4_spanish_ci NOT NULL,
+  `Simulador_id` int(11) NOT NULL,
+  `Usuario_id` int(11) NOT NULL,
+  `Reporte_averia` varchar(255) COLLATE utf8mb4_spanish_ci NOT NULL,
+  `Reporte_solucion` varchar(255) COLLATE utf8mb4_spanish_ci NOT NULL,
+  `Observacion` varchar(255) COLLATE utf8mb4_spanish_ci DEFAULT NULL,
+  `Fecha_inicio` date DEFAULT NULL,
+  `Fecha_termino` date DEFAULT NULL,
+  `hh` int(11) DEFAULT NULL,
+  `Estado_averia` varchar(20) COLLATE utf8mb4_spanish_ci NOT NULL,
+  `Uso_repuesto` varchar(10) COLLATE utf8mb4_spanish_ci DEFAULT NULL,
+  `Inventario_id` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `fk_Simulador_id` (`Simulador_id`),
+  KEY `Usuario_id` (`Usuario_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
+
+--
+-- Volcado de datos para la tabla `reporte`
+--
+
+INSERT INTO `reporte` (`id`, `id_interno`, `Simulador_id`, `Usuario_id`, `Reporte_averia`, `Reporte_solucion`, `Observacion`, `Fecha_inicio`, `Fecha_termino`, `hh`, `Estado_averia`, `Uso_repuesto`, `Inventario_id`) VALUES
+(2, 'SIM06-39', 1, 1, 'Volante no realiza centrado', 'Se realiza cierre de proceso y se vuelve a iniciar', NULL, '2022-11-29', '2022-11-30', 5, 'Cerrada', 'No', NULL),
+(3, 'SIM01-40', 1, 1, 'Las cajas power e ishift no responden', '', 'Se solicitara apoyo a España', '2022-12-01', '0000-00-00', 0, 'Abierta', 'No', 0),
+(13, 'qqqqq', 1, 1, 'qqqq', 'qqqq', 'qqqq', '2022-12-01', '2022-12-01', 1, 'cerrada', 'no', 0),
+(25, 'SIM01-41', 1, 1, 'Equipo con problemas en el a/c', 'Se realiza mantenimiento en faena', 'Jaime solicita al cliente el mantenimiento del equ', '2022-11-30', '2022-12-01', 1, 'cerrada', 'No', 0);
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `simulador`
 --
 
-CREATE TABLE `simulador` (
-  `id` int(11) NOT NULL,
+DROP TABLE IF EXISTS `simulador`;
+CREATE TABLE IF NOT EXISTS `simulador` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `Nombre` varchar(100) COLLATE utf8mb4_spanish_ci NOT NULL,
   `Sucursal_id` int(11) NOT NULL,
   `Usuario_id` int(11) NOT NULL,
   `Tipo` varchar(50) COLLATE utf8mb4_spanish_ci NOT NULL,
   `Descripcion` varchar(255) COLLATE utf8mb4_spanish_ci NOT NULL,
-  `Status` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
+  `Status` int(11) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `Sucursal_id` (`Sucursal_id`),
+  KEY `Usuario_id` (`Usuario_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
+
+--
+-- Volcado de datos para la tabla `simulador`
+--
+
+INSERT INTO `simulador` (`id`, `Nombre`, `Sucursal_id`, `Usuario_id`, `Tipo`, `Descripcion`, `Status`) VALUES
+(1, 'Simulador 10', 3, 1, 'Fijo', 'Simulador armado en sucursal en el año 2019', 1);
 
 -- --------------------------------------------------------
 
@@ -93,10 +145,12 @@ CREATE TABLE `simulador` (
 -- Estructura de tabla para la tabla `sucursal`
 --
 
-CREATE TABLE `sucursal` (
-  `id` int(11) NOT NULL,
-  `Nombre` varchar(100) COLLATE utf8mb4_spanish_ci NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
+DROP TABLE IF EXISTS `sucursal`;
+CREATE TABLE IF NOT EXISTS `sucursal` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `Nombre` varchar(100) COLLATE utf8mb4_spanish_ci NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
 
 --
 -- Volcado de datos para la tabla `sucursal`
@@ -113,10 +167,12 @@ INSERT INTO `sucursal` (`id`, `Nombre`) VALUES
 -- Estructura de tabla para la tabla `tipo_vehiculo`
 --
 
-CREATE TABLE `tipo_vehiculo` (
-  `id` int(11) NOT NULL,
-  `Nombre` varchar(100) COLLATE utf8mb4_spanish_ci NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
+DROP TABLE IF EXISTS `tipo_vehiculo`;
+CREATE TABLE IF NOT EXISTS `tipo_vehiculo` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `Nombre` varchar(100) COLLATE utf8mb4_spanish_ci NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
 
 --
 -- Volcado de datos para la tabla `tipo_vehiculo`
@@ -142,11 +198,13 @@ INSERT INTO `tipo_vehiculo` (`id`, `Nombre`) VALUES
 -- Estructura de tabla para la tabla `transmision`
 --
 
-CREATE TABLE `transmision` (
-  `id` int(11) NOT NULL,
+DROP TABLE IF EXISTS `transmision`;
+CREATE TABLE IF NOT EXISTS `transmision` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `Nombre` varchar(100) COLLATE utf8mb4_spanish_ci NOT NULL,
-  `Categoria` varchar(100) COLLATE utf8mb4_spanish_ci NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
+  `Categoria` varchar(100) COLLATE utf8mb4_spanish_ci NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
 
 --
 -- Volcado de datos para la tabla `transmision`
@@ -166,14 +224,24 @@ INSERT INTO `transmision` (`id`, `Nombre`, `Categoria`) VALUES
 -- Estructura de tabla para la tabla `usuario`
 --
 
-CREATE TABLE `usuario` (
-  `id` int(11) NOT NULL,
+DROP TABLE IF EXISTS `usuario`;
+CREATE TABLE IF NOT EXISTS `usuario` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `Nombre` varchar(100) COLLATE utf8mb4_spanish_ci NOT NULL,
   `Apellido` varchar(100) COLLATE utf8mb4_spanish_ci NOT NULL,
   `Correo` varchar(100) COLLATE utf8mb4_spanish_ci NOT NULL,
   `Sucursal_id` int(11) NOT NULL,
-  `Status` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
+  `Status` int(11) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `Sucursal_id` (`Sucursal_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
+
+--
+-- Volcado de datos para la tabla `usuario`
+--
+
+INSERT INTO `usuario` (`id`, `Nombre`, `Apellido`, `Correo`, `Sucursal_id`, `Status`) VALUES
+(1, 'Nicolás', 'Carrasco', 'ncarrasco@correo.cl', 3, 1);
 
 -- --------------------------------------------------------
 
@@ -181,14 +249,20 @@ CREATE TABLE `usuario` (
 -- Estructura de tabla para la tabla `vehiculo`
 --
 
-CREATE TABLE `vehiculo` (
-  `id` int(11) NOT NULL,
+DROP TABLE IF EXISTS `vehiculo`;
+CREATE TABLE IF NOT EXISTS `vehiculo` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `Marca` varchar(100) COLLATE utf8mb4_spanish_ci NOT NULL,
   `Modelo` varchar(100) COLLATE utf8mb4_spanish_ci NOT NULL,
   `Tipo_vehiculo_id` int(11) NOT NULL,
   `Transmision_id` int(11) NOT NULL,
-  `categoria_licencia_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
+  `categoria_licencia_id` int(11) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `Tipo_vehiculo_id` (`Tipo_vehiculo_id`),
+  KEY `Transmision_id` (`Transmision_id`),
+  KEY `Licencia_id` (`categoria_licencia_id`),
+  KEY `categoria_licencia_id` (`categoria_licencia_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
 
 --
 -- Volcado de datos para la tabla `vehiculo`
@@ -199,118 +273,6 @@ INSERT INTO `vehiculo` (`id`, `Marca`, `Modelo`, `Tipo_vehiculo_id`, `Transmisio
 (2, 'Mercedes Benz', 'Actros', 7, 1, 2);
 
 --
--- Índices para tablas volcadas
---
-
---
--- Indices de la tabla `categoria_licencia`
---
-ALTER TABLE `categoria_licencia`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indices de la tabla `licencia`
---
-ALTER TABLE `licencia`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `categoria_licencia_id` (`categoria_licencia_id`);
-
---
--- Indices de la tabla `simulador`
---
-ALTER TABLE `simulador`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `Sucursal_id` (`Sucursal_id`),
-  ADD KEY `Usuario_id` (`Usuario_id`);
-
---
--- Indices de la tabla `sucursal`
---
-ALTER TABLE `sucursal`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indices de la tabla `tipo_vehiculo`
---
-ALTER TABLE `tipo_vehiculo`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indices de la tabla `transmision`
---
-ALTER TABLE `transmision`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indices de la tabla `usuario`
---
-ALTER TABLE `usuario`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `Sucursal_id` (`Sucursal_id`);
-
---
--- Indices de la tabla `vehiculo`
---
-ALTER TABLE `vehiculo`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `Tipo_vehiculo_id` (`Tipo_vehiculo_id`),
-  ADD KEY `Transmision_id` (`Transmision_id`),
-  ADD KEY `Licencia_id` (`categoria_licencia_id`),
-  ADD KEY `categoria_licencia_id` (`categoria_licencia_id`);
-
---
--- AUTO_INCREMENT de las tablas volcadas
---
-
---
--- AUTO_INCREMENT de la tabla `categoria_licencia`
---
-ALTER TABLE `categoria_licencia`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
-
---
--- AUTO_INCREMENT de la tabla `licencia`
---
-ALTER TABLE `licencia`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
-
---
--- AUTO_INCREMENT de la tabla `simulador`
---
-ALTER TABLE `simulador`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT de la tabla `sucursal`
---
-ALTER TABLE `sucursal`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
-
---
--- AUTO_INCREMENT de la tabla `tipo_vehiculo`
---
-ALTER TABLE `tipo_vehiculo`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
-
---
--- AUTO_INCREMENT de la tabla `transmision`
---
-ALTER TABLE `transmision`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
-
---
--- AUTO_INCREMENT de la tabla `usuario`
---
-ALTER TABLE `usuario`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT de la tabla `vehiculo`
---
-ALTER TABLE `vehiculo`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
---
 -- Restricciones para tablas volcadas
 --
 
@@ -319,6 +281,13 @@ ALTER TABLE `vehiculo`
 --
 ALTER TABLE `licencia`
   ADD CONSTRAINT `licencia_ibfk_1` FOREIGN KEY (`categoria_licencia_id`) REFERENCES `categoria_licencia` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Filtros para la tabla `reporte`
+--
+ALTER TABLE `reporte`
+  ADD CONSTRAINT `fk_Simulador_id` FOREIGN KEY (`Simulador_id`) REFERENCES `simulador` (`id`),
+  ADD CONSTRAINT `reporte_ibfk_1` FOREIGN KEY (`Usuario_id`) REFERENCES `usuario` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Filtros para la tabla `simulador`
