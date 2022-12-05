@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 01-12-2022 a las 22:11:00
+-- Tiempo de generación: 05-12-2022 a las 04:31:58
 -- Versión del servidor: 10.4.24-MariaDB
 -- Versión de PHP: 8.1.6
 
@@ -123,21 +123,29 @@ CREATE TABLE IF NOT EXISTS `simulador` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `Nombre` varchar(100) COLLATE utf8mb4_spanish_ci NOT NULL,
   `Sucursal_id` int(11) NOT NULL,
-  `Usuario_id` int(11) NOT NULL,
   `Tipo` varchar(50) COLLATE utf8mb4_spanish_ci NOT NULL,
   `Descripcion` varchar(255) COLLATE utf8mb4_spanish_ci NOT NULL,
   `Status` int(11) NOT NULL,
   PRIMARY KEY (`id`),
-  KEY `Sucursal_id` (`Sucursal_id`),
-  KEY `Usuario_id` (`Usuario_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
+  KEY `Sucursal_id` (`Sucursal_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
 
 --
 -- Volcado de datos para la tabla `simulador`
 --
 
-INSERT INTO `simulador` (`id`, `Nombre`, `Sucursal_id`, `Usuario_id`, `Tipo`, `Descripcion`, `Status`) VALUES
-(1, 'Simulador 10', 3, 1, 'Fijo', 'Simulador armado en sucursal en el año 2019', 1);
+INSERT INTO `simulador` (`id`, `Nombre`, `Sucursal_id`, `Tipo`, `Descripcion`, `Status`) VALUES
+(1, 'Simulador 1', 1, 'Movil', 'Simulador modelo antiguo', 1),
+(2, 'Simulador 2', 3, 'Fijo', 'Simulador modelo antiguo', 1),
+(3, 'Simulador 3', 1, 'Movil', 'Simulador modelo antiguo', 1),
+(4, 'Simulador 4', 2, 'Fijo', 'Simulador modelo antiguo', 1),
+(5, 'Simulador 5', 2, 'Movil', 'Simulador modelo antiguo', 1),
+(6, 'Simulador 6', 1, 'Fijo', 'Simulador nuevo modelo', 1),
+(7, 'Simulador 7', 3, 'Movil', 'Simulador nuevo modelo', 1),
+(8, 'Simulador 8', 2, 'Fijo', 'Simulador nuevo modelo', 1),
+(9, 'Simulador 9', 1, 'Fijo', 'Simulador nuevo modelo', 1),
+(10, 'Simulador 10', 3, 'Fijo', 'Simulador nuevo modelo', 1),
+(11, 'Simulador 11', 1, 'Fijo', 'Simulador nuevo modelo', 1);
 
 -- --------------------------------------------------------
 
@@ -231,17 +239,36 @@ CREATE TABLE IF NOT EXISTS `usuario` (
   `Apellido` varchar(100) COLLATE utf8mb4_spanish_ci NOT NULL,
   `Correo` varchar(100) COLLATE utf8mb4_spanish_ci NOT NULL,
   `Sucursal_id` int(11) NOT NULL,
+  `Simulador_id` int(11) DEFAULT NULL,
   `Status` int(11) NOT NULL,
   PRIMARY KEY (`id`),
-  KEY `Sucursal_id` (`Sucursal_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
+  KEY `Sucursal_id` (`Sucursal_id`),
+  KEY `Status` (`Status`),
+  KEY `Simulador_id` (`Simulador_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
 
 --
 -- Volcado de datos para la tabla `usuario`
 --
 
-INSERT INTO `usuario` (`id`, `Nombre`, `Apellido`, `Correo`, `Sucursal_id`, `Status`) VALUES
-(1, 'Nicolás', 'Carrasco', 'ncarrasco@correo.cl', 3, 1);
+INSERT INTO `usuario` (`id`, `Nombre`, `Apellido`, `Correo`, `Sucursal_id`, `Simulador_id`, `Status`) VALUES
+(1, 'Nicolás', 'Carrasco', 'ncarrasco@correo.cl', 3, NULL, 1),
+(2, 'Maglio', 'Santana', 'msantana@inatrans.cl', 3, 2, 1),
+(3, 'Octavio', 'Jimenez', 'ojimenez@inatrans.cl', 3, 1, 1),
+(4, 'Fidel', 'Loyola', 'floyola@inatrans.cl', 3, 1, 1),
+(5, 'Gustavo', 'Saavedra', 'gsaavedra@inatrans.cl', 3, 2, 1),
+(6, 'Juan', 'Gonzalez', 'jgonzalez@inatrans.cl', 2, 8, 1),
+(7, 'Cesar', 'Rojas', 'crojas@inatrans.cl', 2, 8, 1),
+(8, 'Victor', 'Reyes', 'vreyes@inatrans.cl', 2, 4, 1),
+(9, 'German', 'Martinez', 'gmartinez@inatrans.cl', 1, 9, 1),
+(10, 'Erick', 'Noack', 'enoack@inatrans.cl', 1, 6, 1),
+(11, 'Cristian', 'Saa', 'csaa@inatrans.cl', 1, 6, 1),
+(12, 'Daniel', 'Quiñones', 'dquinones@inatrans.cl', 1, 9, 1),
+(13, 'Pedro', 'Cabezas', 'pcabezas@inatrans.cl', 1, 11, 1),
+(14, 'Juan', 'Gutierrez', 'jgutierrez@inatrans.cl', 1, 11, 1),
+(15, 'Williams', 'Salinas', 'wsalinas@inatrans.cl', 2, 5, 1),
+(16, 'Javier', 'Rosales', 'jrosales@inatrans.cl', 2, 5, 1),
+(17, 'Cristian', 'Acevedo', 'cacevedo@inatrans.cl', 3, 7, 1);
 
 -- --------------------------------------------------------
 
@@ -293,14 +320,14 @@ ALTER TABLE `reporte`
 -- Filtros para la tabla `simulador`
 --
 ALTER TABLE `simulador`
-  ADD CONSTRAINT `simulador_ibfk_1` FOREIGN KEY (`Sucursal_id`) REFERENCES `sucursal` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `simulador_ibfk_2` FOREIGN KEY (`Usuario_id`) REFERENCES `usuario` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `simulador_ibfk_1` FOREIGN KEY (`Sucursal_id`) REFERENCES `sucursal` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Filtros para la tabla `usuario`
 --
 ALTER TABLE `usuario`
-  ADD CONSTRAINT `usuario_ibfk_1` FOREIGN KEY (`Sucursal_id`) REFERENCES `sucursal` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `usuario_ibfk_1` FOREIGN KEY (`Sucursal_id`) REFERENCES `sucursal` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `usuario_ibfk_2` FOREIGN KEY (`Simulador_id`) REFERENCES `simulador` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Filtros para la tabla `vehiculo`

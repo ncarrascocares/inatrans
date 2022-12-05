@@ -1,7 +1,7 @@
 <section class="card">
     <div class="card-block">
-        <h3>Acumulado de reportes</h3>
-        
+        <h3>Reportes Simulador</h3>
+        <a class="btn btn-rounded btn-inline" href="<?=base_url?>reporte/crear">Nuevo reporte</a>
         <table id="example" class="display table table-striped table-bordered" cellspacing="0" width="100%">
             <thead>
                 <tr>
@@ -17,7 +17,7 @@
                 </tr>
             </thead>
             <tbody>
-                <?php while($rep = $reportes->fetch_object()): ?>
+                <?php while($rep = $sim->fetch_object()): ?>
                 <tr>
                     <td><?=$rep->id_interno;?></td>
                     <td><?=$rep->Simulador_id;?></td>
