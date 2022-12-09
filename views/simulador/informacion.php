@@ -31,7 +31,7 @@
                     <td><?=$rep->Fecha_termino;?></td>
                     <td><?=$rep->Estado_averia;?></td>
                     <td>
-                        <a class="btn btn-rounded btn-inline btn-warning-outline" href="<?=base_url?>reporte/edit/<?=$rep->Simulador_id?>">Editar</a>
+                        <a class="btn btn-rounded btn-inline btn-warning-outline" href="<?=base_url?>reporte/edit/<?=$rep->id?>">Editar</a>
                         <a class="btn btn-rounded btn-inline btn-info-outline" href="#">+ Info</a>
                     </td>
                 </tr>

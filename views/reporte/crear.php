@@ -1,11 +1,17 @@
-<?php if (isset($_GET)) {
-   $id_simulador = $_GET['id'];
-} ?>
+<?php 
+    if (isset($_GET)) {
+        $id_simulador = $_GET['id'];
+    }
+
+    //Generación de numero de reporte
+    $repor = Utils::idInterno();
+    $reporte = "SIM0".$id_simulador."-".$repor->id + 1;
+?>
 <section class="card">
     <div class="card-block">
         <?php if (isset($edit) && isset($rep) && is_object($rep)) : ?>
             <h5 class="with-border">Editar reporte</h5>
-            <?php $ruta = base_url . "reporte/save/" . $rep->id; ?>
+            <?php $ruta = base_url . "reporte/save/".$rep->id; ?>
         <?php else : ?>
             <h5 class="with-border">Ingreso de nuevo reporte</h5>
             <?php $ruta = base_url . "reporte/save"; ?>
@@ -23,37 +29,20 @@
                 <div class="col-lg-2">
                     <fieldset class="form-group">
                         <label class="form-label" for="id_interno">N° Reporte</label>
-                        <input type="text" class="form-control maxlength-simple" name="id_interno" id="" value="<?= isset($rep) ? $rep->id_interno : '' ?>">
+                        <input type="text" readonly class="form-control maxlength-simple" name="id_interno" id="" value="<?= isset($rep) ? $rep->id_interno : $reporte ?>">
                     </fieldset>
                 </div>
 
                 <div class="col-lg-2">
-                    <?php if (isset($edit) && isset($rep) && is_object($rep)) : ?>
                         <fieldset class="form-group">
                         <label class="form-label" for="simulador">Simulador</label>
-                            <select class="form-select" name="simulador" id="">
-                                <?php while ($sim = $simulador->fetch_object()) : ?>
-                                    <option value="<?= $rep->id ?>" <?= isset($rep) && is_object($rep) && $sim->id == $rep->Simulador_id ? 'selected' : '' ?>> <?= $sim->Nombre ?> </option>
-                                <?php endwhile; ?>
-                            </select>
+                        <input type="text" name="simulador" class="form-control maxlength-custom-message" id="" value="<?= isset($rep) ? $rep->Simulador_id : $id_simulador ?>">
                         </fieldset>
-                    <?php else : ?>
-                        <fieldset class="form-group">
-                            <label class="form-label" for="simulador">Simulador</label>
-                            <input type="text" readonly name="simulador" value="<?=$id_simulador?>" class="form-control maxlength-custom-message" id="">
-                        </fieldset>
-                    <?php endif; ?>
                 </div>
                 <div class="col-lg-2">
-                <?php if (isset($edit) && isset($rep) && is_object($rep)) : ?>
                     <fieldset class="form-group">
                         <label class="form-label" for="responsable">Usuario</label>
-                        <input type="text" name="responsable" class="form-control maxlength-custom-message" id="" value="<?= isset($rep) ? $rep->Tecnico : '' ?>">
-                    </fieldset>
-                <?php endif;?>
-                    <fieldset class="form-group">
-                        <label class="form-label" for="responsable">Usuario</label>
-                        <input type="number" name="responsable" class="form-control maxlength-custom-message" id="" value="">
+                        <input type="text" name="responsable" class="form-control maxlength-custom-message" id="" value="<?= isset($rep) ? $rep->Usuario_id : '' ?>">
                     </fieldset>
                 </div>
             </div>

@@ -115,6 +115,12 @@ class Reporte{
 
     }
 
+    public function getAllReporte(){
+        $sql = "SELECT * FROM reporte ORDER BY id DESC LIMIT 1";
+        $reporte = $this->db->query($sql);
+        return $reporte;
+    }
+
     public function save(){
         $sql = "INSERT INTO reporte VALUES (NULL, '{$this->getId_interno()}',{$this->getSimulador_id()},{$this->getUsuario_id()},'{$this->getReporte_averia()}', '{$this->getReporte_solucion()}','{$this->getObservacion()}','{$this->getFecha_inicio()}','{$this->getFecha_termino()}',{$this->gethh()},'{$this->getEstado_averia()}','{$this->getUso_repuesto()}',{$this->getInventario_id()});";
         $save = $this->db->query($sql);
@@ -128,10 +134,11 @@ class Reporte{
     }
 
     public function getOne(){
-        $sql = "SELECT reporte.*, simulador.Nombre as 'Simulador', CONCAT(usuario.Nombre,' ',usuario.Apellido) AS 'Tecnico', simulador.id, usuario.id FROM reporte
-        INNER JOIN simulador on reporte.Simulador_id = simulador.id
-        INNER JOIN usuario on reporte.Usuario_id = usuario.id
-        WHERE reporte.id = {$this->getId()}";
+        $sql = "SELECT reporte.*, simulador.Nombre as 'Simulador', CONCAT(usuario.Nombre,' ',usuario.Apellido) AS 'Tecnico' FROM reporte
+        INNER JOIN simulador on reporte.Simulador_id = simulador.id 
+        INNER JOIN usuario on reporte.Usuario_id = usuario.id 
+        WHERE reporte.id = {$this->getId()};";
+
        $reporte = $this->db->query($sql);
        return $reporte->fetch_object();
     }

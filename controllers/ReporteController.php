@@ -29,9 +29,10 @@ class ReporteController{
             $estado = isset($_POST['estado']) ? $_POST['estado']: false;
             $uso_repuesto = isset($_POST['uso_repuesto']) ? $_POST['uso_repuesto']: false;
             $inventario_id = isset($_POST['inventario_id']) ? $_POST['inventario_id']: NULL;
-            
+          
             //Validando que las variables no sean falsas
             if ($id_interno && $simulador && $responsable && $reporte_averia && $fecha_inicio && $estado) {
+            
                 $objeto = new Reporte();
                 $objeto->setId_interno($id_interno);
                 $objeto->setSimulador_id($simulador);
@@ -46,11 +47,14 @@ class ReporteController{
                 $objeto->setUso_repuesto($uso_repuesto);
                 $objeto->setInventario_id($inventario_id);
 
+                
+
                 if (isset($_GET['id']) && $_GET['id'] != "") {
                     $id = $_GET['id'];
                     $objeto->setId($id);
                     $saveUpdate = $objeto->edit();
                 }else{
+                    
                     $save = $objeto->save();
                 }             
                 
