@@ -63,11 +63,13 @@
             return $simulador;
         }
 
-        public function infoOneSimulador(){
-            $sql = "SELECT * FROM reporte WHERE Simulador_id = {$this->getId()};";
+        public function reportForSimulador(){
+            $sql = "SELECT reporte.*, simulador.Nombre as 'Simulador', CONCAT(usuario.Nombre,' ',usuario.Apellido) AS 'Tecnico' FROM reporte
+            INNER JOIN simulador on reporte.Simulador_id = simulador.id
+            INNER JOIN usuario on reporte.Usuario_id = usuario.id
+            WHERE reporte.Simulador_id = {$this->getId()};";
             $result = $this->db->query($sql);
             $simulador = $result;
-
             return $simulador;
         }
 

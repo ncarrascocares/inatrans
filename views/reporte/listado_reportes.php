@@ -7,7 +7,7 @@
                 <tr>
                     <th>N° interno</th>
                     <th>Simulador</th>
-                    <th>Responsable</th>
+                    <th>Usuario</th>
                     <th>Reporte averia</th>
                     <th>Solucion</th>
                     <th>Inicio</th>
@@ -20,15 +20,15 @@
                 <?php while($rep = $reportes->fetch_object()): ?>
                 <tr>
                     <td><?=$rep->id_interno;?></td>
-                    <td><?=$rep->Simulador_id;?></td>
-                    <td><?=$rep->Usuario_id;?></td>
+                    <td><?=$rep->Simulador;?></td>
+                    <td><?=$rep->Tecnico;?></td>
                     <td><?=$rep->Reporte_averia;?></td>
                     <td><?=$rep->Reporte_solucion;?></td>
                     <td><?=$rep->Fecha_inicio;?></td>
                     <td><?=$rep->Fecha_termino;?></td>
                     <td><?=$rep->Estado_averia;?></td>
                     <td>
-                        <a class="btn btn-rounded btn-inline btn-warning-outline" href="<?=base_url?>reporte/edit/<?=$rep->id?>">Editar</a>
+                        <a class="btn btn-rounded btn-inline btn-warning-outline" href="<?=base_url?>reporte/edit/<?=$rep->Simulador_id?>">Editar</a>
                         <a class="btn btn-rounded btn-inline btn-info-outline" href="#">+ Info</a>
                     </td>
                 </tr>

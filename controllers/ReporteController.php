@@ -55,12 +55,9 @@ class ReporteController{
                 }             
                 
                 header("Location: ".base_url."reporte/view");
-            }
-            
-
+            }           
         }
-
-       
+      
     }
 
     public function edit(){

@@ -10,17 +10,22 @@ require_once 'models/Simulador.php';
 
         public function informacion(){
             if (isset($_GET)) {
-                $id = $_GET['id'];
-                
+                $id = (int)$_GET['id'];
+
                 //Pasando el id al metodo del modelo
                 $objeto = new Simulador();
                 $objeto->setId($id);
-                $objeto->infoOneSimulador();
+                $objeto->reportForSimulador();
 
-                $simulador = $objeto->infoOneSimulador();
+                $simulador = $objeto->reportForSimulador();
                 $sim = $simulador;
+
+                // var_dump($sim);
+                // die();
+
+                require_once 'views/simulador/informacion.php';
             }
-            require_once 'views/simulador/informacion.php';
+            
         }
 
     }
