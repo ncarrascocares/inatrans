@@ -5,7 +5,7 @@
 
     //Generación de numero de reporte
     $repor = Utils::idInterno();
-    $reporte = "SIM0".$id_simulador."-".$repor->id + 1;
+    $reporte = "SIM".$id_simulador."-".$repor->id + 1;
 ?>
 <section class="card">
     <div class="card-block">
