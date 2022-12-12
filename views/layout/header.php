@@ -13,6 +13,11 @@
 	<link href="<?=base_url?>assets/img/favicon.png" rel="icon" type="image/png">
 	<link href="<?=base_url?>assets/img/favicon.ico" rel="shortcut icon">
 
+	<!-- Full Calendar -->
+	<script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/main.js"></script>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/main.css">
+	<script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/locales-all.js"></script>
+
 	<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
 	<!--[if lt IE 9]>
 	<script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>

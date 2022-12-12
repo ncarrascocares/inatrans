@@ -106,6 +106,23 @@
 			});
 		});
 	</script>
+	 <script>
+
+// Full Calendar
+document.addEventListener('DOMContentLoaded', function() {
+  var calendarEl = document.getElementById('calendar');
+  var calendar = new FullCalendar.Calendar(calendarEl, {
+	initialView: 'dayGridMonth',
+	locale:'es',
+	dayClick:function(date, jsEvent,view){
+		alert("Valor seleccionado:"+date.format());
+	}
+  });
+  
+  calendar.render();
+});
+
+</script>
 <script src="js/app.js"></script>
 	
 <script src="<?=base_url?>assets/js/app.js"></script>
