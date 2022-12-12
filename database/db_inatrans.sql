@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 05-12-2022 a las 04:31:58
+-- Tiempo de generación: 12-12-2022 a las 03:42:04
 -- Versión del servidor: 10.4.24-MariaDB
 -- Versión de PHP: 8.1.6
 
@@ -100,7 +100,7 @@ CREATE TABLE IF NOT EXISTS `reporte` (
   PRIMARY KEY (`id`),
   KEY `fk_Simulador_id` (`Simulador_id`),
   KEY `Usuario_id` (`Usuario_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=27 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
 
 --
 -- Volcado de datos para la tabla `reporte`
@@ -110,7 +110,8 @@ INSERT INTO `reporte` (`id`, `id_interno`, `Simulador_id`, `Usuario_id`, `Report
 (2, 'SIM06-39', 1, 1, 'Volante no realiza centrado', 'Se realiza cierre de proceso y se vuelve a iniciar', NULL, '2022-11-29', '2022-11-30', 5, 'Cerrada', 'No', NULL),
 (3, 'SIM01-40', 1, 1, 'Las cajas power e ishift no responden', '', 'Se solicitara apoyo a España', '2022-12-01', '0000-00-00', 0, 'Abierta', 'No', 0),
 (13, 'qqqqq', 1, 1, 'qqqq', 'qqqq', 'qqqq', '2022-12-01', '2022-12-01', 1, 'cerrada', 'no', 0),
-(25, 'SIM01-41', 1, 1, 'Equipo con problemas en el a/c', 'Se realiza mantenimiento en faena', 'Jaime solicita al cliente el mantenimiento del equ', '2022-11-30', '2022-12-01', 1, 'cerrada', 'No', 0);
+(25, 'SIM01-41', 1, 1, 'Equipo con problemas en el a/c', 'Se realiza mantenimiento en faena', 'Jaime solicita al cliente el mantenimiento del equ', '2022-11-30', '2022-12-01', 1, 'cerrada', 'No', 0),
+(26, 'SIM02-01', 2, 2, 'Pedal de frenos con juego', 'Se realiza cambio de pedal', 'Pedal reemplazado necesita cambio de gomas de tope', '2022-12-08', '2022-12-08', 1, 'Cerrada', 'No', 0);
 
 -- --------------------------------------------------------
 
