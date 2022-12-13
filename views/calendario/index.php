@@ -7,6 +7,7 @@
         <div class="modal-content">
             <div class="modal-header bg-info">
                 <h5 class="modal-title" id="titulo"></h5>
+                <button type="button" onclick="CierreModal()" class="btn btn-secondary" data-bs-dismiss="modalClose">Cerrar</button>
             </div>
             <form action="" id="formulario">
                 <div class="modal-body">
@@ -24,8 +25,8 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" onclick="CierreModal()" class="btn btn-secondary" data-bs-dismiss="modalClose">Cerrar</button>
-                    <button type="button" class="btn btn-primary">Guardar Cambios</button>
+                    <button type="button" class="btn btn-danger">Eliminar</button>
+                    <button type="submit" id="btnAccion" class="btn btn-success">Registrar</button>
                 </div>
             </form>
         </div>

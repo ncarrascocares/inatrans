@@ -1,4 +1,5 @@
 var myModal = document.getElementById('myModal')
+let frm = document.getElementById('formulario');
 
 document.addEventListener('DOMContentLoaded', function() {
     var calendarEl = document.getElementById('calendar');
@@ -19,6 +20,35 @@ document.addEventListener('DOMContentLoaded', function() {
 
     });
     calendar.render();
+    frm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        const title = document.getElementById('title').value;
+        const fecha = document.getElementById('start').value;
+        const color = document.getElementById('color').value;
+        if (title == '' || fecha == '' || color == '') {
+            Swal.fire(
+                'Aviso',
+                'Todos los campos son requeridos',
+                'warning'
+            )
+        } else {
+
+            var formulario = document.getElementById('formulario');
+
+            formulario.addEventListener('submit', function(e) {
+                e.preventDefault();
+
+                var datos = new FormData(formulario);
+
+                fetch(base_url + 'calendario/registrar', {
+                    method: 'POST',
+                    body: datos
+                });
+            })
+
+
+        }
+    });
 });
 
 function CierreModal() {
