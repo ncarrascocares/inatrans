@@ -1,4 +1,4 @@
-var myModal = new bootstrap.Modal(document.getElementById('myModal'));
+var myModal = document.getElementById('myModal')
 
 document.addEventListener('DOMContentLoaded', function() {
     var calendarEl = document.getElementById('calendar');
@@ -11,8 +11,16 @@ document.addEventListener('DOMContentLoaded', function() {
             right: 'dayGridMonth, timeGridWeek, listWeek'
         },
         dateClick: function(info) {
-            console.log(info);
+            //console.log(info);
+            document.getElementById('start').value = info.dateStr;
+            document.getElementById('titulo').textContent = 'Registro de eventos';
+            $('#myModal').modal('show');
         }
+
     });
     calendar.render();
 });
+
+function CierreModal() {
+    $('#myModal').modal('hide');
+}
