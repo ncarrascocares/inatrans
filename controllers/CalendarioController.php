@@ -16,19 +16,47 @@ class CalendarioController{
             $start = $_POST['start'];
             $color = $_POST['color'];
 
-            if (!empty($title) && !empty($start) && !empty($color)) {
+            if (empty($title) && empty($start) && empty($color)) {
+                $mensaje = array('msg'=>'todos los campos son requeridos', 'estado'=> false, 'tipo'=>'warning');
                 
+            }else{
                 $objeto = new Calendario();
                 $objeto->setTitle($title);
                 $objeto->setStart($start);
                 $objeto->setColor($color);
 
-                $objeto->save();
-            }
+                $respuesta = $objeto->save();
+                
+                if ($respuesta == 1) {
+                    $mensaje = array('msg'=>'Evento registrado', 'estado'=> true, 'tipo'=>'success');
+                }else{
+                    $mensaje = array('msg'=>'Error al registrar el evento', 'estado'=> false, 'tipo'=>'error');
+                }
 
-            header("Location: ".base_url."calendario/view");
+                $array = json_encode($mensaje);
+                echo json_encode($array, JSON_UNESCAPED_UNICODE);
+                die();
+            }
         }
-        
+
+        /****************************** */
+            //$mensaje = array('msg'=>'Error al registrar', 'estado'=> false, 'tipo'=>'error');
+            //$array = json_encode($mensaje);
+            //echo json_encode($array, JSON_UNESCAPED_UNICODE);
+
+    }
+
+    public function listar(){
+
+        $objeto = new Calendario();
+        $eventos = $objeto->listarEventos();
+        $eventos = $eventos->fetch_array();
+        //print_r($eventos);
+        //die();
+        //print_r($eventos);
+        echo json_encode($eventos);
+        //die();
+
     }
 }
 

@@ -11,6 +11,8 @@ document.addEventListener('DOMContentLoaded', function() {
             center: 'title',
             right: 'dayGridMonth, timeGridWeek, listWeek'
         },
+        events: base_url + 'calendario/listar',
+        editable:  true,
         dateClick: function(info) {
             //console.log(info);
             document.getElementById('start').value = info.dateStr;
@@ -33,19 +35,31 @@ document.addEventListener('DOMContentLoaded', function() {
             )
         } else {
 
-            var formulario = document.getElementById('formulario');
+            //Opcion del tutorial
+            const url = base_url + 'calendario/registrar';
+            const http = new XMLHttpRequest();
+            http.open('POST', url, true);
+            http.send(new FormData(frm));
+            http.onreadystatechange = function() {
+                if (http.readyState == 4 && http.status == 200) {
+                    http.responseType = 'json';
 
-            formulario.addEventListener('submit', function(e) {
-                e.preventDefault();
+                    //console.log(this.responseText);
+                    const respuesta = JSON.parse(http.responseText);
 
-                var datos = new FormData(formulario);
+                    console.log(respuesta);
+                    //console.log(respuesta);
+                    if (respuesta.estado) {
 
-                fetch(base_url + 'calendario/registrar', {
-                    method: 'POST',
-                    body: datos
-                });
-            })
-
+                    }
+                    $('#myModal').modal('hide');
+                    Swal.fire(
+                        'Aviso',
+                        respuesta.msg,
+                        respuesta.tipo
+                    )
+                }
+            }
 
         }
     });

@@ -31,13 +31,13 @@
             $this->id = (int)$this->db->real_escape_string($id);
         }
         function setTitle($title){
-            $this->title = (int)$this->db->real_escape_string($title);
+            $this->title = $this->db->real_escape_string($title);
         }
         function setStart($start){
-            $this->start = (int)$this->db->real_escape_string($start);
+            $this->start = $this->db->real_escape_string($start);
         }
         function setColor($color){
-            $this->color = (int)$this->db->real_escape_string($color);
+            $this->color = $this->db->real_escape_string($color);
         }
 
         public function save(){
@@ -49,7 +49,14 @@
             $result = true;
         }
 
-        return $save;
+        return $result;
+        }
+
+        public function listarEventos(){
+            $sql = "SELECT * FROM eventos;";
+            $data = $this->db->query($sql);
+
+            return $data;
         }
 
     }
