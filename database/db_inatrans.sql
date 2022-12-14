@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 12-12-2022 a las 03:42:04
+-- Tiempo de generación: 14-12-2022 a las 21:12:57
 -- Versión del servidor: 10.4.24-MariaDB
 -- Versión de PHP: 8.1.6
 
@@ -29,7 +29,6 @@ USE `db_inatrans`;
 -- Estructura de tabla para la tabla `categoria_licencia`
 --
 
-DROP TABLE IF EXISTS `categoria_licencia`;
 CREATE TABLE IF NOT EXISTS `categoria_licencia` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `Nombre` varchar(100) COLLATE utf8mb4_spanish_ci NOT NULL,
@@ -48,10 +47,39 @@ INSERT INTO `categoria_licencia` (`id`, `Nombre`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `eventos`
+--
+
+CREATE TABLE IF NOT EXISTS `eventos` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `title` varchar(100) COLLATE utf8mb4_spanish_ci NOT NULL,
+  `start` date NOT NULL,
+  `color` varchar(100) COLLATE utf8mb4_spanish_ci NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=75 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
+
+--
+-- Volcado de datos para la tabla `eventos`
+--
+
+INSERT INTO `eventos` (`id`, `title`, `start`, `color`) VALUES
+(2, 'Nicolas', '2022-12-13', '#fff'),
+(30, 'Prueba 22', '2022-12-08', '#ff0000'),
+(67, 'wwswws', '2022-12-16', '#000000'),
+(68, 'wwswws', '2022-12-16', '#000000'),
+(69, 'sssssss', '2022-12-03', '#000000'),
+(70, 'jjjjj', '2022-12-03', '#000000'),
+(71, 'ññññññ', '2022-12-04', '#000000'),
+(72, 'mmm', '2022-12-15', '#000000'),
+(73, 'mmm', '2022-12-15', '#000000'),
+(74, 'ddddd', '2022-12-10', '#000000');
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `licencia`
 --
 
-DROP TABLE IF EXISTS `licencia`;
 CREATE TABLE IF NOT EXISTS `licencia` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `Nombre` varchar(100) COLLATE utf8mb4_spanish_ci NOT NULL,
@@ -82,7 +110,6 @@ INSERT INTO `licencia` (`id`, `Nombre`, `Ley`, `Descripcion`, `categoria_licenci
 -- Estructura de tabla para la tabla `reporte`
 --
 
-DROP TABLE IF EXISTS `reporte`;
 CREATE TABLE IF NOT EXISTS `reporte` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `id_interno` varchar(100) COLLATE utf8mb4_spanish_ci NOT NULL,
@@ -119,7 +146,6 @@ INSERT INTO `reporte` (`id`, `id_interno`, `Simulador_id`, `Usuario_id`, `Report
 -- Estructura de tabla para la tabla `simulador`
 --
 
-DROP TABLE IF EXISTS `simulador`;
 CREATE TABLE IF NOT EXISTS `simulador` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `Nombre` varchar(100) COLLATE utf8mb4_spanish_ci NOT NULL,
@@ -154,7 +180,6 @@ INSERT INTO `simulador` (`id`, `Nombre`, `Sucursal_id`, `Tipo`, `Descripcion`, `
 -- Estructura de tabla para la tabla `sucursal`
 --
 
-DROP TABLE IF EXISTS `sucursal`;
 CREATE TABLE IF NOT EXISTS `sucursal` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `Nombre` varchar(100) COLLATE utf8mb4_spanish_ci NOT NULL,
@@ -176,7 +201,6 @@ INSERT INTO `sucursal` (`id`, `Nombre`) VALUES
 -- Estructura de tabla para la tabla `tipo_vehiculo`
 --
 
-DROP TABLE IF EXISTS `tipo_vehiculo`;
 CREATE TABLE IF NOT EXISTS `tipo_vehiculo` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `Nombre` varchar(100) COLLATE utf8mb4_spanish_ci NOT NULL,
@@ -207,7 +231,6 @@ INSERT INTO `tipo_vehiculo` (`id`, `Nombre`) VALUES
 -- Estructura de tabla para la tabla `transmision`
 --
 
-DROP TABLE IF EXISTS `transmision`;
 CREATE TABLE IF NOT EXISTS `transmision` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `Nombre` varchar(100) COLLATE utf8mb4_spanish_ci NOT NULL,
@@ -233,7 +256,6 @@ INSERT INTO `transmision` (`id`, `Nombre`, `Categoria`) VALUES
 -- Estructura de tabla para la tabla `usuario`
 --
 
-DROP TABLE IF EXISTS `usuario`;
 CREATE TABLE IF NOT EXISTS `usuario` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `Nombre` varchar(100) COLLATE utf8mb4_spanish_ci NOT NULL,
@@ -277,7 +299,6 @@ INSERT INTO `usuario` (`id`, `Nombre`, `Apellido`, `Correo`, `Sucursal_id`, `Sim
 -- Estructura de tabla para la tabla `vehiculo`
 --
 
-DROP TABLE IF EXISTS `vehiculo`;
 CREATE TABLE IF NOT EXISTS `vehiculo` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `Marca` varchar(100) COLLATE utf8mb4_spanish_ci NOT NULL,
