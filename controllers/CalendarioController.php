@@ -55,7 +55,7 @@ class CalendarioController{
         //die();
         //print_r($eventos);
         echo json_encode($eventos);
-        //die();
+        die();
 
     }
 }
