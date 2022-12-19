@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 14-12-2022 a las 21:12:57
+-- Tiempo de generación: 19-12-2022 a las 22:06:14
 -- Versión del servidor: 10.4.24-MariaDB
 -- Versión de PHP: 8.1.6
 
@@ -53,26 +53,31 @@ INSERT INTO `categoria_licencia` (`id`, `Nombre`) VALUES
 CREATE TABLE IF NOT EXISTS `eventos` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `title` varchar(100) COLLATE utf8mb4_spanish_ci NOT NULL,
-  `start` date NOT NULL,
-  `color` varchar(100) COLLATE utf8mb4_spanish_ci NOT NULL,
+  `descripcion` varchar(255) COLLATE utf8mb4_spanish_ci NOT NULL,
+  `color` varchar(255) COLLATE utf8mb4_spanish_ci NOT NULL,
+  `textColor` varchar(255) COLLATE utf8mb4_spanish_ci NOT NULL,
+  `start` datetime NOT NULL,
+  `end` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=75 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=77 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
 
 --
 -- Volcado de datos para la tabla `eventos`
 --
 
-INSERT INTO `eventos` (`id`, `title`, `start`, `color`) VALUES
-(2, 'Nicolas', '2022-12-13', '#fff'),
-(30, 'Prueba 22', '2022-12-08', '#ff0000'),
-(67, 'wwswws', '2022-12-16', '#000000'),
-(68, 'wwswws', '2022-12-16', '#000000'),
-(69, 'sssssss', '2022-12-03', '#000000'),
-(70, 'jjjjj', '2022-12-03', '#000000'),
-(71, 'ññññññ', '2022-12-04', '#000000'),
-(72, 'mmm', '2022-12-15', '#000000'),
-(73, 'mmm', '2022-12-15', '#000000'),
-(74, 'ddddd', '2022-12-10', '#000000');
+INSERT INTO `eventos` (`id`, `title`, `descripcion`, `color`, `textColor`, `start`, `end`) VALUES
+(2, 'Nicolas', '', '', '', '2022-12-13 00:00:00', NULL),
+(30, 'Prueba 22', '', '', '', '2022-12-08 00:00:00', NULL),
+(67, 'wwswws', '', '', '', '2022-12-16 00:00:00', NULL),
+(68, 'wwswws', '', '', '', '2022-12-16 00:00:00', NULL),
+(69, 'sssssss', '', '', '', '2022-12-03 00:00:00', NULL),
+(70, 'jjjjj', '', '', '', '2022-12-03 00:00:00', NULL),
+(71, 'ññññññ', '', '', '', '2022-12-04 00:00:00', NULL),
+(72, 'mmm', '', '', '', '2022-12-15 00:00:00', NULL),
+(73, 'mmm', '', '', '', '2022-12-15 00:00:00', NULL),
+(74, 'ddddd', '', '', '', '2022-12-10 00:00:00', NULL),
+(75, 'TEST', '', '', '', '2023-02-03 00:00:00', NULL),
+(76, 'Revisión simulador 11', 'Revisar las paradas de emergencia y el estado de los potenciometros', '#fff000', 'fff000', '2022-12-15 00:00:00', '2022-12-16 00:00:00');
 
 -- --------------------------------------------------------
 
