@@ -55,7 +55,7 @@
         public function listarEventos(){
             $sql = "SELECT * FROM eventos;";
             $data = $this->db->query($sql);
-
+            
             return $data;
         }
 

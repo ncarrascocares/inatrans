@@ -47,14 +47,16 @@ class CalendarioController{
     }
 
     public function listar(){
-
+        header('Content-type: applicaton/json');
         $objeto = new Calendario();
         $eventos = $objeto->listarEventos();
-        $eventos = $eventos->fetch_array();
+
+        $cal = $eventos;
         //print_r($eventos);
         //die();
         //print_r($eventos);
-        echo json_encode($eventos);
+        //echo json_encode($eventos);
+        require_once 'views/calendario/calendario.php';
         //die();
 
     }
