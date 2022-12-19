@@ -50,19 +50,8 @@ class CalendarioController{
         header('Content-type: applicaton/json');
         $objeto = new Calendario();
         $eventos = $objeto->listarEventos();
-
-        $cal = $eventos;
-        //print_r($eventos);
-        //die();
-        //print_r($eventos);
-<<<<<<< HEAD
-        //echo json_encode($eventos);
-        require_once 'views/calendario/calendario.php';
-        //die();
-=======
         echo json_encode($eventos);
         die();
->>>>>>> e665d40ac71c51d4e612b292cec1db8b2c6ae3fa
 
     }
 }
