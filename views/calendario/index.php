@@ -27,7 +27,7 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="submit" id="btnAccion" class="btn btn-success">Registrar</button>
+                    <button type="submit" id="btnAgregar" class="btn btn-success">Agregar Evento</button>
                     <button type="button" class="btn btn-warning">Editar</button>
                     <button type="button" class="btn btn-danger">Eliminar</button>
                 </div>
@@ -57,7 +57,7 @@
                    </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="submit" id="btnAccion" class="btn btn-success">Registrar</button>
+                    <button type="submit" onMouseDown="agregar()" id="btnAccion" class="btn btn-success">Registrar</button>
                     <button type="button" class="btn btn-warning">Editar</button>
                     <button type="button" class="btn btn-danger">Eliminar</button>
                 </div>
@@ -65,3 +65,18 @@
         </div>
     </div>
 </div>
+<script>
+    function agregar()
+{
+   var NuevoEvento = {
+    title: $('#txtTitulo').val(),
+    start: $('#txtFecha').val()+" "+$('#txtHora').val(),
+    color: $('#txtColor').val(),
+    descripcion: $('#txtDescripcion').val(),
+    textColor: "#fff000"
+   };
+
+   $('$CalendarioWeb').fullCalendar('renderEvent',NuevoEvento);
+   $('#modalEventos').modal('toggle');
+}    
+</script>
