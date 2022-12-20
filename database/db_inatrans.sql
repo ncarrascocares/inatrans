@@ -55,29 +55,20 @@ CREATE TABLE IF NOT EXISTS `eventos` (
   `title` varchar(100) COLLATE utf8mb4_spanish_ci NOT NULL,
   `descripcion` varchar(255) COLLATE utf8mb4_spanish_ci NOT NULL,
   `color` varchar(255) COLLATE utf8mb4_spanish_ci NOT NULL,
-  `textColor` varchar(255) COLLATE utf8mb4_spanish_ci NOT NULL,
   `start` datetime NOT NULL,
   `end` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=77 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
 
 --
 -- Volcado de datos para la tabla `eventos`
 --
 
-INSERT INTO `eventos` (`id`, `title`, `descripcion`, `color`, `textColor`, `start`, `end`) VALUES
-(2, 'Nicolas', '', '', '', '2022-12-13 00:00:00', NULL),
-(30, 'Prueba 22', '', '', '', '2022-12-08 00:00:00', NULL),
-(67, 'wwswws', '', '', '', '2022-12-16 00:00:00', NULL),
-(68, 'wwswws', '', '', '', '2022-12-16 00:00:00', NULL),
-(69, 'sssssss', '', '', '', '2022-12-03 00:00:00', NULL),
-(70, 'jjjjj', '', '', '', '2022-12-03 00:00:00', NULL),
-(71, 'ññññññ', '', '', '', '2022-12-04 00:00:00', NULL),
-(72, 'mmm', '', '', '', '2022-12-15 00:00:00', NULL),
-(73, 'mmm', '', '', '', '2022-12-15 00:00:00', NULL),
-(74, 'ddddd', '', '', '', '2022-12-10 00:00:00', NULL),
-(75, 'TEST', '', '', '', '2023-02-03 00:00:00', NULL),
-(76, 'Revisión simulador 11', 'Revisar las paradas de emergencia y el estado de los potenciometros', '#fff000', 'fff000', '2022-12-15 00:00:00', '2022-12-16 00:00:00');
+INSERT INTO `eventos` (`id`, `title`, `descripcion`, `color`, `start`, `end`) VALUES
+(1, 'Revisión de sim 11', 'Revisar el estado de los pedales y potenciometros del simulador', '#ff0000', '2022-12-01 00:00:00', '0000-00-00 00:00:00'),
+(2, 'Simulador 6', 'Revisar conexiones de la caja del simulador', '#ff0000', '2022-12-10 00:00:00', '0000-00-00 00:00:00'),
+(3, 'test', 'test', '#00ff40', '2022-12-20 00:00:00', '0000-00-00 00:00:00'),
+(4, 'Etiquetear', 'Etiquetear los articulos de mantenimiento de la sucursal Isaac y Latorre', '#ff0000', '2022-11-30 00:00:00', '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
