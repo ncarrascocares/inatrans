@@ -6,12 +6,8 @@
 	<meta http-equiv="x-ua-compatible" content="ie=edge">
 	<title>Intranet Inatrans</title>
 
-	<link href="<?=base_url?>assets/img/favicon.144x144.png" rel="apple-touch-icon" type="image/png" sizes="144x144">
-	<link href="<?=base_url?>assets/img/favicon.114x114.png" rel="apple-touch-icon" type="image/png" sizes="114x114">
-	<link href="<?=base_url?>assets/img/favicon.72x72.png" rel="apple-touch-icon" type="image/png" sizes="72x72">
-	<link href="<?=base_url?>assets/img/favicon.57x57.png" rel="apple-touch-icon" type="image/png">
-	<link href="<?=base_url?>assets/img/favicon.png" rel="icon" type="image/png">
-	<link href="<?=base_url?>assets/img/favicon.ico" rel="shortcut icon">
+	
+	
 
 	<!-- Full Calendar -->
 	<script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/main.js"></script>

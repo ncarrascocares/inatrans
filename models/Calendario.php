@@ -4,8 +4,10 @@
 
         private $id;
         private $title;
-        private $start;
+        private $descripcion;
         private $color;
+        private $start;
+        private $end;
         private $db;
 
         public function __construct()
@@ -19,12 +21,19 @@
         function getTitle(){
             return $this->title;
         }
-        function getStart(){
-            return $this->start;
+        function getDescripcion(){
+            return $this->descripcion;
         }
         function getColor(){
             return $this->color;
         }
+        function getStart(){
+            return $this->start;
+        }
+        function getEnd(){
+            return $this->end;
+        }
+      
 
         //Metodos seteadores
         function setId($id){
@@ -33,15 +42,22 @@
         function setTitle($title){
             $this->title = $this->db->real_escape_string($title);
         }
-        function setStart($start){
-            $this->start = $this->db->real_escape_string($start);
+        function setDescripcion($descripcion){
+            $this->descripcion = $this->db->real_escape_string($descripcion);
         }
         function setColor($color){
             $this->color = $this->db->real_escape_string($color);
         }
+        function setStart($start){
+            $this->start = $this->db->real_escape_string($start);
+        }
+        function setEnd($end){
+            $this->end = $this->db->real_escape_string($end);
+        }
+      
 
         public function save(){
-            $sql = "INSERT INTO eventos VALUES (NULL, '{$this->getTitle()}', '{$this->getStart()}', '{$this->getColor()}');";
+            $sql = "INSERT INTO eventos VALUES (NULL, '{$this->getTitle()}', '{$this->getDescripcion()}', '{$this->getColor()}', '{$this->getStart()}','{$this->getEnd()}');";
             $save = $this->db->query($sql);
 
             $result = false;

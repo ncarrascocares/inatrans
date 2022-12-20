@@ -10,21 +10,26 @@ class CalendarioController{
 
     public function registrar(){
 
-        if (isset($_POST)) {
+        if (isset($_POST) && isset($_POST['btnRegistrar'])) {
             
-            $title = $_POST['title'];
-            $start = $_POST['start'];
-            $color = $_POST['color'];
+                       
+            $title = $_POST['txtTitulo'];
+            $descripcion = $_POST['txtDescripcion'];
+            $color = $_POST['txtColor'];
+            $start = $_POST['txtFecha'];
+            $end = isset($_POST['txtEnd']) ? $_POST['txtEnd']: NULL;
 
-            if (empty($title) && empty($start) && empty($color)) {
+
+            if (empty($title) && empty($start) && empty($color) && empty( $descripcion)) {
                 $mensaje = array('msg'=>'todos los campos son requeridos', 'estado'=> false, 'tipo'=>'warning');
                 
             }else{
                 $objeto = new Calendario();
                 $objeto->setTitle($title);
-                $objeto->setStart($start);
+                $objeto->setDescripcion($descripcion);
                 $objeto->setColor($color);
-
+                $objeto->setStart($start);
+                $objeto->setEnd($end);
                 $respuesta = $objeto->save();
                 
                 if ($respuesta == 1) {
@@ -33,16 +38,12 @@ class CalendarioController{
                     $mensaje = array('msg'=>'Error al registrar el evento', 'estado'=> false, 'tipo'=>'error');
                 }
 
-                $array = json_encode($mensaje);
-                echo json_encode($array, JSON_UNESCAPED_UNICODE);
-                die();
-            }
-        }
+                header("Location: ".base_url."calendario/view");
 
-        /****************************** */
-            //$mensaje = array('msg'=>'Error al registrar', 'estado'=> false, 'tipo'=>'error');
-            //$array = json_encode($mensaje);
-            //echo json_encode($array, JSON_UNESCAPED_UNICODE);
+            }
+
+            header("Location: ".base_url."calendario/view");
+        }
 
     }
 
@@ -54,6 +55,8 @@ class CalendarioController{
         die();
 
     }
+
+
 }
 
 

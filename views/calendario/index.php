@@ -2,40 +2,6 @@
 
 <div id='calendar'></div>
 
-<div class="modal fade" id="myModal" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="myModal" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header bg-info">
-                <h5 class="modal-title" id="titulo"></h5>
-                <button type="button" class="close" data-dismiss="modal">
-                    <span class="aria-hidden">&times;</span>
-                </button>
-            </div>
-            <form action="" id="formulario">
-                <div class="modal-body">
-                    <div class="form-floating mb-3">
-                        <input type="text" name="title" id="title" class="form-control">
-                        <label for="title" class="form-label">Evento</label>
-                    </div>
-                    <div class="form-floating mb-3">
-                        <input type="date" name="start" id="start" class="form-control">
-                        <label for="start" class="form-label">Fecha</label>
-                    </div>
-                    <div class="form-floating mb-3">
-                        <input type="color" name="color" id="color" class="form-control">
-                        <label for="color" class="form-label">Color</label>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="submit" id="btnAgregar" class="btn btn-success">Agregar Evento</button>
-                    <button type="button" class="btn btn-warning">Editar</button>
-                    <button type="button" class="btn btn-danger">Eliminar</button>
-                </div>
-            </form>
-        </div>
-    </div>
-</div>
-
 <!-- Modal para agegar, editar o eliminar -->
 <div class="modal fade" id="modalEventos" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="myModal" aria-hidden="true">
     <div class="modal-dialog">
@@ -46,37 +12,51 @@
                     <span class="aria-hidden">&times;</span>
                 </button>
             </div>
-            <form action="" id="formulario">
+            <form action="<?=base_url."calendario/registrar"?>" class="center" id="formulario" method="POST">
+                
                 <div class="modal-body">
-                   <div id="descripcionEvento">
-                        Fecha: <input type="text" id="txtFecha" name="txtFecha">
-                        Título: <input type="text" id="txtTitulo" name="txtTitulo">
-                        Hora: <input type="text" id="txtHora" name="txtHora" value="10:30">
-                        Descripción: <textarea id="txtDescripcion" rows="3"></textarea>
-                        Color: <input type="color" value="#fff000" id="txtColor"><br>
-                   </div>
+                    <div class="mb-3 row">
+                        <div class="col-sm-10">
+                            <input type="text" value="txtId" id="txtId" name="txtId">
+                        </div>
+                    </div>
+                    <div class="mb-3 row">
+                        <label for="txtFecha" class="col-sm-2 col-form-label">Fecha</label>
+                        <div class="col-sm-10">
+                            <input type="text" id="txtFecha" name="txtFecha">
+                        </div>
+                    </div>
+                    <div class="mb-3 row">
+                        <label for="txtTitulo" class="col-sm-2 col-form-label">Titulo</label>
+                        <div class="col-sm-10">
+                            <input type="text" id="txtTitulo" name="txtTitulo">
+                        </div>
+                    </div>
+                    <div class="mb-3 row">
+                        <label for="txtDescripcion" class="col-sm-2 col-form-label">Descripción</label>
+                        <div class="col-sm-10">
+                            <textarea id="txtDescripcion" name="txtDescripcion" rows="3"></textarea>
+                        </div>
+                    </div>
+                    <div class="mb-3 row">
+                        <label for="txtColor" class="col-sm-2 col-form-label">Color</label>
+                        <div class="col-sm-10">
+                            <input type="color" value="" name="txtColor" id="txtColor">
+                        </div>
+                    </div>
+                    <div class="mb-3 row">
+                        <label for="txtEnd" class="col-sm-2 col-form-label">Fecha Termino</label>
+                        <div class="col-sm-10">
+                            <input type="text" value="" name="txtEnd" id="txtEnd"><br>
+                        </div>
+                    </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="submit" onMouseDown="agregar()" id="btnAccion" class="btn btn-success">Registrar</button>
-                    <button type="button" class="btn btn-warning">Editar</button>
-                    <button type="button" class="btn btn-danger">Eliminar</button>
+                    <button type="submit" name="btnRegistrar" class="btn btn-success">Registrar</button>
+                    <button type="submit" name="btnEditar" class="btn btn-success">Editar</button>
+                    <button type="button" name="btnEliminar" class="btn btn-danger">Eliminar</button>
                 </div>
             </form>
         </div>
     </div>
 </div>
-<script>
-    function agregar()
-{
-   var NuevoEvento = {
-    title: $('#txtTitulo').val(),
-    start: $('#txtFecha').val()+" "+$('#txtHora').val(),
-    color: $('#txtColor').val(),
-    descripcion: $('#txtDescripcion').val(),
-    textColor: "#fff000"
-   };
-
-   $('$CalendarioWeb').fullCalendar('renderEvent',NuevoEvento);
-   $('#modalEventos').modal('toggle');
-}    
-</script>
