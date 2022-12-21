@@ -12,12 +12,12 @@
                     <span class="aria-hidden">&times;</span>
                 </button>
             </div>
-            <form action="<?=base_url."calendario/registrar"?>" class="center" id="formulario" method="POST">
-                
+            <form action="<?= base_url . "calendario/registrar" ?>" class="center" id="formulario" method="POST">
+
                 <div class="modal-body">
                     <div class="mb-3 row">
                         <div class="col-sm-10">
-                            <input type="text" value="txtId" id="txtId" name="txtId">
+                            <input hidden type="text" value="txtId" id="txtId" name="txtId">
                         </div>
                     </div>
                     <div class="mb-3 row">
@@ -35,25 +35,13 @@
                     <div class="mb-3 row">
                         <label for="txtDescripcion" class="col-sm-2 col-form-label">Descripción</label>
                         <div class="col-sm-10">
-                            <textarea id="txtDescripcion" name="txtDescripcion" rows="3"></textarea>
-                        </div>
-                    </div>
-                    <div class="mb-3 row">
-                        <label for="txtColor" class="col-sm-2 col-form-label">Color</label>
-                        <div class="col-sm-10">
-                            <input type="color" value="" name="txtColor" id="txtColor">
-                        </div>
-                    </div>
-                    <div class="mb-3 row">
-                        <label for="txtEnd" class="col-sm-2 col-form-label">Fecha Termino</label>
-                        <div class="col-sm-10">
-                            <input type="text" value="" name="txtEnd" id="txtEnd"><br>
+                            <textarea id="txtDescripcion" name="txtDescripcion" rows="3" cols="60"></textarea>
                         </div>
                     </div>
                 </div>
                 <div class="modal-footer">
                     <button type="submit" name="btnRegistrar" class="btn btn-success">Registrar</button>
-                    <button type="submit" name="btnEditar" class="btn btn-success">Editar</button>
+                    <button type="button" id="btnEditar" name="btnEditar" class="btn btn-warning">Editar</button>
                     <button type="button" name="btnEliminar" class="btn btn-danger">Eliminar</button>
                 </div>
             </form>

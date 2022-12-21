@@ -56,6 +56,26 @@ class CalendarioController{
 
     }
 
+    public function editar(){
+        if(isset($_POST)){
+            $objeto = new Calendario();
+            //var_dump($_POST);
+            //die();
+
+            $id = $_POST['id'];
+            $title = $_POST['titulo'];
+            $descripcion = $_POST['descripcion'];
+            $start = $_POST['fecha_inicio'];
+
+            $objeto->setId($id);
+            $objeto->setTitle($title);
+            $objeto->setDescripcion($descripcion);
+            $objeto->setStart($start);
+
+            $objeto->editarEvento();
+        }
+    }
+
 
 }
 

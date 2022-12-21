@@ -75,4 +75,19 @@
             return $data;
         }
 
+        public function editarEvento(){
+            $sql = "UPDATE eventos SET title='{$this->getTitle()}', 
+                                       descripcion='{$this->getDescripcion()}',
+                                       color='{$this->getColor()}',
+                                       start='{$this->getStart()}',
+                                       end='{$this->getEnd()}' 
+                    WHERE id='{$this->getId()}';";
+            $update = $this->db->query($sql);
+            if($update){
+                $result = true;
+            }
+    
+            return $result;
+        }
+
     }
