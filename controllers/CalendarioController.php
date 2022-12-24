@@ -72,7 +72,17 @@ class CalendarioController{
             $objeto->setDescripcion($descripcion);
             $objeto->setStart($start);
 
-            $objeto->editarEvento();
+            $resultado = $objeto->editarEvento();
+            if($resultado){
+                $mensaje = array('msg' => 'Actualización ok', 'estado'=>true, 'tipo'=>'success');
+
+            }else{
+                $mensaje = array('msg' => 'error en la actualización', 'estado'=>false, 'tipo'=>'warning');
+               
+            }
+
+            echo json_encode($mensaje);
+            die();
         }
     }
 

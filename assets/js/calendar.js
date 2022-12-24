@@ -45,8 +45,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
     });
 
-    $('#btnEditar').click(function() {
-        console.log('Enviando!');
+    $('#btnEditar').click(function(e) {
+        e.preventDefault();
+        //console.log('Enviando!');
         var id = $('#txtId').val();
         var fecha_inicio = $('#txtFecha').val();
         var titulo = $('#txtTitulo').val();
@@ -58,34 +59,24 @@ document.addEventListener('DOMContentLoaded', function() {
             descripcion: descripcion,
         }
 
-        //console.log(datos);
+
+
 
         $.ajax({
-            type: "POST",
+            method: "POST",
             url: url + 'calendario/editar',
             data: datos,
-            success: function(data) {
-                $('#resp').html(data);
+
+            success: function(response) {
+                /* se debera realizar la muestara de los datos en formato json para poder leer la respuesta desde el fichero
+                en estos momentos se esta trallendo toda la pagina desde php y no se puede realizar alguna acción por ello.
+                Tomar como ejemplo el fichero eventos
+                 */
+                console.log(response);
+                //alert(response);
             }
         });
-        // var json = JSON.stringify(datos);
-        // $.post("prueba.php", { data: datos }, function() {
 
-        // }).done(function(data) {
-        //     $('#resultado').html(data)
-        // }).fail(function(error) {
-        //     $('#resultado').html(error)
-        // })
-
-
-        // $.ajax(
-        //         {
-        //             url: 'get_var.php?var=<?php echo $var; ?>',
-        //             success: function( data ) {
-        //                 alert( 'El servidor devolvio "' + data + '"' );
-        //             }
-        //         }
-        //     )
     });
 
     calendar.render();

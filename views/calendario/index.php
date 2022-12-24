@@ -35,7 +35,7 @@
                     <div class="mb-3 row">
                         <label for="txtDescripcion" class="col-sm-2 col-form-label">Descripción</label>
                         <div class="col-sm-10">
-                            <textarea id="txtDescripcion" name="txtDescripcion" rows="3" cols="60"></textarea>
+                            <textarea id="txtDescripcion" name="txtDescripcion" rows="3" cols="40"></textarea>
                         </div>
                     </div>
                 </div>

@@ -76,6 +76,7 @@
         }
 
         public function editarEvento(){
+            $resultado = false;
             $sql = "UPDATE eventos SET title='{$this->getTitle()}', 
                                        descripcion='{$this->getDescripcion()}',
                                        color='{$this->getColor()}',
@@ -84,10 +85,9 @@
                     WHERE id='{$this->getId()}';";
             $update = $this->db->query($sql);
             if($update){
-                $result = true;
+                $resultado = true;
             }
-    
-            return $result;
+            return $resultado;
         }
 
     }
