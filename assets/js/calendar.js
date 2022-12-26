@@ -20,8 +20,6 @@ document.addEventListener('DOMContentLoaded', function() {
             document.getElementById('txtFecha').value = info.dateStr;
             document.getElementById('txtTitulo').value = "";
             document.getElementById('txtDescripcion').value = "";
-            document.getElementById('txtColor').value = "";
-            document.getElementById('txtEnd').value = "";
             $('#modalEventos').modal('show');
             //location.reload();
 
