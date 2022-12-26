@@ -14,29 +14,28 @@ document.addEventListener('DOMContentLoaded', function() {
             right: 'dayGridMonth, timeGridWeek, listWeek'
         },
 
-
+        /* Para cuando se clikea los cuadros del calendario muestre el modal */
         dateClick: function(info) {
 
             document.getElementById('txtFecha').value = info.dateStr;
             document.getElementById('txtTitulo').value = "";
             document.getElementById('txtDescripcion').value = "";
             $('#modalEventos').modal('show');
-            //location.reload();
+
 
         },
-        eventClick: function(info) {
+
+        /* Para cuando se clikea un evento del calendario permita cargar el modal y poder editar los datos */
+        eventClick: function(info) { 
+
             $('#modalEventos').removeData();
-            //alert(info.publicId);
-            //alert(info.event.ui.backgroundColor);
-            //console.log(info)
             info.jsEvent.preventDefault(); // don't let the browser navigate
             document.getElementById('txtId').value = info.event.id;
             document.getElementById('txtFecha').value = info.event.startStr;
             document.getElementById('txtTitulo').value = info.event.title;
             document.getElementById('txtDescripcion').value = info.event.extendedProps.descripcion;
-            //document.getElementById('txtColor').value = info.event.color;
-            //document.getElementById('txtEnd').value = info.event.end;
             $('#modalEventos').modal('show');
+
 
         },
         events: 'http://localhost/Pro_Inatrans/Inatrans/eventos.php',

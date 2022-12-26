@@ -57,7 +57,7 @@
       
 
         public function save(){
-            $sql = "INSERT INTO eventos VALUES (NULL, '{$this->getTitle()}', '{$this->getDescripcion()}', '{$this->getColor()}', '{$this->getStart()}','{$this->getEnd()}');";
+            $sql = "INSERT INTO eventos VALUES (NULL, '{$this->getTitle()}', '{$this->getDescripcion()}', '{$this->getColor()}', '{$this->getStart()}');";
             $save = $this->db->query($sql);
 
             $result = false;

@@ -40,7 +40,7 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="submit" name="btnRegistrar" class="btn btn-success">Registrar</button>
+                    <button type="submit" id="btnRegistrar" name="btnRegistrar" class="btn btn-success">Registrar</button>
                     <button type="button" id="btnEditar" name="btnEditar" class="btn btn-warning">Editar</button>
                     <button type="button" name="btnEliminar" class="btn btn-danger">Eliminar</button>
                 </div>

@@ -15,12 +15,11 @@ class CalendarioController{
                        
             $title = $_POST['txtTitulo'];
             $descripcion = $_POST['txtDescripcion'];
-            $color = $_POST['txtColor'];
+            $color = '#fff111';
             $start = $_POST['txtFecha'];
-            $end = isset($_POST['txtEnd']) ? $_POST['txtEnd']: NULL;
 
 
-            if (empty($title) && empty($start) && empty($color) && empty( $descripcion)) {
+            if ($title =="" &&  $descripcion == "") {
                 $mensaje = array('msg'=>'todos los campos son requeridos', 'estado'=> false, 'tipo'=>'warning');
                 
             }else{
@@ -29,7 +28,6 @@ class CalendarioController{
                 $objeto->setDescripcion($descripcion);
                 $objeto->setColor($color);
                 $objeto->setStart($start);
-                $objeto->setEnd($end);
                 $respuesta = $objeto->save();
                 
                 if ($respuesta == 1) {
