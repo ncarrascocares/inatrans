@@ -21,19 +21,19 @@
             return $this->id;
         }
         function getNombre(){
-            $this->nombre;
+            return $this->nombre;
         }
         function getSucursal_id(){
-            $this->sucursal_id;
+            return $this->sucursal_id;
         }
         function getTipo(){
-            $this->tipo;
+            return $this->tipo;
         }
         function getDescripcion(){
-            $this->descripcion;
+            return $this->descripcion;
         }
         function getStatus(){
-            $this->status;
+            return $this->status;
         }
 
         function setId($id){

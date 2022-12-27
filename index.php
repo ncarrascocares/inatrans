@@ -1,18 +1,20 @@
 <?php
+// if(session_start()){
+//     header("Location: login.php");
+// }else{
+    ob_start();
 
-ob_start();
+    require_once 'autoload.php';
+    require_once 'config/db.php';
+    require_once 'config/constantes.php';
+    require_once 'helpers/utils.php';
+    
+    #Carga de la cabecera
+    require_once 'views/layout/header.php';
+    #Carga de la barra lateral
+    require_once 'views/layout/aside.php';
 
-require_once 'autoload.php';
-require_once 'config/db.php';
-require_once 'config/constantes.php';
-require_once 'helpers/utils.php';
-
-#Carga de la cabecera
-require_once 'views/layout/header.php';
-#Carga de la barra lateral
-require_once 'views/layout/aside.php';
-
-function show_error()
+    function show_error()
 {
     //Instanaciando un objeto de la clase ErrorController
     $error = new ErrorController();
@@ -63,3 +65,5 @@ if (class_exists($nombre_controller)) {
 require_once 'views/layout/footer.php';
 
 ob_end_flush();
+//}
+

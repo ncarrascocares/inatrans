@@ -6,8 +6,7 @@
         private $nombre;
         private $apellido;
         private $correo;
-        private $sucursal_id;
-        private $simulador_id;
+        private $password;
         private $status;
         private $tipo_user;
         private $db;
@@ -22,25 +21,22 @@
             return $this->id;
         }
         function getNombre(){
-            $this->nombre;
+            return $this->nombre;
         }
         function getApellido(){
-            $this->apellido;
+            return $this->apellido;
         }
         function getCorreo(){
-            $this->correo;
+            return $this->correo;
         }
-        function getSucursal_id(){
-            $this->sucursal_id;
-        }
-        function getSimulador_id(){
-            $this->simulador_id;
+        function getPassword(){
+            return $this->password;
         }
         function getStatus(){
-            $this->status;
+            return $this->status;
         }
         function Tipo_user(){
-            $this->tipo_user;
+            return $this->tipo_user;
         }
 
         function setId($id){
@@ -55,8 +51,8 @@
         function setCorreo($correo){
             $this->correo = $this->db->real_escape_string($correo);
         }
-        function setSucursal_id($sucursal_id){
-            $this->sucursal_id = (int)$this->db->real_escape_string($sucursal_id);
+        function setPassword($password){
+            $this->password = $this->db->real_escape_string($password);
         }
         function setStatus($status){
             $this->status = $this->db->real_escape_string($status);
@@ -66,10 +62,14 @@
         }
 
         public function AllUsuario(){
-            $sql = "SELECT * FROM usuario;";
+            $sql = "SELECT us.Nombre, us.Apellido, us.Correo, us.password, ti.nombre FROM usuario as us
+                    INNER JOIN tipo_usuario as ti on us.usuario_tipo = ti.id
+                    WHERE us.Correo = '{$this->getCorreo()}' and us.password = '{$this->getPassword()}';";
+ 
             $result = $this->db->query($sql);
-            $usuarios = $result;
-
+            $usuarios = $result->fetch_object();
+            // var_dump($usuarios);
+            // die();
             return $usuarios;
         }
 
