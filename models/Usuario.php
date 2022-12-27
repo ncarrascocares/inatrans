@@ -9,6 +9,7 @@
         private $sucursal_id;
         private $simulador_id;
         private $status;
+        private $tipo_user;
         private $db;
 
         public function __construct()
@@ -38,6 +39,9 @@
         function getStatus(){
             $this->status;
         }
+        function Tipo_user(){
+            $this->tipo_user;
+        }
 
         function setId($id){
             $this->id = (int)$this->db->real_escape_string($id);
@@ -56,6 +60,9 @@
         }
         function setStatus($status){
             $this->status = $this->db->real_escape_string($status);
+        }
+        function setTipo_user($tipo_user){
+            $this->tipo_user = $this->db->real_escape_string($tipo_user);
         }
 
         public function AllUsuario(){
