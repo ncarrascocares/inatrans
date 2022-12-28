@@ -1,4 +1,8 @@
-<?php require_once 'config/constantes.php';?>
+<?php
+ require_once 'config/constantes.php';
+ session_start();
+ session_destroy();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
