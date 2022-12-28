@@ -117,7 +117,8 @@ class Reporte{
 
     public function getAllReporte(){
         $sql = "SELECT * FROM reporte ORDER BY id DESC LIMIT 1";
-        $reporte = $this->db->query($sql);
+        $resul = $this->db->query($sql);
+        $reporte = $resul->fetch_object();
         return $reporte;
     }
 
