@@ -1,7 +1,6 @@
 <?php
-// if(session_start()){
-//     header("Location: login.php");
-// }else{
+if(session_start()){
+    
     ob_start();
 
     require_once 'autoload.php';
@@ -65,5 +64,9 @@ if (class_exists($nombre_controller)) {
 require_once 'views/layout/footer.php';
 
 ob_end_flush();
-//}
+    
+}else{
+    header("Location: login.php");
+    session_destroy();
+}
 
