@@ -12,13 +12,13 @@
             require_once 'models/Usuario.php';
             $objeto = new Usuario();
             $usuario=$objeto->AllUsuario();
-            return $usuario->fetch_object();
+            return $usuario;
         }
         public static function idInterno(){
             require_once 'models/Reporte.php';
             $objeto = new Reporte();
             $repor=$objeto->getAllReporte();
-            return $repor->fetch_object();
+            return $repor;
         }
     }
   
