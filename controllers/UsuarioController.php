@@ -19,16 +19,20 @@ require_once 'models/Usuario.php';
                     $objeto->setCorreo($correo);
                     $objeto->setPassword($password);
                     $resul = $objeto->AllUsuario();
-                    
-                    var_dump($resul);
+
+                    if ($correo == $resul->Correo && $password == $resul->password) {
+                        session_start();
+                        $_SESSION['nombre'] = $resul->Nombre;
+                        $_SESSION['apellido'] = $resul->Apellido;
+                        $_SESSION['tipo_user'] = $resul->usuario_nombre;
+
+                        header("Location:".base_url."index.php");
+                    }else{
+                        header("Location:".base_url."login.php");
+                        echo "no son las mismas";
+                    }
                     die();
-                    
-                    //header("Location:".base_url."index.php");
-                    
                 }
-            }
-
-
-           
+            }           
         }
     }
