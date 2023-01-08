@@ -19,7 +19,8 @@
 
         <?php 
         $simulador = Utils::showSimulador();
-        $usuario = Utils::showUsuario(); 
+        $usuario = Utils::showUsuario();
+        
         // var_dump($usuario);
         // die();
         ?>
@@ -39,12 +40,20 @@
                         <input type="text" name="simulador" class="form-control maxlength-custom-message" id="" value="<?= isset($rep) ? $rep->Simulador_id : $id_simulador ?>">
                         </fieldset>
                 </div>
+                <?php if (isset($edit) && isset($rep) && is_object($rep)) : ?>
                 <div class="col-lg-2">
                     <fieldset class="form-group">
                         <label class="form-label" for="responsable">Usuario</label>
                         <input type="text" name="responsable" class="form-control maxlength-custom-message" id="" value="<?= isset($rep) ? $rep->Usuario_id : '' ?>">
                     </fieldset>
                 </div>
+                <?php else : ?>
+                    <div class="col-lg-2">
+                    <fieldset class="form-group">
+                    <input hidden type="text" name="responsable" class="form-control maxlength-custom-message" id="" value="<?=$_SESSION['id']?>">
+                    </fieldset>
+                </div>
+                <?php endif; ?>
             </div>
 
             <div class="row">
