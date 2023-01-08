@@ -20,6 +20,12 @@
             $repor=$objeto->getAllReporte();
             return $repor;
         }
+        public static function Usuario(){
+            require_once 'models/Usuario.php';
+            $objeto = new Usuario();
+            $usuario=$objeto->AllUsuario();
+            return $user;
+        }
     }
   
 
