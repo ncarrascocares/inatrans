@@ -62,10 +62,18 @@
         }
 
         public function AllUsuario(){
-            $sql = "SELECT us.Nombre, us.Apellido, us.Correo, us.password, ti.nombre FROM usuario as us
+            $sql = "SELECT us.id, us.Nombre, us.Apellido, us.Correo, us.password, ti.nombre FROM usuario as us
                     INNER JOIN tipo_usuario as ti on us.usuario_tipo = ti.id
                     WHERE us.Correo = '{$this->getCorreo()}' and us.password = '{$this->getPassword()}';";
  
+            $result = $this->db->query($sql);
+            $usuarios = $result->fetch_object();
+            //  var_dump($usuarios);
+            //  die();
+            return $usuarios;
+        }
+        public function Usuarios(){
+            $sql = "SELECT * FROM usuario;";
             $result = $this->db->query($sql);
             $usuarios = $result->fetch_object();
             // var_dump($usuarios);
