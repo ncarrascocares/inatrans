@@ -8,15 +8,14 @@ class Reporte{
     private $id_interno;
     private $simulador_id;
     private $usuario_id;
-    private $reporte_averia;
-    private $reporte_solucion;
-    private $observacion;
+    private $Averia;
+    private $Solucion;
+    private $Categoria;
     private $fecha_inicio;
     private $fecha_termino;
     private $hh;
     private $estado_averia;
-    private $uso_repuesto;
-    private $inventario_id;
+    private $tipo_averia_id;
     private $db;
 
     public function __construct()
@@ -37,14 +36,14 @@ class Reporte{
     function getUsuario_id(){
         return $this->usuario_id;
     }
-    function getReporte_averia(){
-        return $this->reporte_averia;
+    function getAveria(){
+        return $this->Averia;
     }
-    function getReporte_solucion(){
-        return $this->reporte_solucion;
+    function getSolucion(){
+        return $this->Solucion;
     }
-    function getObservacion(){
-        return $this->observacion;
+    function getCategoria(){
+        return $this->Categoria;
     }
     function getFecha_inicio(){
         return $this->fecha_inicio;
@@ -58,12 +57,10 @@ class Reporte{
     function getEstado_averia(){
         return $this->estado_averia;
     }
-    function getUso_repuesto(){
-        return $this->uso_repuesto;
+    function getTipo_averia_id(){
+        return $this->tipo_averia_id;
     }
-    function getInventario_id(){
-        return $this->inventario_id;
-    }
+
 
     function setId($id){
         $this->id = (int)$this->db->real_escape_string($id);
@@ -77,14 +74,14 @@ class Reporte{
     function setUsuario_id($usuario_id){
         $this->usuario_id = (int)$this->db->real_escape_string($usuario_id);
     }
-    function setReporte_averia($reporte_averia){
-        $this->reporte_averia = $this->db->real_escape_string($reporte_averia);
+    function setAveria($Averia){
+        $this->Averia = $this->db->real_escape_string($Averia);
     }
-    function setReporte_solucion($reporte_solucion){
-        $this->reporte_solucion = $this->db->real_escape_string($reporte_solucion);
+    function setSolucion($Solucion){
+        $this->Solucion = $this->db->real_escape_string($Solucion);
     }
-    function setObservacion($observacion){
-        $this->observacion = $this->db->real_escape_string($observacion);
+    function setCategoria($categoria){
+        $this->Categoria = $this->db->real_escape_string($categoria);
     }
     function setFecha_inicio($fecha_inicio){
         $this->fecha_inicio = $this->db->real_escape_string($fecha_inicio);
@@ -98,12 +95,10 @@ class Reporte{
     function setEstado_averia($estado_averia){
         $this->estado_averia = $this->db->real_escape_string($estado_averia);
     }
-    function setUso_repuesto($uso_repuesto){
-        $this->uso_repuesto = $this->db->real_escape_string($uso_repuesto);
+    function setTipo_averia_id($tipo_averia_id){
+        $this->tipo_averia_id = $this->db->real_escape_string($tipo_averia_id);
     }
-    function setInventario_id($inventario_id){
-        $this->inventario_id = (int)$this->db->real_escape_string($inventario_id);
-    }
+
 
     //Metodo para realizar consulta y obtener toda la info de la tabla reporte
     public function getAll(){
@@ -123,7 +118,7 @@ class Reporte{
     }
 
     public function save(){
-        $sql = "INSERT INTO reporte VALUES (NULL, '{$this->getId_interno()}',{$this->getSimulador_id()},{$this->getUsuario_id()},'{$this->getReporte_averia()}', '{$this->getReporte_solucion()}','{$this->getObservacion()}','{$this->getFecha_inicio()}','{$this->getFecha_termino()}',{$this->gethh()},'{$this->getEstado_averia()}','{$this->getUso_repuesto()}',{$this->getInventario_id()});";
+        $sql = "INSERT INTO reporte VALUES (NULL, '{$this->getId_interno()}',{$this->getSimulador_id()},{$this->getUsuario_id()},'{$this->getAveria()}', '{$this->getSolucion()}','{$this->getCategoria()}','{$this->getFecha_inicio()}','{$this->getFecha_termino()}',{$this->gethh()},'{$this->getEstado_averia()}','{$this->getTipo_averia_id()}');";
         $save = $this->db->query($sql);
 
         $result = false;
@@ -150,19 +145,17 @@ class Reporte{
                 SET id_interno          = '{$this->getId_interno()}',
                     Simulador_id        = {$this->getSimulador_id()},
                     Usuario_id          = {$this->getUsuario_id()},
-                    Reporte_averia      = '{$this->getReporte_averia()}',
-                    Reporte_solucion    = '{$this->getReporte_solucion()}',
-                    Observacion         = '{$this->getObservacion()}',
+                    Averia              = '{$this->getAveria()}',
+                    Solucion            = '{$this->getSolucion()}',
+                    Categoria_id         = '{$this->getCategoria()}',
                     Fecha_inicio        = '{$this->getFecha_inicio()}',
                     Fecha_termino       = '{$this->getFecha_termino()}',
                     hh                  = {$this->gethh()},
-                    Estado_averia       = '{$this->getEstado_averia()}',
-                    Uso_repuesto        = '{$this->getUso_repuesto()}',
-                    Inventario_id       = {$this->getInventario_id()}
+                    Estado_averia       = '{$this->getEstado_averia()}'
                 WHERE id = {$this->getId()};";
 
-                // echo $sql;
-                // die();
+                //echo $sql;
+                //die();
         $update = $this->db->query($sql);
         if($update){
             $result = true;
