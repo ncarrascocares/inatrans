@@ -22,13 +22,12 @@ class ReporteController{
             $responsable = isset($_POST['responsable']) ? $_POST['responsable']: false;
             $reporte_averia = isset($_POST['reporte_averia']) ? $_POST['reporte_averia']: false;
             $reporte_solucion = isset($_POST['reporte_solucion']) ? $_POST['reporte_solucion']: false;
-            $observacion = isset($_POST['observacion']) ? $_POST['observacion']: NULL;
+            $categoria = isset($_POST['categoria']) ? $_POST['categoria']: NULL;
             $fecha_inicio = isset($_POST['fecha_inicio']) ? $_POST['fecha_inicio']: false;
             $fecha_termino = isset($_POST['fecha_termino']) ? $_POST['fecha_termino']: NULL;
             $hh = isset($_POST['hh']) ? $_POST['hh']: NULL;
-            $estado = isset($_POST['estado']) ? $_POST['estado']: false;
-            $uso_repuesto = isset($_POST['uso_repuesto']) ? $_POST['uso_repuesto']: false;
-            $inventario_id = isset($_POST['inventario_id']) ? $_POST['inventario_id']: NULL;
+            $estado = isset($_POST['estado']) ? ucfirst($_POST['estado']): false;
+            $tipo_averia = isset($_POST['tipo_averia']) ? $_POST['tipo_averia']: false;
           
             //Validando que las variables no sean falsas
             if ($id_interno && $simulador && $responsable && $reporte_averia && $fecha_inicio && $estado) {
@@ -37,15 +36,14 @@ class ReporteController{
                 $objeto->setId_interno($id_interno);
                 $objeto->setSimulador_id($simulador);
                 $objeto->setUsuario_id($responsable);
-                $objeto->setReporte_averia($reporte_averia);
-                $objeto->setReporte_solucion($reporte_solucion);
-                $objeto->setObservacion($observacion);
+                $objeto->setAveria($reporte_averia);
+                $objeto->setSolucion($reporte_solucion);
+                $objeto->setCategoria($categoria);
                 $objeto->setFecha_inicio($fecha_inicio);
                 $objeto->setFecha_termino($fecha_termino);
                 $objeto->sethh($hh);
                 $objeto->setEstado_averia($estado);
-                $objeto->setUso_repuesto($uso_repuesto);
-                $objeto->setInventario_id($inventario_id);
+                $objeto->setTipo_averia_id($tipo_averia);
 
                 
 
