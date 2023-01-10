@@ -5,7 +5,17 @@
         <?php while ($sim = $simuladores->fetch_object()) : ?>
             <div class="col-sm-4">
                 <div class="chart-statistic-box">
-                        <article class="statistic-box green">
+                        <article class="statistic-box <?php switch ($sim->Status_id) {
+                            case 2:
+                                echo "yellow";
+                                break;
+                            case 3:
+                                echo "red";
+                                break;
+                            default:
+                                echo "green";
+                                break;
+                        }?>">
                             <div>
                                 <div class="number"><?= $sim->Nombre; ?></div>
                                 <div class="caption">
