@@ -14,7 +14,7 @@
 					<!-- Calendario donde se muestre los días que se ejecutaran mantenimientos de los simuladores y ordenadores de laboratorios -->
 					<li><a href="<?=base_url?>calendario/view"><span class="lbl">Calendario</span></a></li>
 					<!-- Opción para mostrar el listado de atenciones de los simuladores -->
-					<li><a href="<?=base_url?>reporte/view"><span class="lbl">Reportes</span></a></li>
+					<li><a href="<?=base_url?>reporte/view"><span class="lbl">ODT'S</span></a></li>
 				</ul>
 			</li>
 
