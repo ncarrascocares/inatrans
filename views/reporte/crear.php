@@ -44,7 +44,7 @@ $reporte = "SIM" . $id_simulador . "-" . $repor->id + 1;
                 </div>
                 <div class="col-md-2 col-sm-2">
                     <div class="form-group">
-                        <label class="form-label" for="tipo_averia">Tipo averia</label>
+                        <label class="form-label" for="tipo_averia">Clasificación</label>
                         <select name="tipo_averia" class="form-control">
                             <?php while ($ave = $averias->fetch_object()): ?>
                                <option value="<?= $ave->id?>" <?=isset($rep) && $ave->id == $rep->Tipo_averia_id ? 'selected' : ''?>><?= $ave->Nombre_averia ?></option>
