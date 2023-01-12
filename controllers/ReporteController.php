@@ -68,6 +68,19 @@ class ReporteController{
             require_once 'views/reporte/listado_reportes.php';
         }
     }
+
+    public function historial(){
+        if (isset($_GET)) {
+        $objeto = new Reporte();
+        $id = (int)$_GET['id'];
+        $objeto->setId($id);
+        $data = $objeto->listar_historial_reporte();
+        $historial = $data;
+        require_once 'views/reporte/historial_reportes.php';
+        }else{
+            require_once 'views/reporte/listado_reportes.php';
+        }
+    }
     
 
 }
