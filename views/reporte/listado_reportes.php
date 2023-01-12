@@ -37,7 +37,7 @@
 
                             <a class="btn btn-rounded btn-inline btn-warning-outline" href="<?= base_url ?>reporte/edit/<?= $rep->id ?>">Editar</a>
 
-                            <a class="btn btn-rounded btn-inline btn-info-outline" href="#">+ Info</a>
+                            <a class="btn btn-rounded btn-inline btn-info-outline" href="<?= base_url ?>reporte/historial/<?= $rep->id ?>">+ Info</a>
                         </td>
                     </tr>
                 <?php endwhile; ?>
