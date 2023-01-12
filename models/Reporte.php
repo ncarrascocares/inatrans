@@ -9,13 +9,11 @@ class Reporte{
     private $simulador_id;
     private $usuario_id;
     private $Averia;
-    private $Solucion;
-    private $Categoria;
-    private $fecha_inicio;
-    private $fecha_termino;
-    private $hh;
-    private $estado_averia;
-    private $tipo_averia_id;
+    private $Comentario;
+    private $Categoria_id;
+    private $Fecha_crea;
+    private $Estatus;
+    private $Tipo_averia_id;
     private $db;
 
     public function __construct()
@@ -39,26 +37,20 @@ class Reporte{
     function getAveria(){
         return $this->Averia;
     }
-    function getSolucion(){
-        return $this->Solucion;
+    function getComentario(){
+        return $this->Comentario;
     }
-    function getCategoria(){
-        return $this->Categoria;
+    function getCategoria_id(){
+        return $this->Categoria_id;
     }
-    function getFecha_inicio(){
-        return $this->fecha_inicio;
+    function getFecha_crea(){
+        return $this->Fecha_crea;
     }
-    function getFecha_termino(){
-        return $this->fecha_termino;
-    }
-    function gethh(){
-        return $this->hh;
-    }
-    function getEstado_averia(){
-        return $this->estado_averia;
+    function getEstatus(){
+        return $this->Estatus;
     }
     function getTipo_averia_id(){
-        return $this->tipo_averia_id;
+        return $this->Tipo_averia_id;
     }
 
 
@@ -77,26 +69,20 @@ class Reporte{
     function setAveria($Averia){
         $this->Averia = $this->db->real_escape_string($Averia);
     }
-    function setSolucion($Solucion){
-        $this->Solucion = $this->db->real_escape_string($Solucion);
+    function setComentario($Comentario){
+        $this->Comentario = $this->db->real_escape_string($Comentario);
     }
-    function setCategoria($categoria){
-        $this->Categoria = $this->db->real_escape_string($categoria);
+    function setCategoria_id($categoria_id){
+        $this->Categoria_id = $this->db->real_escape_string($categoria_id);
     }
-    function setFecha_inicio($fecha_inicio){
-        $this->fecha_inicio = $this->db->real_escape_string($fecha_inicio);
+    function setFecha_crea($fecha_crea){
+        $this->Fecha_crea = $this->db->real_escape_string($fecha_crea);
     }
-    function setFecha_termino($fecha_termino){
-        $this->fecha_termino = $this->db->real_escape_string($fecha_termino);
-    }
-    function sethh($hh){
-        $this->hh = (int)$this->db->real_escape_string($hh);
-    }
-    function setEstado_averia($estado_averia){
-        $this->estado_averia = $this->db->real_escape_string($estado_averia);
+    function setEstatus($estatus){
+        $this->Estatus = $this->db->real_escape_string($estatus);
     }
     function setTipo_averia_id($tipo_averia_id){
-        $this->tipo_averia_id = $this->db->real_escape_string($tipo_averia_id);
+        $this->Tipo_averia_id = $this->db->real_escape_string($tipo_averia_id);
     }
 
 
@@ -118,7 +104,7 @@ class Reporte{
     }
 
     public function save(){
-        $sql = "INSERT INTO reporte VALUES (NULL, '{$this->getId_interno()}',{$this->getSimulador_id()},{$this->getUsuario_id()},'{$this->getAveria()}', '{$this->getSolucion()}','{$this->getCategoria()}','{$this->getFecha_inicio()}','{$this->getFecha_termino()}',{$this->gethh()},'{$this->getEstado_averia()}','{$this->getTipo_averia_id()}');";
+        $sql = "INSERT INTO reporte VALUES (NULL, '{$this->getId_interno()}',{$this->getSimulador_id()},{$this->getUsuario_id()},'{$this->getAveria()}', '{$this->getComentario()}','{$this->getCategoria_id()}','{$this->getFecha_crea()}',1,'{$this->getTipo_averia_id()}');";
         $save = $this->db->query($sql);
 
         $result = false;
@@ -146,12 +132,11 @@ class Reporte{
                     Simulador_id        = {$this->getSimulador_id()},
                     Usuario_id          = {$this->getUsuario_id()},
                     Averia              = '{$this->getAveria()}',
-                    Solucion            = '{$this->getSolucion()}',
-                    Categoria_id         = '{$this->getCategoria()}',
-                    Fecha_inicio        = '{$this->getFecha_inicio()}',
-                    Fecha_termino       = '{$this->getFecha_termino()}',
-                    hh                  = {$this->gethh()},
-                    Estado_averia       = '{$this->getEstado_averia()}'
+                    Comentario          = '{$this->getComentario()}',
+                    Categoria_id        = '{$this->getCategoria_id()}',
+                    Fecha_crea          = '{$this->getFecha_crea()}',
+                    Estatus             = 1,
+                    Tipo_averia_id      = '{$this->getTipo_averia_id()}'
                 WHERE id = {$this->getId()};";
 
                 //echo $sql;

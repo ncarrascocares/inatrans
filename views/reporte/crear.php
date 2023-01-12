@@ -1,28 +1,27 @@
-<?php 
-    if (isset($_GET)) {
-        $id_simulador = $_GET['id'];
-    }
+<?php
+if (isset($_GET)) {
+    $id_simulador = $_GET['id'];
+}
 
-    //Generación de numero de reporte
-    $repor = Utils::idInterno();
-    $reporte = "SIM".$id_simulador."-".$repor->id + 1;
+//Generación de numero de reporte
+$repor = Utils::idInterno();
+$reporte = "SIM" . $id_simulador . "-" . $repor->id + 1;
 ?>
 <section class="card">
     <div class="card-block">
         <?php if (isset($edit) && isset($rep) && is_object($rep)) : ?>
             <h5 class="with-border">Editar ODT</h5>
-            <?php $ruta = base_url . "reporte/save/".$rep->id; ?>
+            <?php $ruta = base_url . "reporte/save/" . $rep->id; ?>
         <?php else : ?>
             <h5 class="with-border">Ingreso de nueva ODT</h5>
             <?php $ruta = base_url . "reporte/save"; ?>
         <?php endif; ?>
 
-        <?php 
+        <?php
         $simulador = Utils::showSimulador();
         $usuario = Utils::showUsuario();
-        
-        // var_dump($usuario);
-        // die();
+        $categorias = Utils::Categoria();
+        $averias = Utils::Averia();
         ?>
         <form action="<?= $ruta ?>" method="post">
 
@@ -35,79 +34,69 @@
                 </div>
                 <div class="col-xs-2">
                     <fieldset class="form-group">
-                        <label class="form-label" for="categoria">Categoria</label>
-                        <input type="number" class="form-control maxlength-simple" name="categoria" value="<?= isset($rep) ? $rep->Categoria_id : '' ?>">
+                        <label class="form-label" for="categoria_id">Categoria</label>
+                        <select name="categoria_id" class="form-control">
+                            <?php while ($cat = $categorias->fetch_object()): ?>
+                               <option value="<?= $cat->id?>" <?=isset($rep) && $cat->id == $rep->Categoria_id ? 'selected' : ''?>><?= $cat->Nombre_categoria ?></option>
+                            <?php endwhile;?>
+                        </select>                  
                     </fieldset>
                 </div>
                 <div class="col-md-2 col-sm-2">
                     <div class="form-group">
                         <label class="form-label" for="tipo_averia">Tipo averia</label>
-                        <input type="number" class="form-control" name="tipo_averia" value="<?= isset($rep) ? $rep->Tipo_averia_id : '' ?>">
+                        <select name="tipo_averia" class="form-control">
+                            <?php while ($ave = $averias->fetch_object()): ?>
+                               <option value="<?= $ave->id?>" <?=isset($rep) && $ave->id == $rep->Tipo_averia_id ? 'selected' : ''?>><?= $ave->Nombre_averia ?></option>
+                            <?php endwhile;?>
+                        </select>   
                     </div>
                 </div>
 
                 <div class="col-lg-2">
-                        <fieldset class="form-group">
+                    <fieldset class="form-group">
                         <!-- <label class="form-label" for="simulador">Simulador</label> -->
                         <input hidden type="text" name="simulador" class="form-control maxlength-custom-message" id="" value="<?= isset($rep) ? $rep->Simulador_id : $id_simulador ?>">
-                        </fieldset>
+                    </fieldset>
                 </div>
                 <?php if (isset($edit) && isset($rep) && is_object($rep)) : ?>
-                <div class="col-lg-2">
-                    <fieldset class="form-group">
-                        <!-- <label class="form-label" for="responsable">Usuario</label> -->
-                        <input hidden type="text" name="responsable" class="form-control maxlength-custom-message" id="" value="<?= isset($rep) ? $rep->Usuario_id : '' ?>">
-                    </fieldset>
-                </div>
+                    <div class="col-lg-2">
+                        <fieldset class="form-group">
+                            <!-- <label class="form-label" for="responsable">Usuario</label> -->
+                            <input hidden type="text" name="usuario_id" class="form-control maxlength-custom-message" id="" value="<?= isset($rep) ? $rep->Usuario_id : '' ?>">
+                        </fieldset>
+                    </div>
                 <?php else : ?>
                     <div class="col-lg-2">
-                    <fieldset class="form-group">
-                    <input hidden type="text" name="responsable" class="form-control maxlength-custom-message" id="" value="<?=$_SESSION['id']?>">
-                    </fieldset>
-                </div>
+                        <fieldset class="form-group">
+                            <input hidden type="text" name="usuario_id" class="form-control maxlength-custom-message" id="" value="<?= $_SESSION['id'] ?>">
+                        </fieldset>
+                    </div>
                 <?php endif; ?>
             </div>
 
             <div class="row">
                 <div class="col-xs-12">
                     <fieldset class="form-group">
-                        <label class="form-label" for="reporte_averia">Averia</label>
-                        <textarea rows="2" name="reporte_averia" class="form-control maxlength-simple" placeholder="Maximo 50 caracteres" maxlength="50"><?= isset($rep) ? $rep->Averia : '' ?></textarea>
+                        <label class="form-label" for="averia">Averia</label>
+                        <textarea rows="2" name="averia" class="form-control maxlength-simple" placeholder="Maximo 50 caracteres" maxlength="50"><?= isset($rep) ? $rep->Averia : '' ?></textarea>
                     </fieldset>
                 </div>
             </div>
             <div class="row">
                 <div class="col-xs-12">
                     <fieldset class="form-group">
-                        <label class="form-label" for="reporte_solucion">Solución</label>
-                        <textarea rows="2" name="reporte_solucion" class="form-control maxlength-simple" placeholder="Maximo 50 caracteres" maxlength="50"><?= isset($rep) ? $rep->Solucion : '' ?></textarea>
+                        <label class="form-label" for="comentario">Comentario</label>
+                        <textarea rows="2" name="comentario" class="form-control maxlength-simple" placeholder="Maximo 50 caracteres" maxlength="50"><?= isset($rep) ? $rep->Comentario : '' ?></textarea>
                     </fieldset>
                 </div>
-                
+
             </div>
             <div class="row">
                 <div class="col-md-2 col-sm-2">
                     <div class="form-group">
-                        <label class="form-label" for="fecha_inicio">Fecha Inicio</label>
-                        <input type="date" class="form-control" name="fecha_inicio" value="<?= isset($rep) ? $rep->Fecha_inicio : '' ?>">
-                    </div>
-                </div>
-                <div class="col-md-2 col-sm-2">
-                    <div class="form-group">
-                        <label class="form-label" for="fecha_termino">Fecha termino</label>
-                        <input type="date" class="form-control" name="fecha_termino" value="<?= isset($rep) ? $rep->Fecha_termino : '' ?>">
-                    </div>
-                </div>
-                <div class="col-md-2 col-sm-2">
-                    <div class="form-group">
-                        <label class="form-label" for="hh">Horas Hombre</label>
-                        <input type="number" class="form-control" name="hh" value="<?= isset($rep) ? $rep->hh : '' ?>">
-                    </div>
-                </div>
-                <div class="col-md-2 col-sm-2">
-                    <div class="form-group">
-                        <label class="form-label" for="estado">Estado avería</label>
-                        <input type="text" class="form-control" name="estado" value="<?= isset($rep) ? $rep->Estado_averia : '' ?>">
+                        <label class="form-label" for="fecha_crea">Fecha ODT</label>
+                        <input type="datetime-local" class="form-control" name="fecha_crea" value="<?= isset($rep) ? $rep->Fecha_crea : '' ?>">
                     </div>
                 </div>
             </div>

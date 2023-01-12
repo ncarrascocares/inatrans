@@ -26,6 +26,20 @@
             $usuario=$objeto->AllUsuario();
             return $user;
         }
+        public static function Categoria(){
+            require_once 'models/Categoria.php';
+            $objeto = new Categoria();
+            $categoria=$objeto->listarCategorias();
+         
+            return $categoria;
+        }
+        public static function Averia(){
+            require_once 'models/Averia.php';
+            $objeto = new Averia();
+            $averia=$objeto->listarAverias();
+         
+            return $averia;
+        }
     }
   
 
