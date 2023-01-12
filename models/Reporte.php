@@ -148,5 +148,15 @@ class Reporte{
 
         return $result;
     }
+
+    public function listar_historial_reporte(){
+        $sql = "SELECT hr.Usuario_id, hr.Comentario, concat(us.Nombre,' ',us.Apellido) as 'usuario'
+        FROM historial_reporte hr
+        INNER JOIN usuario us on hr.Usuario_id = us.id
+        WHERE Reporte_id = {$this->getId()};";
+        $historial = $this->db->query($sql);
+        return $historial;
+
+    }
     
 }
