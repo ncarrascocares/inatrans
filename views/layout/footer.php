@@ -11,7 +11,7 @@
 <script type="text/javascript" src="<?= base_url ?>assets/js/lib/lobipanel/lobipanel.min.js"></script>
 <script type="text/javascript" src="<?= base_url ?>assets/js/lib/match-height/jquery.matchHeight.min.js"></script>
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-<script>
+<!-- <script>
 	$(document).ready(function() {
 
 		$('.panel').lobiPanel({
@@ -115,17 +115,17 @@
 			setTimeout(function() {}, 1000);
 		});
 	});
-</script>
-<script type="module">
+</script> -->
+<!-- <script type="module">
 	import {
 		Toast
 	} from 'bootstrap.esm.min.js'
 
 	Array.from(document.querySelectorAll('.toast'))
 		.forEach(toastNode => new Toast(toastNode))
-</script>
+</script> -->
 
-<script src="js/app.js"></script>
+<!-- <script src="js/app.js"></script> -->
 
 <script src="<?= base_url ?>assets/js/app.js"></script>
 </body>
