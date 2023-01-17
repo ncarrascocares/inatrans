@@ -51,6 +51,29 @@ class Usuario{
             echo "noupdate";
         }
     }
+
+    function buscar(){
+        if (!empty($_POST['consulta'])) {
+            $consulta=$_POST['consulta'];
+            $sql = "SELECT * FROM usuario us 
+                    JOIN tipo_usuario ti on us.usuario_tipo = ti.id_tipo_usuario
+                    JOIN sucursal su on us.Sucursal_id = su.id_sucursal
+                    where us.nombre_us LIKE :consulta;";
+            $query = $this->acceso->prepare($sql);
+            $query->execute(array(':consulta'=>"%$consulta%"));
+            $this->objetos=$query->fetchAll();
+            return $this->objetos;
+        }else{
+            $sql = "SELECT * FROM usuario us 
+                    JOIN tipo_usuario ti on us.usuario_tipo = ti.id_tipo_usuario
+                    JOIN sucursal su on us.Sucursal_id = su.id_sucursal
+                    where us.nombre_us NOT LIKE '' ORDER BY id_usuario LIMIT 25;";
+            $query = $this->acceso->prepare($sql);
+            $query->execute();
+            $this->objetos=$query->fetchAll();
+            return $this->objetos;
+        }
+    }
 }
 
 ?>
