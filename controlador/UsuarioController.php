@@ -85,4 +85,28 @@ if($_POST['funcion'] == 'cambiar-contra'){
     $usuario->cambiar_contra($id_usuario,$newcontra,$oldpass);
 }
 
+if ($_POST['funcion'] == 'buscar_usuario_gestion') {
+    $json = array();
+    $usuario->buscar();
+    foreach ($usuario->objetos as $objeto) {
+        $json[]=array(
+            'nombre'=>$objeto->nombre_us,
+            'apellido'=>$objeto->apellido_us,
+            'correo_us'=>$objeto->correo_us,
+            'cargo_us'=>$objeto->cargo_us, 
+            'sucursal_id'=>$objeto->sucursal_id,
+            'password_us'=>$objeto->password_us,
+            'status_us'=>$objeto->status_us,
+            'usuario_tipo'=>$objeto->usuario_tipo,
+            'id_tipo_usuario'=>$objeto->id_tipo_usuario,
+            'nombre_tipo_usuario'=>$objeto->nombre_tipo_usuario,
+            'id_sucursal'=>$objeto->id_sucursal,
+            'nombre_sucursal'=>$objeto->nombre_sucursal 
+        );
+    }
+
+    $jsonstring = json_encode($json);
+    echo $jsonstring;
+}
+
 ?>
