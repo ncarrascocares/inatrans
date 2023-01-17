@@ -74,6 +74,14 @@
                                 </p>
                             </a>
                         </li>
+                        <li class="nav-item">
+                            <a href="../vista/adm_usuario.php" class="nav-link">
+                                <i class="nav-icon fas fa-user-cog"></i>
+                                <p>
+                                    Gestion Usuarios
+                                </p>
+                            </a>
+                        </li>
                         <li class="nav-header">EXAMPLES</li>
 
                         <li class="nav-item">
