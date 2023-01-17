@@ -1,7 +1,7 @@
 <?php
 session_start();
 // Validando que solo pueda ingresar un usuario administrador a este fichero
-if ($_SESSION['usuario_tipo'] == 1) {
+if ($_SESSION['usuario_tipo'] == 4 || $_SESSION['usuario_tipo'] == 1) {
 
     // Inclución del fichero header
     include_once 'layouts/header.php';
@@ -188,7 +188,7 @@ if ($_SESSION['usuario_tipo'] == 1) {
 <?php
     include_once 'layouts/footer.php';
 } else {
-    header('Location: login.php');
+    header('Location: index.php');
 }
 ?>
 
