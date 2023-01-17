@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 17-01-2023 a las 04:46:03
+-- Tiempo de generación: 17-01-2023 a las 21:58:55
 -- Versión del servidor: 10.4.24-MariaDB
 -- Versión de PHP: 8.1.6
 
@@ -307,7 +307,7 @@ CREATE TABLE IF NOT EXISTS `tipo_usuario` (
   `id_tipo_usuario` int(11) NOT NULL AUTO_INCREMENT,
   `Nombre_tipo_usuario` varchar(100) COLLATE utf8mb4_spanish_ci NOT NULL,
   PRIMARY KEY (`id_tipo_usuario`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
 
 --
 -- Volcado de datos para la tabla `tipo_usuario`
@@ -316,7 +316,8 @@ CREATE TABLE IF NOT EXISTS `tipo_usuario` (
 INSERT INTO `tipo_usuario` (`id_tipo_usuario`, `Nombre_tipo_usuario`) VALUES
 (1, 'administrador'),
 (2, 'mantenedor'),
-(3, 'usuario');
+(3, 'usuario'),
+(4, 'Root');
 
 -- --------------------------------------------------------
 
@@ -387,7 +388,7 @@ CREATE TABLE IF NOT EXISTS `usuario` (
   `Cargo_us` varchar(50) COLLATE utf8mb4_spanish_ci NOT NULL,
   `Sucursal_id` int(11) NOT NULL,
   `password_us` varchar(255) COLLATE utf8mb4_spanish_ci NOT NULL,
-  `Status_us` int(11) NOT NULL,
+  `Status_us` int(11) NOT NULL DEFAULT 1,
   `usuario_tipo` int(11) NOT NULL,
   PRIMARY KEY (`id_usuario`),
   KEY `Status` (`Status_us`),
@@ -399,8 +400,8 @@ CREATE TABLE IF NOT EXISTS `usuario` (
 --
 
 INSERT INTO `usuario` (`id_usuario`, `Nombre_us`, `Apellido_us`, `Correo_us`, `Cargo_us`, `Sucursal_id`, `password_us`, `Status_us`, `usuario_tipo`) VALUES
-(1, 'Nicolás', 'Carrasco', 'ncarrasco@correo.cl', 'Jefe Mantenimiento', 3, 'ncarrasco38', 1, 1),
-(2, 'Maglio', 'Santana', 'msantana@inatrans.cl', 'Evaluador', 3, 'msantana', 1, 2),
+(1, 'Nicolás', 'Carrasco', 'ncarrasco@correo.cl', 'Jefe Mantenimiento', 3, 'ncarrasco', 1, 4),
+(2, 'Maglio', 'Santana', 'msantana@inatrans.cl', 'Evaluador', 3, 'msantana', 1, 1),
 (3, 'Octavio', 'Jimenez', 'ojimenez@inatrans.cl', 'Evaluador', 3, 'ojimenez', 1, 3),
 (4, 'Fidel', 'Loyola', 'floyola@inatrans.cl', 'Evaluador', 3, 'floyola', 1, 3),
 (5, 'Gustavo', 'Saavedra', 'gsaavedra@inatrans.cl', 'Evaluador', 3, 'gsaavedra', 1, 3),
@@ -409,7 +410,7 @@ INSERT INTO `usuario` (`id_usuario`, `Nombre_us`, `Apellido_us`, `Correo_us`, `C
 (8, 'Victor', 'Reyes', 'vreyes@inatrans.cl', 'Evaluador', 2, 'vreyes', 1, 3),
 (9, 'German', 'Martinez', 'gmartinez@inatrans.cl', 'Evaluador', 1, 'gmartinez', 1, 3),
 (10, 'Erick', 'Noack', 'enoack@inatrans.cl', 'Evaluador', 1, 'enoack', 1, 3),
-(11, 'Cristian', 'Saa', 'csaa@inatrans.cl', 'Evaluador', 1, 'csaa', 1, 3),
+(11, 'Cristian', 'Saa', 'csaa@inatrans.cl', 'Evaluador', 1, 'csaa', 1, 2),
 (12, 'Daniel', 'Quiñones', 'dquinones@inatrans.cl', 'Evaluador', 1, 'dquinones', 1, 3),
 (13, 'Pedro', 'Cabezas', 'pcabezas@inatrans.cl', 'Evaluador', 1, 'pcabezas', 1, 3),
 (14, 'Juan', 'Gutierrez', 'jgutierrez@inatrans.cl', 'Evaluador', 1, 'jgutierrez', 1, 3),
