@@ -19,6 +19,9 @@ if (!empty($_SESSION['usuario_tipo'])) {
         case 3:
             header('Location: ../vista/user_catalogo.php');
             break;
+        case 4:
+            header('Location: ../vista/adm_catalogo.php');
+            break;
     }// Fin del switch
 }else{
 
@@ -28,7 +31,9 @@ if (!empty($_SESSION['usuario_tipo'])) {
     //die();
     //Validando que la variable usuario->objetos no este vacía
 if (!empty($usuario->objetos)) {
+    
     foreach ($usuario->objetos as $objeto) {
+        
         //Creando las variables de sesion
         $_SESSION['usuario_nombre'] = $objeto->nombre_us .' '. $objeto->apellido_us;
 
@@ -36,6 +41,7 @@ if (!empty($usuario->objetos)) {
         $_SESSION['usuario_tipo'] = $objeto->usuario_tipo;
         $_SESSION['correo'] = $objeto->correo_us;
         $_SESSION['id'] = $objeto->id_usuario;
+
     }
 
     // Segun el tipo de usuario, el switch nos re dirijira a la pagina correspondiente
@@ -48,6 +54,9 @@ if (!empty($usuario->objetos)) {
             break;
         case 3:
             header('Location: ../vista/user_catalogo.php');
+            break;
+        case 4:
+            header('Location: ../vista/adm_catalogo.php');
             break;
     }// Fin del switch
 }else{
