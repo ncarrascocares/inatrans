@@ -1,6 +1,6 @@
 <?php
 session_start();
-// Validando que solo pueda ingresar un usuario administrador a este fichero
+// Validando que solo pueda ingresar un usuario root o administrador a este fichero
 if ($_SESSION['usuario_tipo'] == 4 || $_SESSION['usuario_tipo'] == 1) {
 
     // Inclución del fichero header
@@ -15,6 +15,12 @@ if ($_SESSION['usuario_tipo'] == 4 || $_SESSION['usuario_tipo'] == 1) {
                     <div class="card-header">
                         <h3 class="card-title">Crear Usuario</h3>
                         <button data-dismiss="modal" aria-label="close" class="close"><span aria-hidden="true">&times;</span></button>
+                    </div>
+                    <div class="alert alert-success text-center" id="new-user" style="display:none;">
+                        <span><i class="fas fa-check"></i> Usuario Creado</span>
+                    </div>
+                    <div class="alert alert-danger text-center m-1" id="no-new-user" style="display:none;">
+                        <span><i class="fas fa-times "> Usuario ya existe</i></span>
                     </div>
                     <div class="card-body">
                         <!-- Formulario para crear usuarios -->
@@ -48,14 +54,14 @@ if ($_SESSION['usuario_tipo'] == 4 || $_SESSION['usuario_tipo'] == 1) {
                                 <label for="password_us">Password</label>
                                 <input id="password_us" type="password" class="form-control" placeholder="Ingrese Password" required>
                             </div>
-                            <div class="form-group">
+                            <!-- <div class="form-group">
                                 <label for="apellido_user">Tipo usuario</label>
                                 <select class="form-control" id="usuario_tipo">
                                     <option value="1">Administrador</option>
                                     <option value="2">Mantenedor</option>
                                     <option value="3" selected>Usuario</option>
                                 </select>
-                            </div>
+                            </div> -->
                     </div>
                     <div class="card-footer">
                         <button type="submit" class="btn bg-gradient-primary float-right m-1">Guardar</button>
@@ -81,7 +87,7 @@ if ($_SESSION['usuario_tipo'] == 4 || $_SESSION['usuario_tipo'] == 1) {
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1>Gestion de usuarios <button type="button" data-toggle="modal" data-target="#crear-usuario" class="btn bg-gradient-primary ml-2">Crear usuario</button></h1>
+                        <h1>Gestion de usuarios <button id="button-crear" type="button" data-toggle="modal" data-target="#crear-usuario" class="btn bg-gradient-primary ml-2">Crear usuario</button></h1>
                     </div>
                     <input type="hidden" id="tipo_usuario" value="<?=$_SESSION['usuario_tipo']?>">
                     <div class="col-sm-6">
