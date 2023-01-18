@@ -1,10 +1,14 @@
 $(document).ready(function() {
     buscar_datos();
     var funcion;
+    var tipo_usuario = $('#tipo_usuario').val();
+    //Este if oculta el boton crear del fichero adm_usuario si el usuario logeado es un mantenedor
+    if (tipo_usuario == 2) {
+        $('#button-crear').hide();
+    }
 
     function buscar_datos(consulta) {
         funcion = 'buscar_usuario_gestion';
-        var tipo_usuario = $('#tipo_usuario').val();
         //console.log(tipo_usuario);
         $.post('../controlador/UsuarioController.php', { consulta, funcion }, (response) => {
             const usuarios = JSON.parse(response);
@@ -30,13 +34,16 @@ $(document).ready(function() {
                   </div>
                   <div class="card-footer">
                     <div class="text-right">`;
+                //Este if valida que el usuario es de tipo root(4) para mostrar los botones
                 if (tipo_usuario == 4) {
+                    //Si el usuario ingresa a este punto es por que es root y este segundo if oculta el boton para el usuario del tipo 4
                     if (usuarios.id_tipo_usuario != 4) {
                         template += `
                               <button href="#" class="btn btn-sm btn-danger mr-1">
                                 <i class="fas fa-window-close"></i> Eliminar
                               </button>`;
                     }
+                    //Este if valida que el tipo de usuario sea 2 para mostrar el boton de ascender
                     if (usuarios.id_tipo_usuario == 2) {
                         template += `
                                 <button href="#" class="btn btn-sm btn-primary ml-1">
@@ -70,5 +77,41 @@ $(document).ready(function() {
         } else {
             buscar_datos();
         }
+    });
+
+    //Evento al presionar el boton del formulario con id form-crear-user del fichero adm_usuario.php
+    $('#form-crear-user').submit(e => {
+        funcion = 'crear_usuario';
+        //Asignando valores de los inputs del formulario
+        let nombre_us = $('#nombre_us').val();
+        let apellido_us = $('#apellido_us').val();
+        let correo_us = $('#correo_us').val();
+        let cargo_us = $('#cargo_us').val();
+        let sucursal_id = $('#sucursal_id').val();
+        let password_us = $('#password_us').val();
+
+        //Envio de los datos via ajax
+        $.post('../controlador/UsuarioController.php', { nombre_us, apellido_us, correo_us, cargo_us, sucursal_id, password_us, funcion }, (response) => {
+
+            if (response == 'add') {
+                $('#new-user').hide('slow');
+                $('#new-user').show(1000);
+                $('#new-user').hide(2000);
+
+                //Accion para que todos los campos input se reseteen
+                $('#form-crear-user').trigger('reset');
+                buscar_datos();
+            } else {
+                $('#no-new-user').hide('slow');
+                $('#no-new-user').show(1000);
+                $('#no-new-user').hide(2000);
+
+                //Accion para que todos los campos input se reseteen
+                $('#form-crear-user').trigger('reset');
+            }
+        });
+
+        //evento para evitar la actualización por defecto de la página
+        e.preventDefault();
     });
 });
