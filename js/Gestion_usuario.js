@@ -43,13 +43,26 @@ $(document).ready(function() {
                                 <i class="fas fa-window-close"></i> Eliminar
                               </button>`;
                     }
+                    if (usuarios.id_tipo_usuario == 1) {
+                        template += `
+                              <button href="#" class="btn btn-sm btn-secondary ml-1">
+                                <i class="fas fa-sort-amount-down mr-1"></i> Descender
+                              </button>`;
+                    }
                     //Este if valida que el tipo de usuario sea 2 para mostrar el boton de ascender
                     if (usuarios.id_tipo_usuario == 2) {
                         template += `
                                 <button href="#" class="btn btn-sm btn-primary ml-1">
-                                  <i class="fas fa-window-close mr-1"></i> Ascender
+                                  <i class="fas fa-sort-amount-up mr-1"></i> Ascender
                                 </button>`;
                     }
+                    if (usuarios.id_tipo_usuario == 3) {
+                        template += `
+                              <button href="#" class="btn btn-sm btn-primary ml-1">
+                                <i class="fas fa-sort-amount-up mr-1"></i> Ascender
+                              </button>`;
+                    }
+
                 }
                 //Si los usuarios son de tipo mantenedor, en el card aparece un boton de ascender para que puedan pasar a admin
                 else {
