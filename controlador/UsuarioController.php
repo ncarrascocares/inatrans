@@ -109,4 +109,17 @@ if ($_POST['funcion'] == 'buscar_usuario_gestion') {
     echo $jsonstring;
 }
 
+if ($_POST['funcion'] == 'crear_usuario') {
+    
+    $nombre_us = ucfirst($_POST['nombre_us']);
+    $apellido_us = ucfirst($_POST['apellido_us']);
+    $correo_us = $_POST['correo_us'];
+    $cargo_us = ucfirst($_POST['cargo_us']);
+    $sucursal_id = (int)$_POST['sucursal_id'];
+    $password_us = $_POST['password_us'];
+      
+    $usuario->insertar_usuario($nombre_us, $apellido_us, $correo_us, $cargo_us, $sucursal_id, $password_us);
+
+}
+
 ?>
