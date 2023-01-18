@@ -74,6 +74,24 @@ class Usuario{
             return $this->objetos;
         }
     }
+
+    function insertar_usuario($nombre_us, $apellido_us, $correo_us, $cargo_us, $sucursal_id, $password_us){
+        //Validando que el usuario exista en la bd
+        $sql = "SELECT id_usuario FROM usuario WHERE correo_us = :correo";
+        $query = $this->acceso->prepare($sql);
+        $query->execute(array('correo'=>$correo_us));
+        $this->objetos = $query->fetchAll();
+        if (!empty($this->objetos)) {
+            echo "noadd";
+        }else{
+            $sql = "INSERT INTO usuario 
+            (Nombre_us, Apellido_us, Correo_us, Cargo_us, Sucursal_id, password_us)
+            VALUES (:nombre, :apellido, :correo, :cargo, :sucursal, :password);";
+            $query = $this->acceso->prepare($sql);
+            $query->execute(array(':nombre'=>$nombre_us, ':apellido'=>$apellido_us, ':correo'=>$correo_us, ':cargo'=>$cargo_us, ':sucursal'=>$sucursal_id, ':password'=>$password_us));
+            echo "add";
+        }
+    }
 }
 
 ?>
