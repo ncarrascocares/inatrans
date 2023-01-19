@@ -15,7 +15,7 @@ $(document).ready(function() {
             let template = '';
             usuarios.forEach(usuarios => {
                 template += `
-                <div class="col-12 col-sm-6 col-md-4 d-flex align-items-stretch flex-column">
+                <div usuarioId="${usuarios.id}" class="col-12 col-sm-6 col-md-4 d-flex align-items-stretch flex-column">
                 <div class="card bg-light d-flex flex-fill">
                   <div class="card-header text-muted border-bottom-0">
                     ${usuarios.nombre_tipo_usuario}
@@ -45,23 +45,23 @@ $(document).ready(function() {
                     }
                     if (usuarios.id_tipo_usuario == 1) {
                         template += `
-                              <button href="#" class="btn btn-sm btn-secondary ml-1">
+                              <button href="#" class="descender btn btn-sm btn-secondary ml-1" type="button" data-toggle="modal" data-target="#cambio_tipo_user">
                                 <i class="fas fa-sort-amount-down mr-1"></i> Descender
                               </button>`;
                     }
                     //Este if valida que el tipo de usuario sea 2 para mostrar el boton de ascender
                     if (usuarios.id_tipo_usuario == 2) {
                         template += `
-                                <button href="#" class="btn btn-sm btn-primary ml-1">
+                                <button href="#" class="ascender btn btn-sm btn-primary ml-1" type="button" data-toggle="modal" data-target="#cambio_tipo_user">
                                   <i class="fas fa-sort-amount-up mr-1"></i> Ascender
                                 </button>`;
                     }
-                    if (usuarios.id_tipo_usuario == 3) {
-                        template += `
-                              <button href="#" class="btn btn-sm btn-primary ml-1">
-                                <i class="fas fa-sort-amount-up mr-1"></i> Ascender
-                              </button>`;
-                    }
+                    // if (usuarios.id_tipo_usuario == 3) {
+                    //     template += `
+                    //           <button href="#" class="ascender btn btn-sm btn-primary ml-1" type="button" data-toggle="modal" data-target="#cambio_tipo_user">
+                    //             <i class="fas fa-sort-amount-up mr-1"></i> Ascender
+                    //           </button>`;
+                    // }
 
                 }
                 //Si los usuarios son de tipo mantenedor, en el card aparece un boton de ascender para que puedan pasar a admin
@@ -127,4 +127,69 @@ $(document).ready(function() {
         //evento para evitar la actualización por defecto de la página
         e.preventDefault();
     });
+
+
+    // Acciones para cargar la información al modal
+
+    // 1)Accion para cuando cuando se de click al boton con la clase ascender
+    $(document).on('click', '.ascender', (e) => {
+            //Esta linea de codigo me permite llegar hasta el div donde se encuentra el elemento usuarioId
+            const elemento = $(this)[0].activeElement.parentElement.parentElement.parentElement.parentElement;
+
+            //Asignando el valor de usuarioId en la constante (en estos momentos elemento tiene como valor todo el contenido del div del card)
+            const id = $(elemento).attr('usuarioId');
+            funcion = 'ascender';
+            //Modificando el DOM; asignando un valor del input id_user
+            $('#id_user').val(id);
+            $('#funcion').val(funcion);
+        })
+        // 2)Accion para cuando cuando se de click al boton con la clase descender
+    $(document).on('click', '.descender', (e) => {
+            //Esta linea de codigo me permite llegar hasta el div donde se encuentra el elemento usuarioId
+            const elemento = $(this)[0].activeElement.parentElement.parentElement.parentElement.parentElement;
+
+            //Asignando el valor de usuarioId en la constante (en estos momentos elemento tiene como valor todo el contenido del div del card)
+            const id = $(elemento).attr('usuarioId');
+            funcion = 'descender';
+            //Modificando el DOM; asignando un valor del input id_user
+            $('#id_user').val(id);
+            $('#funcion').val(funcion);
+        })
+        //Pasando los datos al modal
+    $('#form_tipo_user').submit(e => {
+
+        let pass_root = $('#pass_root').val();
+        let id_user = $('#id_user').val();
+        funcion = $('#funcion').val();
+
+        if (pass_root == '') {
+            $('#no-pass').hide('slow');
+            $('#no-pass').show(1000);
+            $('#no-pass').hide(2000);
+        } else {
+            //Envio de los datos via ajax
+            $.post('../controlador/UsuarioController.php', { pass_root, id_user, funcion }, (response) => {
+
+                if (response == 'ascendido' || response == 'descendido') {
+                    $('#update-tipo').hide('slow');
+                    $('#update-tipo').show(1000);
+                    $('#update-tipo').hide(2000);
+
+                    //Accion para que todos los campos input se reseteen
+                    $('#form_tipo_user').trigger('reset');
+                    buscar_datos();
+                } else {
+                    $('#no-update-tipo').hide('slow');
+                    $('#no-update-tipo').show(1000);
+                    $('#no-update-tipo').hide(2000);
+
+                    //Accion para que todos los campos input se reseteen
+                    $('#form_tipo_user').trigger('reset');
+                    buscar_datos();
+                }
+            });
+        }
+
+        e.preventDefault();
+    })
 });

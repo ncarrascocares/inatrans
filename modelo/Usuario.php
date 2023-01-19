@@ -92,6 +92,36 @@ class Usuario{
             echo "add";
         }
     }
+
+    function ascender($pass_root, $id_user, $id_usuario){
+        $sql = "SELECT id_usuario FROM usuario WHERE id_usuario = :id_usuario and password_us = :pass";
+        $query = $this->acceso->prepare($sql);
+        $query->execute(array('id_usuario'=>$id_usuario, ':pass'=>$pass_root));
+        $this->objetos = $query->fetchAll();
+        if (!empty($this->objetos)) {
+            $sql = "UPDATE usuario SET usuario_tipo = 1 WHERE id_usuario = :id";
+            $query = $this->acceso->prepare($sql);
+            $query->execute(array(':id'=>$id_user));
+            echo "ascendido";
+        }else{
+            echo "no-ascendido";
+        }
+    }
+
+    function descender($pass_root, $id_user, $id_usuario){
+        $sql = "SELECT id_usuario FROM usuario WHERE id_usuario = :id_usuario and password_us = :pass";
+        $query = $this->acceso->prepare($sql);
+        $query->execute(array('id_usuario'=>$id_usuario, ':pass'=>$pass_root));
+        $this->objetos = $query->fetchAll();
+        if (!empty($this->objetos)) {
+            $sql = "UPDATE usuario SET usuario_tipo = 2 WHERE id_usuario = :id";
+            $query = $this->acceso->prepare($sql);
+            $query->execute(array(':id'=>$id_user));
+            echo "descendido";
+        }else{
+            echo "no-descendido";
+        }
+    }
 }
 
 ?>

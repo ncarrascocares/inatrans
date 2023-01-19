@@ -6,8 +6,58 @@ if ($_SESSION['usuario_tipo'] == 4 || $_SESSION['usuario_tipo'] == 1) {
     // Inclución del fichero header
     include_once 'layouts/header.php';
 ?>
-
-    <!-- Inicio del modal -->
+    <!-- Inicio del modal para configracion de tipo de usuario-->
+    <div class="modal fade" id="cambio_tipo_user" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Cambio de rol de Usuario</h1>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="text-center">
+                        <img src="../img/avatar-2-128.png" class="profile-user-img img-fluid img-circle">
+                    </div>
+                    <div class="text-center">
+                        <b>
+                            <!-- Codigo php para utilizar las variables de sesion -->
+                            <?= $_SESSION['usuario_nombre'] ?>
+                        </b>
+                    </div>
+                    <span>Ingrese la password para confirmar</span>
+                    <div class="alert alert-success text-center" id="update-tipo" style="display:none;">
+                        <span><i class="fas fa-check"></i> Actualización exitosa</span>
+                    </div>
+                    <div class="alert alert-danger text-center m-1" id="no-update-tipo" style="display:none;">
+                        <span><i class="fas fa-times "> Error en la actualización</i></span>
+                    </div>
+                    <div class="alert alert-danger text-center m-1" id="no-pass" style="display:none;">
+                        <span><i class="fas fa-times "> Ingresa Contraseña</i></span>
+                    </div>
+                    <!-- Formulario para el cambio de tipo usuario -->
+                    <form id="form_tipo_user">
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="fas fa-unlock-alt"></i></span>
+                            </div>
+                            <input type="password" id="pass_root" class="form-control" placeholder="Ingrese contraseña">
+                            <input type="hidden" id="id_user">
+                            <input type="hidden" id="funcion">
+                        </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Cerrar</button>
+                    <button type="submit" class="btn bg-gradient-primary">Guardar</button>
+                </div>
+                </form>
+                <!--Fin del Formulario para el cambio de tipo usuario -->
+            </div>
+        </div>
+    </div>
+    <!-- fin del modal -->
+    <!-- Inicio del modal de creación de usuario -->
     <div class="modal fade" id="crear-usuario" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">

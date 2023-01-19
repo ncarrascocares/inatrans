@@ -1,6 +1,8 @@
 <?php
 
 include_once '../modelo/Usuario.php';
+session_start();
+$id_usuario = $_SESSION['id'];
 
 //Variable global(instancia de la clase Usuario)
 $usuario = new Usuario();
@@ -90,6 +92,7 @@ if ($_POST['funcion'] == 'buscar_usuario_gestion') {
     $usuario->buscar();
     foreach ($usuario->objetos as $objeto) {
         $json[]=array(
+            'id'=>$objeto->id_usuario,
             'nombre'=>$objeto->nombre_us,
             'apellido'=>$objeto->apellido_us,
             'correo_us'=>$objeto->correo_us,
@@ -119,6 +122,24 @@ if ($_POST['funcion'] == 'crear_usuario') {
     $password_us = $_POST['password_us'];
       
     $usuario->insertar_usuario($nombre_us, $apellido_us, $correo_us, $cargo_us, $sucursal_id, $password_us);
+
+}
+
+if ($_POST['funcion'] == 'ascender') {
+    
+    $pass_root = $_POST['pass_root'];
+    $id_ascendido = $_POST['id_user'];
+      
+    $usuario->ascender($pass_root, $id_ascendido, $id_usuario);
+
+}
+
+if ($_POST['funcion'] == 'descender') {
+    
+    $pass_root = $_POST['pass_root'];
+    $id_descendido = $_POST['id_user'];
+      
+    $usuario->descender($pass_root, $id_descendido, $id_usuario);
 
 }
 
