@@ -58,7 +58,7 @@ class Usuario{
             $sql = "SELECT * FROM usuario us 
                     JOIN tipo_usuario ti on us.usuario_tipo = ti.id_tipo_usuario
                     JOIN sucursal su on us.Sucursal_id = su.id_sucursal
-                    where us.nombre_us LIKE :consulta;";
+                    where us.status_id != 0 and us.nombre_us LIKE :consulta;";
             $query = $this->acceso->prepare($sql);
             $query->execute(array(':consulta'=>"%$consulta%"));
             $this->objetos=$query->fetchAll();
@@ -67,7 +67,7 @@ class Usuario{
             $sql = "SELECT * FROM usuario us 
                     JOIN tipo_usuario ti on us.usuario_tipo = ti.id_tipo_usuario
                     JOIN sucursal su on us.Sucursal_id = su.id_sucursal
-                    where us.nombre_us NOT LIKE '' ORDER BY id_usuario LIMIT 25;";
+                    where us.nombre_us NOT LIKE '' and us.status_us != 0 ORDER BY id_usuario LIMIT 25;";
             $query = $this->acceso->prepare($sql);
             $query->execute();
             $this->objetos=$query->fetchAll();
@@ -122,6 +122,21 @@ class Usuario{
             echo "no-descendido";
         }
     }
+
+   function borrar_user($pass_root, $id_user, $id_usuario){
+    $sql = "SELECT id_usuario FROM usuario WHERE id_usuario = :id_usuario and password_us = :pass";
+        $query = $this->acceso->prepare($sql);
+        $query->execute(array('id_usuario'=>$id_usuario, ':pass'=>$pass_root));
+        $this->objetos = $query->fetchAll();
+        if (!empty($this->objetos)) {
+            $sql = "UPDATE usuario SET status_us = 0 WHERE id_usuario = :id";
+            $query = $this->acceso->prepare($sql);
+            $query->execute(array(':id'=>$id_user));
+            echo "borrado";
+        }else{
+            echo "no-borrado";
+        }
+   }
 }
 
 ?>

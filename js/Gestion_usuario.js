@@ -39,7 +39,7 @@ $(document).ready(function() {
                     //Si el usuario ingresa a este punto es por que es root y este segundo if oculta el boton para el usuario del tipo 4
                     if (usuarios.id_tipo_usuario != 4) {
                         template += `
-                              <button href="#" class="btn btn-sm btn-danger mr-1">
+                              <button href="#" class="borrar-user btn btn-sm btn-danger mr-1" type="button" data-toggle="modal" data-target="#cambio_tipo_user">
                                 <i class="fas fa-window-close"></i> Eliminar
                               </button>`;
                     }
@@ -64,11 +64,11 @@ $(document).ready(function() {
                     // }
 
                 }
-                //Si los usuarios son de tipo mantenedor, en el card aparece un boton de ascender para que puedan pasar a admin
+                //solo el user root y admin pueden ver y accionar el boton de eliminar
                 else {
                     if (tipo_usuario == 1 && usuarios.id_tipo_usuario != 1 && usuarios.id_tipo_usuario != 4) {
                         template += `
-                              <button href="#" class="btn btn-sm btn-danger">
+                              <button href="#" class="borrar-user btn btn-sm btn-danger" type="button" data-toggle="modal" data-target="#cambio_tipo_user">
                                 <i class="fas fa-window-close mr-1"></i> Eliminar
                               </button>`;
                     }
@@ -133,29 +133,47 @@ $(document).ready(function() {
 
     // 1)Accion para cuando cuando se de click al boton con la clase ascender
     $(document).on('click', '.ascender', (e) => {
-            //Esta linea de codigo me permite llegar hasta el div donde se encuentra el elemento usuarioId
-            const elemento = $(this)[0].activeElement.parentElement.parentElement.parentElement.parentElement;
+        $('#titulo_modal').html('Cambio de rol de Usuario');
+        $('#boton-modal').html('Guardar');
+        //Esta linea de codigo me permite llegar hasta el div donde se encuentra el elemento usuarioId
+        const elemento = $(this)[0].activeElement.parentElement.parentElement.parentElement.parentElement;
 
-            //Asignando el valor de usuarioId en la constante (en estos momentos elemento tiene como valor todo el contenido del div del card)
-            const id = $(elemento).attr('usuarioId');
-            funcion = 'ascender';
-            //Modificando el DOM; asignando un valor del input id_user
-            $('#id_user').val(id);
-            $('#funcion').val(funcion);
-        })
-        // 2)Accion para cuando cuando se de click al boton con la clase descender
+        //Asignando el valor de usuarioId en la constante (en estos momentos elemento tiene como valor todo el contenido del div del card)
+        const id = $(elemento).attr('usuarioId');
+        funcion = 'ascender';
+        //Modificando el DOM; asignando un valor del input id_user
+        $('#id_user').val(id);
+        $('#funcion').val(funcion);
+    });
+    // 2)Accion para cuando cuando se de click al boton con la clase descender
     $(document).on('click', '.descender', (e) => {
-            //Esta linea de codigo me permite llegar hasta el div donde se encuentra el elemento usuarioId
-            const elemento = $(this)[0].activeElement.parentElement.parentElement.parentElement.parentElement;
+        $('#titulo_modal').html('Cambio de rol de Usuario');
+        $('#boton-modal').html('Guardar');
+        //Esta linea de codigo me permite llegar hasta el div donde se encuentra el elemento usuarioId
+        const elemento = $(this)[0].activeElement.parentElement.parentElement.parentElement.parentElement;
 
-            //Asignando el valor de usuarioId en la constante (en estos momentos elemento tiene como valor todo el contenido del div del card)
-            const id = $(elemento).attr('usuarioId');
-            funcion = 'descender';
-            //Modificando el DOM; asignando un valor del input id_user
-            $('#id_user').val(id);
-            $('#funcion').val(funcion);
-        })
-        //Pasando los datos al modal
+        //Asignando el valor de usuarioId en la constante (en estos momentos elemento tiene como valor todo el contenido del div del card)
+        const id = $(elemento).attr('usuarioId');
+        funcion = 'descender';
+        //Modificando el DOM; asignando un valor del input id_user
+        $('#id_user').val(id);
+        $('#funcion').val(funcion);
+    });
+    $(document).on('click', '.borrar-user', (e) => {
+        const boton = document.getElementById("boton-modal");
+        $('#titulo_modal').html('Borrar Cuenta de usuario');
+        $('#boton-modal').html('Eliminar');
+        //Esta linea de codigo me permite llegar hasta el div donde se encuentra el elemento usuarioId
+        const elemento = $(this)[0].activeElement.parentElement.parentElement.parentElement.parentElement;
+
+        //Asignando el valor de usuarioId en la constante (en estos momentos elemento tiene como valor todo el contenido del div del card)
+        const id = $(elemento).attr('usuarioId');
+        funcion = 'borrar_user';
+        //Modificando el DOM; asignando un valor del input id_user
+        $('#id_user').val(id);
+        $('#funcion').val(funcion);
+    });
+    //Pasando los datos al modal
     $('#form_tipo_user').submit(e => {
 
         let pass_root = $('#pass_root').val();
@@ -169,24 +187,81 @@ $(document).ready(function() {
         } else {
             //Envio de los datos via ajax
             $.post('../controlador/UsuarioController.php', { pass_root, id_user, funcion }, (response) => {
+                console.log(response);
+                switch (response) {
+                    case 'ascendido':
+                        $('#update-tipo').hide('slow');
+                        $('#update-tipo').show(1000);
+                        $('#update-tipo').hide(2000);
 
-                if (response == 'ascendido' || response == 'descendido') {
-                    $('#update-tipo').hide('slow');
-                    $('#update-tipo').show(1000);
-                    $('#update-tipo').hide(2000);
+                        //Accion para que todos los campos input se reseteen
+                        $('#form_tipo_user').trigger('reset');
+                        buscar_datos();
+                        break;
 
-                    //Accion para que todos los campos input se reseteen
-                    $('#form_tipo_user').trigger('reset');
-                    buscar_datos();
-                } else {
-                    $('#no-update-tipo').hide('slow');
-                    $('#no-update-tipo').show(1000);
-                    $('#no-update-tipo').hide(2000);
+                    case 'descendido':
+                        $('#update-tipo').hide('slow');
+                        $('#update-tipo').show(1000);
+                        $('#update-tipo').hide(2000);
 
-                    //Accion para que todos los campos input se reseteen
-                    $('#form_tipo_user').trigger('reset');
-                    buscar_datos();
+                        //Accion para que todos los campos input se reseteen
+                        $('#form_tipo_user').trigger('reset');
+                        buscar_datos();
+                        break;
+                    case 'no-descendido':
+                        $('#no-update-tipo').hide('slow');
+                        $('#no-update-tipo').show(1000);
+                        $('#no-update-tipo').hide(2000);
+
+                        //Accion para que todos los campos input se reseteen
+                        $('#form_tipo_user').trigger('reset');
+                        buscar_datos();
+                        break;
+                    case 'borrado':
+                        $('#borrado-user').show(1000);
+                        $('#borrado-user').hide(2000);
+                        $('#borrado-user').hide('slow');
+
+                        //Accion para que todos los campos input se reseteen
+                        $('#form_tipo_user').trigger('reset');
+                        buscar_datos();
+                        break;
+                    default:
+                        $('#no-borrado-user').show(1000);
+                        $('#no-borrado-user').hide(2000);
+                        $('#no-borrado-user').hide('slow');
+
+                        //Accion para que todos los campos input se reseteen
+                        $('#form_tipo_user').trigger('reset');
+                        buscar_datos();
+                        break;
                 }
+
+                // if (response == 'ascendido' || response == 'descendido') {
+                //     $('#update-tipo').hide('slow');
+                //     $('#update-tipo').show(1000);
+                //     $('#update-tipo').hide(2000);
+
+                //     //Accion para que todos los campos input se reseteen
+                //     $('#form_tipo_user').trigger('reset');
+                //     buscar_datos();
+                // } else if (response == 'borrado') {
+                //     $('#borrado-user').show(1000);
+                //     $('#borrado-user').hide(2000);
+                //     $('#borrado-user').hide('slow');
+
+                //     //Accion para que todos los campos input se reseteen
+                //     $('#form_tipo_user').trigger('reset');
+
+                // } else {
+                //     $('#no-update-tipo').hide('slow');
+                //     $('#no-update-tipo').show(1000);
+                //     $('#no-update-tipo').hide(2000);
+
+                //     //Accion para que todos los campos input se reseteen
+                //     $('#form_tipo_user').trigger('reset');
+                //     buscar_datos();
+                // }
             });
         }
 

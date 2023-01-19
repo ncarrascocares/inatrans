@@ -11,7 +11,7 @@ if ($_SESSION['usuario_tipo'] == 4 || $_SESSION['usuario_tipo'] == 1) {
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="exampleModalLabel">Cambio de rol de Usuario</h1>
+                    <h1 class="modal-title fs-5" id="titulo_modal"></h1>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -30,8 +30,14 @@ if ($_SESSION['usuario_tipo'] == 4 || $_SESSION['usuario_tipo'] == 1) {
                     <div class="alert alert-success text-center" id="update-tipo" style="display:none;">
                         <span><i class="fas fa-check"></i> Actualización exitosa</span>
                     </div>
+                    <div class="alert alert-success text-center" id="borrado-user" style="display:none;">
+                        <span><i class="fas fa-check"></i> Usuario Borrado</span>
+                    </div>
                     <div class="alert alert-danger text-center m-1" id="no-update-tipo" style="display:none;">
                         <span><i class="fas fa-times "> Error en la actualización</i></span>
+                    </div>
+                    <div class="alert alert-danger text-center m-1" id="no-borrado-user" style="display:none;">
+                        <span><i class="fas fa-times "> Error en el borardo</i></span>
                     </div>
                     <div class="alert alert-danger text-center m-1" id="no-pass" style="display:none;">
                         <span><i class="fas fa-times "> Ingresa Contraseña</i></span>
@@ -49,7 +55,7 @@ if ($_SESSION['usuario_tipo'] == 4 || $_SESSION['usuario_tipo'] == 1) {
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Cerrar</button>
-                    <button type="submit" class="btn bg-gradient-primary">Guardar</button>
+                    <button type="submit" id="boton-modal" class="btn bg-gradient-primary"></button>
                 </div>
                 </form>
                 <!--Fin del Formulario para el cambio de tipo usuario -->

@@ -143,4 +143,13 @@ if ($_POST['funcion'] == 'descender') {
 
 }
 
+if ($_POST['funcion'] == 'borrar_user') {
+    
+    $pass_root = $_POST['pass_root'];
+    $id_descendido = $_POST['id_user'];
+      
+    $usuario->borrar_user($pass_root, $id_descendido, $id_usuario);
+
+}
+
 ?>
