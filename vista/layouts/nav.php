@@ -4,6 +4,8 @@
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
 <!-- Estilo del adminLite -->
 <link rel="stylesheet" href="../css/css/adminlte.min.css">
+<!-- Datatable -->
+<link rel="stylesheet" href="../css/datatables.css">
 </head>
 
 <body class="hold-transition sidebar-mini">
@@ -76,19 +78,21 @@
                         </li>
                         <li class="nav-item">
                             <a href="../vista/adm_usuario.php" class="nav-link">
-                                <i class="nav-icon fas fa-user-cog"></i>
+                                <i class="nav-icon fas fa-users"></i>
                                 <p>
                                     Gestion Usuarios
                                 </p>
                             </a>
                         </li>
-                        <li class="nav-header">EXAMPLES</li>
-
-                        <li class="nav-item">
-                            <a href="../gallery.html" class="nav-link">
-                                <i class="nav-icon far fa-image"></i>
+                    </ul>
+                    </ul>
+                    <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+                    <li class="nav-header">Ordenes de trabajo</li>
+                    <li class="nav-item">
+                            <a href="../vista/adm_odt.php" class="nav-link">
+                                <i class="nav-icon fas fa-list"></i>
                                 <p>
-                                    Gallery
+                                    Listado de ODT
                                 </p>
                             </a>
                         </li>
