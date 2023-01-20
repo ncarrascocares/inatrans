@@ -133,8 +133,12 @@ $(document).ready(function() {
 
     // 1)Accion para cuando cuando se de click al boton con la clase ascender
     $(document).on('click', '.ascender', (e) => {
-        $('#titulo_modal').html('Cambio de rol de Usuario');
-        $('#boton-modal').html('Guardar');
+        const boton = document.getElementById("boton-modal");
+        const titulo = document.getElementById('titulo_modal');
+        titulo.textContent = "Cambio de rol de Usuario";
+        boton.classList.replace('bg-gradient-danger', 'bg-gradient-primary');
+        boton.textContent = "Ascender";
+
         //Esta linea de codigo me permite llegar hasta el div donde se encuentra el elemento usuarioId
         const elemento = $(this)[0].activeElement.parentElement.parentElement.parentElement.parentElement;
 
@@ -147,8 +151,12 @@ $(document).ready(function() {
     });
     // 2)Accion para cuando cuando se de click al boton con la clase descender
     $(document).on('click', '.descender', (e) => {
-        $('#titulo_modal').html('Cambio de rol de Usuario');
-        $('#boton-modal').html('Guardar');
+        const boton = document.getElementById("boton-modal");
+        const titulo = document.getElementById('titulo_modal');
+        titulo.textContent = "Cambio de rol de Usuario";
+        boton.classList.replace('bg-gradient-danger', 'bg-gradient-primary');
+        boton.textContent = "Descender";
+
         //Esta linea de codigo me permite llegar hasta el div donde se encuentra el elemento usuarioId
         const elemento = $(this)[0].activeElement.parentElement.parentElement.parentElement.parentElement;
 
@@ -161,8 +169,11 @@ $(document).ready(function() {
     });
     $(document).on('click', '.borrar-user', (e) => {
         const boton = document.getElementById("boton-modal");
-        $('#titulo_modal').html('Borrar Cuenta de usuario');
-        $('#boton-modal').html('Eliminar');
+        const titulo = document.getElementById('titulo_modal');
+        titulo.textContent = "Borrar Cuenta de usuario";
+        boton.classList.replace('bg-gradient-primary', 'bg-gradient-danger');
+        boton.textContent = "Eliminar";
+
         //Esta linea de codigo me permite llegar hasta el div donde se encuentra el elemento usuarioId
         const elemento = $(this)[0].activeElement.parentElement.parentElement.parentElement.parentElement;
 
