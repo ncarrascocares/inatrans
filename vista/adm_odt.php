@@ -43,16 +43,16 @@ if ($_SESSION['usuario_tipo'] == 4 || $_SESSION['usuario_tipo'] == 1) {
                     <div class="card-body">
                         <table id="tabla_reporte" class="display table table-hover text-nowrap" style="width:100%">
                             <thead>
-                                <tr><th>Id</th>
-                                    <th>N° reporte</th>
-                                    <th>Simulador id</th>
-                                    <th>Usuario id</th>
-                                    <th>Averia reporte</th>
-                                    <th>Comentario_reporte</th>
-                                    <th>Categoria_id</th>
-                                    <th>Fecha_crea</th>
-                                    <th>Estatus_reporte</th>
-                                    <th>Tipo_averia_id</th>
+                                <tr>
+                                    <th>N° odt</th>
+                                    <th>Simulador</th>
+                                    <th>Usuario</th>
+                                    <th>Averia</th>
+                                    <th>Comentario</th>
+                                    <th>Categoria</th>
+                                    <th>Fecha</th>
+                                    <th>Tipo Averia</th>
+                                    <th>Opciones</th>
                                 </tr>
                             </thead>
                             <tbody>
