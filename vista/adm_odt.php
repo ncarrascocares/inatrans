@@ -11,6 +11,73 @@ if ($_SESSION['usuario_tipo'] == 4 || $_SESSION['usuario_tipo'] == 1) {
 
     <!-- Inclución del fichero nav -->
     <?php include_once 'layouts/nav.php'; ?>
+    <!-- Inicio del modal de creación de usuario -->
+    <div class="modal fade" id="crear-odt" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="card card-success">
+                    <div class="card-header">
+                        <h3 class="card-title">Nueva ODT</h3>
+                        <button data-dismiss="modal" aria-label="close" class="close"><span aria-hidden="true">&times;</span></button>
+                    </div>
+                    <div class="alert alert-success text-center" id="new-user" style="display:none;">
+                        <span><i class="fas fa-check"></i> Usuario Creado</span>
+                    </div>
+                    <div class="alert alert-danger text-center m-1" id="no-new-user" style="display:none;">
+                        <span><i class="fas fa-times "> Usuario ya existe</i></span>
+                    </div>
+                    <div class="card-body">
+                        <!-- Formulario para crear usuarios -->
+                        <form id="form-crear-user">
+                            <div class="form-group">
+                                <label for="simulador_id">Simulador</label>
+                                <select name="" id="simulador_id" class="form-control"></select>
+                            </div>
+                            <div class="form-group">
+                                <label for="Instructor">Instructor</label>
+                                <input id="Instructor" type="text" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label for="correo_us">Averia</label>
+                                <textarea class="form-control" id="averia_reporte" rows="3"></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label for="correo_us">Comentario</label>
+                                <textarea class="form-control" id="comentario_reporte" rows="3"></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label for="categoria_id">Categoria</label>
+                                <select name="" id="categoria_id" class="form-control">
+                                    <option value="1">Leve</option>
+                                    <option value="2">Grave</option>
+                                    <option value="3">Critico</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="fecha_crea">Fecha</label>
+                                <input id="fecha_crea" type="date" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label for="tipo_averia_id">Clasificación</label>
+                                <select class="form-control" id="tipo_averia_id">
+                                    <option value="1" selected>Software</option>
+                                    <option value="2">Hardware</option>
+                                    <option value="3">Eléctrico</option>
+                                    <option value="4">Otro</option>
+                                </select>
+                            </div>
+                    </div>
+                    <div class="card-footer">
+                        <button type="submit" class="btn bg-gradient-primary float-right m-1">Guardar</button>
+                        <button type="button" data-dismiss="modal" class="btn btn-outline-secondary float-right m-1">Cerrar</button>
+                    </div>
+                    </form>
+                    <!-- Fin del formulario -->
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- fin del modal -->
 
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
@@ -19,7 +86,7 @@ if ($_SESSION['usuario_tipo'] == 4 || $_SESSION['usuario_tipo'] == 1) {
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1>Gestion ODT's <button id="button-crear" type="button" data-toggle="modal" data-target="#crear-usuario" class="btn bg-gradient-primary ml-2">Crear nueva ODT</button></h1>
+                        <h1>Gestion ODT's <button id="button-crear" type="button" data-toggle="modal" data-target="#crear-odt" class="btn bg-gradient-primary ml-2">Crear nueva ODT</button></h1>
                     </div>
                     <input type="hidden" id="tipo_usuario" value="<?= $_SESSION['usuario_tipo'] ?>">
                     <div class="col-sm-6">
@@ -46,12 +113,12 @@ if ($_SESSION['usuario_tipo'] == 4 || $_SESSION['usuario_tipo'] == 1) {
                                 <tr>
                                     <th>N° odt</th>
                                     <th>Simulador</th>
-                                    <th>Usuario</th>
                                     <th>Averia</th>
                                     <th>Comentario</th>
-                                    <th>Categoria</th>
                                     <th>Fecha</th>
-                                    <th>Tipo Averia</th>
+                                    <th>Responsable</th>
+                                    <th>Categoria</th>
+                                    <th>Clasificación</th>
                                     <th>Opciones</th>
                                 </tr>
                             </thead>

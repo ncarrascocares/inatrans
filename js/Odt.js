@@ -10,17 +10,27 @@ $(document).ready(function() {
         columns: [
             { data: 'id_interno' },
             { data: 'simulador_id' },
-            { data: 'usuario_id' },
             { data: 'averia_reporte' },
             { data: 'comentario_reporte' },
-            { data: 'categoria_id' },
             { data: 'fecha_crea' },
-            { data: 'tipo_averia_id' },
-            {"defaultContent": `<button class="btn btn-success"><i class="fas fa-search"></i></button>
-                                <button class="btn btn-danger"><i class="fas fa-window-close"></i></button>`}
+            { data: 'responsable' },
+            { data: 'nombre_categoria' },
+            { data: 'nombre_averia' },
+            { "defaultContent": `<button class="btn btn-success"><i class="fas fa-search"></i></button>
+                                <button class="btn btn-danger"><i class="fas fa-window-close"></i></button>` }
         ],
         "language": espanol
     });
+
+
+    //Listando los valores del select para seleccionar el simulador
+    let select = document.getElementById("simulador_id");
+    for (i = 1; i <= 11; i++) {
+        option = document.createElement("option");
+        option.value = i;
+        option.text = "Simulador " + i;
+        select.appendChild(option);
+    }
 
 });
 
