@@ -20,22 +20,23 @@ if ($_SESSION['usuario_tipo'] == 4 || $_SESSION['usuario_tipo'] == 1) {
                         <h3 class="card-title">Nueva ODT</h3>
                         <button data-dismiss="modal" aria-label="close" class="close"><span aria-hidden="true">&times;</span></button>
                     </div>
-                    <div class="alert alert-success text-center" id="new-user" style="display:none;">
-                        <span><i class="fas fa-check"></i> Usuario Creado</span>
+                    <div class="alert alert-success text-center" id="new-report" style="display:none;">
+                        <span><i class="fas fa-check"></i> ODT creada</span>
                     </div>
-                    <div class="alert alert-danger text-center m-1" id="no-new-user" style="display:none;">
-                        <span><i class="fas fa-times "> Usuario ya existe</i></span>
+                    <div class="alert alert-danger text-center m-1" id="no-new-report" style="display:none;">
+                        <span><i class="fas fa-times "> Error, no se creo ODT</i></span>
                     </div>
                     <div class="card-body">
-                        <!-- Formulario para crear usuarios -->
-                        <form id="form-crear-user">
+                        <!-- Formulario para crear ODT -->
+                        <form id="form-crear-reporte">
+                            <input type="hidden" id="id_usuario" name="" value="<?=$_SESSION['id']?>">
                             <div class="form-group">
                                 <label for="simulador_id">Simulador</label>
                                 <select name="" id="simulador_id" class="form-control"></select>
                             </div>
                             <div class="form-group">
-                                <label for="Instructor">Instructor</label>
-                                <input id="Instructor" type="text" class="form-control">
+                                <label for="instructor">Instructor</label>
+                                <input id="instructor" type="text" class="form-control">
                             </div>
                             <div class="form-group">
                                 <label for="correo_us">Averia</label>
@@ -107,8 +108,8 @@ if ($_SESSION['usuario_tipo'] == 4 || $_SESSION['usuario_tipo'] == 1) {
 
                         </div>
                     </div>
-                    <div class="card-body">
-                        <table id="tabla_reporte" class="display table table-hover text-nowrap" style="width:100%">
+                    <div class="card-body" style="font-size:80%;">
+                        <table id="tabla_reporte" align="center" border="1" style="width:100%; height:20px;" class="table table-condensed table-bordered table-hover">
                             <thead>
                                 <tr>
                                     <th>N° odt</th>
