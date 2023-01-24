@@ -34,7 +34,6 @@ $(document).ready(function() {
     }
 
     $('#form-crear-reporte').submit(e => {
-        let reporte = [];
         //Recibiendo los datos del formulario
         let id_usuario = $('#id_usuario').val();
         let simulador_id = $('#simulador_id').val();
@@ -46,9 +45,8 @@ $(document).ready(function() {
         let tipo_averia_id = $('#tipo_averia_id').val();
 
         let funcion = "guardar_reporte";
-
         $.post('../controlador/OdtController.php', { id_usuario, simulador_id, instructor, averia_reporte, comentario_reporte, categoria_id, fecha_crea, tipo_averia_id, funcion }, (response) => {
-            console.log(response);
+            //console.log(response);
             if (response == 'odt-insertada') {
                 $('#new-report').hide('slow');
                 $('#new-report').show(1000);
@@ -56,7 +54,6 @@ $(document).ready(function() {
 
                 //Accion para que todos los campos input se reseteen
                 $('#form-crear-reporte').trigger('reset');
-                buscar_reportes();
             } else {
                 $('#no-new-report').hide('slow');
                 $('#no-new-report').show(1000);
@@ -65,10 +62,11 @@ $(document).ready(function() {
                 //Accion para que todos los campos input se reseteen
                 $('#form-crear-reporte').trigger('reset');
             }
-        });
+        })
 
         e.preventDefault();
-    })
+    });
+
 
 });
 

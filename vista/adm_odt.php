@@ -36,15 +36,15 @@ if ($_SESSION['usuario_tipo'] == 4 || $_SESSION['usuario_tipo'] == 1) {
                             </div>
                             <div class="form-group">
                                 <label for="instructor">Instructor</label>
-                                <input id="instructor" type="text" class="form-control">
+                                <input id="instructor" type="text" class="form-control" required>
                             </div>
                             <div class="form-group">
                                 <label for="correo_us">Averia</label>
-                                <textarea class="form-control" id="averia_reporte" rows="3"></textarea>
+                                <textarea class="form-control" id="averia_reporte" rows="3" required></textarea>
                             </div>
                             <div class="form-group">
                                 <label for="correo_us">Comentario</label>
-                                <textarea class="form-control" id="comentario_reporte" rows="3"></textarea>
+                                <textarea class="form-control" id="comentario_reporte" rows="3" required></textarea>
                             </div>
                             <div class="form-group">
                                 <label for="categoria_id">Categoria</label>
@@ -56,7 +56,7 @@ if ($_SESSION['usuario_tipo'] == 4 || $_SESSION['usuario_tipo'] == 1) {
                             </div>
                             <div class="form-group">
                                 <label for="fecha_crea">Fecha</label>
-                                <input id="fecha_crea" type="date" class="form-control">
+                                <input id="fecha_crea" type="date" class="form-control" required>
                             </div>
                             <div class="form-group">
                                 <label for="tipo_averia_id">Clasificación</label>
