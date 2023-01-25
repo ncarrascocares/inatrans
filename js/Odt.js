@@ -3,12 +3,14 @@ $(document).ready(function() {
     let id_usuario = $('#id_usuario').val();
 
     let funcion = 'listar_reportes';
-    $('#tabla_reporte').DataTable({
+    let tabla_tarea = $('#tabla_reporte').DataTable({
+
         ajax: {
             "url": "../controlador/OdtController.php",
             "method": "POST",
-            "data": { funcion: funcion }
+            "data": { funcion: funcion },
         },
+
         columns: [
             { data: 'id_reporte' },
             { data: 'simulador_id' },
@@ -18,11 +20,16 @@ $(document).ready(function() {
             { data: 'responsable' },
             { data: 'nombre_categoria' },
             { data: 'nombre_averia' },
-            { "defaultContent": `<button class="btn btn-success" style="font-size:50%"><i class="fas fa-search"></i></button>
-                                    <button class="btn btn-danger"style="font-size:50%"><i class="fas fa-window-close"></i></button>` }
+            { "defaultContent": `<button type="button" class="ver btn btn-success" style="font-size:50%"><i class="fas fa-search"></i></button>
+                                 <button class="btn btn-danger"style="font-size:50%"><i class="fas fa-window-close"></i></button>` }
         ],
         "language": espanol
     });
+
+    $('#tabla_reporte tbody').on('click', 'tr', function () {
+        var data = tabla_tarea.row( this ).data();
+         location.href = "../vista/adm_odt_detalles.php?reporte="+data['id_reporte'];      
+    } );
 
     //Listando los valores del select para seleccionar el simulador
     let select = document.getElementById("simulador_id");
