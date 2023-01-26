@@ -32,3 +32,24 @@ if($_POST['funcion'] == 'guardar_reporte'){
      //die();
     
 }
+
+if($_POST['funcion'] == 'listar_reporte_por_id'){
+    $json = array();
+    $id_reporte = (int)$_POST['dato'];
+    $reporte->listar_reportes_id($id_reporte);
+  
+    foreach ($reporte->objetos as $objeto) {
+        $json[]=array(
+            'id_historial_reporte'=>$objeto->id_historial_reporte,
+            'usuario_id'=>$objeto->usuario_id,
+            'reporte_id'=>$objeto->reporte_id,
+            'fecha_crea_historial_reporte'=>$objeto->fecha_crea_historial_reporte,
+            'comentario_historial_reporte'=>$objeto->comentario_historial_reporte, 
+            'estatus_historial_reporte'=>$objeto->estatus_historial_reporte
+        );
+       
+    }
+
+    $jsonstring = json_encode($json);
+    echo $jsonstring;
+}

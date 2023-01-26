@@ -67,41 +67,9 @@ if ($_SESSION['usuario_tipo'] == 4 || $_SESSION['usuario_tipo'] == 1) {
                     </div>
                     <div class="card-body" style="font-size:80%;">
                         <section class="content">
-                            <div class="container-fluid">
-
-                                <!-- Timelime example  -->
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <!-- The time line -->
-                                        <div class="timeline">
-                                            <!-- timeline time label -->
-                                            <div class="time-label">
-                                                <span class="bg-red">10 Feb. 2014</span>
-                                            </div>
-                                            <!-- /.timeline-label -->
-                                            <!-- timeline item -->
-                                            <div>
-                                                <i class="fas fa-comments bg-yellow"></i>
-                                                <div class="timeline-item">
-                                                    <h3 class="timeline-header"><a href="#">Jay White</a> commented on your post</h3>
-                                                    <div class="timeline-body">
-                                                        Take me to your leader!
-                                                        Switzerland is small and neutral!
-                                                        We are more like Germany, ambitious and misunderstood!
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <!-- END timeline item -->
-                                            <div>
-                                                <i class="fas fa-clock bg-gray"></i>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- The end time line -->
-                                </div>
+                            <div class="container-fluid" id="reporte_historial">
+                                 
                             </div>
-                            <!-- /.timeline -->
-
                         </section>
                     </div>
                     <div class="card-footer"></div>

@@ -40,4 +40,16 @@ class Odt{
         echo "odt-insertada";
     
     }
+
+    function listar_reportes_id($id_reporte){
+        $sql = "SELECT * 
+                FROM historial_reporte 
+                WHERE reporte_id = :id_reporte;";
+
+        $query = $this->acceso->prepare($sql);
+        $query->execute(array(':id_reporte'=>$id_reporte));
+        $this->objetos=$query->fetchAll();
+        return $this->objetos;
+
+    }
 }
