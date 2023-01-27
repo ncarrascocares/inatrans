@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 17-01-2023 a las 21:58:55
+-- Tiempo de generación: 27-01-2023 a las 21:08:30
 -- Versión del servidor: 10.4.24-MariaDB
 -- Versión de PHP: 8.1.6
 
@@ -29,11 +29,11 @@ USE `db_inatrans`;
 -- Estructura de tabla para la tabla `averia`
 --
 
-CREATE TABLE IF NOT EXISTS `averia` (
-  `id_averia` int(11) NOT NULL AUTO_INCREMENT,
-  `Nombre_averia` varchar(100) COLLATE utf8mb4_spanish_ci NOT NULL,
-  PRIMARY KEY (`id_averia`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
+DROP TABLE IF EXISTS `averia`;
+CREATE TABLE `averia` (
+  `id_averia` int(11) NOT NULL,
+  `Nombre_averia` varchar(100) COLLATE utf8mb4_spanish_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
 
 --
 -- Volcado de datos para la tabla `averia`
@@ -42,7 +42,8 @@ CREATE TABLE IF NOT EXISTS `averia` (
 INSERT INTO `averia` (`id_averia`, `Nombre_averia`) VALUES
 (1, 'Software'),
 (2, 'Hardware'),
-(3, 'Electrico');
+(3, 'Electrico'),
+(4, 'Otro');
 
 -- --------------------------------------------------------
 
@@ -50,11 +51,11 @@ INSERT INTO `averia` (`id_averia`, `Nombre_averia`) VALUES
 -- Estructura de tabla para la tabla `categoria`
 --
 
-CREATE TABLE IF NOT EXISTS `categoria` (
-  `id_categoria` int(11) NOT NULL AUTO_INCREMENT,
-  `Nombre_categoria` varchar(100) COLLATE utf8mb4_spanish_ci NOT NULL,
-  PRIMARY KEY (`id_categoria`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
+DROP TABLE IF EXISTS `categoria`;
+CREATE TABLE `categoria` (
+  `id_categoria` int(11) NOT NULL,
+  `Nombre_categoria` varchar(100) COLLATE utf8mb4_spanish_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
 
 --
 -- Volcado de datos para la tabla `categoria`
@@ -71,11 +72,11 @@ INSERT INTO `categoria` (`id_categoria`, `Nombre_categoria`) VALUES
 -- Estructura de tabla para la tabla `categoria_licencia`
 --
 
-CREATE TABLE IF NOT EXISTS `categoria_licencia` (
-  `id_categoria_licencia` int(11) NOT NULL AUTO_INCREMENT,
-  `Nombre_categoria_licencia` varchar(100) COLLATE utf8mb4_spanish_ci NOT NULL,
-  PRIMARY KEY (`id_categoria_licencia`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
+DROP TABLE IF EXISTS `categoria_licencia`;
+CREATE TABLE `categoria_licencia` (
+  `id_categoria_licencia` int(11) NOT NULL,
+  `Nombre_categoria_licencia` varchar(100) COLLATE utf8mb4_spanish_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
 
 --
 -- Volcado de datos para la tabla `categoria_licencia`
@@ -92,14 +93,14 @@ INSERT INTO `categoria_licencia` (`id_categoria_licencia`, `Nombre_categoria_lic
 -- Estructura de tabla para la tabla `eventos`
 --
 
-CREATE TABLE IF NOT EXISTS `eventos` (
-  `id_eventos` int(11) NOT NULL AUTO_INCREMENT,
+DROP TABLE IF EXISTS `eventos`;
+CREATE TABLE `eventos` (
+  `id_eventos` int(11) NOT NULL,
   `title` varchar(100) COLLATE utf8mb4_spanish_ci NOT NULL,
   `descripcion` varchar(255) COLLATE utf8mb4_spanish_ci NOT NULL,
   `color` varchar(255) COLLATE utf8mb4_spanish_ci NOT NULL,
-  `start` datetime NOT NULL,
-  PRIMARY KEY (`id_eventos`)
-) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
+  `start` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
 
 --
 -- Volcado de datos para la tabla `eventos`
@@ -129,15 +130,15 @@ INSERT INTO `eventos` (`id_eventos`, `title`, `descripcion`, `color`, `start`) V
 -- Estructura de tabla para la tabla `historial_reporte`
 --
 
-CREATE TABLE IF NOT EXISTS `historial_reporte` (
-  `id_historial_reporte` int(11) NOT NULL AUTO_INCREMENT,
+DROP TABLE IF EXISTS `historial_reporte`;
+CREATE TABLE `historial_reporte` (
+  `id_historial_reporte` int(11) NOT NULL,
   `Usuario_id` int(11) NOT NULL,
   `Reporte_id` int(11) NOT NULL,
-  `Fecha_crea_historial_reporte` datetime NOT NULL,
+  `Fecha_crea_historial_reporte` datetime DEFAULT current_timestamp(),
   `Comentario_historial_reporte` varchar(255) COLLATE utf8mb4_spanish_ci NOT NULL,
-  `Estatus_historial_reporte` int(11) NOT NULL,
-  PRIMARY KEY (`id_historial_reporte`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
+  `Estatus_historial_reporte` int(11) DEFAULT 1
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
 
 --
 -- Volcado de datos para la tabla `historial_reporte`
@@ -150,7 +151,16 @@ INSERT INTO `historial_reporte` (`id_historial_reporte`, `Usuario_id`, `Reporte_
 (6, 2, 5, '2023-01-12 22:52:14', 'ok, lo cierro', 1),
 (7, 1, 4, '2023-01-01 23:37:17', 'Personal de España realiza revisión del software, pero continua problema', 1),
 (8, 1, 4, '2023-01-12 03:37:17', 'Personal de España realiza cambio del software del pc servidor, pero continua problema', 1),
-(9, 2, 4, '2023-01-14 23:39:42', 'Se utiliza carpeta truckbus de simulador 2 para reemplazar la del simulador 3 y se soluciona el problema.', 1);
+(9, 2, 4, '2023-01-14 23:39:42', 'Se utiliza carpeta truckbus de simulador 2 para reemplazar la del simulador 3 y se soluciona el problema.', 1),
+(10, 1, 1, '0000-00-00 00:00:00', 'aaa', 1),
+(11, 1, 1, '2023-01-27 14:57:00', 'test', 1),
+(12, 1, 1, '2023-01-27 14:59:19', 'test 3', 1),
+(13, 1, 1, '2023-01-27 15:01:37', 'ssss', 1),
+(14, 1, 1, '2023-01-27 15:02:08', 'xxxx', 1),
+(15, 1, 2, '2023-01-27 15:04:02', 'test', 1),
+(16, 2, 2, '2023-01-27 15:08:31', 'comentario de maglio santana', 1),
+(17, 1, 2, '2023-01-27 15:09:42', 'respuesta de Nicolás Carrasco', 1),
+(18, 1, 2, '2023-01-27 15:16:14', 'Se soluciona el inconveniente luego de re iniciar el ordenador izquierdo.', 1);
 
 -- --------------------------------------------------------
 
@@ -158,15 +168,14 @@ INSERT INTO `historial_reporte` (`id_historial_reporte`, `Usuario_id`, `Reporte_
 -- Estructura de tabla para la tabla `licencia`
 --
 
-CREATE TABLE IF NOT EXISTS `licencia` (
-  `id_licencia` int(11) NOT NULL AUTO_INCREMENT,
+DROP TABLE IF EXISTS `licencia`;
+CREATE TABLE `licencia` (
+  `id_licencia` int(11) NOT NULL,
   `Nombre` varchar(100) COLLATE utf8mb4_spanish_ci NOT NULL,
   `Ley` varchar(100) COLLATE utf8mb4_spanish_ci NOT NULL,
   `Descripcion` varchar(255) COLLATE utf8mb4_spanish_ci NOT NULL,
-  `categoria_licencia_id` int(11) NOT NULL,
-  PRIMARY KEY (`id_licencia`),
-  KEY `categoria_licencia_id` (`categoria_licencia_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
+  `categoria_licencia_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
 
 --
 -- Volcado de datos para la tabla `licencia`
@@ -188,37 +197,47 @@ INSERT INTO `licencia` (`id_licencia`, `Nombre`, `Ley`, `Descripcion`, `categori
 -- Estructura de tabla para la tabla `reporte`
 --
 
-CREATE TABLE IF NOT EXISTS `reporte` (
-  `id_reporte` int(11) NOT NULL AUTO_INCREMENT,
-  `id_interno` varchar(100) COLLATE utf8mb4_spanish_ci NOT NULL,
+DROP TABLE IF EXISTS `reporte`;
+CREATE TABLE `reporte` (
+  `id_reporte` int(11) NOT NULL,
   `Simulador_id` int(11) NOT NULL,
   `Usuario_id` int(11) NOT NULL,
+  `Instructor` varchar(255) COLLATE utf8mb4_spanish_ci NOT NULL,
   `Averia_reporte` varchar(255) COLLATE utf8mb4_spanish_ci NOT NULL,
   `Comentario_reporte` varchar(255) COLLATE utf8mb4_spanish_ci NOT NULL,
   `Categoria_id` int(11) NOT NULL,
   `Fecha_crea` datetime NOT NULL,
-  `Estatus_reporte` int(11) NOT NULL,
-  `Tipo_averia_id` int(11) NOT NULL,
-  PRIMARY KEY (`id_reporte`),
-  KEY `fk_Simulador_id` (`Simulador_id`),
-  KEY `Usuario_id` (`Usuario_id`),
-  KEY `Categoria_id` (`Categoria_id`),
-  KEY `Tipo_averia_id` (`Tipo_averia_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
+  `Estatus_reporte` int(11) DEFAULT 1,
+  `Tipo_averia_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
 
 --
 -- Volcado de datos para la tabla `reporte`
 --
 
-INSERT INTO `reporte` (`id_reporte`, `id_interno`, `Simulador_id`, `Usuario_id`, `Averia_reporte`, `Comentario_reporte`, `Categoria_id`, `Fecha_crea`, `Estatus_reporte`, `Tipo_averia_id`) VALUES
-(1, 'SIM1-1', 1, 1, 'Volante con desgaste test', 'Se realiza limpieza de cremallera test', 1, '2023-01-11 21:00:00', 1, 1),
-(2, 'SIM2-2', 2, 1, 'No arranca pc servidor', 'Se realiza limpieza del ordenador', 1, '2023-01-09 00:00:00', 1, 2),
-(3, 'SIM1-3', 1, 1, 'Pantalla salpicadera quemada', 'Se debe comprar una nueva pantalla', 3, '2023-01-09 00:00:00', 1, 2),
-(4, 'SIM3-4', 3, 1, 'Simulador presenta problemas ruta mel', 'Se solicita atención a España para solución', 3, '2023-01-03 00:00:00', 1, 2),
-(5, 'SIM4-5', 4, 1, 'test', 'test', 1, '2023-01-11 00:00:00', 1, 2),
-(6, 'SIM6-6', 6, 1, 'Pantalla salpicadera quemada', 'Se deve realizar compra de nueva pantalla', 1, '2023-01-11 00:00:00', 1, 1),
-(7, 'SIM7-7', 7, 1, 'Automatico electrico quemado', 'Se debe realizar cambio de todo el tablero', 3, '2023-01-11 00:00:00', 1, 3),
-(8, 'SIM1-8', 1, 1, 'test', 'test', 3, '2023-01-11 00:00:00', 0, 3);
+INSERT INTO `reporte` (`id_reporte`, `Simulador_id`, `Usuario_id`, `Instructor`, `Averia_reporte`, `Comentario_reporte`, `Categoria_id`, `Fecha_crea`, `Estatus_reporte`, `Tipo_averia_id`) VALUES
+(1, 1, 1, '', 'Volante con desgaste test', 'Se realiza limpieza de cremallera test', 1, '2023-01-11 21:00:00', 1, 1),
+(2, 2, 1, '', 'No arranca pc servidor', 'Se realiza limpieza del ordenador', 1, '2023-01-09 00:00:00', 1, 2),
+(3, 1, 1, '', 'Pantalla salpicadera quemada', 'Se debe comprar una nueva pantalla', 3, '2023-01-09 00:00:00', 1, 2),
+(4, 3, 1, '', 'Simulador presenta problemas ruta mel', 'Se solicita atención a España para solución', 3, '2023-01-03 00:00:00', 1, 2),
+(5, 4, 1, '', 'test', 'test', 1, '2023-01-11 00:00:00', 1, 2),
+(6, 6, 1, '', 'Pantalla salpicadera quemada', 'Se deve realizar compra de nueva pantalla', 1, '2023-01-11 00:00:00', 1, 1),
+(7, 7, 1, '', 'Automatico electrico quemado', 'Se debe realizar cambio de todo el tablero', 3, '2023-01-11 00:00:00', 1, 3),
+(8, 1, 1, '', 'test', 'test', 3, '2023-01-11 00:00:00', 0, 3),
+(9, 7, 1, 'Victor espinoza', 'Chapa de arranque suelta', 'Se realiza aprete de los pernos de anclaje de la chapa. Queda todo bien apretado y sin ningún tipo de juego.', 1, '2023-01-23 00:00:00', 1, 2),
+(10, 2, 1, 'Maglio Santana', 'Cremallera suena al realizar volanteo', 'Se realiza re aprete de toda la cremallera para evitar problemas durante las maniobras de calibración. Se debe realizar cambio del sistema actual', 2, '2023-01-24 00:00:00', 1, 2),
+(11, 3, 1, 'Sin instructor', 'Ruta MEL con problemas al grabar tramos', 'Opcion de grabado presenta errores al realizar grabado de tramos en la ruta, se solicita atención a España, los cuales revisaran alguna alternativa de solución', 3, '2023-01-24 00:00:00', 1, 1),
+(12, 1, 1, 'Aaa', 'aaaa', 'aaaa', 1, '2023-01-24 00:00:00', 1, 2),
+(13, 1, 1, 'Daniel Quiñones', 'Plataforma', 'Plataforma', 1, '2023-01-24 00:00:00', 1, 3),
+(14, 1, 1, 'Erick Noack', 'Volante de apoyo descalibrado', 'Se solicita soporte a personal de españa', 1, '2023-01-24 00:00:00', 1, 4),
+(15, 1, 1, 'Zzzz', 'zzzzz', 'zzzzz', 1, '2023-01-24 00:00:00', 1, 4),
+(16, 1, 1, '', '', '', 1, '0000-00-00 00:00:00', 1, 1),
+(17, 5, 1, 'Williams salinas', 'UPS secundaría con problemas', 'Batería de ups secundaria con problemas, debe realizarse cambio. ', 1, '2023-01-23 00:00:00', 1, 3),
+(18, 3, 2, 'ivan ramirez', 'malo', 'mas malo', 1, '2023-01-24 20:32:25', 1, 4),
+(19, 6, 1, 'Cristian saa', 'Cable de la cámara cortado', 'Cable de la cámara se corto con la tapa lateral del simulador', 1, '2023-01-24 00:00:00', 1, 4),
+(20, 1, 1, 'Rrr', 'rrrr', 'rrrr', 3, '2023-01-24 00:00:00', 1, 4),
+(21, 1, 1, 'Qqq', 'qqqq', 'qqqq', 1, '2023-01-24 00:00:00', 1, 4),
+(22, 2, 11, 'Gustavo Saavedra', 'No enciende pc', 'Pc estaba desconectado', 1, '2023-01-25 00:00:00', 1, 3);
 
 -- --------------------------------------------------------
 
@@ -226,17 +245,15 @@ INSERT INTO `reporte` (`id_reporte`, `id_interno`, `Simulador_id`, `Usuario_id`,
 -- Estructura de tabla para la tabla `simulador`
 --
 
-CREATE TABLE IF NOT EXISTS `simulador` (
-  `id_simulador` int(11) NOT NULL AUTO_INCREMENT,
+DROP TABLE IF EXISTS `simulador`;
+CREATE TABLE `simulador` (
+  `id_simulador` int(11) NOT NULL,
   `Nombre_simulador` varchar(100) COLLATE utf8mb4_spanish_ci NOT NULL,
   `Sucursal_id` int(11) NOT NULL,
   `Tipo_simulador` varchar(50) COLLATE utf8mb4_spanish_ci NOT NULL,
   `Descripcion_simulador` varchar(255) COLLATE utf8mb4_spanish_ci NOT NULL,
-  `Status_id` int(11) NOT NULL,
-  PRIMARY KEY (`id_simulador`),
-  KEY `Sucursal_id` (`Sucursal_id`),
-  KEY `Status_id` (`Status_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
+  `Status_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
 
 --
 -- Volcado de datos para la tabla `simulador`
@@ -261,11 +278,11 @@ INSERT INTO `simulador` (`id_simulador`, `Nombre_simulador`, `Sucursal_id`, `Tip
 -- Estructura de tabla para la tabla `status`
 --
 
-CREATE TABLE IF NOT EXISTS `status` (
-  `id_status` int(11) NOT NULL AUTO_INCREMENT,
-  `Nombre_status` varchar(100) COLLATE utf8mb4_spanish_ci NOT NULL,
-  PRIMARY KEY (`id_status`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
+DROP TABLE IF EXISTS `status`;
+CREATE TABLE `status` (
+  `id_status` int(11) NOT NULL,
+  `Nombre_status` varchar(100) COLLATE utf8mb4_spanish_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
 
 --
 -- Volcado de datos para la tabla `status`
@@ -282,11 +299,11 @@ INSERT INTO `status` (`id_status`, `Nombre_status`) VALUES
 -- Estructura de tabla para la tabla `sucursal`
 --
 
-CREATE TABLE IF NOT EXISTS `sucursal` (
-  `id_sucursal` int(11) NOT NULL AUTO_INCREMENT,
-  `Nombre_sucursal` varchar(100) COLLATE utf8mb4_spanish_ci NOT NULL,
-  PRIMARY KEY (`id_sucursal`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
+DROP TABLE IF EXISTS `sucursal`;
+CREATE TABLE `sucursal` (
+  `id_sucursal` int(11) NOT NULL,
+  `Nombre_sucursal` varchar(100) COLLATE utf8mb4_spanish_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
 
 --
 -- Volcado de datos para la tabla `sucursal`
@@ -303,11 +320,11 @@ INSERT INTO `sucursal` (`id_sucursal`, `Nombre_sucursal`) VALUES
 -- Estructura de tabla para la tabla `tipo_usuario`
 --
 
-CREATE TABLE IF NOT EXISTS `tipo_usuario` (
-  `id_tipo_usuario` int(11) NOT NULL AUTO_INCREMENT,
-  `Nombre_tipo_usuario` varchar(100) COLLATE utf8mb4_spanish_ci NOT NULL,
-  PRIMARY KEY (`id_tipo_usuario`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
+DROP TABLE IF EXISTS `tipo_usuario`;
+CREATE TABLE `tipo_usuario` (
+  `id_tipo_usuario` int(11) NOT NULL,
+  `Nombre_tipo_usuario` varchar(100) COLLATE utf8mb4_spanish_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
 
 --
 -- Volcado de datos para la tabla `tipo_usuario`
@@ -325,11 +342,11 @@ INSERT INTO `tipo_usuario` (`id_tipo_usuario`, `Nombre_tipo_usuario`) VALUES
 -- Estructura de tabla para la tabla `tipo_vehiculo`
 --
 
-CREATE TABLE IF NOT EXISTS `tipo_vehiculo` (
-  `id_tipo_vehiculo` int(11) NOT NULL AUTO_INCREMENT,
-  `Nombre` varchar(100) COLLATE utf8mb4_spanish_ci NOT NULL,
-  PRIMARY KEY (`id_tipo_vehiculo`)
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
+DROP TABLE IF EXISTS `tipo_vehiculo`;
+CREATE TABLE `tipo_vehiculo` (
+  `id_tipo_vehiculo` int(11) NOT NULL,
+  `Nombre` varchar(100) COLLATE utf8mb4_spanish_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
 
 --
 -- Volcado de datos para la tabla `tipo_vehiculo`
@@ -355,12 +372,12 @@ INSERT INTO `tipo_vehiculo` (`id_tipo_vehiculo`, `Nombre`) VALUES
 -- Estructura de tabla para la tabla `transmision`
 --
 
-CREATE TABLE IF NOT EXISTS `transmision` (
-  `id_transmision` int(11) NOT NULL AUTO_INCREMENT,
+DROP TABLE IF EXISTS `transmision`;
+CREATE TABLE `transmision` (
+  `id_transmision` int(11) NOT NULL,
   `Nombre` varchar(100) COLLATE utf8mb4_spanish_ci NOT NULL,
-  `Categoria` varchar(100) COLLATE utf8mb4_spanish_ci NOT NULL,
-  PRIMARY KEY (`id_transmision`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
+  `Categoria` varchar(100) COLLATE utf8mb4_spanish_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
 
 --
 -- Volcado de datos para la tabla `transmision`
@@ -380,20 +397,18 @@ INSERT INTO `transmision` (`id_transmision`, `Nombre`, `Categoria`) VALUES
 -- Estructura de tabla para la tabla `usuario`
 --
 
-CREATE TABLE IF NOT EXISTS `usuario` (
-  `id_usuario` int(11) NOT NULL AUTO_INCREMENT,
+DROP TABLE IF EXISTS `usuario`;
+CREATE TABLE `usuario` (
+  `id_usuario` int(11) NOT NULL,
   `Nombre_us` varchar(100) COLLATE utf8mb4_spanish_ci NOT NULL,
   `Apellido_us` varchar(100) COLLATE utf8mb4_spanish_ci NOT NULL,
   `Correo_us` varchar(100) COLLATE utf8mb4_spanish_ci NOT NULL,
   `Cargo_us` varchar(50) COLLATE utf8mb4_spanish_ci NOT NULL,
   `Sucursal_id` int(11) NOT NULL,
   `password_us` varchar(255) COLLATE utf8mb4_spanish_ci NOT NULL,
-  `Status_us` int(11) NOT NULL DEFAULT 1,
-  `usuario_tipo` int(11) NOT NULL,
-  PRIMARY KEY (`id_usuario`),
-  KEY `Status` (`Status_us`),
-  KEY `usuario_tipo` (`usuario_tipo`)
-) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
+  `Status_us` int(11) DEFAULT 1,
+  `usuario_tipo` int(11) DEFAULT 3
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
 
 --
 -- Volcado de datos para la tabla `usuario`
@@ -401,22 +416,25 @@ CREATE TABLE IF NOT EXISTS `usuario` (
 
 INSERT INTO `usuario` (`id_usuario`, `Nombre_us`, `Apellido_us`, `Correo_us`, `Cargo_us`, `Sucursal_id`, `password_us`, `Status_us`, `usuario_tipo`) VALUES
 (1, 'Nicolás', 'Carrasco', 'ncarrasco@correo.cl', 'Jefe Mantenimiento', 3, 'ncarrasco', 1, 4),
-(2, 'Maglio', 'Santana', 'msantana@inatrans.cl', 'Evaluador', 3, 'msantana', 1, 1),
-(3, 'Octavio', 'Jimenez', 'ojimenez@inatrans.cl', 'Evaluador', 3, 'ojimenez', 1, 3),
-(4, 'Fidel', 'Loyola', 'floyola@inatrans.cl', 'Evaluador', 3, 'floyola', 1, 3),
-(5, 'Gustavo', 'Saavedra', 'gsaavedra@inatrans.cl', 'Evaluador', 3, 'gsaavedra', 1, 3),
-(6, 'Juan', 'Gonzalez', 'jgonzalez@inatrans.cl', 'Evaluador', 2, 'jgonzalez', 1, 3),
-(7, 'Cesar', 'Rojas', 'crojas@inatrans.cl', 'Evaluador', 2, 'crojas', 1, 3),
-(8, 'Victor', 'Reyes', 'vreyes@inatrans.cl', 'Evaluador', 2, 'vreyes', 1, 3),
+(2, 'Maglio', 'Santana', 'msantana@inatrans.cl', 'Evaluador', 3, 'msantana', 0, 1),
+(3, 'Octavio', 'Jimenez', 'ojimenez@inatrans.cl', 'Evaluador', 3, 'ojimenez', 0, 3),
+(4, 'Fidel', 'Loyola', 'floyola@inatrans.cl', 'Evaluador', 3, 'floyola', 0, 3),
+(5, 'Gustavo', 'Saavedra', 'gsaavedra@inatrans.cl', 'Evaluador', 3, 'gsaavedra', 0, 3),
+(6, 'Juan', 'Gonzalez', 'jgonzalez@inatrans.cl', 'Evaluador', 2, 'jgonzalez', 0, 3),
+(7, 'Cesar', 'Rojas', 'crojas@inatrans.cl', 'Evaluador', 2, 'crojas', 0, 3),
+(8, 'Victor', 'Reyes', 'vreyes@inatrans.cl', 'Evaluador', 2, 'vreyes', 0, 3),
 (9, 'German', 'Martinez', 'gmartinez@inatrans.cl', 'Evaluador', 1, 'gmartinez', 1, 3),
 (10, 'Erick', 'Noack', 'enoack@inatrans.cl', 'Evaluador', 1, 'enoack', 1, 3),
-(11, 'Cristian', 'Saa', 'csaa@inatrans.cl', 'Evaluador', 1, 'csaa', 1, 2),
+(11, 'Cristian', 'Saa', 'csaa@inatrans.cl', 'Evaluador', 1, 'csaa', 1, 1),
 (12, 'Daniel', 'Quiñones', 'dquinones@inatrans.cl', 'Evaluador', 1, 'dquinones', 1, 3),
 (13, 'Pedro', 'Cabezas', 'pcabezas@inatrans.cl', 'Evaluador', 1, 'pcabezas', 1, 3),
 (14, 'Juan', 'Gutierrez', 'jgutierrez@inatrans.cl', 'Evaluador', 1, 'jgutierrez', 1, 3),
 (15, 'Williams', 'Salinas', 'wsalinas@inatrans.cl', 'Evaluador', 2, 'wsalinas', 1, 3),
 (16, 'Javier', 'Rosales', 'jrosales@inatrans.cl', 'Evaluador', 2, 'jrosales', 1, 3),
-(17, 'Cristian', 'Acevedo', 'cacevedo@inatrans.cl', 'Evaluador', 3, 'cacevedo', 1, 3);
+(17, 'Cristian', 'Acevedo', 'cacevedo@inatrans.cl', 'Evaluador', 3, 'cacevedo', 1, 3),
+(18, 'aa', 'aa', 'aa', 'aa', 1, 'aa', 0, 3),
+(19, 'Hector', 'Ortega', 'hortega@inatrans.cl', 'Encargado de laboratorio', 3, 'hortega', 1, 3),
+(20, 'Aaaa', 'Aaaaaa', 'dddddd', 'Zzzz', 1, 'zz', 0, 3);
 
 -- --------------------------------------------------------
 
@@ -424,19 +442,15 @@ INSERT INTO `usuario` (`id_usuario`, `Nombre_us`, `Apellido_us`, `Correo_us`, `C
 -- Estructura de tabla para la tabla `vehiculo`
 --
 
-CREATE TABLE IF NOT EXISTS `vehiculo` (
-  `id_vehiculo` int(11) NOT NULL AUTO_INCREMENT,
+DROP TABLE IF EXISTS `vehiculo`;
+CREATE TABLE `vehiculo` (
+  `id_vehiculo` int(11) NOT NULL,
   `Marca` varchar(100) COLLATE utf8mb4_spanish_ci NOT NULL,
   `Modelo` varchar(100) COLLATE utf8mb4_spanish_ci NOT NULL,
   `Tipo_vehiculo_id` int(11) NOT NULL,
   `Transmision_id` int(11) NOT NULL,
-  `categoria_licencia_id` int(11) NOT NULL,
-  PRIMARY KEY (`id_vehiculo`),
-  KEY `Tipo_vehiculo_id` (`Tipo_vehiculo_id`),
-  KEY `Transmision_id` (`Transmision_id`),
-  KEY `Licencia_id` (`categoria_licencia_id`),
-  KEY `categoria_licencia_id` (`categoria_licencia_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
+  `categoria_licencia_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
 
 --
 -- Volcado de datos para la tabla `vehiculo`
@@ -445,6 +459,207 @@ CREATE TABLE IF NOT EXISTS `vehiculo` (
 INSERT INTO `vehiculo` (`id_vehiculo`, `Marca`, `Modelo`, `Tipo_vehiculo_id`, `Transmision_id`, `categoria_licencia_id`) VALUES
 (1, 'Scania', 'K270', 2, 4, 1),
 (2, 'Mercedes Benz', 'Actros', 7, 1, 2);
+
+--
+-- Índices para tablas volcadas
+--
+
+--
+-- Indices de la tabla `averia`
+--
+ALTER TABLE `averia`
+  ADD PRIMARY KEY (`id_averia`);
+
+--
+-- Indices de la tabla `categoria`
+--
+ALTER TABLE `categoria`
+  ADD PRIMARY KEY (`id_categoria`);
+
+--
+-- Indices de la tabla `categoria_licencia`
+--
+ALTER TABLE `categoria_licencia`
+  ADD PRIMARY KEY (`id_categoria_licencia`);
+
+--
+-- Indices de la tabla `eventos`
+--
+ALTER TABLE `eventos`
+  ADD PRIMARY KEY (`id_eventos`);
+
+--
+-- Indices de la tabla `historial_reporte`
+--
+ALTER TABLE `historial_reporte`
+  ADD PRIMARY KEY (`id_historial_reporte`);
+
+--
+-- Indices de la tabla `licencia`
+--
+ALTER TABLE `licencia`
+  ADD PRIMARY KEY (`id_licencia`),
+  ADD KEY `categoria_licencia_id` (`categoria_licencia_id`);
+
+--
+-- Indices de la tabla `reporte`
+--
+ALTER TABLE `reporte`
+  ADD PRIMARY KEY (`id_reporte`),
+  ADD KEY `fk_Simulador_id` (`Simulador_id`),
+  ADD KEY `Usuario_id` (`Usuario_id`),
+  ADD KEY `Categoria_id` (`Categoria_id`),
+  ADD KEY `Tipo_averia_id` (`Tipo_averia_id`);
+
+--
+-- Indices de la tabla `simulador`
+--
+ALTER TABLE `simulador`
+  ADD PRIMARY KEY (`id_simulador`),
+  ADD KEY `Sucursal_id` (`Sucursal_id`),
+  ADD KEY `Status_id` (`Status_id`);
+
+--
+-- Indices de la tabla `status`
+--
+ALTER TABLE `status`
+  ADD PRIMARY KEY (`id_status`);
+
+--
+-- Indices de la tabla `sucursal`
+--
+ALTER TABLE `sucursal`
+  ADD PRIMARY KEY (`id_sucursal`);
+
+--
+-- Indices de la tabla `tipo_usuario`
+--
+ALTER TABLE `tipo_usuario`
+  ADD PRIMARY KEY (`id_tipo_usuario`);
+
+--
+-- Indices de la tabla `tipo_vehiculo`
+--
+ALTER TABLE `tipo_vehiculo`
+  ADD PRIMARY KEY (`id_tipo_vehiculo`);
+
+--
+-- Indices de la tabla `transmision`
+--
+ALTER TABLE `transmision`
+  ADD PRIMARY KEY (`id_transmision`);
+
+--
+-- Indices de la tabla `usuario`
+--
+ALTER TABLE `usuario`
+  ADD PRIMARY KEY (`id_usuario`),
+  ADD KEY `Status` (`Status_us`),
+  ADD KEY `usuario_tipo` (`usuario_tipo`);
+
+--
+-- Indices de la tabla `vehiculo`
+--
+ALTER TABLE `vehiculo`
+  ADD PRIMARY KEY (`id_vehiculo`),
+  ADD KEY `Tipo_vehiculo_id` (`Tipo_vehiculo_id`),
+  ADD KEY `Transmision_id` (`Transmision_id`),
+  ADD KEY `Licencia_id` (`categoria_licencia_id`),
+  ADD KEY `categoria_licencia_id` (`categoria_licencia_id`);
+
+--
+-- AUTO_INCREMENT de las tablas volcadas
+--
+
+--
+-- AUTO_INCREMENT de la tabla `averia`
+--
+ALTER TABLE `averia`
+  MODIFY `id_averia` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- AUTO_INCREMENT de la tabla `categoria`
+--
+ALTER TABLE `categoria`
+  MODIFY `id_categoria` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT de la tabla `categoria_licencia`
+--
+ALTER TABLE `categoria_licencia`
+  MODIFY `id_categoria_licencia` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT de la tabla `eventos`
+--
+ALTER TABLE `eventos`
+  MODIFY `id_eventos` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+
+--
+-- AUTO_INCREMENT de la tabla `historial_reporte`
+--
+ALTER TABLE `historial_reporte`
+  MODIFY `id_historial_reporte` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+
+--
+-- AUTO_INCREMENT de la tabla `licencia`
+--
+ALTER TABLE `licencia`
+  MODIFY `id_licencia` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
+--
+-- AUTO_INCREMENT de la tabla `reporte`
+--
+ALTER TABLE `reporte`
+  MODIFY `id_reporte` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+
+--
+-- AUTO_INCREMENT de la tabla `simulador`
+--
+ALTER TABLE `simulador`
+  MODIFY `id_simulador` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+
+--
+-- AUTO_INCREMENT de la tabla `status`
+--
+ALTER TABLE `status`
+  MODIFY `id_status` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT de la tabla `sucursal`
+--
+ALTER TABLE `sucursal`
+  MODIFY `id_sucursal` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT de la tabla `tipo_usuario`
+--
+ALTER TABLE `tipo_usuario`
+  MODIFY `id_tipo_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT de la tabla `tipo_vehiculo`
+--
+ALTER TABLE `tipo_vehiculo`
+  MODIFY `id_tipo_vehiculo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+
+--
+-- AUTO_INCREMENT de la tabla `transmision`
+--
+ALTER TABLE `transmision`
+  MODIFY `id_transmision` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- AUTO_INCREMENT de la tabla `usuario`
+--
+ALTER TABLE `usuario`
+  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+
+--
+-- AUTO_INCREMENT de la tabla `vehiculo`
+--
+ALTER TABLE `vehiculo`
+  MODIFY `id_vehiculo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- Restricciones para tablas volcadas
