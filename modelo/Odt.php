@@ -42,8 +42,8 @@ class Odt{
     }
 
     function listar_reportes_id($id_reporte){
-        $sql = "SELECT * 
-                FROM historial_reporte 
+        $sql = "SELECT *, concat(us.nombre_us,' ',us.apellido_us) as 'responsable' 
+                FROM historial_reporte JOIN usuario us on usuario_id = id_usuario  
                 WHERE reporte_id = :id_reporte;";
 
         $query = $this->acceso->prepare($sql);
@@ -51,5 +51,14 @@ class Odt{
         $this->objetos=$query->fetchAll();
         return $this->objetos;
 
+    }
+
+    function insertar_comentario($id_reporte, $comentario, $id_usuario){
+        $sql = "INSERT INTO historial_reporte (usuario_id, reporte_id, comentario_historial_reporte)
+                VALUES (:id_usuario, :id_reporte, :comentario);";
+        $query = $this->acceso->prepare($sql);
+        $query->execute(array(':id_usuario'=>$id_usuario, ':id_reporte'=>$id_reporte,':comentario'=>$comentario));
+        
+        echo "new_insert";
     }
 }

@@ -45,11 +45,20 @@ if($_POST['funcion'] == 'listar_reporte_por_id'){
             'reporte_id'=>$objeto->reporte_id,
             'fecha_crea_historial_reporte'=>$objeto->fecha_crea_historial_reporte,
             'comentario_historial_reporte'=>$objeto->comentario_historial_reporte, 
-            'estatus_historial_reporte'=>$objeto->estatus_historial_reporte
+            'estatus_historial_reporte'=>$objeto->estatus_historial_reporte,
+            'responsable'=>$objeto->responsable
         );
        
     }
 
     $jsonstring = json_encode($json);
     echo $jsonstring;
+}
+
+if($_POST['funcion'] == 'insertar_comentario'){
+    $id_reporte = (int)$_POST['id_reporte'];
+    $comentario = $_POST['new_comentario'];
+    $id_usuario = (int)$_POST['id_usuario'];
+   
+    $reporte->insertar_comentario($id_reporte, $comentario, $id_usuario);
 }
