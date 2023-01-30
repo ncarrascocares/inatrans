@@ -4,6 +4,7 @@ $(document).ready(function() {
 
     let id_usuario = $('#id_usuario').val();
     let id_reporte = $('#id_reporte').val();
+    let estatus = 1;
 
     //console.log(id_usuario);
     // console.log(id_reporte);
@@ -16,8 +17,11 @@ $(document).ready(function() {
         $.post('../controlador/OdtController.php', { funcion, dato }, (response) => {
 
             const reporte_historial = JSON.parse(response);
+
             let template = '';
             reporte_historial.forEach(reporte_historial => {
+                estatus = reporte_historial.estatus_reporte;
+                //console.log(reporte_historial.estatus_reporte)
                 template += `<div class="row">
                     <div class="col-md-12">
                         <div class="timeline">
@@ -37,8 +41,14 @@ $(document).ready(function() {
                     </div>
                 </div>`;
             });
-            template += `<button type="button" class="delete btn btn-danger"style="font-size:100%"><i class="fas fa-window-close"></i>Cerrar ODT</button>`;
-            $('#reporte_historial').html(template);
+            //console.log(estatus);
+            if (estatus == 0) {
+                template += `<button type="button" class="delete btn btn-danger"style="font-size:100%" disabled><i class="fas fa-window-close"></i>Cerrar ODT</button>`;
+                $('#reporte_historial').html(template);
+            } else {
+                template += `<button type="button" class="delete btn btn-danger"style="font-size:100%"><i class="fas fa-window-close"></i>Cerrar ODT</button>`;
+                $('#reporte_historial').html(template);
+            }
         })
     } //Fin de la función
 
@@ -61,16 +71,29 @@ $(document).ready(function() {
 
 
         e.preventDefault();
-    })
+    });
 
     //Se debe validar que el usuario que crea el reporte sea quien pueda borrarlo.
     $(document).on('click', '.delete', function borrar() {
         funcion = 'borrar_reporte';
         console.log(id_reporte);
-        $.post('../controlador/OdtController.php', { funcion, id_reporte }, (response) => {
-            console.log(response);
-        })
-    })
+        $.post('../controlador/OdtController.php', { funcion, id_reporte, id_usuario }, (response) => {
+            if (response == 'yes-delete') {
+                $('#delete').hide('slow');
+                $('#delete').show(1000);
+                $('#delete').hide(2000);
+
+                buscar_historial(id_reporte);
+            } else {
+                $('#no-delete').hide('slow');
+                $('#no-delete').show(1000);
+                $('#no-delete').hide(2000);
+
+                buscar_historial(id_reporte);
+            }
+        });
+
+    });
 
 
 })

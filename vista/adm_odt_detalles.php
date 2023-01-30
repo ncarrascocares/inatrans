@@ -24,20 +24,20 @@ if ($_SESSION['usuario_tipo'] == 4 || $_SESSION['usuario_tipo'] == 1) {
                     </button>
                 </div>
                 <div class="alert alert-success text-center" id="insert-ok" style="display:none;">
-                        <span><i class="fas fa-check"></i> Comentario Insertado</span>
-                    </div>
+                    <span><i class="fas fa-check"></i> Comentario Insertado</span>
+                </div>
                 <form id="form_insert_report" action="">
-                <div class="modal-body">
-                                  
-                    <textarea name="comentario" id="comentario" cols="50" rows="5" spellcheck="false" autofocus required></textarea>               
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                    <button type="submit" id="boton_comentario" class="btn btn-primary">Guardar</button>
-                </div>
+                    <div class="modal-body">
+
+                        <textarea name="comentario" id="comentario" cols="50" rows="5" spellcheck="false" autofocus required></textarea>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                        <button type="submit" id="boton_comentario" class="btn btn-primary">Guardar</button>
+                    </div>
                 </form>
-               
-               
+
+
             </div>
         </div>
     </div>
@@ -73,10 +73,16 @@ if ($_SESSION['usuario_tipo'] == 4 || $_SESSION['usuario_tipo'] == 1) {
 
                         </div>
                     </div>
+                    <div class="alert alert-success text-center" id="delete" style="display:none;">
+                            <span><i class="fas fa-check">ODT Cerrada!</i> </span>
+                        </div>
+                        <div class="alert alert-danger text-center m-1" id="no-delete" style="display:none;">
+                            <span><i class="fas fa-times "> ODT asignado a otro usuario</i></span>
+                        </div>
                     <div class="card-body" style="font-size:80%;">
                         <section class="content">
                             <div class="container-fluid" id="reporte_historial">
-                                 
+
                             </div>
                         </section>
                     </div>

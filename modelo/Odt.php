@@ -43,7 +43,9 @@ class Odt{
 
     function listar_reportes_id($id_reporte){
         $sql = "SELECT *, concat(us.nombre_us,' ',us.apellido_us) as 'responsable' 
-                FROM historial_reporte JOIN usuario us on usuario_id = id_usuario  
+                FROM historial_reporte hi
+                JOIN usuario us on usuario_id = id_usuario
+                JOIN reporte re on hi.reporte_id = re.id_reporte
                 WHERE reporte_id = :id_reporte;";
 
         $query = $this->acceso->prepare($sql);
@@ -60,5 +62,36 @@ class Odt{
         $query->execute(array(':id_usuario'=>$id_usuario, ':id_reporte'=>$id_reporte,':comentario'=>$comentario));
         
         echo "new_insert";
+    }
+
+    function borrar_reporte($id_reporte, $id_usuario){
+        date_default_timezone_set(timezoneId: "America/Santiago");
+        $fecha = date('Y-m-d H:i:s');
+        $comentario = 'Cierre de ODT';
+
+        //echo $fecha;
+        //die();
+        $sql = "SELECT id_reporte FROM reporte WHERE usuario_id = :usuario_id AND id_reporte = :id_reporte AND estatus_reporte = 1;";
+        $query = $this->acceso->prepare($sql);
+        $query->execute(array(':usuario_id'=>$id_usuario, ':id_reporte'=>$id_reporte));
+        $this->objetos=$query->fetchAll();
+        //var_dump($this->objetos);
+        //die();
+        if (empty($this->objetos)) {
+            echo 'no-delete';
+        }else{
+            $sql = "UPDATE reporte SET estatus_reporte = 0 WHERE id_reporte = :id_reporte AND usuario_id = :usuario_id;";
+            $query = $this->acceso->prepare($sql);
+            $query->execute(array(':id_reporte'=>$id_reporte, ':usuario_id'=>$id_usuario));
+
+            $sql_insert = "INSERT INTO historial_reporte (usuario_id, reporte_id, fecha_crea_historial_reporte, comentario_historial_reporte)
+                    VALUES (:usuario_id, :reporte_id,:fecha ,:comentario);";
+            $query_insert = $this->acceso->prepare($sql_insert);
+            $query_insert->execute(array(':usuario_id'=>$id_usuario, ':reporte_id'=>$id_reporte, ':fecha'=>$fecha, ':comentario'=>$comentario ));
+
+
+            echo 'yes-delete';
+        }
+        
     }
 }
