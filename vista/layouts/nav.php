@@ -6,6 +6,7 @@
 <link rel="stylesheet" href="../css/css/adminlte.min.css">
 <!-- Datatable -->
 <link rel="stylesheet" href="../css/datatables.css">
+
 </head>
 
 <body class="hold-transition sidebar-mini">
