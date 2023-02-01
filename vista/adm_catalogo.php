@@ -8,7 +8,7 @@ if ($_SESSION['usuario_tipo'] == 4 || $_SESSION['usuario_tipo'] == 1) {
     include_once 'layouts/header.php';
 ?>
 
-    <title>Adm | Catalogo</title>
+    <title>Adm | Resumen</title>
 
     <!-- Inclución del fichero nav -->
     <?php include_once 'layouts/nav.php'; ?>
@@ -20,12 +20,12 @@ if ($_SESSION['usuario_tipo'] == 4 || $_SESSION['usuario_tipo'] == 1) {
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1>Titulo del contenido</h1>
+                        <h1>Resumen</h1>
                     </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
                             <li class="breadcrumb-item"><a href="#">Home</a></li>
-                            <li class="breadcrumb-item active">Blank Page</li>
+                            <li class="breadcrumb-item active">Simulador</li>
                         </ol>
                     </div>
                 </div>
@@ -38,7 +38,7 @@ if ($_SESSION['usuario_tipo'] == 4 || $_SESSION['usuario_tipo'] == 1) {
             <!-- Default box -->
             <div class="card">
                 <div class="card-header">
-                    <h3 class="card-title">Title</h3>
+                    <h3 class="card-title">Ordenes de trabajo</h3>
 
                     <div class="card-tools">
                         <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
@@ -60,7 +60,7 @@ if ($_SESSION['usuario_tipo'] == 4 || $_SESSION['usuario_tipo'] == 1) {
                                     <p>Total ODT'S</p>
                                 </div>
                                 <div class="icon">
-                                
+
                                 </div>
                                 <a href="#" class="small-box-footer">Más información <i class="fas fa-arrow-circle-right"></i></a>
                             </div>
@@ -75,7 +75,7 @@ if ($_SESSION['usuario_tipo'] == 4 || $_SESSION['usuario_tipo'] == 1) {
                                     <p>Finalizadas</p>
                                 </div>
                                 <div class="icon">
-                                    
+
                                 </div>
                                 <a href="#" class="small-box-footer">Más información <i class="fas fa-arrow-circle-right"></i></a>
                             </div>
@@ -90,11 +90,19 @@ if ($_SESSION['usuario_tipo'] == 4 || $_SESSION['usuario_tipo'] == 1) {
                                     <p>Abiertas</p>
                                 </div>
                                 <div class="icon">
-                                    
+
                                 </div>
                                 <a href="#" class="small-box-footer">Más información <i class="fas fa-arrow-circle-right"></i></a>
                             </div>
                         </div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <h3>Simuladores</h3>
+                    <div class="row" id="estado_simulador">
+                        <!-- Estos card son los que vía js se deberan iterar segun la cantidad de simuladores existentes -->
+
+                        <!-- fin del card de información de los simuladores -->
                     </div>
                 </div>
                 <!-- /.card-body -->
@@ -114,3 +122,5 @@ if ($_SESSION['usuario_tipo'] == 4 || $_SESSION['usuario_tipo'] == 1) {
     header('Location: index.php');
 }
 ?>
+
+<script src="../js/Adm_catalogo.js"></script>
