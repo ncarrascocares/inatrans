@@ -12,8 +12,32 @@ class Odt{
         $this->acceso = $db->pdo;
     }
 
+    function listar_all_reporte(){
+        $sql = "SELECT COUNT(*) FROM reporte";
+        $query = $this->acceso->prepare($sql);
+        $query->execute();
+        $total_reporte=$query->fetchColumn();
+        echo $total_reporte;
+    }
+
+    function listar_all_reporte_cerradas($opcion){
+        $sql = "SELECT COUNT(*) FROM reporte WHERE estatus_reporte = :opcion";
+        $query = $this->acceso->prepare($sql);
+        $query->execute(array(':opcion'=>$opcion));
+        $total_reporte=$query->fetchColumn();
+        echo $total_reporte;
+    }
+
+    function listar_all_reporte_abiertas($opcion){
+        $sql = "SELECT COUNT(*) FROM reporte WHERE estatus_reporte = :opcion";
+        $query = $this->acceso->prepare($sql);
+        $query->execute(array(':opcion'=>$opcion));
+        $total_reporte=$query->fetchColumn();
+        echo $total_reporte;
+    }
+
     function listar_reportes(){
-        $sql = "SELECT re.id_reporte, re.Simulador_id, re.Averia_reporte, re.Comentario_reporte, re.Fecha_crea, concat(us.Nombre_us,' ',us.Apellido_us) as Responsable, ca.Nombre_categoria, av.Nombre_averia
+        $sql = "SELECT re.id_reporte, re.Simulador_id, re.Averia_reporte, re.Comentario_reporte, re.Fecha_crea, concat(us.Nombre_us,' ',us.Apellido_us) as Responsable, re.Clasificacion, ca.Nombre_categoria, av.Nombre_averia
         FROM reporte re 
         inner join usuario us on re.Usuario_id = us.id_usuario
         inner join categoria ca on re.Categoria_id = ca.id_categoria
@@ -25,9 +49,9 @@ class Odt{
         return $this->objetos;
     }
 
-    function guardar_reportes($id_usuario,$simulador_id,$instructor,$averia_reporte,$comentario_reporte,$categoria_id,$fecha_crea,$tipo_averia_id){
-        $sql = "INSERT INTO reporte (Simulador_id, Usuario_id, Instructor, Averia_reporte, Comentario_reporte, Categoria_id, Fecha_crea, Tipo_averia_id) 
-                            VALUES (:simulador,:id_usuario, :instructor, :averia_reporte, :comentario,:categoria, :fecha, :tipo)";
+    function guardar_reportes($id_usuario,$simulador_id,$instructor,$averia_reporte,$comentario_reporte,$categoria_id,$fecha_crea,$tipo_averia_id,$tipo_odt){
+        $sql = "INSERT INTO reporte (Simulador_id, Usuario_id, Instructor, Averia_reporte, Comentario_reporte, Categoria_id, Fecha_crea, Tipo_averia_id, Clasificacion) 
+                            VALUES (:simulador,:id_usuario, :instructor, :averia_reporte, :comentario,:categoria, :fecha, :tipo, :tipo_odt)";
         $query = $this->acceso->prepare($sql);
         $query->execute(array(  ':simulador' =>$simulador_id,
                                 ':id_usuario'=>$id_usuario,
@@ -36,7 +60,8 @@ class Odt{
                                 ':comentario'=>$comentario_reporte,
                                 ':categoria'=>$categoria_id,
                                 ':fecha'=>$fecha_crea,
-                                ':tipo'=>$tipo_averia_id));
+                                ':tipo'=>$tipo_averia_id,
+                                ':tipo_odt'=>$tipo_odt));
         echo "odt-insertada";
     
     }

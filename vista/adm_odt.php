@@ -67,6 +67,13 @@ if ($_SESSION['usuario_tipo'] == 4 || $_SESSION['usuario_tipo'] == 1) {
                                     <option value="4">Otro</option>
                                 </select>
                             </div>
+                            <div class="form-group">
+                                <label for="tipo_odt">Tipo ODT</label>
+                                <select class="form-control" id="tipo_odt">
+                                    <option value="Correctivo" selected>Correctivo</option>
+                                    <option value="Preventivo">Preventivo</option>
+                                </select>
+                            </div>
                     </div>
                     <div class="card-footer">
                         <button type="submit" class="btn bg-gradient-primary float-right m-1">Guardar</button>
@@ -115,6 +122,7 @@ if ($_SESSION['usuario_tipo'] == 4 || $_SESSION['usuario_tipo'] == 1) {
                                     <th>N° odt</th>
                                     <th>Simulador</th>
                                     <th>Averia</th>
+                                    <th>Mantenimiento</th>
                                     <th>Comentario</th>
                                     <th>Fecha</th>
                                     <th>Responsable</th>

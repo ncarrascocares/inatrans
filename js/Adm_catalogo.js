@@ -4,6 +4,9 @@ $(document).ready(function() {
     //console.log('Hola Mundo');
 
     estado_simulador();
+    total_reporte();
+    total_reporte_cerradas(0);
+    total_reporte_abiertas(1);
 
     function estado_simulador() {
         funcion = 'estado_simulador';
@@ -32,17 +35,17 @@ $(document).ready(function() {
                                         </li>
                                         <li class="nav-item">
                                             <a href="#" class="nav-link">
-                                                Averias Reportadas <span class="float-right badge bg-info">12</span>
+                                                Mantenimiento Preventivo <span class="float-right badge bg-info">12</span>
                                             </a>
                                         </li>
                                         <li class="nav-item">
                                             <a href="#" class="nav-link">
-                                                Averias finalizadas <span class="float-right badge bg-success">11</span>
+                                                Mantenimiento Correctivo <span class="float-right badge bg-success">11</span>
                                             </a>
                                         </li>
                                         <li class="nav-item">
                                             <a href="#" class="nav-link">
-                                                Averias abiertas <span class="float-right badge bg-danger">1</span>
+                                                Horas de funcionamiento <span class="float-right badge bg-danger">1</span>
                                             </a>
                                         </li>
                                     </ul>
@@ -55,4 +58,56 @@ $(document).ready(function() {
             $('#estado_simulador').html(template);
         });
     }
+
+    function total_reporte() {
+        funcion = 'total_reporte';
+        $.post('../controlador/SimuladorController.php', { funcion }, (response) => {
+            let total_reporte = response;
+
+            //padre del elemento; para indicar donde se insertara el elemento a crear
+            const padre_elemento = document.getElementById('total_reporte');
+            //Creacion de elemento
+            const elemento = document.createElement('H3');
+            elemento.textContent = total_reporte; //Asignado valor al elemento
+
+            //insertando el elemento dentro del elemento padre
+            padre_elemento.appendChild(elemento);
+
+        });
+    }
+
+    function total_reporte_cerradas(dato) {
+        funcion = 'total_reporte_cerradas';
+        $.post('../controlador/SimuladorController.php', { funcion, dato }, (response) => {
+            let total_reporte_cerradas = response;
+
+            //padre del elemento; para indicar donde se insertara el elemento a crear
+            const padre_elemento = document.getElementById('total_reportes_cerradas');
+            //Creacion de elemento
+            const elemento = document.createElement('H3');
+            elemento.textContent = total_reporte_cerradas; //Asignado valor al elemento
+
+            //insertando el elemento dentro del elemento padre
+            padre_elemento.appendChild(elemento);
+
+        });
+    }
+
+    function total_reporte_abiertas(dato) {
+        funcion = 'total_reporte_abiertas';
+        $.post('../controlador/SimuladorController.php', { funcion, dato }, (response) => {
+            let total_reporte_abiertas = response;
+
+            //padre del elemento; para indicar donde se insertara el elemento a crear
+            const padre_elemento = document.getElementById('total_reportes_abiertas');
+            //Creacion de elemento
+            const elemento = document.createElement('H3');
+            elemento.textContent = total_reporte_abiertas; //Asignado valor al elemento
+
+            //insertando el elemento dentro del elemento padre
+            padre_elemento.appendChild(elemento);
+
+        });
+    }
+
 });

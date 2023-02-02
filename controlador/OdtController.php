@@ -27,8 +27,9 @@ if($_POST['funcion'] == 'guardar_reporte'){
     $categoria_id = $_POST['categoria_id'];
     $fecha_crea = $_POST['fecha_crea'];
     $tipo_averia_id = $_POST['tipo_averia_id'];
+    $tipo_odt = $_POST['tipo_odt'];
 
-    $reporte->guardar_reportes($id_usuario,$simulador_id,$instructor,$averia_reporte,$comentario_reporte,$categoria_id,$fecha_crea,$tipo_averia_id);
+    $reporte->guardar_reportes($id_usuario,$simulador_id,$instructor,$averia_reporte,$comentario_reporte,$categoria_id,$fecha_crea,$tipo_averia_id,$tipo_odt);
      //die();
     
 }
@@ -46,7 +47,8 @@ if($_POST['funcion'] == 'listar_reporte_por_id'){
             'fecha_crea_historial_reporte'=>$objeto->fecha_crea_historial_reporte,
             'comentario_historial_reporte'=>$objeto->comentario_historial_reporte,
             'responsable'=>$objeto->responsable,
-            'estatus_reporte'=>$objeto->estatus_reporte
+            'estatus_reporte'=>$objeto->estatus_reporte,
+            'clasificacion'=>$objeto->clasificacion
         );
        
     }

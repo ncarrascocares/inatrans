@@ -1,9 +1,11 @@
 <?php
 
 include_once '../modelo/Simulador.php';
+include_once '../modelo/Odt.php';
 session_start();
 
 $simulador = new Simulador();
+$reporte = new Odt();
 
 
 if($_POST['funcion'] == 'estado_simulador'){
@@ -27,6 +29,35 @@ if($_POST['funcion'] == 'estado_simulador'){
     $jsonstring = json_encode($json);
     echo $jsonstring;
 }
+
+switch ($_POST['funcion']) {
+    case 'total_reporte':
+        $reporte->listar_all_reporte();
+        break;
+    
+    case 'total_reporte_cerradas':
+        $opcion = $_POST['dato'];
+        $reporte->listar_all_reporte_cerradas($opcion);
+        break;
+    case 'total_reporte_abiertas':
+        $opcion = $_POST['dato'];
+        $reporte->listar_all_reporte_abiertas($opcion);
+        break;
+}
+
+// if($_POST['funcion'] == 'total_reporte'){
+//     $reporte->listar_all_reporte();    
+// }
+
+// if($_POST['funcion'] == 'total_reporte_cerradas'){
+//     $opcion = $_POST['dato'];
+//     $reporte->listar_all_reporte_cerradas($opcion);    
+// }
+
+// if($_POST['funcion'] == 'total_reporte_cerradas'){
+//     $opcion = $_POST['dato'];
+//     $reporte->listar_all_reporte_cerradas($opcion);    
+// }
 
 
 
