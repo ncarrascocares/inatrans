@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 27-01-2023 a las 21:08:30
+-- Tiempo de generación: 02-02-2023 a las 21:53:20
 -- Versión del servidor: 10.4.24-MariaDB
 -- Versión de PHP: 8.1.6
 
@@ -136,31 +136,57 @@ CREATE TABLE `historial_reporte` (
   `Usuario_id` int(11) NOT NULL,
   `Reporte_id` int(11) NOT NULL,
   `Fecha_crea_historial_reporte` datetime DEFAULT current_timestamp(),
-  `Comentario_historial_reporte` varchar(255) COLLATE utf8mb4_spanish_ci NOT NULL,
-  `Estatus_historial_reporte` int(11) DEFAULT 1
+  `Comentario_historial_reporte` varchar(255) COLLATE utf8mb4_spanish_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
 
 --
 -- Volcado de datos para la tabla `historial_reporte`
 --
 
-INSERT INTO `historial_reporte` (`id_historial_reporte`, `Usuario_id`, `Reporte_id`, `Fecha_crea_historial_reporte`, `Comentario_historial_reporte`, `Estatus_historial_reporte`) VALUES
-(1, 1, 5, '2023-01-10 00:00:00', 'se cambia vastago', 1),
-(2, 2, 5, '2023-01-11 00:00:00', 'te respondo', 1),
-(5, 1, 5, '2023-01-14 00:00:00', 'Cierra la odt', 1),
-(6, 2, 5, '2023-01-12 22:52:14', 'ok, lo cierro', 1),
-(7, 1, 4, '2023-01-01 23:37:17', 'Personal de España realiza revisión del software, pero continua problema', 1),
-(8, 1, 4, '2023-01-12 03:37:17', 'Personal de España realiza cambio del software del pc servidor, pero continua problema', 1),
-(9, 2, 4, '2023-01-14 23:39:42', 'Se utiliza carpeta truckbus de simulador 2 para reemplazar la del simulador 3 y se soluciona el problema.', 1),
-(10, 1, 1, '0000-00-00 00:00:00', 'aaa', 1),
-(11, 1, 1, '2023-01-27 14:57:00', 'test', 1),
-(12, 1, 1, '2023-01-27 14:59:19', 'test 3', 1),
-(13, 1, 1, '2023-01-27 15:01:37', 'ssss', 1),
-(14, 1, 1, '2023-01-27 15:02:08', 'xxxx', 1),
-(15, 1, 2, '2023-01-27 15:04:02', 'test', 1),
-(16, 2, 2, '2023-01-27 15:08:31', 'comentario de maglio santana', 1),
-(17, 1, 2, '2023-01-27 15:09:42', 'respuesta de Nicolás Carrasco', 1),
-(18, 1, 2, '2023-01-27 15:16:14', 'Se soluciona el inconveniente luego de re iniciar el ordenador izquierdo.', 1);
+INSERT INTO `historial_reporte` (`id_historial_reporte`, `Usuario_id`, `Reporte_id`, `Fecha_crea_historial_reporte`, `Comentario_historial_reporte`) VALUES
+(1, 1, 5, '2023-01-10 00:00:00', 'se cambia vastago'),
+(2, 2, 5, '2023-01-11 00:00:00', 'te respondo'),
+(5, 1, 5, '2023-01-14 00:00:00', 'Cierra la odt'),
+(6, 2, 5, '2023-01-12 22:52:14', 'ok, lo cierro'),
+(7, 1, 4, '2023-01-01 23:37:17', 'Personal de España realiza revisión del software, pero continua problema'),
+(8, 1, 4, '2023-01-12 03:37:17', 'Personal de España realiza cambio del software del pc servidor, pero continua problema'),
+(9, 2, 4, '2023-01-14 23:39:42', 'Se utiliza carpeta truckbus de simulador 2 para reemplazar la del simulador 3 y se soluciona el problema.'),
+(10, 1, 1, '0000-00-00 00:00:00', 'aaa'),
+(11, 1, 1, '2023-01-27 14:57:00', 'test'),
+(12, 1, 1, '2023-01-27 14:59:19', 'test 3'),
+(13, 1, 1, '2023-01-27 15:01:37', 'ssss'),
+(14, 1, 1, '2023-01-27 15:02:08', 'xxxx'),
+(15, 1, 2, '2023-01-27 15:04:02', 'test'),
+(16, 2, 2, '2023-01-27 15:08:31', 'comentario de maglio santana'),
+(17, 1, 2, '2023-01-27 15:09:42', 'respuesta de Nicolás Carrasco'),
+(18, 1, 2, '2023-01-27 15:16:14', 'Se soluciona el inconveniente luego de re iniciar el ordenador izquierdo.'),
+(19, 1, 6, '2023-01-30 09:32:54', 'test'),
+(20, 1, 3, '2023-01-30 11:42:54', 'test'),
+(21, 1, 3, '2023-01-30 11:43:00', 'Cierre de ODT'),
+(22, 1, 4, '2023-01-30 11:52:03', 'Cierre de ODT'),
+(23, 1, 5, '2023-01-30 11:53:58', 'Cierre de ODT'),
+(24, 1, 6, '2023-01-30 12:15:09', 'Cierre de ODT'),
+(25, 1, 10, '2023-01-30 12:20:59', 'otro comentario más'),
+(26, 1, 10, '2023-01-30 12:21:05', 'Cierre de ODT'),
+(27, 1, 7, '2023-01-30 12:22:33', 'nuevo comentario'),
+(28, 1, 7, '2023-01-30 12:22:37', 'Cierre de ODT'),
+(29, 1, 18, '2023-01-30 12:25:04', 'Por favor cerrar el ticket si ya fue resuelto el problema'),
+(30, 1, 19, '2023-01-30 14:44:10', 'Se realiza cambio del cable y todo funciona con normalidad'),
+(31, 1, 19, '2023-01-30 14:44:16', 'Cierre de ODT'),
+(32, 1, 9, '2023-01-30 14:47:21', 'nuevo comentario'),
+(33, 1, 9, '2023-01-30 14:47:26', 'Cierre de ODT'),
+(34, 1, 11, '2023-01-30 14:48:20', 'Se solicita atención a personal de españa y se espera respuesta para mañana 31/01/2023'),
+(35, 1, 23, '2023-01-30 16:41:13', 'Grabación de las rutas listas, se ealizan pruebas de funcionamiento las cuales funcionan de manera normal. '),
+(36, 1, 23, '2023-01-30 16:41:18', 'Cierre de ODT'),
+(37, 1, 18, '2023-01-30 16:44:47', 'Aún se encuentra abierto esta odt y al parecer ya fue resuelto. Cerrar.'),
+(38, 1, 11, '2023-02-02 10:47:30', 'nuevo comentario'),
+(39, 1, 16, '2023-02-02 13:08:16', 'test'),
+(40, 1, 24, '2023-02-02 13:13:42', 'Se realiza revisión de los ordenadores, y estos se encontraban desconectado. Se realiza la conexión y todos encienden de manera normal. Simulador operativo.'),
+(41, 1, 16, '2023-02-02 13:23:31', 'Cierre de ODT'),
+(42, 1, 15, '2023-02-02 13:23:47', 'Comentario de prueba'),
+(43, 1, 15, '2023-02-02 13:25:06', 'Cierre de ODT'),
+(44, 1, 24, '2023-02-02 13:26:01', 'Simulador operativo'),
+(45, 1, 24, '2023-02-02 13:27:02', 'Cierre de ODT');
 
 -- --------------------------------------------------------
 
@@ -206,6 +232,7 @@ CREATE TABLE `reporte` (
   `Averia_reporte` varchar(255) COLLATE utf8mb4_spanish_ci NOT NULL,
   `Comentario_reporte` varchar(255) COLLATE utf8mb4_spanish_ci NOT NULL,
   `Categoria_id` int(11) NOT NULL,
+  `Clasificacion` varchar(100) COLLATE utf8mb4_spanish_ci NOT NULL,
   `Fecha_crea` datetime NOT NULL,
   `Estatus_reporte` int(11) DEFAULT 1,
   `Tipo_averia_id` int(11) NOT NULL
@@ -215,29 +242,33 @@ CREATE TABLE `reporte` (
 -- Volcado de datos para la tabla `reporte`
 --
 
-INSERT INTO `reporte` (`id_reporte`, `Simulador_id`, `Usuario_id`, `Instructor`, `Averia_reporte`, `Comentario_reporte`, `Categoria_id`, `Fecha_crea`, `Estatus_reporte`, `Tipo_averia_id`) VALUES
-(1, 1, 1, '', 'Volante con desgaste test', 'Se realiza limpieza de cremallera test', 1, '2023-01-11 21:00:00', 1, 1),
-(2, 2, 1, '', 'No arranca pc servidor', 'Se realiza limpieza del ordenador', 1, '2023-01-09 00:00:00', 1, 2),
-(3, 1, 1, '', 'Pantalla salpicadera quemada', 'Se debe comprar una nueva pantalla', 3, '2023-01-09 00:00:00', 1, 2),
-(4, 3, 1, '', 'Simulador presenta problemas ruta mel', 'Se solicita atención a España para solución', 3, '2023-01-03 00:00:00', 1, 2),
-(5, 4, 1, '', 'test', 'test', 1, '2023-01-11 00:00:00', 1, 2),
-(6, 6, 1, '', 'Pantalla salpicadera quemada', 'Se deve realizar compra de nueva pantalla', 1, '2023-01-11 00:00:00', 1, 1),
-(7, 7, 1, '', 'Automatico electrico quemado', 'Se debe realizar cambio de todo el tablero', 3, '2023-01-11 00:00:00', 1, 3),
-(8, 1, 1, '', 'test', 'test', 3, '2023-01-11 00:00:00', 0, 3),
-(9, 7, 1, 'Victor espinoza', 'Chapa de arranque suelta', 'Se realiza aprete de los pernos de anclaje de la chapa. Queda todo bien apretado y sin ningún tipo de juego.', 1, '2023-01-23 00:00:00', 1, 2),
-(10, 2, 1, 'Maglio Santana', 'Cremallera suena al realizar volanteo', 'Se realiza re aprete de toda la cremallera para evitar problemas durante las maniobras de calibración. Se debe realizar cambio del sistema actual', 2, '2023-01-24 00:00:00', 1, 2),
-(11, 3, 1, 'Sin instructor', 'Ruta MEL con problemas al grabar tramos', 'Opcion de grabado presenta errores al realizar grabado de tramos en la ruta, se solicita atención a España, los cuales revisaran alguna alternativa de solución', 3, '2023-01-24 00:00:00', 1, 1),
-(12, 1, 1, 'Aaa', 'aaaa', 'aaaa', 1, '2023-01-24 00:00:00', 1, 2),
-(13, 1, 1, 'Daniel Quiñones', 'Plataforma', 'Plataforma', 1, '2023-01-24 00:00:00', 1, 3),
-(14, 1, 1, 'Erick Noack', 'Volante de apoyo descalibrado', 'Se solicita soporte a personal de españa', 1, '2023-01-24 00:00:00', 1, 4),
-(15, 1, 1, 'Zzzz', 'zzzzz', 'zzzzz', 1, '2023-01-24 00:00:00', 1, 4),
-(16, 1, 1, '', '', '', 1, '0000-00-00 00:00:00', 1, 1),
-(17, 5, 1, 'Williams salinas', 'UPS secundaría con problemas', 'Batería de ups secundaria con problemas, debe realizarse cambio. ', 1, '2023-01-23 00:00:00', 1, 3),
-(18, 3, 2, 'ivan ramirez', 'malo', 'mas malo', 1, '2023-01-24 20:32:25', 1, 4),
-(19, 6, 1, 'Cristian saa', 'Cable de la cámara cortado', 'Cable de la cámara se corto con la tapa lateral del simulador', 1, '2023-01-24 00:00:00', 1, 4),
-(20, 1, 1, 'Rrr', 'rrrr', 'rrrr', 3, '2023-01-24 00:00:00', 1, 4),
-(21, 1, 1, 'Qqq', 'qqqq', 'qqqq', 1, '2023-01-24 00:00:00', 1, 4),
-(22, 2, 11, 'Gustavo Saavedra', 'No enciende pc', 'Pc estaba desconectado', 1, '2023-01-25 00:00:00', 1, 3);
+INSERT INTO `reporte` (`id_reporte`, `Simulador_id`, `Usuario_id`, `Instructor`, `Averia_reporte`, `Comentario_reporte`, `Categoria_id`, `Clasificacion`, `Fecha_crea`, `Estatus_reporte`, `Tipo_averia_id`) VALUES
+(1, 1, 1, '', 'Volante con desgaste test', 'Se realiza limpieza de cremallera test', 1, 'Correctivo', '2023-01-11 21:00:00', 0, 1),
+(2, 2, 1, '', 'No arranca pc servidor', 'Se realiza limpieza del ordenador', 1, 'Correctivo', '2023-01-09 00:00:00', 0, 2),
+(3, 1, 1, '', 'Pantalla salpicadera quemada', 'Se debe comprar una nueva pantalla', 3, 'Correctivo', '2023-01-09 00:00:00', 0, 2),
+(4, 3, 1, '', 'Simulador presenta problemas ruta mel', 'Se solicita atención a España para solución', 3, 'Correctivo', '2023-01-03 00:00:00', 0, 2),
+(5, 4, 1, '', 'test', 'test', 1, 'Correctivo', '2023-01-11 00:00:00', 0, 2),
+(6, 6, 1, '', 'Pantalla salpicadera quemada', 'Se deve realizar compra de nueva pantalla', 1, 'Correctivo', '2023-01-11 00:00:00', 0, 1),
+(7, 7, 1, '', 'Automatico electrico quemado', 'Se debe realizar cambio de todo el tablero', 3, 'Correctivo', '2023-01-11 00:00:00', 0, 3),
+(8, 1, 1, '', 'test', 'test', 3, 'Correctivo', '2023-01-11 00:00:00', 0, 3),
+(9, 7, 1, 'Victor espinoza', 'Chapa de arranque suelta', 'Se realiza aprete de los pernos de anclaje de la chapa. Queda todo bien apretado y sin ningún tipo de juego.', 1, 'Correctivo', '2023-01-23 00:00:00', 0, 2),
+(10, 2, 1, 'Maglio Santana', 'Cremallera suena al realizar volanteo', 'Se realiza re aprete de toda la cremallera para evitar problemas durante las maniobras de calibración. Se debe realizar cambio del sistema actual', 2, 'Correctivo', '2023-01-24 00:00:00', 0, 2),
+(11, 3, 1, 'Sin instructor', 'Ruta MEL con problemas al grabar tramos', 'Opcion de grabado presenta errores al realizar grabado de tramos en la ruta, se solicita atención a España, los cuales revisaran alguna alternativa de solución', 3, 'Correctivo', '2023-01-24 00:00:00', 1, 1),
+(12, 1, 1, 'Aaa', 'aaaa', 'aaaa', 1, 'Correctivo', '2023-01-24 00:00:00', 1, 2),
+(13, 1, 1, 'Daniel Quiñones', 'Plataforma', 'Plataforma', 1, 'Correctivo', '2023-01-24 00:00:00', 1, 3),
+(14, 1, 1, 'Erick Noack', 'Volante de apoyo descalibrado', 'Se solicita soporte a personal de españa', 1, 'Correctivo', '2023-01-24 00:00:00', 1, 4),
+(15, 1, 1, 'Zzzz', 'zzzzz', 'zzzzz', 1, 'Correctivo', '2023-01-24 00:00:00', 0, 4),
+(16, 1, 1, '', '', '', 1, 'Correctivo', '0000-00-00 00:00:00', 0, 1),
+(17, 5, 1, 'Williams salinas', 'UPS secundaría con problemas', 'Batería de ups secundaria con problemas, debe realizarse cambio. ', 1, 'Correctivo', '2023-01-23 00:00:00', 1, 3),
+(18, 3, 2, 'ivan ramirez', 'malo', 'mas malo', 1, 'Correctivo', '2023-01-24 20:32:25', 1, 4),
+(19, 6, 1, 'Cristian saa', 'Cable de la cámara cortado', 'Cable de la cámara se corto con la tapa lateral del simulador', 1, 'Correctivo', '2023-01-24 00:00:00', 0, 4),
+(20, 1, 1, 'Rrr', 'rrrr', 'rrrr', 3, 'Correctivo', '2023-01-24 00:00:00', 1, 4),
+(21, 1, 1, 'Qqq', 'qqqq', 'qqqq', 1, 'Correctivo', '2023-01-24 00:00:00', 1, 4),
+(22, 2, 11, 'Gustavo Saavedra', 'No enciende pc', 'Pc estaba desconectado', 1, 'Correctivo', '2023-01-25 00:00:00', 1, 3),
+(23, 10, 1, 'Maglio Santana', 'Grabación de las rutas Descenso Mel y uso de pista de emergencia.', 'Se realiza grabación de las rutas solicitadas por jefa de servicios Teresita reyes', 1, 'Correctivo', '2023-01-30 00:00:00', 0, 4),
+(24, 2, 1, 'Maglio Santana', 'No enciende el simulador', 'Se solicita acceso remoto para verificar el problema', 1, 'Correctivo', '2023-02-02 00:00:00', 0, 3),
+(25, 11, 1, 'Sin instructor', 'Equipo sin uso', 'Equipo se encuentra a piso y sin remolque asignado', 3, 'Correctivo', '2023-02-01 00:00:00', 1, 4),
+(26, 1, 1, 'Pedro Cabezas', 'Camara no funciona', 'Camara al parecer se encuentra desconectada', 1, 'Correctivo', '2023-02-09 00:00:00', 1, 2);
 
 -- --------------------------------------------------------
 
@@ -427,7 +458,7 @@ INSERT INTO `usuario` (`id_usuario`, `Nombre_us`, `Apellido_us`, `Correo_us`, `C
 (10, 'Erick', 'Noack', 'enoack@inatrans.cl', 'Evaluador', 1, 'enoack', 1, 3),
 (11, 'Cristian', 'Saa', 'csaa@inatrans.cl', 'Evaluador', 1, 'csaa', 1, 1),
 (12, 'Daniel', 'Quiñones', 'dquinones@inatrans.cl', 'Evaluador', 1, 'dquinones', 1, 3),
-(13, 'Pedro', 'Cabezas', 'pcabezas@inatrans.cl', 'Evaluador', 1, 'pcabezas', 1, 3),
+(13, 'Pedro', 'Cabezas', 'pcabezas@inatrans.cl', 'Evaluador', 1, 'pcabezas', 0, 3),
 (14, 'Juan', 'Gutierrez', 'jgutierrez@inatrans.cl', 'Evaluador', 1, 'jgutierrez', 1, 3),
 (15, 'Williams', 'Salinas', 'wsalinas@inatrans.cl', 'Evaluador', 2, 'wsalinas', 1, 3),
 (16, 'Javier', 'Rosales', 'jrosales@inatrans.cl', 'Evaluador', 2, 'jrosales', 1, 3),
@@ -599,7 +630,7 @@ ALTER TABLE `eventos`
 -- AUTO_INCREMENT de la tabla `historial_reporte`
 --
 ALTER TABLE `historial_reporte`
-  MODIFY `id_historial_reporte` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `id_historial_reporte` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
 
 --
 -- AUTO_INCREMENT de la tabla `licencia`
@@ -611,7 +642,7 @@ ALTER TABLE `licencia`
 -- AUTO_INCREMENT de la tabla `reporte`
 --
 ALTER TABLE `reporte`
-  MODIFY `id_reporte` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `id_reporte` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 
 --
 -- AUTO_INCREMENT de la tabla `simulador`
