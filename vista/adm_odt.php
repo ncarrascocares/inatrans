@@ -39,12 +39,12 @@ if ($_SESSION['usuario_tipo'] == 4 || $_SESSION['usuario_tipo'] == 1) {
                                 <input id="instructor" type="text" class="form-control" required>
                             </div>
                             <div class="form-group">
-                                <label for="correo_us">Averia</label>
+                                <label for="correo_us">Problema</label>
                                 <textarea class="form-control" id="averia_reporte" rows="3" required></textarea>
                             </div>
                             <div class="form-group">
-                                <label for="correo_us">Comentario</label>
-                                <textarea class="form-control" id="comentario_reporte" rows="3" required></textarea>
+                                <label for="correo_us">Acción</label>
+                                <textarea class="form-control" id="comentario_reporte" rows="3" spellcheck="false" autofocus required></textarea>
                             </div>
                             <div class="form-group">
                                 <label for="categoria_id">Categoria</label>
@@ -56,7 +56,7 @@ if ($_SESSION['usuario_tipo'] == 4 || $_SESSION['usuario_tipo'] == 1) {
                             </div>
                             <div class="form-group">
                                 <label for="fecha_crea">Fecha</label>
-                                <input id="fecha_crea" type="date" class="form-control" required>
+                                <input id="fecha_crea" type="datetime" class="form-control" required>
                             </div>
                             <div class="form-group">
                                 <label for="tipo_averia_id">Clasificación</label>
@@ -121,9 +121,9 @@ if ($_SESSION['usuario_tipo'] == 4 || $_SESSION['usuario_tipo'] == 1) {
                                 <tr>
                                     <th>N° odt</th>
                                     <th>Simulador</th>
-                                    <th>Averia</th>
+                                    <th>Problema</th>
                                     <th>Mantenimiento</th>
-                                    <th>Comentario</th>
+                                    <th>Acción</th>
                                     <th>Fecha</th>
                                     <th>Responsable</th>
                                     <th>Categoria</th>
