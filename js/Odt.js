@@ -22,7 +22,7 @@ $(document).ready(function() {
             { data: 'nombre_categoria' },
             { data: 'nombre_averia' },
             { "defaultContent": `<button type="button" class="ver btn btn-success" style="font-size:50%"><i class="fas fa-search"></i></button>
-                                 <button type="button" class="ver btn btn-info" style="font-size:50%"><i class="fa fa-file-pdf"></i></button>` }
+                                 <button type="button" class="generar btn btn-info" style="font-size:50%"><i class="fa fa-file-pdf"></i></button>` }
         ],
         "language": espanol
     });
