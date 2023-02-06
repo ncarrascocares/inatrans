@@ -16,7 +16,6 @@ $(document).ready(function() {
             { data: 'simulador_id' },
             { data: 'averia_reporte' },
             { data: 'clasificacion' },
-            { data: 'comentario_reporte' },
             { data: 'fecha_crea' },
             { data: 'responsable' },
             { data: 'nombre_categoria' },
@@ -54,14 +53,13 @@ $(document).ready(function() {
         let simulador_id = $('#simulador_id').val();
         let instructor = $('#instructor').val();
         let averia_reporte = $('#averia_reporte').val();
-        let comentario_reporte = $('#comentario_reporte').val();
         let categoria_id = $('#categoria_id').val();
         let fecha_crea = $('#fecha_crea').val();
         let tipo_averia_id = $('#tipo_averia_id').val();
         let tipo_odt = $('#tipo_odt').val();
 
         let funcion = "guardar_reporte";
-        $.post('../controlador/OdtController.php', { id_usuario, simulador_id, instructor, averia_reporte, comentario_reporte, categoria_id, fecha_crea, tipo_averia_id, tipo_odt, funcion }, (response) => {
+        $.post('../controlador/OdtController.php', { id_usuario, simulador_id, instructor, averia_reporte, categoria_id, fecha_crea, tipo_averia_id, tipo_odt, funcion }, (response) => {
             //console.log(response);
             if (response == 'odt-insertada') {
                 $('#new-report').hide('slow');

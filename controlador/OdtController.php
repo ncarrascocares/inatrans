@@ -23,13 +23,12 @@ if($_POST['funcion'] == 'guardar_reporte'){
     $simulador_id = $_POST['simulador_id'];
     $instructor = ucfirst($_POST['instructor']);
     $averia_reporte = $_POST['averia_reporte'];
-    $comentario_reporte = $_POST['comentario_reporte'];
     $categoria_id = $_POST['categoria_id'];
     $fecha_crea = $_POST['fecha_crea'];
     $tipo_averia_id = $_POST['tipo_averia_id'];
     $tipo_odt = $_POST['tipo_odt'];
 
-    $reporte->guardar_reportes($id_usuario,$simulador_id,$instructor,$averia_reporte,$comentario_reporte,$categoria_id,$fecha_crea,$tipo_averia_id,$tipo_odt);
+    $reporte->guardar_reportes($id_usuario,$simulador_id,$instructor,$averia_reporte,$categoria_id,$fecha_crea,$tipo_averia_id,$tipo_odt);
      //die();
     
 }
