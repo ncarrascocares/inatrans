@@ -33,6 +33,12 @@ $(document).ready(function() {
         location.href = "../vista/adm_odt_detalles.php?reporte=" + id;
     });
 
+    $('#tabla_reporte tbody').on('click', '.generar', function() {
+        let datos = tabla_tarea.row($(this).parents()).data();
+        let id = datos.id_reporte;
+        location.href = "../vista/pdf.php?reporte=" + id;
+    });
+
     //Listando los valores del select para seleccionar el simulador
     let select = document.getElementById("simulador_id");
     for (i = 1; i <= 11; i++) {

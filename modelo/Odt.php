@@ -20,6 +20,14 @@ class Odt{
         echo $total_reporte;
     }
 
+    function listar_reporte_id($id_reporte){
+        $sql = "SELECT * FROM reporte WHERE id_reporte = :id";
+        $query = $this->acceso->prepare($sql);
+        $query->execute(array(':id'=>$id_reporte));
+        return $query->fetchObject();
+        //return $query;
+    }
+
     function listar_all_reporte_cerradas($opcion){
         $sql = "SELECT COUNT(*) FROM reporte WHERE estatus_reporte = :opcion";
         $query = $this->acceso->prepare($sql);
