@@ -15,7 +15,7 @@ $(document).ready(function() {
             let template = '';
             let contador = 0;
             est_simulador.forEach(est_simulador => {
-
+                //console.log(est_simulador.total)
                 if (contador < 9) {
                     template += `
                         <div class="col-md-4">
@@ -37,24 +37,24 @@ $(document).ready(function() {
                                         </li>
                                         <li class="nav-item">
                                             <a href="#" class="nav-link">
-                                                Mantenimiento Preventivo <span class="float-right badge bg-info">12</span>
+                                                Mantenimiento Preventivo <span class="float-right badge bg-success">${est_simulador.pre}</span>
                                             </a>
                                         </li>
                                         <li class="nav-item">
                                             <a href="#" class="nav-link">
-                                                Mantenimiento Correctivo <span class="float-right badge bg-success">11</span>
+                                                Mantenimiento Correctivo <span class="float-right badge bg-danger">${est_simulador.corr}</span>
                                             </a>
                                         </li>
                                         <li class="nav-item">
                                             <a href="#" class="nav-link">
-                                                Horas de funcionamiento <span class="float-right badge bg-danger">1</span>
+                                                Horas de funcionamiento <span class="float-right badge bg-info">1</span>
                                             </a>
                                         </li>
                                     </ul>
                                 </div>
                             </div>
                         </div>`;
-                }else{
+                } else {
                     template += `
                         <div class="col-md-6">
                             <div class="card card-widget widget-user-2">
@@ -75,17 +75,17 @@ $(document).ready(function() {
                                         </li>
                                         <li class="nav-item">
                                             <a href="#" class="nav-link">
-                                                Mantenimiento Preventivo <span class="float-right badge bg-info">12</span>
+                                                Mantenimiento Preventivo <span class="float-right badge bg-success">${est_simulador.pre}</span>
                                             </a>
                                         </li>
                                         <li class="nav-item">
                                             <a href="#" class="nav-link">
-                                                Mantenimiento Correctivo <span class="float-right badge bg-success">11</span>
+                                                Mantenimiento Correctivo <span class="float-right badge bg-danger">${est_simulador.corr}</span>
                                             </a>
                                         </li>
                                         <li class="nav-item">
                                             <a href="#" class="nav-link">
-                                                Horas de funcionamiento <span class="float-right badge bg-danger">1</span>
+                                                Horas de funcionamiento <span class="float-right badge bg-info">1</span>
                                             </a>
                                         </li>
                                     </ul>

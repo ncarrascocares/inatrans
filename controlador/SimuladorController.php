@@ -23,6 +23,9 @@ if($_POST['funcion'] == 'estado_simulador'){
             'nombre_sucursal'=>$objeto->nombre_sucursal,
             'id_status'=>$objeto->id_status,
             'nombre_status'=>$objeto->nombre_status,
+            'total'=>$objeto->total,
+            'pre'=>$objeto->preventivo,
+            'corr'=>$objeto->correctivo
         );
     }
 

@@ -53,7 +53,7 @@ ob_start();
                 </tr>
                 <tr>
                     <th scope="row">Averia</th>
-                    <td colspan="2"><?= $obj->comentario_reporte ?></td>
+                    <td colspan="2"><?= $obj->averia_reporte ?></td>
                 </tr>
                 <tr>
                     <th scope="row">Simulador</th>
@@ -99,5 +99,5 @@ $dompdf->setOptions($option);
 $dompdf->loadHtml($html);
 $dompdf->setPaper('A4', 'Landscape');
 $dompdf->render();
-$dompdf->stream("test.pdf", array("attachment" => true));
+$dompdf->stream("ODT-".$id_repo, array("attachment" => true));
 ?>
