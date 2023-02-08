@@ -70,6 +70,18 @@ class Odt{
                                 ':tipo'=>$tipo_averia_id,
                                 ':tipo_odt'=>$tipo_odt));
         echo "odt-insertada";
+
+        switch ($categoria_id) {
+            case 1:
+                //Realizar un update en la tabla simulador y dejar como estado operativo con detalles
+                break;
+            case 2:
+                 //Realizar un update en la tabla simulador y dejar como estado Fuera de servicio
+                break;
+            case 3:
+                 //Realizar un update en la tabla simulador y dejar como estado Fuera de servicio
+                break;
+        }
     
     }
 
