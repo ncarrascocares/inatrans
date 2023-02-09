@@ -46,22 +46,28 @@ switch ($_POST['funcion']) {
         $opcion = $_POST['dato'];
         $reporte->listar_all_reporte_abiertas($opcion);
         break;
+    case 'listar_simuladores':
+        $json = array();
+        $simulador->listar_simuladores();
+        foreach ($simulador->objetos as $objeto) {
+            $json[] = array(
+                'id_simulador'=>$objeto->id_simulador,
+                'nombre_simulador'=>$objeto->nombre_simulador,
+                'sucursal_id'=>$objeto->sucursal_id,
+                'tipo_simulador'=>$objeto->tipo_simulador,
+                'descripcion_simulador'=>$objeto->descripcion_simulador,
+                'status_id'=>$objeto->status_id
+            );
+        }
+            $jsonstring = json_encode($json);
+            echo $jsonstring;
+        break;
+    case 'cambio_estado':
+        $sim = (int)$_POST['sim'];
+        $est = (int)$_POST['est'];
+        $simulador->cambio_estado($sim, $est);
+        break;
 }
-
-// if($_POST['funcion'] == 'total_reporte'){
-//     $reporte->listar_all_reporte();    
-// }
-
-// if($_POST['funcion'] == 'total_reporte_cerradas'){
-//     $opcion = $_POST['dato'];
-//     $reporte->listar_all_reporte_cerradas($opcion);    
-// }
-
-// if($_POST['funcion'] == 'total_reporte_cerradas'){
-//     $opcion = $_POST['dato'];
-//     $reporte->listar_all_reporte_cerradas($opcion);    
-// }
-
 
 
 ?>

@@ -1,5 +1,5 @@
 $(document).ready(function() {
-
+    const cam_est = document.getElementById('cam_est');
     let funcion = '';
     //console.log('Hola Mundo');
 
@@ -32,7 +32,7 @@ $(document).ready(function() {
                                     <ul class="nav flex-column">
                                         <li class="nav-item">
                                             <a href="#" class="nav-link">
-                                                Estado <span class="float-right badge bg-primary">${est_simulador.nombre_status}</span>
+                                                Estado <span class="float-right badge bg-info">${est_simulador.nombre_status}</span>
                                             </a>
                                         </li>
                                         <li class="nav-item">
@@ -96,11 +96,13 @@ $(document).ready(function() {
                 contador++;
             });
 
-            console.log(contador);
+            //console.log(contador);
 
             $('#estado_simulador').html(template);
         });
     }
+
+
 
     function total_reporte() {
         funcion = 'total_reporte';
@@ -152,5 +154,60 @@ $(document).ready(function() {
 
         });
     }
+
+    cam_est.addEventListener('click', (e) => {
+        funcion = 'listar_simuladores';
+        let template = '';
+        let estado = '';
+        $.post('../controlador/SimuladorController.php', { funcion }, (response) => {
+            const list_sim = JSON.parse(response);
+
+            template += `<option selected>Selecciona el simulador</option>`;
+            list_sim.forEach(list_sim => {
+                template += `
+                <option value="${list_sim.id_simulador}">${list_sim.nombre_simulador}</option>
+                `;
+            })
+            estado += `
+                <option selected>Selecciona el estado</option>
+                <option value="1">Operativo</option>
+                <option value="2">Operativo con detalles</option>
+                <option value="3">Fuera de servicio</option>
+                `;
+            $('#select_sim').html(template);
+            $('#estado_sim').html(estado);
+        })
+
+    })
+
+    $('#form_estado_sim').submit((e) => {
+
+        funcion = 'cambio_estado';
+
+        let sim = $('#select_sim').val();
+        let est = $('#estado_sim').val();
+
+        $.post('../controlador/SimuladorController.php', { funcion, sim, est }, (response) => {
+            if (response == 'yes-update-estado') {
+                $('#estado_update').hide('slow');
+                $('#estado_update').show(1000);
+                $('#estado_update').hide(2000);
+
+                //Accion para que todos los campos input se reseteen
+                $('#form_estado_sim').trigger('reset');
+            } else {
+                $('#estado_no_update').hide('slow');
+                $('#estado_no_update').show(1000);
+                $('#estado_no_update').hide(2000);
+
+                //Accion para que todos los campos input se reseteen
+                $('#form_estado_sim').trigger('reset');
+            }
+
+            estado_simulador();
+        })
+
+        e.preventDefault();
+    })
 
 });

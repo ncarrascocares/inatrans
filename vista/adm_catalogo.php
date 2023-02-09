@@ -98,10 +98,48 @@ if ($_SESSION['usuario_tipo'] == 4 || $_SESSION['usuario_tipo'] == 1) {
 
             <!-- Segundo card del front -->
             <div class="card">
+                <!-- Modal -->
+                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h1 class="modal-title fs-5" id="exampleModalLabel">Estado de los Simuladores</h1>
+                                <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="alert alert-success text-center" id="estado_update" style="display:none;">
+                                    <span><i class="fas fa-check"></i> Actualización exitosa</span>
+                                </div>
+                                <div class="alert alert-danger text-center" id="estado_no_update" style="display:none;">
+                                    <span><i class="fas fa-check"></i> Estado no actualizado</span>
+                                </div>
+                                <form id="form_estado_sim">
+                                    <div class="form-group">
+                                        <select name="" id="select_sim" class="form-control">
+                                        </select>
+                                        <br>
+                                        <select name="" id="estado_sim" class="form-control">
+                                        </select>
+                                    </div>
+
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                                <button id="guardar_estado_sim" type="submit" class="btn btn-primary">Guardar Cambios</button>
+                            </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
                 <div class="card-header">
                     <h3 class="card-title">Simuladores</h3>
 
                     <div class="card-tools">
+                        <button id="cam_est" type="button" class="btn btn-info" data-toggle="modal" data-target="#exampleModal">
+                            Cambiar Estado
+                        </button>
                         <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
                             <i class="fas fa-minus"></i>
                         </button>
