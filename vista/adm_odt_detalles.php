@@ -81,6 +81,9 @@ if ($_SESSION['usuario_tipo'] == 4 || $_SESSION['usuario_tipo'] == 1) {
                         </div>
                     <div class="card-body" style="font-size:80%;">
                         <section class="content">
+                            <div class="container-fluid" id="reporte_original">
+                                
+                            </div>
                             <div class="container-fluid" id="reporte_historial">
 
                             </div>

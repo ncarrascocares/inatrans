@@ -1,10 +1,12 @@
 <?php
-$id_repo = $_GET['reporte'];
+$id_repo = (int)$_GET['reporte'];
 require_once '../modelo/Odt.php';
 $objeto = new Odt();
 $obj = $objeto->listar_reporte_id($id_repo);
-// print_r($obj);
-// die();
+
+print_r($obj[0]);
+
+die();
 ob_start();
 ?>
 <!DOCTYPE html>
@@ -42,34 +44,40 @@ ob_start();
             <tbody>
                 <tr>
                     <th scope="row">N° Interno</th>
-                    <td colspan="2"><?= $obj->id_reporte ?></td>
+                    <td colspan="2"><?= $obj[0]->id_reporte ?></td>
                 </tr>
                 <tr>
                     <th scope="row">Responsable de aviso</th>
-                    <td colspan="2"><?= $obj->instructor ?></td>
+                    <td colspan="2"><?= $obj[0]->instructor ?></td>
                 </tr>
                 <tr>
                     <th scope="col" colspan="3" style="text-align: center;">Detalle de la averia</th>
                 </tr>
                 <tr>
-                    <th scope="row">Averia</th>
-                    <td colspan="2"><?= $obj->averia_reporte ?></td>
+                    <th scope="row">Problema informado</th>
+                    <td colspan="2"><?= $obj[0]->averia_reporte ?></td>
+                </tr>
+                <tr>
+                    <th scope="row">Comentarios</th>
+                    <?php while($a = $obj[0]->comentario_historial_reporte): ?>           
+                    <td colspan="2"><?= $a->comentario_historial_reporte ?></td>
+                    <?php endwhile; ?>
                 </tr>
                 <tr>
                     <th scope="row">Simulador</th>
-                    <td colspan="2"><?= $obj->simulador_id ?></td>
+                    <td colspan="2"><?=  $obj[0]->simulador_id ?></td>
                 </tr>
                 <tr>
                     <th scope="row">Estado:</th>
-                    <td colspan="2"><?php if($obj->estatus_reporte = 1){echo 'Abierto';}else{echo 'Cerrado';} ?></td>
+                    <td colspan="2"><?php if($obj[0]->estatus_reporte = 1){echo 'Abierto';}else{echo 'Cerrado';} ?></td>
                 </tr>
                 <tr>
                     <th scope="row">Mantenimiento</th>
-                    <td colspan="2"><?= $obj->clasificacion ?></td>
+                    <td colspan="2"><?= $obj[0]->clasificacion ?></td>
                 </tr>
                 <tr></tr>
                 <th scope="row">Fecha creación</th>
-                <td colspan="2"><?= $obj->fecha_crea ?></td>
+                <td colspan="2"><?= $obj[0]->fecha_crea ?></td>
                 </tr>
                 <tr style="text-align: center;background:royalblue;color:aliceblue;">
                     <th scope="col" colspan="3">MANTENGAMONOS SIEMPRE EN CONTACTO</th>

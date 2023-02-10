@@ -21,10 +21,14 @@ class Odt{
     }
 
     function listar_reporte_id($id_reporte){
-        $sql = "SELECT * FROM reporte WHERE id_reporte = :id";
+        $sql = "SELECT *, concat(us.nombre_us,' ',us.apellido_us) as 'responsable' 
+        FROM historial_reporte hi
+        JOIN usuario us on usuario_id = id_usuario
+        JOIN reporte re on hi.reporte_id = re.id_reporte
+        WHERE hi.reporte_id = :id_reporte;";
         $query = $this->acceso->prepare($sql);
-        $query->execute(array(':id'=>$id_reporte));
-        return $query->fetchObject();
+        $query->execute(array(':id_reporte'=>$id_reporte));
+        return $query->fetch();
         //return $query;
     }
 
@@ -54,6 +58,16 @@ class Odt{
         $query = $this->acceso->prepare($sql);
         $query->execute();
         $this->objetos=$query->fetchAll();
+        return $this->objetos;
+    }
+
+    function reporte_original($id_reporte){
+        $sql = "SELECT re.*, CONCAT(us.nombre_us,' ',us.apellido_us) AS 'responsable'  FROM reporte re
+                JOIN usuario us ON re.Usuario_id = us.id_usuario
+                WHERE re.id_reporte = :id_reporte;";
+        $query = $this->acceso->prepare($sql);
+        $query->execute(array(':id_reporte' => $id_reporte));
+        $this->objetos = $query->fetchAll();
         return $this->objetos;
     }
 

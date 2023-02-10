@@ -66,8 +66,9 @@ if ($_SESSION['usuario_tipo'] == 4 || $_SESSION['usuario_tipo'] == 1) {
                             <div class="form-group">
                                 <label for="tipo_odt">Tipo ODT</label>
                                 <select class="form-control" id="tipo_odt">
-                                    <option value="Correctivo" selected>Correctivo</option>
-                                    <option value="Preventivo">Preventivo</option>
+                                    <option value="Programado" selected>Programado</option>
+                                    <option value="No programado">No programado</option>
+                                    <option value="Otro">Otro</option>
                                 </select>
                             </div>
                     </div>

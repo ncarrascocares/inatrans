@@ -181,10 +181,6 @@ if ($_SESSION['usuario_tipo'] == 4 || $_SESSION['usuario_tipo'] == 1) {
             <!-- fin del  tercer card -->
 
             <!-- /.card-body -->
-            <div class="card-footer">
-                Footer
-            </div>
-            <!-- /.card-footer-->
         </section>
         <!-- /.content -->
     </div>

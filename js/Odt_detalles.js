@@ -10,15 +10,38 @@ $(document).ready(function() {
     // console.log(id_reporte);
 
     buscar_historial(id_reporte);
+    buscar_reporte(id_reporte);
+
+    function buscar_reporte(dato) {
+        funcion = 'reporte_original';
+        $.post('../controlador/OdtController.php', { funcion, dato }, (response) => {
+            let template = '';
+            const reporte = JSON.parse(response);
+            reporte.forEach(reporte => {
+                template += `
+                <div class="card">
+                    <div class="card-header">
+                        <h5>Problema reportado<h5>
+                    </div>
+                    <div class="card-body">
+                        <p>
+                            <h6><cite title="Source Title">${reporte.averia_reporte}</cite></h6>
+                        </p>
+                    </div>
+                </div>
+               `;
+            });
+            $('#reporte_original').html(template);
+        })
+    }
 
     function buscar_historial(dato) {
         funcion = 'listar_reporte_por_id';
 
         $.post('../controlador/OdtController.php', { funcion, dato }, (response) => {
-
             const reporte_historial = JSON.parse(response);
-
             let template = '';
+
             reporte_historial.forEach(reporte_historial => {
                 estatus = reporte_historial.estatus_reporte;
                 //console.log(reporte_historial.estatus_reporte)

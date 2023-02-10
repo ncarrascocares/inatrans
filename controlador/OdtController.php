@@ -74,3 +74,27 @@ if ($_POST['funcion'] == 'borrar_reporte') {
         $reporte->borrar_reporte($id_reporte, $id_usuario);
     }
 }
+
+if($_POST['funcion'] == 'reporte_original'){
+    $json = array();
+    $id_reporte = (int)$_POST['dato'];
+    $reporte->reporte_original($id_reporte);
+    foreach ($reporte->objetos as $objeto) {
+        $json[]=array(
+            'id_reporte'=>$objeto->id_reporte,
+            'simulador_id'=>$objeto->simulador_id,
+            'usuario_id'=>$objeto->usuario_id,
+            'instructor'=>$objeto->instructor,
+            'averia_reporte'=>$objeto->averia_reporte,
+            'categoria_id'=>$objeto->categoria_id,
+            'clasificacion'=>$objeto->clasificacion,
+            'fecha_crea'=>$objeto->fecha_crea,
+            'estatus_reporte'=>$objeto->estatus_reporte,
+            'tipo_averia_id'=>$objeto->tipo_averia_id,
+            'responsable'=>$objeto->responsable
+        );
+    }
+    $jsonstring = json_encode($json);
+    echo $jsonstring;
+
+}
