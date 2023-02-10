@@ -116,6 +116,7 @@ if ($_SESSION['usuario_tipo'] == 4 || $_SESSION['usuario_tipo'] == 1) {
                                     <span><i class="fas fa-check"></i> Estado no actualizado</span>
                                 </div>
                                 <form id="form_estado_sim">
+                                    <input id="tipo_user" type="hidden" value="<?=$_SESSION['usuario_tipo']?>">
                                     <div class="form-group">
                                         <select name="" id="select_sim" class="form-control">
                                         </select>

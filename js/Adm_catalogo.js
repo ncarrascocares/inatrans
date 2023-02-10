@@ -1,12 +1,24 @@
 $(document).ready(function() {
     const cam_est = document.getElementById('cam_est');
+    const tipo_user = $('#tipo_user').val();
+    const btn = document.getElementById('cam_est');
     let funcion = '';
     //console.log('Hola Mundo');
 
     estado_simulador();
     total_reporte();
+    btn_bloqueo(tipo_user);
     total_reporte_cerradas(0);
     total_reporte_abiertas(1);
+
+
+    function btn_bloqueo(dato) {
+        if (tipo_user != 4 || tipo_user != 3) {
+            btn.disabled = false;
+        } else {
+            btn.disabled = true;
+        }
+    }
 
     function estado_simulador() {
         funcion = 'estado_simulador';
@@ -45,11 +57,11 @@ $(document).ready(function() {
                                                 Mantenimiento Correctivo <span class="float-right badge bg-danger">${est_simulador.corr}</span>
                                             </a>
                                         </li>
-                                        <li class="nav-item">
+                                        <!--<li class="nav-item">
                                             <a href="#" class="nav-link">
                                                 Horas de funcionamiento <span class="float-right badge bg-info">1</span>
                                             </a>
-                                        </li>
+                                        </li>-->
                                     </ul>
                                 </div>
                             </div>
@@ -83,11 +95,11 @@ $(document).ready(function() {
                                                 Mantenimiento Correctivo <span class="float-right badge bg-danger">${est_simulador.corr}</span>
                                             </a>
                                         </li>
-                                        <li class="nav-item">
+                                        <!--<li class="nav-item">
                                             <a href="#" class="nav-link">
                                                 Horas de funcionamiento <span class="float-right badge bg-info">1</span>
                                             </a>
-                                        </li>
+                                        </li>-->
                                     </ul>
                                 </div>
                             </div>
