@@ -4,9 +4,8 @@ require_once '../modelo/Odt.php';
 $objeto = new Odt();
 $obj = $objeto->listar_reporte_id($id_repo);
 
-print_r($obj[0]);
-
-die();
+// print_r($obj[0]);
+// die();
 ob_start();
 ?>
 <!DOCTYPE html>
@@ -44,24 +43,26 @@ ob_start();
             <tbody>
                 <tr>
                     <th scope="row">N° Interno</th>
-                    <td colspan="2"><?= $obj[0]->id_reporte ?></td>
+                    <td colspan="2"><?= $id_repo ?></td>
                 </tr>
                 <tr>
                     <th scope="row">Responsable de aviso</th>
                     <td colspan="2"><?= $obj[0]->instructor ?></td>
                 </tr>
                 <tr>
-                    <th scope="col" colspan="3" style="text-align: center;">Detalle de la averia</th>
-                </tr>
-                <tr>
                     <th scope="row">Problema informado</th>
                     <td colspan="2"><?= $obj[0]->averia_reporte ?></td>
                 </tr>
                 <tr>
+                    
                     <th scope="row">Comentarios</th>
-                    <?php while($a = $obj[0]->comentario_historial_reporte): ?>           
-                    <td colspan="2"><?= $a->comentario_historial_reporte ?></td>
-                    <?php endwhile; ?>
+                    <td colspan="2">
+                        <ul>
+                        <?php foreach($obj as $a):?>
+                           <li><?= $a->fecha_crea_historial_reporte.' - '.$a->comentario_historial_reporte . '<br>'?></li>
+                        <?php endforeach;?>
+                        </ul>
+                    </td>                    
                 </tr>
                 <tr>
                     <th scope="row">Simulador</th>

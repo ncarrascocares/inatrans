@@ -21,14 +21,15 @@ class Odt{
     }
 
     function listar_reporte_id($id_reporte){
-        $sql = "SELECT *, concat(us.nombre_us,' ',us.apellido_us) as 'responsable' 
+        $sql = "SELECT hi.fecha_crea_historial_reporte,hi.Comentario_historial_reporte, concat(us.nombre_us,' ',us.apellido_us) as 'responsable', 
+                       re.Instructor, re.Averia_reporte,re.Comentario_reporte, re.Simulador_id, re.Estatus_reporte, re.Clasificacion, re.Fecha_crea
         FROM historial_reporte hi
-        JOIN usuario us on usuario_id = id_usuario
-        JOIN reporte re on hi.reporte_id = re.id_reporte
+        JOIN usuario us on hi.Usuario_id = us.id_usuario
+        JOIN reporte re on hi.Reporte_id = re.id_reporte
         WHERE hi.reporte_id = :id_reporte;";
         $query = $this->acceso->prepare($sql);
         $query->execute(array(':id_reporte'=>$id_reporte));
-        return $query->fetch();
+        return $query->fetchAll();
         //return $query;
     }
 
