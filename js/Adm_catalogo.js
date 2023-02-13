@@ -49,12 +49,12 @@ $(document).ready(function() {
                                         </li>
                                         <li class="nav-item">
                                             <a href="#" class="nav-link">
-                                                Mantenimiento Programado <span class="float-right badge bg-success">${est_simulador.pre}</span>
+                                                Mantenimiento Preventivo <span class="float-right badge bg-success">${est_simulador.pre}</span>
                                             </a>
                                         </li>
                                         <li class="nav-item">
                                             <a href="#" class="nav-link">
-                                                Mantenimiento No programado <span class="float-right badge bg-danger">${est_simulador.corr}</span>
+                                                Mantenimiento Correctivo <span class="float-right badge bg-danger">${est_simulador.corr}</span>
                                             </a>
                                         </li>
                                         <!--<li class="nav-item">
@@ -87,12 +87,12 @@ $(document).ready(function() {
                                         </li>
                                         <li class="nav-item">
                                             <a href="#" class="nav-link">
-                                                Mantenimiento Programado <span class="float-right badge bg-success">${est_simulador.pre}</span>
+                                                Mantenimiento Preventivo <span class="float-right badge bg-success">${est_simulador.pre}</span>
                                             </a>
                                         </li>
                                         <li class="nav-item">
                                             <a href="#" class="nav-link">
-                                                Mantenimiento No programado <span class="float-right badge bg-danger">${est_simulador.corr}</span>
+                                                Mantenimiento Correctivo <span class="float-right badge bg-danger">${est_simulador.corr}</span>
                                             </a>
                                         </li>
                                         <!--<li class="nav-item">
