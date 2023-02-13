@@ -8,8 +8,9 @@ $id_usuario = $_SESSION['id'];
 $reporte = new Odt();
 
 if($_POST['funcion'] == 'listar_reportes'){
+    $estado = $_POST['dato'];
     $json = array();
-    $reporte->listar_reportes();
+    $reporte->listar_reportes($estado);
     foreach ($reporte->objetos as $objeto) {
         $json['data'][]=$objeto;
     }

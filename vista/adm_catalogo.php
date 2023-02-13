@@ -74,7 +74,7 @@ if ($_SESSION['usuario_tipo'] == 4 || $_SESSION['usuario_tipo'] == 1) {
                                 <div class="icon">
 
                                 </div>
-                                <a href="#" class="small-box-footer">Más información <i class="fas fa-arrow-circle-right"></i></a>
+                                <a href="adm_odt.php?estado=0" class="small-box-footer">Más información <i class="fas fa-arrow-circle-right"></i></a>
                             </div>
                         </div>
                         <!-- ./col -->
@@ -87,7 +87,7 @@ if ($_SESSION['usuario_tipo'] == 4 || $_SESSION['usuario_tipo'] == 1) {
                                 <div class="icon">
 
                                 </div>
-                                <a href="adm_odt.php" class="small-box-footer">Más información <i class="fas fa-arrow-circle-right"></i></a>
+                                <a href="adm_odt.php?estado=1" class="small-box-footer">Más información <i class="fas fa-arrow-circle-right"></i></a>
                             </div>
                         </div>
                     </div>

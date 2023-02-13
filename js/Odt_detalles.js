@@ -4,13 +4,26 @@ $(document).ready(function() {
 
     let id_usuario = $('#id_usuario').val();
     let id_reporte = $('#id_reporte').val();
+    let estado = $('#estado').val();
+    let title = document.getElementById('titulo');
+    let template = '';
     let estatus = 1;
 
-    //console.log(id_usuario);
-    // console.log(id_reporte);
+    function btn_crear(dato) {
+
+        if (dato == 1) {
+            template += `
+            <h1>Gestion ODT's <button id="button-crear-comentario" type="button" data-toggle="modal" data-target="#modal_historial" class="btn bg-gradient-primary ml-2">Agregar comentario</button></h1>
+            `;
+            title.textContent = "ODT Abierta"
+        }
+
+        $('#btn_crea_coment').html(template);
+    }
 
     buscar_historial(id_reporte);
     buscar_reporte(id_reporte);
+    btn_crear(estado);
 
     function buscar_reporte(dato) {
         funcion = 'reporte_original';
@@ -74,6 +87,7 @@ $(document).ready(function() {
             }
         })
     } //Fin de la función
+
 
     $('#form_insert_report').submit(e => {
         funcion = 'insertar_comentario';

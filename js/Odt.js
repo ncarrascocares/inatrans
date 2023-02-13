@@ -1,6 +1,7 @@
 $(document).ready(function() {
 
     let id_usuario = $('#id_usuario').val();
+    let estado = $('#estado').val();
 
     let funcion = 'listar_reportes';
     let tabla_tarea = $('#tabla_reporte').DataTable({
@@ -8,7 +9,10 @@ $(document).ready(function() {
         ajax: {
             "url": "../controlador/OdtController.php",
             "method": "POST",
-            "data": { funcion: funcion },
+            "data": {
+                funcion: funcion,
+                dato: estado
+            },
         },
 
         columns: [
@@ -29,7 +33,7 @@ $(document).ready(function() {
     $('#tabla_reporte tbody').on('click', '.ver', function() {
         let datos = tabla_tarea.row($(this).parents()).data();
         let id = datos.id_reporte;
-        location.href = "../vista/adm_odt_detalles.php?reporte=" + id;
+        location.href = "../vista/adm_odt_detalles.php?reporte=" + id + "&estado=" + estado;
     });
 
     $('#tabla_reporte tbody').on('click', '.generar', function() {

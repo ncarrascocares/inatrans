@@ -29,7 +29,8 @@ if ($_SESSION['usuario_tipo'] == 4 || $_SESSION['usuario_tipo'] == 1) {
                     <div class="card-body">
                         <!-- Formulario para crear ODT -->
                         <form id="form-crear-reporte">
-                            <input type="hidden" id="id_usuario" name="" value="<?=$_SESSION['id']?>">
+                            <input type="hidden" id="id_usuario" name="" value="<?= $_SESSION['id'] ?>">
+                            <input type="hidden" id="estado" value="<?= $_GET['estado']?>">
                             <div class="form-group">
                                 <label for="simulador_id">Simulador</label>
                                 <select name="" id="simulador_id" class="form-control"></select>
@@ -109,7 +110,6 @@ if ($_SESSION['usuario_tipo'] == 4 || $_SESSION['usuario_tipo'] == 1) {
                     <div class="card-header">
                         <h3 class="card-title">Listado de ordenes de trabajo</h3>
                         <div class="input-group">
-
                         </div>
                     </div>
                     <div class="card-body" style="font-size:80%;">

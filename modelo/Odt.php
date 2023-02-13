@@ -22,7 +22,7 @@ class Odt{
 
     function listar_reporte_id($id_reporte){
         $sql = "SELECT hi.fecha_crea_historial_reporte,hi.Comentario_historial_reporte, concat(us.nombre_us,' ',us.apellido_us) as 'responsable', 
-                       re.Instructor, re.Averia_reporte,re.Comentario_reporte, re.Simulador_id, re.Estatus_reporte, re.Clasificacion, re.Fecha_crea
+                       re.Instructor, re.Averia_reporte,re.averia_reporte, re.Simulador_id, re.Estatus_reporte, re.Clasificacion, re.Fecha_crea
         FROM historial_reporte hi
         JOIN usuario us on hi.Usuario_id = us.id_usuario
         JOIN reporte re on hi.Reporte_id = re.id_reporte
@@ -49,15 +49,15 @@ class Odt{
         echo $total_reporte;
     }
 
-    function listar_reportes(){
+    function listar_reportes($estado){
         $sql = "SELECT re.id_reporte, re.Simulador_id, re.Averia_reporte, re.Fecha_crea, concat(us.Nombre_us,' ',us.Apellido_us) as Responsable, re.Clasificacion, ca.Nombre_categoria, av.Nombre_averia
         FROM reporte re 
         inner join usuario us on re.Usuario_id = us.id_usuario
         inner join categoria ca on re.Categoria_id = ca.id_categoria
         inner join averia av on re.Tipo_averia_id = av.id_averia
-        WHERE re.Estatus_reporte != 0;";
+        WHERE re.Estatus_reporte = :estado;";
         $query = $this->acceso->prepare($sql);
-        $query->execute();
+        $query->execute(array(':estado'=>$estado));
         $this->objetos=$query->fetchAll();
         return $this->objetos;
     }

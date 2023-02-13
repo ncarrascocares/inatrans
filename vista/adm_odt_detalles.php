@@ -5,6 +5,7 @@ if ($_SESSION['usuario_tipo'] == 4 || $_SESSION['usuario_tipo'] == 1) {
 
     // Inclución del fichero header
     include_once 'layouts/header.php';
+
 ?>
 
     <title>Adm | Ordenes de trabajo</title>
@@ -49,12 +50,13 @@ if ($_SESSION['usuario_tipo'] == 4 || $_SESSION['usuario_tipo'] == 1) {
         <section class="content-header">
             <div class="container-fluid">
                 <div class="row mb-2">
-                    <div class="col-sm-6">
-                        <h1>Gestion ODT's <button id="button-crear-comentario" type="button" data-toggle="modal" data-target="#modal_historial" class="btn bg-gradient-primary ml-2">Agregar comentario</button></h1>
+                    <div id="btn_crea_coment" class="col-sm-6">
+                        
                     </div>
                     <input type="hidden" id="tipo_usuario" value="<?= $_SESSION['usuario_tipo'] ?>">
                     <input type="hidden" id="id_usuario" value="<?= $_SESSION['id'] ?>">
                     <input type="hidden" id="id_reporte" value="<?= $_GET['reporte'] ?>">
+                    <input type="hidden" id="estado" value="<?= $_GET['estado'] ?>">
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
                             <li class="breadcrumb-item"><a href="../vista/adm_catalogo.php">Home</a></li>
@@ -68,21 +70,21 @@ if ($_SESSION['usuario_tipo'] == 4 || $_SESSION['usuario_tipo'] == 1) {
             <div class="container-fluid">
                 <div class="card card-success">
                     <div class="card-header">
-                        <h3 class="card-title">Historial</h3>
+                        <h3 id="titulo" class="card-title">ODT Cerrada</h3>
                         <div class="input-group">
 
                         </div>
                     </div>
                     <div class="alert alert-success text-center" id="delete" style="display:none;">
-                            <span><i class="fas fa-check">ODT Cerrada!</i> </span>
-                        </div>
-                        <div class="alert alert-danger text-center m-1" id="no-delete" style="display:none;">
-                            <span><i class="fas fa-times "> ODT asignado a otro usuario</i></span>
-                        </div>
+                        <span><i class="fas fa-check">ODT Cerrada!</i> </span>
+                    </div>
+                    <div class="alert alert-danger text-center m-1" id="no-delete" style="display:none;">
+                        <span><i class="fas fa-times "> ODT asignado a otro usuario</i></span>
+                    </div>
                     <div class="card-body" style="font-size:80%;">
                         <section class="content">
                             <div class="container-fluid" id="reporte_original">
-                                
+
                             </div>
                             <div class="container-fluid" id="reporte_historial">
 

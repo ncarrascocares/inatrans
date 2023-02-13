@@ -4,8 +4,6 @@ require_once '../modelo/Odt.php';
 $objeto = new Odt();
 $obj = $objeto->listar_reporte_id($id_repo);
 
-// print_r($obj[0]);
-// die();
 ob_start();
 ?>
 <!DOCTYPE html>
