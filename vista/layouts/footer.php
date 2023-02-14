@@ -2,7 +2,7 @@
     <div class="float-right d-none d-sm-block">
         <b>Version</b> 1.0
     </div>
-    <strong>Nicolás Carrasco-Cares &copy; 2022 <a href=""></a></strong>
+    <strong>NicoCarrascoCares &copy; 2023 <a href=""></a></strong>
 </footer>
 </div>
 

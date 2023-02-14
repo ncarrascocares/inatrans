@@ -86,11 +86,19 @@
                     </ul>
                     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                     <li class="nav-header">Ordenes de trabajo</li>
-                    <li class="nav-item">
-                            <a href="../vista/adm_odt.php" class="nav-link">
+                        <li class="nav-item">
+                            <a href="../vista/adm_odt.php?estado=1" class="nav-link">
                                 <i class="nav-icon fas fa-list"></i>
                                 <p>
-                                    Listado de ODT
+                                    Abiertas
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="../vista/adm_odt.php?estado=0" class="nav-link">
+                                <i class="nav-icon fas fa-check-double"></i>
+                                <p>
+                                    Cerradas
                                 </p>
                             </a>
                         </li>

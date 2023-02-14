@@ -2,6 +2,20 @@ $(document).ready(function() {
 
     let id_usuario = $('#id_usuario').val();
     let estado = $('#estado').val();
+    let title = document.getElementById('title');
+
+    mensaje(estado);
+
+    function mensaje(dato) {
+        switch (dato) {
+            case '0':
+                title.textContent = "ODT'S Cerradas";
+                break;
+            case '1':
+                title.textContent = "ODT'S Abiertas"
+                break
+        }
+    }
 
     let funcion = 'listar_reportes';
     let tabla_tarea = $('#tabla_reporte').DataTable({

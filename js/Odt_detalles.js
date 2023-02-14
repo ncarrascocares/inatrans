@@ -6,24 +6,30 @@ $(document).ready(function() {
     let id_reporte = $('#id_reporte').val();
     let estado = $('#estado').val();
     let title = document.getElementById('titulo');
+    let card = document.getElementById('card');
+    let btn = document.getElementById('button-crear-comentario');
     let template = '';
     let estatus = 1;
 
-    function btn_crear(dato) {
+    mensaje(estado);
 
-        if (dato == 1) {
-            template += `
-            <h1>Gestion ODT's <button id="button-crear-comentario" type="button" data-toggle="modal" data-target="#modal_historial" class="btn bg-gradient-primary ml-2">Agregar comentario</button></h1>
-            `;
-            title.textContent = "ODT Abierta"
+
+    function mensaje(dato) {
+        switch (dato) {
+            case '0':
+                title.textContent = "Historial de comentarios";
+                btn.style.display = 'none';
+                break;
+            case '1':
+                title.textContent = "Historial de comentarios";
+                break;
         }
-
-        $('#btn_crea_coment').html(template);
     }
+
 
     buscar_historial(id_reporte);
     buscar_reporte(id_reporte);
-    btn_crear(estado);
+    mensaje(estado);
 
     function buscar_reporte(dato) {
         funcion = 'reporte_original';
@@ -79,7 +85,7 @@ $(document).ready(function() {
             });
             //console.log(estatus);
             if (estatus == 0) {
-                template += `<button type="button" class="delete btn btn-danger"style="font-size:100%" disabled><i class="fas fa-window-close"></i>Cerrar ODT</button>`;
+                template += `<button type="button" class="delete btn btn-danger"style="font-size:100%;display:none"><i class="fas fa-window-close"></i>Cerrar ODT</button>`;
                 $('#reporte_historial').html(template);
             } else {
                 template += `<button type="button" class="delete btn btn-danger"style="font-size:100%"><i class="fas fa-window-close"></i>Cerrar ODT</button>`;

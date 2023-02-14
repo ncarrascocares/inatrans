@@ -50,8 +50,8 @@ if ($_SESSION['usuario_tipo'] == 4 || $_SESSION['usuario_tipo'] == 1) {
         <section class="content-header">
             <div class="container-fluid">
                 <div class="row mb-2">
-                    <div id="btn_crea_coment" class="col-sm-6">
-                        
+                    <div id="btn_coment" class="col-sm-6">
+                    <h1>Gestion ODT's <button id="button-crear-comentario" type="button" data-toggle="modal" data-target="#modal_historial" class="btn bg-gradient-primary ml-2">Agregar comentario</button></h1>
                     </div>
                     <input type="hidden" id="tipo_usuario" value="<?= $_SESSION['usuario_tipo'] ?>">
                     <input type="hidden" id="id_usuario" value="<?= $_SESSION['id'] ?>">
@@ -68,11 +68,11 @@ if ($_SESSION['usuario_tipo'] == 4 || $_SESSION['usuario_tipo'] == 1) {
         </section>
         <section>
             <div class="container-fluid">
-                <div class="card card-success">
+                <div id="card" class="card card-info">
                     <div class="card-header">
-                        <h3 id="titulo" class="card-title">ODT Cerrada</h3>
+                        <h3 id="titulo" class="card-title"></h3>
                         <div class="input-group">
-
+        
                         </div>
                     </div>
                     <div class="alert alert-success text-center" id="delete" style="display:none;">

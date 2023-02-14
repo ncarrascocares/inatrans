@@ -106,9 +106,9 @@ if ($_SESSION['usuario_tipo'] == 4 || $_SESSION['usuario_tipo'] == 1) {
         </section>
         <section>
             <div class="container-fluid">
-                <div class="card card-success">
-                    <div class="card-header">
-                        <h3 class="card-title">Listado de ordenes de trabajo</h3>
+                <div id="card" class="card card-info">
+                    <div id="est_odt" class="card-header">
+                        <h4 id="title"></h4>
                         <div class="input-group">
                         </div>
                     </div>
