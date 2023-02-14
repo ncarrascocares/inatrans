@@ -52,32 +52,42 @@ ob_start();
                     <td colspan="2"><?= $obj[0]->averia_reporte ?></td>
                 </tr>
                 <tr>
-                    
+
                     <th scope="row">Comentarios</th>
                     <td colspan="2">
                         <ul>
-                        <?php foreach($obj as $a):?>
-                           <li><?= $a->fecha_crea_historial_reporte.' - '.$a->comentario_historial_reporte . '<br>'?></li>
-                        <?php endforeach;?>
+                            <?php foreach ($obj as $a) : ?>
+                                <li><?= $a->fecha_crea_historial_reporte . ' - ' . $a->comentario_historial_reporte . '<br>' ?></li>
+                            <?php endforeach; ?>
                         </ul>
-                    </td>                    
+                    </td>
                 </tr>
                 <tr>
                     <th scope="row">Simulador</th>
-                    <td colspan="2"><?=  $obj[0]->simulador_id ?></td>
+                    <td colspan="2"><?= $obj[0]->simulador_id ?></td>
                 </tr>
                 <tr>
                     <th scope="row">Estado:</th>
-                    <td colspan="2"><?php if($obj[0]->estatus_reporte = 1){echo 'Abierto';}else{echo 'Cerrado';} ?></td>
+                    <td colspan="2"><?php if ($obj[0]->estatus_reporte == 1) {
+                                        echo 'Abierto';
+                                    } else {
+                                        echo 'Cerrado';
+                                    } ?></td>
                 </tr>
                 <tr>
                     <th scope="row">Mantenimiento</th>
                     <td colspan="2"><?= $obj[0]->clasificacion ?></td>
                 </tr>
-                <tr></tr>
-                <th scope="row">Fecha creación</th>
-                <td colspan="2"><?= $obj[0]->fecha_crea ?></td>
+                <tr>
+                    <th scope="row">Fecha creación</th>
+                    <td colspan="2"><?= $obj[0]->fecha_crea ?></td>
                 </tr>
+                <?php if ($obj[0]->estatus_reporte == 0) : ?>
+                    <tr>
+                        <th scope="row">Fecha de Cierre</th>
+                        <td colspan="2"><?= $obj[0]->fecha_cierre ?></td>
+                    </tr>
+                <?php endif; ?>
                 <tr style="text-align: center;background:royalblue;color:aliceblue;">
                     <th scope="col" colspan="3">MANTENGAMONOS SIEMPRE EN CONTACTO</th>
                 </tr>
@@ -96,7 +106,9 @@ ob_start();
 $html = ob_get_clean();
 //echo $html;
 require_once '../dompdf/autoload.inc.php';
+
 use Dompdf\Dompdf;
+
 $dompdf = new Dompdf();
 
 $option = $dompdf->getOptions();
@@ -106,5 +118,5 @@ $dompdf->setOptions($option);
 $dompdf->loadHtml($html);
 $dompdf->setPaper('A4', 'Landscape');
 $dompdf->render();
-$dompdf->stream("ODT-".$id_repo, array("attachment" => true));
+$dompdf->stream("ODT-" . $id_repo, array("attachment" => true));
 ?>
