@@ -43,24 +43,32 @@ $(document).ready(function() {
                                 <div class="card-footer p-0">
                                     <ul class="nav flex-column">
                                         <li class="nav-item">
-                                            <a href="#" class="nav-link">
+                                            <div class="nav-link">
                                                 Estado <span class="float-right badge bg-info">${est_simulador.nombre_status}</span>
-                                            </a>
+                                            </div>
                                         </li>
+                                       <div class="card-header">
+                                        <h5>Intervenciones</h5>
+                                       </div>
                                         <li class="nav-item">
-                                            <a href="#" class="nav-link">
+                                            <div class="nav-link">
                                                 Mantenimiento Preventivo <span class="float-right badge bg-success">${est_simulador.pre}</span>
-                                            </a>
+                                            </div>
                                         </li>
                                         <li class="nav-item">
-                                            <a href="#" class="nav-link">
+                                            <div class="nav-link">
                                                 Mantenimiento Correctivo <span class="float-right badge bg-danger">${est_simulador.corr}</span>
-                                            </a>
+                                            </div>
+                                        </li>
+                                        <li class="nav-item">
+                                            <div class="nav-link">
+                                                Otro <span class="float-right badge bg-danger">${est_simulador.otro}</span>
+                                            </div>
                                         </li>
                                         <!--<li class="nav-item">
-                                            <a href="#" class="nav-link">
+                                            <div class="nav-link">
                                                 Horas de funcionamiento <span class="float-right badge bg-info">1</span>
-                                            </a>
+                                            </div>
                                         </li>-->
                                     </ul>
                                 </div>
@@ -81,24 +89,32 @@ $(document).ready(function() {
                                 <div class="card-footer p-0">
                                     <ul class="nav flex-column">
                                         <li class="nav-item">
-                                            <a href="#" class="nav-link">
+                                            <div class="nav-link">
                                                 Estado <span class="float-right badge bg-primary">${est_simulador.nombre_status}</span>
-                                            </a>
+                                            </div>
                                         </li>
+                                        <div class="card-header">
+                                            <h5>Intervenciones</h5>
+                                       </div>
                                         <li class="nav-item">
-                                            <a href="#" class="nav-link">
+                                            <div class="nav-link">
                                                 Mantenimiento Preventivo <span class="float-right badge bg-success">${est_simulador.pre}</span>
-                                            </a>
+                                            </div>
                                         </li>
                                         <li class="nav-item">
-                                            <a href="#" class="nav-link">
+                                            <div class="nav-link">
                                                 Mantenimiento Correctivo <span class="float-right badge bg-danger">${est_simulador.corr}</span>
-                                            </a>
+                                            </div>
+                                        </li>
+                                        <li class="nav-item">
+                                            <div class="nav-link">
+                                                Otro <span class="float-right badge bg-danger">${est_simulador.otro}</span>
+                                            </div>
                                         </li>
                                         <!--<li class="nav-item">
-                                            <a href="#" class="nav-link">
+                                            <div class="nav-link">
                                                 Horas de funcionamiento <span class="float-right badge bg-info">1</span>
-                                            </a>
+                                            </div>
                                         </li>-->
                                     </ul>
                                 </div>

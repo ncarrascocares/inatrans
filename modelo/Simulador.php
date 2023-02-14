@@ -39,6 +39,7 @@ class Simulador{
         $sql = "SELECT *,
 		COUNT(CASE WHEN re.Clasificacion = 'Correctivo' THEN re.Clasificacion END) AS 'Correctivo',
         COUNT(CASE WHEN re.Clasificacion = 'Preventivo' THEN re.Clasificacion END) AS 'Preventivo',
+        COUNT(CASE WHEN re.Clasificacion = 'Otro' THEN re.Clasificacion END) AS 'Otro',
         count(re.id_reporte) as 'total'
         FROM simulador si
         JOIN sucursal su on si.Sucursal_id = su.id_sucursal
