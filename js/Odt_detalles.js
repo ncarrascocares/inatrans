@@ -15,14 +15,14 @@ $(document).ready(function() {
     buscar_historial(id_reporte);
     buscar_reporte(id_reporte);
     mensaje(estado);
-    btn_bloqueo(tipo_user);
+    //btn_bloqueo(tipo_user);
 
 
-    function btn_bloqueo(dato) {
-        if (tipo_user == '3') {
-            btn.style.display = 'none';
-        }
-    }
+    // function btn_bloqueo(dato) {
+    //     if (tipo_user == '3') {
+    //         btn.style.display = 'none';
+    //     }
+    // }
 
     function mensaje(dato) {
         switch (dato) {
