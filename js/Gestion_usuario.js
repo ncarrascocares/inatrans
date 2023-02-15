@@ -3,7 +3,7 @@ $(document).ready(function() {
     var funcion;
     var tipo_usuario = $('#tipo_usuario').val();
     //Este if oculta el boton crear del fichero adm_usuario si el usuario logeado es un mantenedor
-    if (tipo_usuario == 2) {
+    if (tipo_usuario == 2 || tipo_usuario == 3) {
         $('#button-crear').hide();
     }
 
@@ -34,23 +34,23 @@ $(document).ready(function() {
                   </div>
                   <div class="card-footer">
                     <div class="text-right">`;
-                //Este if valida que el usuario es de tipo root(4) para mostrar los botones
-                if (tipo_usuario == 4) {
-                    //Si el usuario ingresa a este punto es por que es root y este segundo if oculta el boton para el usuario del tipo 4
-                    if (usuarios.id_tipo_usuario != 4) {
+                //Este if valida que el usuario es de tipo administrador(1) para mostrar los botones
+                if (tipo_usuario == 1) {
+                    //Si el usuario ingresa a este punto es por que es administrador y este segundo if oculta el boton para el usuario del tipo 4
+                    if (usuarios.id_tipo_usuario != 1) {
                         template += `
                               <button href="#" class="borrar-user btn btn-sm btn-danger mr-1" type="button" data-toggle="modal" data-target="#cambio_tipo_user">
                                 <i class="fas fa-window-close"></i> Eliminar
                               </button>`;
                     }
-                    if (usuarios.id_tipo_usuario == 1) {
+                    if (usuarios.id_tipo_usuario == 2) {
                         template += `
                               <button href="#" class="descender btn btn-sm btn-secondary ml-1" type="button" data-toggle="modal" data-target="#cambio_tipo_user">
                                 <i class="fas fa-sort-amount-down mr-1"></i> Descender
                               </button>`;
                     }
                     //Este if valida que el tipo de usuario sea 2 para mostrar el boton de ascender
-                    if (usuarios.id_tipo_usuario == 2) {
+                    if (usuarios.id_tipo_usuario == 3) {
                         template += `
                                 <button href="#" class="ascender btn btn-sm btn-primary ml-1" type="button" data-toggle="modal" data-target="#cambio_tipo_user">
                                   <i class="fas fa-sort-amount-up mr-1"></i> Ascender

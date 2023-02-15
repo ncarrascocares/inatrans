@@ -99,7 +99,7 @@ class Usuario{
         $query->execute(array('id_usuario'=>$id_usuario, ':pass'=>$pass_root));
         $this->objetos = $query->fetchAll();
         if (!empty($this->objetos)) {
-            $sql = "UPDATE usuario SET usuario_tipo = 1 WHERE id_usuario = :id";
+            $sql = "UPDATE usuario SET usuario_tipo = 2 WHERE id_usuario = :id";
             $query = $this->acceso->prepare($sql);
             $query->execute(array(':id'=>$id_user));
             echo "ascendido";
@@ -114,7 +114,7 @@ class Usuario{
         $query->execute(array('id_usuario'=>$id_usuario, ':pass'=>$pass_root));
         $this->objetos = $query->fetchAll();
         if (!empty($this->objetos)) {
-            $sql = "UPDATE usuario SET usuario_tipo = 2 WHERE id_usuario = :id";
+            $sql = "UPDATE usuario SET usuario_tipo = 3 WHERE id_usuario = :id";
             $query = $this->acceso->prepare($sql);
             $query->execute(array(':id'=>$id_user));
             echo "descendido";
