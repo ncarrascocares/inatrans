@@ -53,7 +53,7 @@ if (!empty($usuario->objetos)) {
             header('Location: ../vista/adm_catalogo.php');
             break;
         case 3:
-            header('Location: ../vista/uadm_catalogo.php');
+            header('Location: ../vista/adm_catalogo.php');
             break;
         case 4:
             header('Location: ../vista/adm_catalogo.php');

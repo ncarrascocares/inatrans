@@ -1,10 +1,19 @@
 $(document).ready(function() {
 
     let id_usuario = $('#id_usuario').val();
+    const tipo_user = $('#tipo_usuario').val();
     let estado = $('#estado').val();
     let title = document.getElementById('title');
+    const btn = document.getElementById('button-crear');
 
     mensaje(estado);
+    btn_bloqueo(tipo_user)
+
+    function btn_bloqueo(dato) {
+        if (tipo_user == '3') {
+            btn.style.display = 'none';
+        }
+    }
 
     function mensaje(dato) {
         switch (dato) {

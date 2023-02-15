@@ -5,14 +5,24 @@ $(document).ready(function() {
     let id_usuario = $('#id_usuario').val();
     let id_reporte = $('#id_reporte').val();
     let estado = $('#estado').val();
+    const tipo_user = $('#tipo_usuario').val();
     let title = document.getElementById('titulo');
     let card = document.getElementById('card');
     let btn = document.getElementById('button-crear-comentario');
     let template = '';
     let estatus = 1;
 
+    buscar_historial(id_reporte);
+    buscar_reporte(id_reporte);
     mensaje(estado);
+    btn_bloqueo(tipo_user);
 
+
+    function btn_bloqueo(dato) {
+        if (tipo_user == '3') {
+            btn.style.display = 'none';
+        }
+    }
 
     function mensaje(dato) {
         switch (dato) {
@@ -25,11 +35,6 @@ $(document).ready(function() {
                 break;
         }
     }
-
-
-    buscar_historial(id_reporte);
-    buscar_reporte(id_reporte);
-    mensaje(estado);
 
     function buscar_reporte(dato) {
         funcion = 'reporte_original';
@@ -84,7 +89,7 @@ $(document).ready(function() {
                 </div>`;
             });
             //console.log(estatus);
-            if (estatus == 0) {
+            if (estatus == 0 || tipo_user == '3') {
                 template += `<button type="button" class="delete btn btn-danger"style="font-size:100%;display:none"><i class="fas fa-window-close"></i>Cerrar ODT</button>`;
                 $('#reporte_historial').html(template);
             } else {

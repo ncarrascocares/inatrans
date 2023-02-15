@@ -13,10 +13,8 @@ $(document).ready(function() {
 
 
     function btn_bloqueo(dato) {
-        if (tipo_user != 1 || tipo_user != 2) {
-            btn.disabled = false;
-        } else {
-            btn.disabled = true;
+        if (tipo_user == '3') {
+            btn.style.display = 'none';
         }
     }
 
