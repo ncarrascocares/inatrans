@@ -14,10 +14,10 @@ if (!empty($_SESSION['usuario_tipo'])) {
             header('Location: ../vista/adm_catalogo.php');
             break;
         case 2:
-            header('Location: ../vista/man_catalogo.php');
+            header('Location: ../vista/adm_catalogo.php');
             break;
         case 3:
-            header('Location: ../vista/user_catalogo.php');
+            header('Location: ../vista/adm_catalogo.php');
             break;
         case 4:
             header('Location: ../vista/adm_catalogo.php');
@@ -50,10 +50,10 @@ if (!empty($usuario->objetos)) {
             header('Location: ../vista/adm_catalogo.php');
             break;
         case 2:
-            header('Location: ../vista/man_catalogo.php');
+            header('Location: ../vista/adm_catalogo.php');
             break;
         case 3:
-            header('Location: ../vista/user_catalogo.php');
+            header('Location: ../vista/uadm_catalogo.php');
             break;
         case 4:
             header('Location: ../vista/adm_catalogo.php');
