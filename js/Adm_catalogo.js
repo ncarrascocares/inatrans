@@ -44,7 +44,7 @@ $(document).ready(function() {
                                     <ul class="nav flex-column">
                                         <li class="nav-item">
                                             <div class="nav-link">
-                                                Estado <span class="float-right badge bg-info">${est_simulador.nombre_status}</span>
+                                                Estado <span class="float-right badge bg-primary">${est_simulador.nombre_status}</span>
                                             </div>
                                         </li>
                                        <div class="card-header">
