@@ -44,7 +44,7 @@ ob_start();
                     <td colspan="2"><?= $id_repo ?></td>
                 </tr>
                 <tr>
-                    <th scope="row">Responsable de aviso</th>
+                    <th scope="row">Persona a Cargo</th>
                     <td colspan="2"><?= $obj[0]->instructor ?></td>
                 </tr>
                 <tr>
