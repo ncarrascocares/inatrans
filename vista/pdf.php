@@ -52,22 +52,31 @@ ob_start();
                     <td colspan="2"><?= $obj[0]->averia_reporte ?></td>
                 </tr>
                 <tr>
-
-                    <th scope="row">Comentarios</th>
-                    <td colspan="2">
-                        <ul>
-                            <?php foreach ($obj as $a) : ?>
-                                <li><?= $a->fecha_crea_historial_reporte . ' - ' . $a->comentario_historial_reporte . '<br>' ?></li>
-                            <?php endforeach; ?>
-                        </ul>
-                    </td>
+                    <td scope="row" style="text-align: center;background:royalblue;color:aliceblue;" colspan="3">Comentarios</td>
+                </tr>
+                <tr>
+                    <td style="text-align: center;background:cornflowerblue;color:aliceblue;">Fecha</td>
+                    <td style="text-align: center;background:cornflowerblue;color:aliceblue;">Responsable</td>
+                    <td style="text-align: center;background:cornflowerblue;color:aliceblue;">Comentario</td>
+                    </tr>
+                <?php foreach($obj as $a): ?>  
+                <tr>
+                    
+                    <td><?= $a->fecha_crea_historial_reporte?></td>
+                    <td><?= $a->responsable ?></td>
+                    <td><?= $a->comentario_historial_reporte ?></td>
+                    
+                </tr>
+                <?php endforeach; ?>
+                <tr>
+                    <td scope="row" style="text-align: center;background:royalblue;color:aliceblue;" colspan="3"></td>
                 </tr>
                 <tr>
                     <th scope="row">Simulador</th>
                     <td colspan="2"><?= $obj[0]->simulador_id ?></td>
                 </tr>
                 <tr>
-                    <th scope="row">Estado:</th>
+                    <th scope="row">Estado ODT:</th>
                     <td colspan="2"><?php if ($obj[0]->estatus_reporte == 1) {
                                         echo 'Abierto';
                                     } else {
