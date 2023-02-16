@@ -84,6 +84,9 @@ if (!empty($_SESSION['usuario_tipo'])) {
         </div>
     </div>
     <!-- fin del modal -->
+    <div id="modal-editar">
+
+    </div>
 
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">

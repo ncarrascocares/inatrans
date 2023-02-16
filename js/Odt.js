@@ -4,7 +4,10 @@ $(document).ready(function() {
     const tipo_user = $('#tipo_usuario').val();
     let estado = $('#estado').val();
     let title = document.getElementById('title');
-    const btn = document.getElementById('button-crear');
+    const btn = document.getElementById('button_crear');
+    const select = document.getElementById("simulador_id");
+    const editar = document.getElementById("modal-editar");
+
 
     mensaje(estado);
     btn_bloqueo(tipo_user)
@@ -48,7 +51,8 @@ $(document).ready(function() {
             { data: 'nombre_categoria' },
             { data: 'nombre_averia' },
             { "defaultContent": `<button type="button" class="ver btn btn-success" style="font-size:50%"><i class="fas fa-search"></i></button>
-                                 <button type="button" class="generar btn btn-info" style="font-size:50%"><i class="fa fa-file-pdf"></i></button>` }
+                                 <button type="button" class="generar btn btn-info" style="font-size:50%"><i class="fa fa-file-pdf"></i></button>
+                                 <button type="button" class="editar btn btn-warning" data-toggle="modal" data-target="#editar-odt" style="font-size:50%"><i class="fas fa-edit"></i></button>` }
         ],
         "language": espanol
     });
@@ -65,8 +69,100 @@ $(document).ready(function() {
         location.href = "../vista/pdf.php?reporte=" + id;
     });
 
+    $('#tabla_reporte tbody').on('click', '.editar', function() {
+        let template = '';
+        let datos = tabla_tarea.row($(this).parents()).data();
+        console.log(datos);
+            template = `
+        <div class="modal fade" id="editar-odt" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="card card-warning">
+                <div class="card-header">
+                    <h3 class="card-title">Editar ODT</h3>
+                    <button data-dismiss="modal" aria-label="close" class="close"><span aria-hidden="true">&times;</span></button>
+                </div>
+                <div class="alert alert-success text-center" id="edit-report" style="display:none;">
+                    <span><i class="fas fa-check"></i> ODT editada</span>
+                </div>
+                <div class="alert alert-danger text-center m-1" id="no-edit-report" style="display:none;">
+                    <span><i class="fas fa-times "> Error, no se edito la ODT</i></span>
+                </div>
+                <div class="card-body">
+                    <!-- Formulario para crear ODT -->
+                    <form id="form-crear-reporte">
+                        <input type="hidden" id="id_usuario" name="" value="">
+                        <input type="hidden" id="estado" value="<?= $_GET['estado']?>">
+                        <div class="form-group">
+                            <label for="simulador_id">Simulador</label>
+                            <input id="instructor" type="text" class="form-control" value="${datos.simulador_id}">
+                        </div>
+                        <div class="form-group">
+                            <label for="correo_us">Problema</label>
+                            <textarea class="form-control" id="averia_reporte" rows="3">${datos.averia_reporte}</textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="tipo_odt">Mantenimiento</label>
+                            <select class="form-control" id="tipo_odt">`;
+                               switch(datos.clasificacion){
+                                case 'Preventivo':
+                                    template+=`<option value="Preventivo" selected>Preventivo</option>
+                                               <option value="Correctivo">Correctivo</option>
+                                               <option value="Otro">Otro</option>`;
+                                    break;
+                                case 'Correctivo':
+                                    template+=`<option value="Correctivo" selected>Correctivo</option>
+                                               <option value="Preventivo">Preventivo</option>
+                                               <option value="Otro">Otro</option>`;
+                                    break;
+                                case 'Otro':
+                                    template+=`<option value="Otro" selected>Otro</option>
+                                               <option value="Preventivo">Preventivo</option>
+                                               <option value="Correctivo">Correctivo</option>`;
+                                    break;
+                               }
+                         template+=`</select>
+                        </div>
+                        <div class="form-group">
+                            <label for="categoria_id">Categoria</label>
+                            <select name="" id="categoria_id" class="form-control">
+                                <option value="1">Leve</option>
+                                <option value="2">Grave</option>
+                                <option value="3">Critico</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="fecha_crea">Fecha</label>
+                            <input id="fecha_crea" type="datetime-local" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="tipo_averia_id">Clasificación</label>
+                            <select class="form-control" id="tipo_averia_id">
+                                <option value="1" selected>Software</option>
+                                <option value="2">Hardware</option>
+                                <option value="3">Eléctrico</option>
+                                <option value="4">Otro</option>
+                            </select>
+                        </div>
+                </div>
+                <div class="card-footer">
+                    <button type="submit" class="btn bg-gradient-primary float-right m-1">Guardar</button>
+                    <button type="button" data-dismiss="modal" class="btn btn-outline-secondary float-right m-1">Cerrar</button>
+                </div>
+                </form>
+                <!-- Fin del formulario -->
+            </div>
+        </div>
+    </div>
+    </div>
+        `;
+        
+        editar.innerHTML = template;
+        editar.outerHTML;
+        //location.href = "../vista/pdf.php?reporte=" + id;
+    });
+
     //Listando los valores del select para seleccionar el simulador
-    let select = document.getElementById("simulador_id");
     for (i = 1; i <= 11; i++) {
         option = document.createElement("option");
         option.value = i;
