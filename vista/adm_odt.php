@@ -84,9 +84,66 @@ if (!empty($_SESSION['usuario_tipo'])) {
         </div>
     </div>
     <!-- fin del modal -->
-    <div id="modal-editar">
+    <div class="modal fade" id="editar-odt" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="card card-warning">
+                <div class="card-header">
+                    <h3 class="card-title">Editar ODT</h3>
+                    <button data-dismiss="modal" aria-label="close" class="close"><span aria-hidden="true">&times;</span></button>
+                </div>
+                <div class="alert alert-success text-center" id="edit-report" style="display:none;">
+                    <span><i class="fas fa-check"></i> ODT editada</span>
+                </div>
+                <div class="alert alert-danger text-center m-1" id="no-edit-report" style="display:none;">
+                    <span><i class="fas fa-times "> Error, no se edito la ODT</i></span>
+                </div>
+                <div class="card-body">
+                    <!-- Formulario para editar ODT -->
+                    <form name="form-editar-odt" id="form_editar_odt">
+                        <input type="hidden" id="id_usuario" name="" value="">
+                        <input type="hidden" id="id_reporte" value="">
+                        <div class="form-group">
+                            <label for="simulador_id">Simulador</label>
+                            <input id="simulador" type="text" class="form-control" value="">
+                        </div>
+                        <div class="form-group">
+                            <label for="averia_reporte">Motivo de atención</label>
+                            <input id="averia_reporte" type="text" class="form-control" value="">
+                            <!-- <textarea class="form-control" id="averia_reporte" rows="3"></textarea> -->
+                        </div>
+                        <div class="form-group">
+                            <label for="tipo_odt">Mantenimiento</label>
+                            <select class="form-control" id="tipo_odt">
 
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="categoria_id">Categoria</label>
+                            <select name="" id="categoria_id" class="form-control"></select>
+                        </div>
+                        <div class="form-group">
+                            <label for="fecha_crea">Fecha</label>
+                            <input id="fecha_crea" type="datetime" value="" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="tipo_averia_id">Clasificación</label>
+                            <select class="form-control" id="tipo_averia_id">`;
+    
+                            </select>
+                        </div>
+                </div>
+                <div class="card-footer">
+                    <button type="submit" id="btn_edit" class="btn bg-gradient-warning float-right m-1">Editar</button>
+                    <button type="button" data-dismiss="modal" class="btn btn-outline-secondary float-right m-1">Cerrar</button>
+                </div>
+                </form>
+                <!-- Fin del formulario -->
+            </div>
+        </div>
     </div>
+    </div>
+    `;
 
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
@@ -150,3 +207,4 @@ if (!empty($_SESSION['usuario_tipo'])) {
 ?>
 <script src="../js/datatables.js"></script>
 <script src="../js/Odt.js"></script>
+<script src="../js/Utils.js"></script>

@@ -48,7 +48,7 @@ ob_start();
                     <td colspan="2"><?= $obj[0]->instructor ?></td>
                 </tr>
                 <tr>
-                    <th scope="row">Problema informado</th>
+                    <th scope="row">Motivo de atención</th>
                     <td colspan="2"><?= $obj[0]->averia_reporte ?></td>
                 </tr>
                 <tr>
