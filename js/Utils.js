@@ -18,66 +18,72 @@ function modal(datos) {
     switch (dato) {
         case 'Preventivo':
             template += `<option value="Preventivo" selected>Preventivo</option>
-                                                                <option value="Correctivo">Correctivo</option>
-                                                                <option value="Otro">Otro</option>`;
+                        <option value="Correctivo">Correctivo</option>
+                        <option value="Otro">Otro</option>`;
             break;
         case 'Correctivo':
             template += `<option value="Correctivo" selected>Correctivo</option>
-                                                                <option value="Preventivo">Preventivo</option>
-                                                                <option value="Otro">Otro</option>`;
+                        <option value="Preventivo">Preventivo</option>
+                        <option value="Otro">Otro</option>`;
             break;
         case 'Otro':
             template += `<option value="Otro" selected>Otro</option>
-                                                                <option value="Preventivo">Preventivo</option>
-                                                                <option value="Correctivo">Correctivo</option>`;
+                        <option value="Preventivo">Preventivo</option>
+                        <option value="Correctivo">Correctivo</option>`;
             break;
-    }
-    // switch (datos.nombre_categoria) {
-    //     case 'Leve':
-    //         template_modal_editar += `<option value="1" selected>Leve</option>
-    //                                                             <option value="2">Grave</option>
-    //                                                             <option value="3">Critico</option>`;
-    //         break;
-    //     case 'Grave':
-    //         template_modal_editar += `<option value="2" selected>Grave</option>
-    //                                                             <option value="1">Leve</option>
-    //                                                             <option value="3">Critico</option>`;
-    //         break;
-    //     case 'Critico':
-    //         template_modal_editar += `<option value="3" selected>Critico</option>
-    //                                                             <option value="2">Grave</option>
-    //                                                             <option value="1">Leve</option>`;
-    //         break;
-    // }
-    // switch (datos.nombre_averia) {
-    //     case 'Software':
-    //         template += `<option value="1" selected>Software</option>
-    //                                                             <option value="2">Hardware</option>
-    //                                                             <option value="3">Eléctrico</option>
-    //                                                             <option value="4">Otro</option>`;
-    //         break;
-    //     case 'Hardware':
-    //         template += `<option value="2" selected>Hardware</option>
-    //                                                             <option value="1">Software</option>
-    //                                                             <option value="3">Eléctrico</option>
-    //                                                             <option value="4">Otro</option>`;
-    //         break;
-    //     case 'Eléctrico':
-    //         template += `<option value="3" selected>Eléctrico</option>
-    //                                                             <option value="2">Hardware</option>
-    //                                                             <option value="1">Software</option>
-    //                                                             <option value="4">Otro</option>`;
-    //         break;
-    //     case 'Otro':
-    //         template += `<option value="4" selected>Otro</option>
-    //                                                             <option value="2">Hardware</option>
-    //                                                             <option value="3">Eléctrico</option>
-    //                                                             <option value="1">Software</option>`;
-    //         break;
+        case 'Leve':
+            template += `<option value="1" selected>Leve</option>
+                                        <option value="2">Grave</option>
+                                      <option value="3">Critico</option>`;
+            break;
+        case 'Grave':
+            template += `<option value="2" selected>Grave</option>
+                                      <option value="1">Leve</option>
+                                      <option value="3">Critico</option>`;
+            break;
+        case 'Critico':
+            template += `<option value="3" selected>Critico</option>
+                                            <option value="2">Grave</option>
+                                            <option value="1">Leve</option>`;
+            break;
 
-    // }
+    }
 
     return template;
+}
+
+function modal_(datos) {
+
+    let datos_ = datos;
+    template_ = '';
+    switch (datos_) {
+        case 'Software':
+            template_ += `<option value="1" selected>Software</option>
+                            <option value="2">Hardware</option>
+                            <option value="3">Electrico</option>
+                            <option value="4">Otro</option>`;
+            break;
+        case 'Hardware':
+            template_ += `<option value="2" selected>Hardware</option>
+                        <option value="1">Software</option>
+                        <option value="3">Electrico</option>
+                        <option value="4">Otro</option>`;
+            break;
+        case 'Electrico':
+            template_ += `<option value="3" selected>Electrico</option>
+                        <option value="2">Hardware</option>
+                        <option value="1">Software</option>
+                        <option value="4">Otro</option>`;
+            break;
+        case 'Otro':
+            template_ += `<option value="4" selected>Otro</option>
+                        <option value="2">Hardware</option>
+                        <option value="3">Electrico</option>
+                        <option value="1">Software</option>`;
+            break;
+    }
+
+    return template_;
 }
 
 function idiomaDataTable() {

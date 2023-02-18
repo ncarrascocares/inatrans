@@ -99,3 +99,16 @@ if($_POST['funcion'] == 'reporte_original'){
     echo $jsonstring;
 
 }
+
+if($_POST['funcion'] == 'editar_reporte'){
+    $id_rep = (int)$_POST['id_rep'];
+    $sim = (int)$_POST['sim'];
+    $ave = $_POST['ave'];
+    $tip = $_POST['tip'];
+    $cat = (int)$_POST['cat'];
+    $fecha = $_POST['fecha'];
+    $tip_ave = (int)$_POST['tip_ave'];
+
+    $reporte->edit_report($id_rep, $sim, $ave, $tip, $cat, $fecha, $tip_ave);
+
+}

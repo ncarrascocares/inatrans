@@ -69,17 +69,62 @@ $(document).ready(function() {
 
     $('#tabla_reporte tbody').on('click', '.editar', function() {
         let datos = tabla_tarea.row($(this).parents()).data();
-        //Acá debemos insertar los valores en el modal para la realización de un update
+        let id_reporte_edit = document.getElementById('id_reporte_edit');
+        let sim = document.getElementById('simulador');
+        let averia_reporte_edit = document.getElementById('averia_reporte_edit');
+        let comentario_edit = document.getElementById('comentario_edit');
+        let tipo_odt_edit = document.getElementById('tipo_odt_edit');
+        let categoria_id_edit = document.getElementById('categoria_id_edit');
+        let fecha_crea_edit = document.getElementById('fecha_crea_edit');
+        let tipo_averia_id_edit = document.getElementById('tipo_averia_id_edit');
+
+        //Cargando los datos a los campos de texto del formulario
+        id_reporte_edit.value = datos.id_reporte;
+        sim.value = datos.simulador_id;
+        averia_reporte_edit.value = datos.averia_reporte;
+        tipo_odt_edit.innerHTML = modal(datos.clasificacion);
+        categoria_id_edit.innerHTML = modal(datos.nombre_categoria);
+        fecha_crea_edit.value = datos.fecha_crea;
+        tipo_averia_id_edit.innerHTML = modal_(datos.nombre_averia);
+
+
+
+
     });
 
     //En esta función se realiza el envio de los datos al controlador, pero necesito pegar los datos en el modal
-    $('#form-editar-odt').submit(e => {
+    $(document).on('click', '#btn_edit', (e) => {
+        funcion = 'editar_reporte';
+        let id_rep = $('#id_reporte_edit').val();
         let sim = $('#simulador').val();
+        let ave = $('#averia_reporte_edit').val();
+        let tip = $('#tipo_odt_edit').val();
+        let cat = $('#categoria_id_edit').val();
+        let fecha = $('#fecha_crea_edit').val();
+        let tip_ave = $('#tipo_averia_id_edit').val();
 
-        console.log(sim);
+        //Enviar vía post los datos al backend para insertar en la bd
+        $.post('../controlador/OdtController.php', { funcion, id_rep, sim, ave, tip, cat, fecha, tip_ave }, (response) => {
+            console.log(response)
+            if (response == 'yes-update') {
+                $('#edit-report').hide('slow');
+                $('#edit-report').show(1000);
+                $('#edit-report').hide(2000);
+                //Accion para que todos los campos input se reseteen
+                $('#form_editar_odt').trigger('reset');
+            } else {
+                $('#no-edit-report').hide('slow');
+                $('#no-edit-report').show(1000);
+                $('#no-edit-report').hide(2000);
+                //Accion para que todos los campos input se reseteen
+                $('#form_editar_odt').trigger('reset');
+            }
+        })
+
 
         e.preventDefault();
     })
+
 
 
 

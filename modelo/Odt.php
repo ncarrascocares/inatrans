@@ -51,7 +51,7 @@ class Odt{
     }
 
     function listar_reportes($estado){
-        $sql = "SELECT re.id_reporte, re.Simulador_id, re.Averia_reporte, re.Fecha_crea, concat(us.Nombre_us,' ',us.Apellido_us) as Responsable, re.Clasificacion, ca.Nombre_categoria, av.Nombre_averia
+        $sql = "SELECT re.id_reporte, re.Simulador_id, re.Averia_reporte ,re.Fecha_crea, concat(us.Nombre_us,' ',us.Apellido_us) as Responsable, re.Clasificacion, ca.Nombre_categoria, av.Nombre_averia
         FROM reporte re 
         inner join usuario us on re.Usuario_id = us.id_usuario
         inner join categoria ca on re.Categoria_id = ca.id_categoria
@@ -152,6 +152,34 @@ class Odt{
 
             echo 'yes-delete';
         }
+        
+    }
+
+    function edit_report($id_rep, $sim, $ave, $tip, $cat, $fecha, $tip_ave){
+       
+        $sql = "UPDATE reporte SET Simulador_id = :sim, 
+                                    Averia_reporte = :ave,
+                                    Categoria_id = :cat, 
+                                    Clasificacion = :tip, 
+                                    Fecha_crea = :fecha, 
+                                    Tipo_averia_id = :tip_ave 
+                                    WHERE id_reporte = :id_rep";
+        $query = $this->acceso->prepare($sql);
+        $query->execute(array(':sim'=>$sim,
+                              ':ave'=>$ave,
+                              ':cat'=>$cat,
+                              ':fecha'=>$fecha,
+                              ':tip'=>$tip,
+                              ':tip_ave'=>$tip_ave,
+                              ':id_rep'=>$id_rep));
+        $count = $query->rowCount();
+        if($count = 1){
+            echo 'yes-update';
+        }else{
+            echo 'no-update';
+        }
+
+        
         
     }
 }

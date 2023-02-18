@@ -31,16 +31,18 @@ if (!empty($_SESSION['usuario_tipo'])) {
                         <form id="form-crear-reporte">
                             <input type="hidden" id="id_usuario" name="" value="<?= $_SESSION['id'] ?>">
                             <input type="hidden" id="estado" value="<?= $_GET['estado']?>">
+                            
                             <div class="form-group">
                                 <label for="simulador_id">Simulador</label>
-                                <select name="" id="simulador_id" class="form-control"></select>
+                                <input id="id_reporte_edit">
+                                <input name="" id="simulador_id" class="form-control">
                             </div>
                             <div class="form-group">
                                 <label for="instructor">Instructor</label>
                                 <input id="instructor" type="text" class="form-control" required>
                             </div>
                             <div class="form-group">
-                                <label for="correo_us">Problema</label>
+                                <label for="correo_us">Motivo de atención</label>
                                 <textarea class="form-control" id="averia_reporte" rows="3" required></textarea>
                             </div>
                             <div class="form-group">
@@ -60,7 +62,7 @@ if (!empty($_SESSION['usuario_tipo'])) {
                                 <select class="form-control" id="tipo_averia_id">
                                     <option value="1" selected>Software</option>
                                     <option value="2">Hardware</option>
-                                    <option value="3">Eléctrico</option>
+                                    <option value="3">Electrico</option>
                                     <option value="4">Otro</option>
                                 </select>
                             </div>
@@ -100,35 +102,38 @@ if (!empty($_SESSION['usuario_tipo'])) {
                 </div>
                 <div class="card-body">
                     <!-- Formulario para editar ODT -->
-                    <form name="form-editar-odt" id="form_editar_odt">
-                        <input type="hidden" id="id_usuario" name="" value="">
-                        <input type="hidden" id="id_reporte" value="">
+                    <form id="form_editar_odt">
+                        <input type="hidden" id="id_usuario_edit" name="" value="">
+                        <input type="hidden" id="id_reporte_edit" value="">
                         <div class="form-group">
-                            <label for="simulador_id">Simulador</label>
+                            <label for="simulador">Simulador</label>
                             <input id="simulador" type="text" class="form-control" value="">
                         </div>
                         <div class="form-group">
-                            <label for="averia_reporte">Motivo de atención</label>
-                            <input id="averia_reporte" type="text" class="form-control" value="">
-                            <!-- <textarea class="form-control" id="averia_reporte" rows="3"></textarea> -->
+                            <label for="averia_reporte_edit">Motivo de atención</label>
+                            <textarea class="form-control" id="averia_reporte_edit" rows="3"></textarea>
                         </div>
+                        <!-- <div class="form-group">
+                            <label for="averia_reporte_edit">Comentario</label>
+                            <textarea class="form-control" id="comentario_edit" rows="3"></textarea>
+                        </div> -->
                         <div class="form-group">
-                            <label for="tipo_odt">Mantenimiento</label>
-                            <select class="form-control" id="tipo_odt">
+                            <label for="tipo_odt_edit">Mantenimiento</label>
+                            <select class="form-control" id="tipo_odt_edit">
 
                             </select>
                         </div>
                         <div class="form-group">
                             <label for="categoria_id">Categoria</label>
-                            <select name="" id="categoria_id" class="form-control"></select>
+                            <select name="" id="categoria_id_edit" class="form-control"></select>
                         </div>
                         <div class="form-group">
                             <label for="fecha_crea">Fecha</label>
-                            <input id="fecha_crea" type="datetime" value="" class="form-control">
+                            <input id="fecha_crea_edit" type="datetime-local" value="" class="form-control">
                         </div>
                         <div class="form-group">
                             <label for="tipo_averia_id">Clasificación</label>
-                            <select class="form-control" id="tipo_averia_id">`;
+                            <select class="form-control" id="tipo_averia_id_edit">`;
     
                             </select>
                         </div>
@@ -178,7 +183,7 @@ if (!empty($_SESSION['usuario_tipo'])) {
                                 <tr>
                                     <th>N° odt</th>
                                     <th>Simulador</th>
-                                    <th>Problema</th>
+                                    <th>Motivo Atención</th>
                                     <th>Mantenimiento</th>
                                     <th>Fecha</th>
                                     <th>Responsable</th>
