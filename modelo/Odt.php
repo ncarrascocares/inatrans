@@ -73,9 +73,9 @@ class Odt{
         return $this->objetos;
     }
 
-    function guardar_reportes($id_usuario,$simulador_id,$instructor,$averia_reporte,$categoria_id,$fecha_crea,$tipo_averia_id,$tipo_odt){
-        $sql = "INSERT INTO reporte (Simulador_id, Usuario_id, Instructor, Averia_reporte, Categoria_id, Fecha_crea, Tipo_averia_id, Clasificacion) 
-                            VALUES (:simulador,:id_usuario, :instructor, :averia_reporte, :categoria, :fecha, :tipo, :tipo_odt)";
+    function guardar_reportes($id_usuario,$simulador_id,$instructor,$averia_reporte,$categoria_id,$fecha_crea,$tipo_averia_id,$tipo_odt, $sop_ext){
+        $sql = "INSERT INTO reporte (Simulador_id, Usuario_id, Instructor, Averia_reporte, Categoria_id, Fecha_crea, Tipo_averia_id, Clasificacion, Soporte_externo) 
+                            VALUES (:simulador,:id_usuario, :instructor, :averia_reporte, :categoria, :fecha, :tipo, :tipo_odt, :sop_ext)";
         $query = $this->acceso->prepare($sql);
         $query->execute(array(  ':simulador' =>$simulador_id,
                                 ':id_usuario'=>$id_usuario,
@@ -84,7 +84,8 @@ class Odt{
                                 ':categoria'=>$categoria_id,
                                 ':fecha'=>$fecha_crea,
                                 ':tipo'=>$tipo_averia_id,
-                                ':tipo_odt'=>$tipo_odt));
+                                ':tipo_odt'=>$tipo_odt,
+                                ':sop_ext'=>$sop_ext));
         echo "odt-insertada";
 
         switch ($categoria_id) {
@@ -155,14 +156,15 @@ class Odt{
         
     }
 
-    function edit_report($id_rep, $sim, $ave, $tip, $cat, $fecha, $tip_ave){
+    function edit_report($id_rep, $sim, $ave, $tip, $cat, $fecha, $tip_ave, $sop_ext){
        
         $sql = "UPDATE reporte SET Simulador_id = :sim, 
                                     Averia_reporte = :ave,
                                     Categoria_id = :cat, 
                                     Clasificacion = :tip, 
                                     Fecha_crea = :fecha, 
-                                    Tipo_averia_id = :tip_ave 
+                                    Tipo_averia_id = :tip_ave ,
+                                    Soporte_externo = :sop_ext
                                     WHERE id_reporte = :id_rep";
         $query = $this->acceso->prepare($sql);
         $query->execute(array(':sim'=>$sim,
@@ -171,7 +173,8 @@ class Odt{
                               ':fecha'=>$fecha,
                               ':tip'=>$tip,
                               ':tip_ave'=>$tip_ave,
-                              ':id_rep'=>$id_rep));
+                              ':id_rep'=>$id_rep,
+                              ':sop_ext'=>$sop_ext));
         $count = $query->rowCount();
         if($count = 1){
             echo 'yes-update';

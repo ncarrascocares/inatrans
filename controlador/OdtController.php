@@ -20,16 +20,17 @@ if($_POST['funcion'] == 'listar_reportes'){
 }
 
 if($_POST['funcion'] == 'guardar_reporte'){
-    $id_usuario = $_POST['id_usuario'];
-    $simulador_id = $_POST['simulador_id'];
+    $id_usuario = (int)$_POST['id_usuario'];
+    $simulador_id = (int)$_POST['simulador_id'];
     $instructor = ucfirst($_POST['instructor']);
     $averia_reporte = $_POST['averia_reporte'];
-    $categoria_id = $_POST['categoria_id'];
+    $categoria_id = (int)$_POST['categoria_id'];
     $fecha_crea = $_POST['fecha_crea'];
-    $tipo_averia_id = $_POST['tipo_averia_id'];
+    $tipo_averia_id = (int)$_POST['tipo_averia_id'];
     $tipo_odt = $_POST['tipo_odt'];
+    $sop_ext = (int)$_POST['sop_ext'];
 
-    $reporte->guardar_reportes($id_usuario,$simulador_id,$instructor,$averia_reporte,$categoria_id,$fecha_crea,$tipo_averia_id,$tipo_odt);
+    $reporte->guardar_reportes($id_usuario,$simulador_id,$instructor,$averia_reporte,$categoria_id,$fecha_crea,$tipo_averia_id,$tipo_odt, $sop_ext);
      //die();
     
 }
@@ -108,7 +109,8 @@ if($_POST['funcion'] == 'editar_reporte'){
     $cat = (int)$_POST['cat'];
     $fecha = $_POST['fecha'];
     $tip_ave = (int)$_POST['tip_ave'];
+    $sop_ext = (int)$_POST['sop_ext'];
 
-    $reporte->edit_report($id_rep, $sim, $ave, $tip, $cat, $fecha, $tip_ave);
+    $reporte->edit_report($id_rep, $sim, $ave, $tip, $cat, $fecha, $tip_ave, $sop_ext);
 
 }

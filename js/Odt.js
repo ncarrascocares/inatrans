@@ -6,11 +6,14 @@ $(document).ready(function() {
     let title = document.getElementById('title');
     const btn = document.getElementById('button_crear');
     const select = document.getElementById("simulador_id");
+    const soporte_externo = document.getElementById('soporte_externo');
     //const editar = document.getElementById("modal-editar");
 
+    //console.log(sop_ext());
 
     mensaje(estado);
     btn_bloqueo(tipo_user)
+   
 
     function btn_bloqueo(dato) {
         if (tipo_user == '3') {
@@ -102,9 +105,9 @@ $(document).ready(function() {
         let cat = $('#categoria_id_edit').val();
         let fecha = $('#fecha_crea_edit').val();
         let tip_ave = $('#tipo_averia_id_edit').val();
-
+        let sop_ext = $('#soporte_externo_edit').val();
         //Enviar vía post los datos al backend para insertar en la bd
-        $.post('../controlador/OdtController.php', { funcion, id_rep, sim, ave, tip, cat, fecha, tip_ave }, (response) => {
+        $.post('../controlador/OdtController.php', { funcion, id_rep, sim, ave, tip, cat, fecha, tip_ave,sop_ext }, (response) => {
             console.log(response)
             if (response == 'yes-update') {
                 $('#edit-report').hide('slow');
@@ -126,8 +129,6 @@ $(document).ready(function() {
     })
 
 
-
-
     //Listando los valores del select para seleccionar el simulador
     for (i = 1; i <= 11; i++) {
         option = document.createElement("option");
@@ -135,6 +136,8 @@ $(document).ready(function() {
         option.text = "Simulador " + i;
         select.appendChild(option);
     }
+
+    soporte_externo.innerHTML = sop_ext();
 
     $('#form-crear-reporte').submit(e => {
         //Recibiendo los datos del formulario
@@ -146,9 +149,10 @@ $(document).ready(function() {
         let fecha_crea = $('#fecha_crea').val();
         let tipo_averia_id = $('#tipo_averia_id').val();
         let tipo_odt = $('#tipo_odt').val();
+        let sop_ext = $('#soporte_externo').val();
 
         let funcion = "guardar_reporte";
-        $.post('../controlador/OdtController.php', { id_usuario, simulador_id, instructor, averia_reporte, categoria_id, fecha_crea, tipo_averia_id, tipo_odt, funcion }, (response) => {
+        $.post('../controlador/OdtController.php', { id_usuario, simulador_id, instructor, averia_reporte, categoria_id, fecha_crea, tipo_averia_id, tipo_odt, sop_ext, funcion }, (response) => {
             //console.log(response);
             if (response == 'odt-insertada') {
                 $('#new-report').hide('slow');

@@ -34,8 +34,8 @@ if (!empty($_SESSION['usuario_tipo'])) {
                             
                             <div class="form-group">
                                 <label for="simulador_id">Simulador</label>
-                                <input id="id_reporte_edit">
-                                <input name="" id="simulador_id" class="form-control">
+                                <select name="" id="simulador_id" class="form-control">
+                                </select>
                             </div>
                             <div class="form-group">
                                 <label for="instructor">Instructor</label>
@@ -43,7 +43,7 @@ if (!empty($_SESSION['usuario_tipo'])) {
                             </div>
                             <div class="form-group">
                                 <label for="correo_us">Motivo de atención</label>
-                                <textarea class="form-control" id="averia_reporte" rows="3" required></textarea>
+                                <textarea class="form-control" id="averia_reporte" rows="3" spellcheck="false" required></textarea>
                             </div>
                             <div class="form-group">
                                 <label for="categoria_id">Categoria</label>
@@ -72,6 +72,12 @@ if (!empty($_SESSION['usuario_tipo'])) {
                                     <option value="Preventivo" selected>Preventivo</option>
                                     <option value="Correctivo">Correctivo</option>
                                     <option value="Otro">Otro</option>
+                                </select>
+                            </div>
+                             <div class="form-group">
+                                <label for="soporte_externo">Soporte de España</label>
+                                <select class="form-control" id="soporte_externo">`;
+
                                 </select>
                             </div>
                     </div>
@@ -111,7 +117,7 @@ if (!empty($_SESSION['usuario_tipo'])) {
                         </div>
                         <div class="form-group">
                             <label for="averia_reporte_edit">Motivo de atención</label>
-                            <textarea class="form-control" id="averia_reporte_edit" rows="3"></textarea>
+                            <textarea class="form-control" id="averia_reporte_edit" spellcheck="false" rows="3"></textarea>
                         </div>
                         <!-- <div class="form-group">
                             <label for="averia_reporte_edit">Comentario</label>
@@ -137,7 +143,14 @@ if (!empty($_SESSION['usuario_tipo'])) {
     
                             </select>
                         </div>
-                </div>
+                        </div>
+                             <div class="form-group">
+                                <label for="soporte_externo_edit">Soporte de España</label>
+                                <select class="form-control" id="soporte_externo_edit">`;
+
+                                </select>
+                            </div>
+                        </div>
                 <div class="card-footer">
                     <button type="submit" id="btn_edit" class="btn bg-gradient-warning float-right m-1">Editar</button>
                     <button type="button" data-dismiss="modal" class="btn btn-outline-secondary float-right m-1">Cerrar</button>
