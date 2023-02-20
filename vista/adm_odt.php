@@ -76,8 +76,9 @@ if (!empty($_SESSION['usuario_tipo'])) {
                             </div>
                              <div class="form-group">
                                 <label for="soporte_externo">Soporte de España</label>
-                                <select class="form-control" id="soporte_externo">`;
-
+                                <select class="form-control" id="soporte_externo">
+                                    <option value="1" selected> No </option>
+                                    <option value="2"> Si </option>
                                 </select>
                             </div>
                     </div>
@@ -139,18 +140,18 @@ if (!empty($_SESSION['usuario_tipo'])) {
                         </div>
                         <div class="form-group">
                             <label for="tipo_averia_id">Clasificación</label>
-                            <select class="form-control" id="tipo_averia_id_edit">`;
+                            <select class="form-control" id="tipo_averia_id_edit">
     
                             </select>
                         </div>
+                        <div class="form-group">
+                            <label for="soporte_externo">Soporte de España</label>
+                            <select class="form-control" id="soporte_externo_edit">
+                                <option value="1" selected> No </option>
+                                <option value="2"> Si </option>
+                            </select>
                         </div>
-                             <div class="form-group">
-                                <label for="soporte_externo_edit">Soporte de España</label>
-                                <select class="form-control" id="soporte_externo_edit">`;
-
-                                </select>
-                            </div>
-                        </div>
+                    </div>
                 <div class="card-footer">
                     <button type="submit" id="btn_edit" class="btn bg-gradient-warning float-right m-1">Editar</button>
                     <button type="button" data-dismiss="modal" class="btn btn-outline-secondary float-right m-1">Cerrar</button>
@@ -161,7 +162,6 @@ if (!empty($_SESSION['usuario_tipo'])) {
         </div>
     </div>
     </div>
-    `;
 
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">

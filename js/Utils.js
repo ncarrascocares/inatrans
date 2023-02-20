@@ -86,14 +86,6 @@ function modal_(datos) {
     return template_;
 }
 
-function sop_ext(){
-    template_soporte = '';
-    template_soporte+= `<option value="1" selected>No</option>
-                        <option value="2">Si</option>`;
-
-    return template_soporte;
-}
-
 function idiomaDataTable() {
     espanol = {
         "aria": {

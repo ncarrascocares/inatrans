@@ -6,11 +6,7 @@ $(document).ready(function() {
     let title = document.getElementById('title');
     const btn = document.getElementById('button_crear');
     const select = document.getElementById("simulador_id");
-    const soporte_externo = document.getElementById('soporte_externo');
-    //const editar = document.getElementById("modal-editar");
-
-    //console.log(sop_ext());
-
+  
     mensaje(estado);
     btn_bloqueo(tipo_user)
    
@@ -90,9 +86,6 @@ $(document).ready(function() {
         fecha_crea_edit.value = datos.fecha_crea;
         tipo_averia_id_edit.innerHTML = modal_(datos.nombre_averia);
 
-
-
-
     });
 
     //En esta función se realiza el envio de los datos al controlador, pero necesito pegar los datos en el modal
@@ -136,8 +129,6 @@ $(document).ready(function() {
         option.text = "Simulador " + i;
         select.appendChild(option);
     }
-
-    soporte_externo.innerHTML = sop_ext();
 
     $('#form-crear-reporte').submit(e => {
         //Recibiendo los datos del formulario
