@@ -83,6 +83,15 @@
                                 </p>
                             </a>
                         </li>
+                        <li class="nav-header">Mantenimiento</li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <i class="nav-icon fa fa-cogs"></i>
+                                <p>
+                                    Equipos
+                                </p>
+                            </a>
+                        </li>
                     </ul>
                     <?php endif; ?>
                     </ul>
