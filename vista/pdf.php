@@ -72,8 +72,23 @@ ob_start();
                     <td scope="row" style="text-align: center;background:royalblue;color:aliceblue;" colspan="3"></td>
                 </tr>
                 <tr>
-                    <th scope="row">Simulador</th>
-                    <td colspan="2"><?= $obj[0]->simulador_id ?></td>
+                    <th scope="row">Equipo</th>
+                    <td colspan="2">
+                    <?php
+                    $eq = $obj[0]->simulador_id; 
+                        if($eq >=12){
+                            if($eq == 12){
+                                echo "Laboratorio de Antofagasta";
+                            }elseif($eq == 13){
+                                echo "Laboratorio de Iquique";
+                            }elseif($eq == 14){
+                                echo "Laboratorio de Santiago";
+                            }
+                        }else{
+                           echo "Simulador " . $eq;
+                       }
+                    ?>
+                    </td>
                 </tr>
                 <tr>
                     <th scope="row">Estado ODT:</th>
