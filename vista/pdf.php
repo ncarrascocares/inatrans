@@ -54,20 +54,20 @@ ob_start();
                 <tr>
                     <th scope="row" style="text-align: left;">Equipo</th>
                     <td colspan="2">
-                    <?php
-                    $eq = $obj[0]->simulador_id; 
-                        if($eq >=12){
-                            if($eq == 12){
+                        <?php
+                        $eq = $obj[0]->simulador_id;
+                        if ($eq >= 12) {
+                            if ($eq == 12) {
                                 echo "Laboratorio de Antofagasta";
-                            }elseif($eq == 13){
+                            } elseif ($eq == 13) {
                                 echo "Laboratorio de Iquique";
-                            }elseif($eq == 14){
+                            } elseif ($eq == 14) {
                                 echo "Laboratorio de Santiago";
                             }
-                        }else{
-                           echo "Simulador " . $eq;
-                       }
-                    ?>
+                        } else {
+                            echo "Simulador " . $eq;
+                        }
+                        ?>
                     </td>
                 </tr>
                 <tr>
@@ -84,12 +84,24 @@ ob_start();
                 </tr>
                 <tr>
                     <th scope="row" style="text-align: left;">Fecha creación</th>
-                    <td colspan="2"><?= $obj[0]->fecha_crea ?></td>
+                    <td colspan="2">
+                        <?php
+                        $fecha = $obj[0]->fecha_crea;
+                        $date = new DateTime($fecha);
+                        echo $date->format('d/m/y - H:i:s');
+                        ?>
+                    </td>
                 </tr>
                 <?php if ($obj[0]->estatus_reporte == 0) : ?>
                     <tr>
                         <th scope="row" style="text-align: left;">Fecha de Cierre</th>
-                        <td colspan="2"><?= $obj[0]->fecha_cierre ?></td>
+                        <td colspan="2">
+                            <?php
+                            $fecha = $obj[0]->fecha_cierre;
+                            $date = new DateTime($fecha);
+                            echo $date->format('d/m/y - H:i:s');
+                            ?>
+                        </td>
                     </tr>
                 <?php endif; ?>
                 <tr>
@@ -99,15 +111,21 @@ ob_start();
                     <td style="text-align: center;background:cornflowerblue;color:aliceblue;">Fecha</td>
                     <td style="text-align: center;background:cornflowerblue;color:aliceblue;">Responsable</td>
                     <td style="text-align: center;background:cornflowerblue;color:aliceblue;">Comentario</td>
-                    </tr>
-                <?php foreach($obj as $a): ?>  
-                <tr>
-                    
-                    <td><?= $a->fecha_crea_historial_reporte?></td>
-                    <td><?= $a->responsable ?></td>
-                    <td><?= $a->comentario_historial_reporte ?></td>
-                    
                 </tr>
+                <?php foreach ($obj as $a) : ?>
+                    <tr>
+
+                        <td>
+                            <?php
+                             $fecha = $a->fecha_crea_historial_reporte;
+                             $date = new DateTime($fecha);
+                             echo $date->format('d/m/y - H:i:s');
+                             ?>
+                        </td>
+                        <td><?= $a->responsable ?></td>
+                        <td><?= $a->comentario_historial_reporte ?></td>
+
+                    </tr>
                 <?php endforeach; ?>
                 <tr style="text-align: center;background:royalblue;color:aliceblue;">
                     <th scope="col" colspan="3"></th>
