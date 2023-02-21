@@ -32,47 +32,27 @@ ob_start();
             <thead>
                 <tr style="text-align: center;background:royalblue;color:aliceblue;">
                     <th scope="col" colspan="1">INATRANS</th>
-                    <th scope="col" colspan="2">SISTEMA DE GSTION DE CALIDAD</th>
+                    <th scope="col" colspan="2">ÁREA DE MANTENIMIENTO</th>
                 </tr>
                 <tr>
-                    <th scope="col" colspan="3" style="text-align:center;background:royalblue;color:aliceblue;">Mantenimiento inatrans</th>
+                    <th scope="col" colspan="3" style="text-align:center;background:royalblue;color:aliceblue;">DETALLES DE ODT</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
-                    <th scope="row">N° Interno</th>
+                    <th scope="row" style="text-align: left;">N° Interno</th>
                     <td colspan="2"><?= $id_repo ?></td>
                 </tr>
                 <tr>
-                    <th scope="row">Persona a Cargo</th>
+                    <th scope="row" style="text-align: left;">Persona a Cargo</th>
                     <td colspan="2"><?= $obj[0]->instructor ?></td>
                 </tr>
                 <tr>
-                    <th scope="row">Motivo de atención</th>
+                    <th scope="row" style="text-align: left;">Motivo de atención</th>
                     <td colspan="2"><?= $obj[0]->averia_reporte ?></td>
                 </tr>
                 <tr>
-                    <td scope="row" style="text-align: center;background:royalblue;color:aliceblue;" colspan="3">Comentarios</td>
-                </tr>
-                <tr>
-                    <td style="text-align: center;background:cornflowerblue;color:aliceblue;">Fecha</td>
-                    <td style="text-align: center;background:cornflowerblue;color:aliceblue;">Responsable</td>
-                    <td style="text-align: center;background:cornflowerblue;color:aliceblue;">Comentario</td>
-                    </tr>
-                <?php foreach($obj as $a): ?>  
-                <tr>
-                    
-                    <td><?= $a->fecha_crea_historial_reporte?></td>
-                    <td><?= $a->responsable ?></td>
-                    <td><?= $a->comentario_historial_reporte ?></td>
-                    
-                </tr>
-                <?php endforeach; ?>
-                <tr>
-                    <td scope="row" style="text-align: center;background:royalblue;color:aliceblue;" colspan="3"></td>
-                </tr>
-                <tr>
-                    <th scope="row">Equipo</th>
+                    <th scope="row" style="text-align: left;">Equipo</th>
                     <td colspan="2">
                     <?php
                     $eq = $obj[0]->simulador_id; 
@@ -91,7 +71,7 @@ ob_start();
                     </td>
                 </tr>
                 <tr>
-                    <th scope="row">Estado ODT:</th>
+                    <th scope="row" style="text-align: left;">Estado ODT</th>
                     <td colspan="2"><?php if ($obj[0]->estatus_reporte == 1) {
                                         echo 'Abierto';
                                     } else {
@@ -99,21 +79,38 @@ ob_start();
                                     } ?></td>
                 </tr>
                 <tr>
-                    <th scope="row">Mantenimiento</th>
+                    <th scope="row" style="text-align: left;">Mantenimiento</th>
                     <td colspan="2"><?= $obj[0]->clasificacion ?></td>
                 </tr>
                 <tr>
-                    <th scope="row">Fecha creación</th>
+                    <th scope="row" style="text-align: left;">Fecha creación</th>
                     <td colspan="2"><?= $obj[0]->fecha_crea ?></td>
                 </tr>
                 <?php if ($obj[0]->estatus_reporte == 0) : ?>
                     <tr>
-                        <th scope="row">Fecha de Cierre</th>
+                        <th scope="row" style="text-align: left;">Fecha de Cierre</th>
                         <td colspan="2"><?= $obj[0]->fecha_cierre ?></td>
                     </tr>
                 <?php endif; ?>
+                <tr>
+                    <td scope="row" style="text-align: center;background:royalblue;color:aliceblue;" colspan="3">COMENTARIOS</td>
+                </tr>
+                <tr>
+                    <td style="text-align: center;background:cornflowerblue;color:aliceblue;">Fecha</td>
+                    <td style="text-align: center;background:cornflowerblue;color:aliceblue;">Responsable</td>
+                    <td style="text-align: center;background:cornflowerblue;color:aliceblue;">Comentario</td>
+                    </tr>
+                <?php foreach($obj as $a): ?>  
+                <tr>
+                    
+                    <td><?= $a->fecha_crea_historial_reporte?></td>
+                    <td><?= $a->responsable ?></td>
+                    <td><?= $a->comentario_historial_reporte ?></td>
+                    
+                </tr>
+                <?php endforeach; ?>
                 <tr style="text-align: center;background:royalblue;color:aliceblue;">
-                    <th scope="col" colspan="3">MANTENGAMONOS SIEMPRE EN CONTACTO</th>
+                    <th scope="col" colspan="3"></th>
                 </tr>
                 <tr style="text-align: center;background:royalblue;color:aliceblue;">
                     <th scope="col" colspan="3">ncarrasco@inatrans.cl</th>
