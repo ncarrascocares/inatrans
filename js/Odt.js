@@ -6,10 +6,11 @@ $(document).ready(function() {
     let title = document.getElementById('title');
     const btn = document.getElementById('button_crear');
     const select = document.getElementById("simulador_id");
-  
+
     mensaje(estado);
     btn_bloqueo(tipo_user)
-   
+    listado()
+
 
     function btn_bloqueo(dato) {
         if (tipo_user == '3') {
@@ -100,7 +101,7 @@ $(document).ready(function() {
         let tip_ave = $('#tipo_averia_id_edit').val();
         let sop_ext = $('#soporte_externo_edit').val();
         //Enviar vía post los datos al backend para insertar en la bd
-        $.post('../controlador/OdtController.php', { funcion, id_rep, sim, ave, tip, cat, fecha, tip_ave,sop_ext }, (response) => {
+        $.post('../controlador/OdtController.php', { funcion, id_rep, sim, ave, tip, cat, fecha, tip_ave, sop_ext }, (response) => {
             console.log(response)
             if (response == 'yes-update') {
                 $('#edit-report').hide('slow');
@@ -123,11 +124,33 @@ $(document).ready(function() {
 
 
     //Listando los valores del select para seleccionar el simulador
-    for (i = 1; i <= 11; i++) {
-        option = document.createElement("option");
-        option.value = i;
-        option.text = "Simulador " + i;
-        select.appendChild(option);
+    function listado() {
+        for (i = 1; i <= 14; i++) {
+            option = document.createElement("option");
+            if (i == 12 || i == 13 || i == 14) {
+                if (i == 12) {
+                    option.value = 12;
+                    option.text = "Laboratorio Antofagasta";
+                    select.appendChild(option);
+                }
+                if (i == 13) {
+                    option.value = 13;
+                    option.text = "Laboratorio Iquique";
+                    select.appendChild(option);
+                }
+                if (i == 14) {
+                    option.value = 14;
+                    option.text = "Laboratorio Santiago";
+                    select.appendChild(option);
+                }
+
+            }
+            if (i <= 11) {
+                option.value = i;
+                option.text = "Simulador " + i;
+                select.appendChild(option);
+            }
+        }
     }
 
     $('#form-crear-reporte').submit(e => {
