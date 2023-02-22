@@ -26,7 +26,7 @@ $(document).ready(function() {
             let contador = 0;
             est_simulador.forEach(est_simulador => {
                 //console.log(est_simulador.total)
-                if (contador < 9) {
+                if (contador < 12) {
                     template += `
                         <div class="col-md-4">
                             <div class="card card-widget widget-user-2">
@@ -35,7 +35,7 @@ $(document).ready(function() {
 
                                     </div>
                                     <!-- /.widget-user-image -->
-                                    <h3 class="widget-user-username">Simuador ${est_simulador.id_simulador}</h3>
+                                    <h3 class="widget-user-username">${est_simulador.nombre_simulador}</h3>
                                     <h5 class="widget-user-desc">${est_simulador.nombre_sucursal}</h5>
                                 </div>
                                 <div class="card-footer p-0">
@@ -81,7 +81,7 @@ $(document).ready(function() {
 
                                     </div>
                                     <!-- /.widget-user-image -->
-                                    <h3 class="widget-user-username">Simuador ${est_simulador.id_simulador}</h3>
+                                    <h3 class="widget-user-username">${est_simulador.nombre_simulador}</h3>
                                     <h5 class="widget-user-desc">${est_simulador.nombre_sucursal}</h5>
                                 </div>
                                 <div class="card-footer p-0">
