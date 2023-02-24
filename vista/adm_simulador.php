@@ -17,7 +17,7 @@ if (!empty($_SESSION['usuario_tipo'])) {
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1>Detalle por equipo</h1>
+                        <h1>Simuladores y Laboratorios<button id="button-crear" type="button" data-toggle="modal" data-target="#crear-odt" class="btn bg-gradient-primary ml-2">Crear</button></h1>
                     </div>
                     <input type="hidden" id="tipo_usuario" value="<?= $_SESSION['usuario_tipo'] ?>">
                     <div class="col-sm-6">
@@ -31,9 +31,15 @@ if (!empty($_SESSION['usuario_tipo'])) {
         </section>
         <section>
             <div class="container-fluid">
+                <div id="" class="card-header bg-info">
+                    <h4 id="">Detalle</h4>
+                    <div class="input-group">
+                    </div>
+                </div>
+                <br>
                 <div class="card card-outline card-primary">
                     <div class="card-header">
-                        <h3 class="card-title">Simulador 1</h3>
+                        <h3 class="card-title">Simulador 1 <button id="button-crear-sub" type="button" data-toggle="modal" data-target="#crear-odt" class="btn bg-gradient-success ml-2">Crear Sub Equipo</button></h3>
 
                         <div class="card-tools">
                             <button type="button" class="btn btn-tool" data-card-widget="collapse">
@@ -94,7 +100,7 @@ if (!empty($_SESSION['usuario_tipo'])) {
                 </div>
                 <div class="card card-outline card-primary">
                     <div class="card-header">
-                        <h3 class="card-title">Simulador 2</h3>
+                        <h3 class="card-title">Simulador 2 <button id="button-crear-sub" type="button" data-toggle="modal" data-target="#crear-odt" class="btn bg-gradient-success ml-2">Crear Sub Equipo</button></h3>
 
                         <div class="card-tools">
                             <button type="button" class="btn btn-tool" data-card-widget="collapse">
