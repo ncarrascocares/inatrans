@@ -15,8 +15,8 @@ if (!empty($_SESSION['usuario_tipo'])) {
     <div class="modal fade" id="modalSub" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-xl">
             <div class="modal-content">
-                <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="exampleModalLabel">Sub equipos</h1>
+                <div class="modal-header bg-primary">
+                    <h3 class="modal-title fs-5" id="exampleModalLabel">Nuevo Sub equipo</h3>
                 </div>
                 <div class="modal-body">
                     <form class="row g-3 needs-validation" novalidate>
@@ -57,8 +57,8 @@ if (!empty($_SESSION['usuario_tipo'])) {
     <div class="modal fade" id="modalEquipo" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-xl">
             <div class="modal-content">
-                <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="exampleModalLabel">Elemento</h1>
+                <div class="modal-header bg-primary">
+                    <h3 class="modal-title fs-5" id="exampleModalLabel">Nuevo Elemento</h3>
                 </div>
                 <div class="modal-body">
                     <form class="row g-3 needs-validation" novalidate>
