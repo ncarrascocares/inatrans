@@ -107,7 +107,7 @@ $(document).ready(function() {
         let newpass = $('#new-pass').val();
         let correo = $('#correo_us').val();
         //console.log(oldpass + ' ' + newpass);
-        $.post('../controlador/UsuarioController.php', { id_usuario, funcion, oldpass, newpass, }, (response) => {
+        $.post('../controlador/UsuarioController.php', { id_usuario, funcion, oldpass, newpass }, (response) => {
             //console.log(response);
             if (response == 'update') {
                 $('#update-pass').hide('slow');

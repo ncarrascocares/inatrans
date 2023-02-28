@@ -26,7 +26,7 @@ $(document).ready(function() {
             let contador = 0;
             est_simulador.forEach(est_simulador => {
                 //console.log(est_simulador.total)
-                if (contador < 12) {
+                if (contador < 9) {
                     template += `
                         <div class="col-md-4">
                             <div class="card card-widget widget-user-2">

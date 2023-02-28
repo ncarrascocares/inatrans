@@ -68,6 +68,13 @@ switch ($_POST['funcion']) {
         $est = (int)$_POST['est'];
         $simulador->cambio_estado($sim, $est);
         break;
+    case 'crear_equipo':
+        $name_equipo = $_POST['name_equipo'];
+        $name_sucursal = $_POST['name_sucursal'];
+        $tipo_equipo = $_POST['tipo_equipo'];
+        $desc_equipo = $_POST['desc_equipo'];
+        $simulador->crear_equipo($name_equipo, $name_sucursal, $desc_equipo, $tipo_equipo);
+        break;
 }
 
 

@@ -11,6 +11,98 @@ if (!empty($_SESSION['usuario_tipo'])) {
 
     <!-- Inclución del fichero nav -->
     <?php include_once 'layouts/nav.php'; ?>
+    <!-- Modal para la creación de sub-equipo -->
+    <div class="modal fade" id="modalSub" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Sub equipos</h1>
+                </div>
+                <div class="modal-body">
+                    <form class="row g-3 needs-validation" novalidate>
+                        <div class="col-md-4 position-relative">
+                            <label for="name_equipo" class="form-label">Nombre del sub-equipo</label>
+                            <input type="text" class="form-control" id="name_equipo" value="" required>
+                        </div>
+                        <div class="col-md-4 position-relative">
+                            <label for="simulador_id" class="form-label">Equipo al que pertenece</label>
+                            <select name="" id="simulador_id" class="form-control">
+                            </select>
+                        </div>
+                        <div class="col-md-4 position-relative">
+                            <label for="tipo_mant" class="form-label">Mantenimiento</label>
+                            <select name="" id="tipo_mant" class="form-control">
+                            </select>
+                        </div>
+                        <div class="col-md-12 position-relative">
+                            <label for="detalle_sub" class="form-label">Detalles</label>
+                            <div class="input-group has-validation">
+                                <textarea class="form-control" id="detalle_sub" rows="3" spellcheck="false" required></textarea>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <br>
+                            <button class="btn btn-primary" type="submit">Crear</button>
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Modal para la creación de los elementos de los sub-equipos -->
+    <div class="modal fade" id="modalEquipo" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Elemento</h1>
+                </div>
+                <div class="modal-body">
+                    <form class="row g-3 needs-validation" novalidate>
+                        <div class="col-md-6 position-relative">
+                            <label for="name_equipo" class="form-label">Nombre elemento</label>
+                            <input type="text" class="form-control" id="name_equipo" value="" required>
+                        </div>
+                        <div class="col-md-6 position-relative">
+                            <label for="periocidad" class="form-label">Periocidad</label>
+                            <input type="text" class="form-control" id="periocidad">
+                        </div>
+                        <div class="col-md-4 position-relative">
+                            <label for="codigo_elemento" class="form-label">Código</label>
+                            <input type="text" class="form-control" id="codigo_elemento">
+                        </div>
+                        <div class="col-md-4 position-relative">
+                            <label for="tipo_mant" class="form-label">Sub equipo asocidado</label>
+                            <select name="" id="tipo_mant" class="form-control">
+                            </select>
+                        </div>
+                        <div class="col-md-4 position-relative">
+                            <label for="tipo_mant" class="form-label">Mantenimiento</label>
+                            <select name="" id="tipo_mant" class="form-control">
+                            </select>
+                        </div>
+                        <div class="col-md-12 position-relative">
+                            <label for="detalle_sub" class="form-label">Detalles</label>
+                            <div class="input-group has-validation">
+                                <textarea class="form-control" id="detalle_sub" rows="3" spellcheck="false" required></textarea>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <br>
+                            <button class="btn btn-primary" type="submit">Crear</button>
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+
+                </div>
+            </div>
+        </div>
+    </div>
     <div class="content-wrapper">
         <!-- Content Header (Page header) -->
         <section class="content-header">
@@ -39,7 +131,10 @@ if (!empty($_SESSION['usuario_tipo'])) {
                 <br>
                 <div class="card card-outline card-primary">
                     <div class="card-header">
-                        <h3 class="card-title">Simulador 1 <button id="button-crear-sub" type="button" data-toggle="modal" data-target="#crear-odt" class="btn bg-gradient-success ml-2">Crear Sub Equipo</button></h3>
+                        <h3 class="card-title">Simulador 1
+                            <button id="button-crear-sub" type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalSub" data-whatever="@mdo">Crear Sub Equipo</button>
+                            <button id="button-crear-sub" type="button" class="btn btn-info" data-toggle="modal" data-target="#modalEquipo" data-whatever="@mdo">Crear Elemento</button>
+                        </h3>
 
                         <div class="card-tools">
                             <button type="button" class="btn btn-tool" data-card-widget="collapse">
