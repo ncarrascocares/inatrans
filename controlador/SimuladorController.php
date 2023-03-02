@@ -75,6 +75,19 @@ switch ($_POST['funcion']) {
         $desc_equipo = $_POST['desc_equipo'];
         $simulador->crear_equipo($name_equipo, $name_sucursal, $desc_equipo, $tipo_equipo);
         break;
+    case 'estado_laboratorio':
+        $json = array();
+            $simulador->estado_laboratorio();
+            foreach ($simulador->objetos as $objeto) {
+                $json[] = array(
+                    'id_lab'=>$objeto->id_lab,
+                    'nom_lab'=>$objeto->nom_lab,
+                    'est_lab'=>$objeto->est_lab
+                );
+            }
+            $jsonstring = json_encode($json);
+            echo $jsonstring;
+        break;
 }
 
 

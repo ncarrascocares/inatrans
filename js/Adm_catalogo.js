@@ -6,6 +6,7 @@ $(document).ready(function() {
     //console.log('Hola Mundo');
 
     estado_simulador();
+    estado_laboratorio();
     total_reporte();
     btn_bloqueo(tipo_user);
     total_reporte_cerradas(0);
@@ -125,6 +126,43 @@ $(document).ready(function() {
             //console.log(contador);
 
             $('#estado_simulador').html(template);
+        });
+    }
+
+    function estado_laboratorio() {
+        funcion = 'estado_laboratorio';
+        $.post('../controlador/SimuladorController.php', { funcion }, (response) => {
+            console.log(response);
+            const est_laboratorio = JSON.parse(response);
+            let template = '';
+            est_laboratorio.forEach(est_laboratorio => {
+                template += `
+                        <div class="col-md-4">
+                            <div class="card card-widget widget-user-2">
+                                <div class="bg-gray color-palette">
+                                    <div class="widget-user-image">
+
+                                    </div>
+                                    <!-- /.widget-user-image -->
+                                    <h3 class="widget-user-username">Laboratorio</h3>
+                                    <h5 class="widget-user-desc">${est_laboratorio.nom_lab}</h5>
+                                </div>
+                                <div class="card-footer p-0">
+                                    <ul class="nav flex-column">
+                                        <li class="nav-item">
+                                            <div class="nav-link">
+                                                Estado ${est_laboratorio.est_lab === 1 ? `<span class="float-right badge bg-primary">Operativo</span>` : `<span class="float-right badge bg-danger">Fuera de servicio</span>`}
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>`;
+            });
+
+            //console.log(contador);
+
+            $('#estado_laboratorio').html(template);
         });
     }
 

@@ -54,6 +54,14 @@ class Simulador{
         return $this->objetos;
     }
 
+    function estado_laboratorio(){
+        $sql = "SELECT * FROM laboratorio;";
+        $query = $this->acceso->prepare($sql);
+        $query->execute();
+        $this->objetos = $query->fetchAll();
+        return $this->objetos;
+    }
+
     function crear_equipo($name_equipo, $name_sucursal, $desc_equipo, $tipo_equipo){
         $sql = "INSERT INTO simulador (Nombre_simulador, Sucursal_id, Tipo_simulador, Descripcion_simulador, Status_id)
                 VALUES ( :name_equipo, :sucursal, :tipo, :descripcion, 1);";

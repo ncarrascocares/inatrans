@@ -174,7 +174,7 @@ if (!empty($_SESSION['usuario_tipo'])) {
                     </div>
                 </div>
                 <div class="card-body">
-                    <div class="row">
+                    <div class="row" id="estado_laboratorio">
                     </div>
                 </div>
             </div>
