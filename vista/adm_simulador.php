@@ -109,7 +109,7 @@ if (!empty($_SESSION['usuario_tipo'])) {
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1>Simuladores y Laboratorios<button id="button-crear" type="button" data-toggle="modal" data-target="#crear-odt" class="btn bg-gradient-primary ml-2">Crear</button></h1>
+                        <h1>Detalles de equipos y Sub equipos<button id="button-crear" type="button" data-toggle="modal" data-target="#crear-odt" class="btn bg-gradient-primary ml-2">Crear</button></h1>
                     </div>
                     <input type="hidden" id="tipo_usuario" value="<?= $_SESSION['usuario_tipo'] ?>">
                     <div class="col-sm-6">
