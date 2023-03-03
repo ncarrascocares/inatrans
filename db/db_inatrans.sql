@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 23-02-2023 a las 20:14:02
+-- Tiempo de generación: 03-03-2023 a las 12:47:34
 -- Versión del servidor: 10.4.24-MariaDB
 -- Versión de PHP: 8.1.6
 
@@ -29,7 +29,6 @@ USE `db_inatrans`;
 -- Estructura de tabla para la tabla `averia`
 --
 
-DROP TABLE IF EXISTS `averia`;
 CREATE TABLE `averia` (
   `id_averia` int(11) NOT NULL,
   `Nombre_averia` varchar(100) COLLATE utf8mb4_spanish_ci NOT NULL
@@ -51,7 +50,6 @@ INSERT INTO `averia` (`id_averia`, `Nombre_averia`) VALUES
 -- Estructura de tabla para la tabla `categoria`
 --
 
-DROP TABLE IF EXISTS `categoria`;
 CREATE TABLE `categoria` (
   `id_categoria` int(11) NOT NULL,
   `Nombre_categoria` varchar(100) COLLATE utf8mb4_spanish_ci NOT NULL
@@ -72,7 +70,6 @@ INSERT INTO `categoria` (`id_categoria`, `Nombre_categoria`) VALUES
 -- Estructura de tabla para la tabla `categoria_licencia`
 --
 
-DROP TABLE IF EXISTS `categoria_licencia`;
 CREATE TABLE `categoria_licencia` (
   `id_categoria_licencia` int(11) NOT NULL,
   `Nombre_categoria_licencia` varchar(100) COLLATE utf8mb4_spanish_ci NOT NULL
@@ -90,10 +87,48 @@ INSERT INTO `categoria_licencia` (`id_categoria_licencia`, `Nombre_categoria_lic
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `consola`
+--
+
+CREATE TABLE `consola` (
+  `id_consola` int(11) NOT NULL,
+  `serial_consola` varchar(100) COLLATE utf8mb4_spanish_ci NOT NULL,
+  `dongle_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
+
+--
+-- Volcado de datos para la tabla `consola`
+--
+
+INSERT INTO `consola` (`id_consola`, `serial_consola`, `dongle_id`) VALUES
+(1, 'WUG2-0981', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `dongle`
+--
+
+CREATE TABLE `dongle` (
+  `id_dongle` int(11) NOT NULL,
+  `identificador` varchar(100) COLLATE utf8mb4_spanish_ci NOT NULL,
+  `est_psico` varchar(100) COLLATE utf8mb4_spanish_ci NOT NULL,
+  `fec_ven` date DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
+
+--
+-- Volcado de datos para la tabla `dongle`
+--
+
+INSERT INTO `dongle` (`id_dongle`, `identificador`, `est_psico`, `fec_ven`) VALUES
+(1, 'TDC2-3899', 'operativo', '2022-06-01');
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `elemento`
 --
 
-DROP TABLE IF EXISTS `elemento`;
 CREATE TABLE `elemento` (
   `id_elemento` int(99) NOT NULL,
   `nombre_elemento` varchar(255) COLLATE utf8mb4_spanish_ci NOT NULL,
@@ -121,7 +156,6 @@ INSERT INTO `elemento` (`id_elemento`, `nombre_elemento`, `periocidad`, `detalle
 -- Estructura de tabla para la tabla `eventos`
 --
 
-DROP TABLE IF EXISTS `eventos`;
 CREATE TABLE `eventos` (
   `id_eventos` int(11) NOT NULL,
   `title` varchar(100) COLLATE utf8mb4_spanish_ci NOT NULL,
@@ -158,7 +192,6 @@ INSERT INTO `eventos` (`id_eventos`, `title`, `descripcion`, `color`, `start`) V
 -- Estructura de tabla para la tabla `historial_reporte`
 --
 
-DROP TABLE IF EXISTS `historial_reporte`;
 CREATE TABLE `historial_reporte` (
   `id_historial_reporte` int(11) NOT NULL,
   `Usuario_id` int(11) NOT NULL,
@@ -239,10 +272,30 @@ INSERT INTO `historial_reporte` (`id_historial_reporte`, `Usuario_id`, `Reporte_
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `laboratorio`
+--
+
+CREATE TABLE `laboratorio` (
+  `id_lab` int(11) NOT NULL,
+  `nom_lab` varchar(100) COLLATE utf8mb4_spanish_ci NOT NULL,
+  `est_lab` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
+
+--
+-- Volcado de datos para la tabla `laboratorio`
+--
+
+INSERT INTO `laboratorio` (`id_lab`, `nom_lab`, `est_lab`) VALUES
+(1, 'Santiago', 0),
+(2, 'Antofagasta', 1),
+(3, 'Iquique', 1);
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `licencia`
 --
 
-DROP TABLE IF EXISTS `licencia`;
 CREATE TABLE `licencia` (
   `id_licencia` int(11) NOT NULL,
   `Nombre` varchar(100) COLLATE utf8mb4_spanish_ci NOT NULL,
@@ -271,7 +324,6 @@ INSERT INTO `licencia` (`id_licencia`, `Nombre`, `Ley`, `Descripcion`, `categori
 -- Estructura de tabla para la tabla `mantenimiento`
 --
 
-DROP TABLE IF EXISTS `mantenimiento`;
 CREATE TABLE `mantenimiento` (
   `id_mantenimiento` int(99) NOT NULL,
   `nombre_mantenimiento` varchar(255) COLLATE utf8mb4_spanish_ci NOT NULL,
@@ -289,10 +341,33 @@ INSERT INTO `mantenimiento` (`id_mantenimiento`, `nombre_mantenimiento`, `descri
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `ordenador`
+--
+
+CREATE TABLE `ordenador` (
+  `id_ord` int(11) NOT NULL,
+  `marca_ord` varchar(100) COLLATE utf8mb4_spanish_ci NOT NULL,
+  `mod_ord` varchar(100) COLLATE utf8mb4_spanish_ci NOT NULL,
+  `sis_ope` varchar(100) COLLATE utf8mb4_spanish_ci NOT NULL,
+  `antivirus` bit(1) NOT NULL,
+  `Detalle` varchar(255) COLLATE utf8mb4_spanish_ci NOT NULL,
+  `consola_id` int(11) NOT NULL,
+  `laboratorio_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
+
+--
+-- Volcado de datos para la tabla `ordenador`
+--
+
+INSERT INTO `ordenador` (`id_ord`, `marca_ord`, `mod_ord`, `sis_ope`, `antivirus`, `Detalle`, `consola_id`, `laboratorio_id`) VALUES
+(1, 'Lenovo', 'xx-69', 'Windows 10 pro', b'0', 'Equipo para la prestación de psico', 1, 1);
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `reporte`
 --
 
-DROP TABLE IF EXISTS `reporte`;
 CREATE TABLE `reporte` (
   `id_reporte` int(11) NOT NULL,
   `Simulador_id` int(11) NOT NULL,
@@ -361,7 +436,6 @@ INSERT INTO `reporte` (`id_reporte`, `Simulador_id`, `Usuario_id`, `Instructor`,
 -- Estructura de tabla para la tabla `simulador`
 --
 
-DROP TABLE IF EXISTS `simulador`;
 CREATE TABLE `simulador` (
   `id_simulador` int(11) NOT NULL,
   `Nombre_simulador` varchar(100) COLLATE utf8mb4_spanish_ci NOT NULL,
@@ -386,10 +460,7 @@ INSERT INTO `simulador` (`id_simulador`, `Nombre_simulador`, `Sucursal_id`, `Tip
 (8, 'Simulador 8', 2, 'Fijo', 'Simulador nuevo modelo', 1),
 (9, 'Simulador 9', 1, 'Fijo', 'Simulador nuevo modelo', 1),
 (10, 'Simulador 10', 3, 'Fijo', 'Simulador nuevo modelo', 1),
-(11, 'Simulador 11', 1, 'Fijo', 'Simulador nuevo modelo', 3),
-(12, 'Laboratorio', 1, 'Laboratorio', 'Laboratorio para cursos e-learning', 1),
-(13, 'Laboratorio', 2, 'Laboratorio', 'Laboratorio para cursos e-learning', 1),
-(17, 'Laboratorio', 3, 'Laboratorio', 'Laboratorio para cursos e-learning', 1);
+(11, 'Simulador 11', 1, 'Fijo', 'Simulador nuevo modelo', 3);
 
 -- --------------------------------------------------------
 
@@ -397,7 +468,6 @@ INSERT INTO `simulador` (`id_simulador`, `Nombre_simulador`, `Sucursal_id`, `Tip
 -- Estructura de tabla para la tabla `status`
 --
 
-DROP TABLE IF EXISTS `status`;
 CREATE TABLE `status` (
   `id_status` int(11) NOT NULL,
   `Nombre_status` varchar(100) COLLATE utf8mb4_spanish_ci NOT NULL
@@ -418,7 +488,6 @@ INSERT INTO `status` (`id_status`, `Nombre_status`) VALUES
 -- Estructura de tabla para la tabla `sub_equipo`
 --
 
-DROP TABLE IF EXISTS `sub_equipo`;
 CREATE TABLE `sub_equipo` (
   `id_sub_equipo` int(99) NOT NULL,
   `nombre_sub` varchar(255) COLLATE utf8mb4_spanish_ci NOT NULL,
@@ -442,7 +511,6 @@ INSERT INTO `sub_equipo` (`id_sub_equipo`, `nombre_sub`, `detalle_sub`, `simulad
 -- Estructura de tabla para la tabla `sucursal`
 --
 
-DROP TABLE IF EXISTS `sucursal`;
 CREATE TABLE `sucursal` (
   `id_sucursal` int(11) NOT NULL,
   `Nombre_sucursal` varchar(100) COLLATE utf8mb4_spanish_ci NOT NULL
@@ -463,7 +531,6 @@ INSERT INTO `sucursal` (`id_sucursal`, `Nombre_sucursal`) VALUES
 -- Estructura de tabla para la tabla `tipo_usuario`
 --
 
-DROP TABLE IF EXISTS `tipo_usuario`;
 CREATE TABLE `tipo_usuario` (
   `id_tipo_usuario` int(11) NOT NULL,
   `Nombre_tipo_usuario` varchar(100) COLLATE utf8mb4_spanish_ci NOT NULL
@@ -485,7 +552,6 @@ INSERT INTO `tipo_usuario` (`id_tipo_usuario`, `Nombre_tipo_usuario`) VALUES
 -- Estructura de tabla para la tabla `tipo_vehiculo`
 --
 
-DROP TABLE IF EXISTS `tipo_vehiculo`;
 CREATE TABLE `tipo_vehiculo` (
   `id_tipo_vehiculo` int(11) NOT NULL,
   `Nombre` varchar(100) COLLATE utf8mb4_spanish_ci NOT NULL
@@ -515,7 +581,6 @@ INSERT INTO `tipo_vehiculo` (`id_tipo_vehiculo`, `Nombre`) VALUES
 -- Estructura de tabla para la tabla `transmision`
 --
 
-DROP TABLE IF EXISTS `transmision`;
 CREATE TABLE `transmision` (
   `id_transmision` int(11) NOT NULL,
   `Nombre` varchar(100) COLLATE utf8mb4_spanish_ci NOT NULL,
@@ -540,7 +605,6 @@ INSERT INTO `transmision` (`id_transmision`, `Nombre`, `Categoria`) VALUES
 -- Estructura de tabla para la tabla `usuario`
 --
 
-DROP TABLE IF EXISTS `usuario`;
 CREATE TABLE `usuario` (
   `id_usuario` int(11) NOT NULL,
   `Nombre_us` varchar(100) COLLATE utf8mb4_spanish_ci NOT NULL,
@@ -585,7 +649,6 @@ INSERT INTO `usuario` (`id_usuario`, `Nombre_us`, `Apellido_us`, `Correo_us`, `C
 -- Estructura de tabla para la tabla `vehiculo`
 --
 
-DROP TABLE IF EXISTS `vehiculo`;
 CREATE TABLE `vehiculo` (
   `id_vehiculo` int(11) NOT NULL,
   `Marca` varchar(100) COLLATE utf8mb4_spanish_ci NOT NULL,
@@ -626,6 +689,19 @@ ALTER TABLE `categoria_licencia`
   ADD PRIMARY KEY (`id_categoria_licencia`);
 
 --
+-- Indices de la tabla `consola`
+--
+ALTER TABLE `consola`
+  ADD PRIMARY KEY (`id_consola`),
+  ADD KEY `dongle_id` (`dongle_id`);
+
+--
+-- Indices de la tabla `dongle`
+--
+ALTER TABLE `dongle`
+  ADD PRIMARY KEY (`id_dongle`);
+
+--
 -- Indices de la tabla `elemento`
 --
 ALTER TABLE `elemento`
@@ -646,6 +722,12 @@ ALTER TABLE `historial_reporte`
   ADD PRIMARY KEY (`id_historial_reporte`);
 
 --
+-- Indices de la tabla `laboratorio`
+--
+ALTER TABLE `laboratorio`
+  ADD PRIMARY KEY (`id_lab`);
+
+--
 -- Indices de la tabla `licencia`
 --
 ALTER TABLE `licencia`
@@ -657,6 +739,14 @@ ALTER TABLE `licencia`
 --
 ALTER TABLE `mantenimiento`
   ADD PRIMARY KEY (`id_mantenimiento`);
+
+--
+-- Indices de la tabla `ordenador`
+--
+ALTER TABLE `ordenador`
+  ADD PRIMARY KEY (`id_ord`),
+  ADD KEY `consola_id` (`consola_id`),
+  ADD KEY `laboratorio_id` (`laboratorio_id`);
 
 --
 -- Indices de la tabla `reporte`
@@ -755,6 +845,12 @@ ALTER TABLE `categoria_licencia`
   MODIFY `id_categoria_licencia` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
+-- AUTO_INCREMENT de la tabla `consola`
+--
+ALTER TABLE `consola`
+  MODIFY `id_consola` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
 -- AUTO_INCREMENT de la tabla `elemento`
 --
 ALTER TABLE `elemento`
@@ -773,6 +869,12 @@ ALTER TABLE `historial_reporte`
   MODIFY `id_historial_reporte` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=66;
 
 --
+-- AUTO_INCREMENT de la tabla `laboratorio`
+--
+ALTER TABLE `laboratorio`
+  MODIFY `id_lab` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
 -- AUTO_INCREMENT de la tabla `licencia`
 --
 ALTER TABLE `licencia`
@@ -785,6 +887,12 @@ ALTER TABLE `mantenimiento`
   MODIFY `id_mantenimiento` int(99) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
+-- AUTO_INCREMENT de la tabla `ordenador`
+--
+ALTER TABLE `ordenador`
+  MODIFY `id_ord` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
 -- AUTO_INCREMENT de la tabla `reporte`
 --
 ALTER TABLE `reporte`
@@ -794,7 +902,7 @@ ALTER TABLE `reporte`
 -- AUTO_INCREMENT de la tabla `simulador`
 --
 ALTER TABLE `simulador`
-  MODIFY `id_simulador` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id_simulador` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT de la tabla `status`
@@ -856,16 +964,27 @@ ALTER TABLE `elemento`
   ADD CONSTRAINT `fk_sub_equipo_id` FOREIGN KEY (`sub_equipo_id`) REFERENCES `sub_equipo` (`id_sub_equipo`);
 
 --
+-- Filtros para la tabla `laboratorio`
+--
+ALTER TABLE `laboratorio`
+  ADD CONSTRAINT `fk_ordenador` FOREIGN KEY (`ord_id`) REFERENCES `ordenador` (`id_ord`);
+
+--
 -- Filtros para la tabla `licencia`
 --
 ALTER TABLE `licencia`
   ADD CONSTRAINT `licencia_ibfk_1` FOREIGN KEY (`categoria_licencia_id`) REFERENCES `categoria_licencia` (`id_categoria_licencia`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
+-- Filtros para la tabla `ordenador`
+--
+ALTER TABLE `ordenador`
+  ADD CONSTRAINT `ordenador_ibfk_1` FOREIGN KEY (`consola_id`) REFERENCES `consola` (`id_consola`);
+
+--
 -- Filtros para la tabla `reporte`
 --
 ALTER TABLE `reporte`
-  ADD CONSTRAINT `fk_Simulador_id` FOREIGN KEY (`Simulador_id`) REFERENCES `simulador` (`id_simulador`),
   ADD CONSTRAINT `reporte_ibfk_1` FOREIGN KEY (`Usuario_id`) REFERENCES `usuario` (`id_usuario`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `reporte_ibfk_2` FOREIGN KEY (`Categoria_id`) REFERENCES `categoria` (`id_categoria`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `reporte_ibfk_3` FOREIGN KEY (`Tipo_averia_id`) REFERENCES `averia` (`id_averia`) ON DELETE CASCADE ON UPDATE CASCADE;
