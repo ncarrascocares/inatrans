@@ -176,6 +176,10 @@ if (!empty($_SESSION['usuario_tipo'])) {
                 <div class="card-body">
                     <div class="row" id="estado_laboratorio">
                     </div>
+                    <div class="row" id="cant_ordenador">
+                    </div>
+                    <div class="row" id="cant_console">
+                    </div>
                 </div>
             </div>
             <!-- fin del  tercer card -->
