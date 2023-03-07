@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 03-03-2023 a las 12:47:34
--- Versión del servidor: 10.4.24-MariaDB
--- Versión de PHP: 8.1.6
+-- Tiempo de generación: 07-03-2023 a las 21:52:19
+-- Versión del servidor: 10.4.27-MariaDB
+-- Versión de PHP: 8.2.0
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -31,7 +31,7 @@ USE `db_inatrans`;
 
 CREATE TABLE `averia` (
   `id_averia` int(11) NOT NULL,
-  `Nombre_averia` varchar(100) COLLATE utf8mb4_spanish_ci NOT NULL
+  `Nombre_averia` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
 
 --
@@ -52,7 +52,7 @@ INSERT INTO `averia` (`id_averia`, `Nombre_averia`) VALUES
 
 CREATE TABLE `categoria` (
   `id_categoria` int(11) NOT NULL,
-  `Nombre_categoria` varchar(100) COLLATE utf8mb4_spanish_ci NOT NULL
+  `Nombre_categoria` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
 
 --
@@ -72,7 +72,7 @@ INSERT INTO `categoria` (`id_categoria`, `Nombre_categoria`) VALUES
 
 CREATE TABLE `categoria_licencia` (
   `id_categoria_licencia` int(11) NOT NULL,
-  `Nombre_categoria_licencia` varchar(100) COLLATE utf8mb4_spanish_ci NOT NULL
+  `Nombre_categoria_licencia` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
 
 --
@@ -92,7 +92,7 @@ INSERT INTO `categoria_licencia` (`id_categoria_licencia`, `Nombre_categoria_lic
 
 CREATE TABLE `consola` (
   `id_consola` int(11) NOT NULL,
-  `serial_consola` varchar(100) COLLATE utf8mb4_spanish_ci NOT NULL,
+  `serial_consola` varchar(100) NOT NULL,
   `dongle_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
 
@@ -101,7 +101,9 @@ CREATE TABLE `consola` (
 --
 
 INSERT INTO `consola` (`id_consola`, `serial_consola`, `dongle_id`) VALUES
-(1, 'WUG2-0981', 1);
+(1, 'WUG2-0981', 1),
+(2, 'WUG2-0982', 2),
+(3, 'WUG2-0983', 3);
 
 -- --------------------------------------------------------
 
@@ -111,8 +113,8 @@ INSERT INTO `consola` (`id_consola`, `serial_consola`, `dongle_id`) VALUES
 
 CREATE TABLE `dongle` (
   `id_dongle` int(11) NOT NULL,
-  `identificador` varchar(100) COLLATE utf8mb4_spanish_ci NOT NULL,
-  `est_psico` varchar(100) COLLATE utf8mb4_spanish_ci NOT NULL,
+  `identificador` varchar(100) NOT NULL,
+  `est_psico` varchar(100) NOT NULL,
   `fec_ven` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
 
@@ -121,7 +123,9 @@ CREATE TABLE `dongle` (
 --
 
 INSERT INTO `dongle` (`id_dongle`, `identificador`, `est_psico`, `fec_ven`) VALUES
-(1, 'TDC2-3899', 'operativo', '2022-06-01');
+(1, 'TDC2-3899', 'operativo', '2022-06-01'),
+(2, 'TDC2-3900', 'operativo', '2023-08-01'),
+(3, 'TDC2-3901', 'operativo', '2023-12-01');
 
 -- --------------------------------------------------------
 
@@ -131,10 +135,10 @@ INSERT INTO `dongle` (`id_dongle`, `identificador`, `est_psico`, `fec_ven`) VALU
 
 CREATE TABLE `elemento` (
   `id_elemento` int(99) NOT NULL,
-  `nombre_elemento` varchar(255) COLLATE utf8mb4_spanish_ci NOT NULL,
-  `periocidad` varchar(100) COLLATE utf8mb4_spanish_ci NOT NULL,
-  `detalle_elemento` varchar(255) COLLATE utf8mb4_spanish_ci NOT NULL,
-  `codigo_elemento` varchar(255) COLLATE utf8mb4_spanish_ci NOT NULL,
+  `nombre_elemento` varchar(255) NOT NULL,
+  `periocidad` varchar(100) NOT NULL,
+  `detalle_elemento` varchar(255) NOT NULL,
+  `codigo_elemento` varchar(255) NOT NULL,
   `sub_equipo_id` int(99) NOT NULL,
   `mantenimiento_id` int(99) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
@@ -158,9 +162,9 @@ INSERT INTO `elemento` (`id_elemento`, `nombre_elemento`, `periocidad`, `detalle
 
 CREATE TABLE `eventos` (
   `id_eventos` int(11) NOT NULL,
-  `title` varchar(100) COLLATE utf8mb4_spanish_ci NOT NULL,
-  `descripcion` varchar(255) COLLATE utf8mb4_spanish_ci NOT NULL,
-  `color` varchar(255) COLLATE utf8mb4_spanish_ci NOT NULL,
+  `title` varchar(100) NOT NULL,
+  `descripcion` varchar(255) NOT NULL,
+  `color` varchar(255) NOT NULL,
   `start` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
 
@@ -197,7 +201,7 @@ CREATE TABLE `historial_reporte` (
   `Usuario_id` int(11) NOT NULL,
   `Reporte_id` int(11) NOT NULL,
   `Fecha_crea_historial_reporte` datetime DEFAULT current_timestamp(),
-  `Comentario_historial_reporte` varchar(255) COLLATE utf8mb4_spanish_ci NOT NULL
+  `Comentario_historial_reporte` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
 
 --
@@ -277,7 +281,7 @@ INSERT INTO `historial_reporte` (`id_historial_reporte`, `Usuario_id`, `Reporte_
 
 CREATE TABLE `laboratorio` (
   `id_lab` int(11) NOT NULL,
-  `nom_lab` varchar(100) COLLATE utf8mb4_spanish_ci NOT NULL,
+  `nom_lab` varchar(100) NOT NULL,
   `est_lab` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
 
@@ -298,9 +302,9 @@ INSERT INTO `laboratorio` (`id_lab`, `nom_lab`, `est_lab`) VALUES
 
 CREATE TABLE `licencia` (
   `id_licencia` int(11) NOT NULL,
-  `Nombre` varchar(100) COLLATE utf8mb4_spanish_ci NOT NULL,
-  `Ley` varchar(100) COLLATE utf8mb4_spanish_ci NOT NULL,
-  `Descripcion` varchar(255) COLLATE utf8mb4_spanish_ci NOT NULL,
+  `Nombre` varchar(100) NOT NULL,
+  `Ley` varchar(100) NOT NULL,
+  `Descripcion` varchar(255) NOT NULL,
   `categoria_licencia_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
 
@@ -326,8 +330,8 @@ INSERT INTO `licencia` (`id_licencia`, `Nombre`, `Ley`, `Descripcion`, `categori
 
 CREATE TABLE `mantenimiento` (
   `id_mantenimiento` int(99) NOT NULL,
-  `nombre_mantenimiento` varchar(255) COLLATE utf8mb4_spanish_ci NOT NULL,
-  `descripcion_mantenimiento` longtext COLLATE utf8mb4_spanish_ci NOT NULL
+  `nombre_mantenimiento` varchar(255) NOT NULL,
+  `descripcion_mantenimiento` longtext NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
 
 --
@@ -346,12 +350,12 @@ INSERT INTO `mantenimiento` (`id_mantenimiento`, `nombre_mantenimiento`, `descri
 
 CREATE TABLE `ordenador` (
   `id_ord` int(11) NOT NULL,
-  `marca_ord` varchar(100) COLLATE utf8mb4_spanish_ci NOT NULL,
-  `mod_ord` varchar(100) COLLATE utf8mb4_spanish_ci NOT NULL,
-  `sis_ope` varchar(100) COLLATE utf8mb4_spanish_ci NOT NULL,
+  `marca_ord` varchar(100) NOT NULL,
+  `mod_ord` varchar(100) NOT NULL,
+  `sis_ope` varchar(100) NOT NULL,
   `antivirus` bit(1) NOT NULL,
-  `Detalle` varchar(255) COLLATE utf8mb4_spanish_ci NOT NULL,
-  `consola_id` int(11) NOT NULL,
+  `Detalle` varchar(255) NOT NULL,
+  `consola_id` int(11) DEFAULT NULL,
   `laboratorio_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
 
@@ -360,7 +364,11 @@ CREATE TABLE `ordenador` (
 --
 
 INSERT INTO `ordenador` (`id_ord`, `marca_ord`, `mod_ord`, `sis_ope`, `antivirus`, `Detalle`, `consola_id`, `laboratorio_id`) VALUES
-(1, 'Lenovo', 'xx-69', 'Windows 10 pro', b'0', 'Equipo para la prestación de psico', 1, 1);
+(1, 'Lenovo', 'xx-69', 'Windows 10 pro', b'0', 'Equipo para la prestación de psico', 1, 1),
+(2, 'dell', 'del 1234', 'win 10', b'0', 'equipo para cursos e-learning', 2, 2),
+(3, 'samsung', 'samsung 123', 'won 7', b'0', 'equipo con i5, disco de 480 gb ssd. Para psico', 3, 3),
+(4, 'vostro', 'vostro 30000', 'win 12', b'1', 'equipo para cursos e-learning', 0, 2),
+(5, 'hp', 'hp 4000', 'win 8', b'1', 'equipo para cursos e-learning', 0, 3);
 
 -- --------------------------------------------------------
 
@@ -372,10 +380,10 @@ CREATE TABLE `reporte` (
   `id_reporte` int(11) NOT NULL,
   `Simulador_id` int(11) NOT NULL,
   `Usuario_id` int(11) NOT NULL,
-  `Instructor` varchar(255) COLLATE utf8mb4_spanish_ci NOT NULL,
-  `Averia_reporte` varchar(255) COLLATE utf8mb4_spanish_ci NOT NULL,
+  `Instructor` varchar(255) NOT NULL,
+  `Averia_reporte` varchar(255) NOT NULL,
   `Categoria_id` int(11) NOT NULL,
-  `Clasificacion` varchar(100) COLLATE utf8mb4_spanish_ci NOT NULL,
+  `Clasificacion` varchar(100) NOT NULL,
   `Soporte_externo` int(10) NOT NULL,
   `Fecha_crea` datetime NOT NULL,
   `Fecha_cierre` datetime DEFAULT NULL,
@@ -438,10 +446,10 @@ INSERT INTO `reporte` (`id_reporte`, `Simulador_id`, `Usuario_id`, `Instructor`,
 
 CREATE TABLE `simulador` (
   `id_simulador` int(11) NOT NULL,
-  `Nombre_simulador` varchar(100) COLLATE utf8mb4_spanish_ci NOT NULL,
+  `Nombre_simulador` varchar(100) NOT NULL,
   `Sucursal_id` int(11) NOT NULL,
-  `Tipo_simulador` varchar(50) COLLATE utf8mb4_spanish_ci NOT NULL,
-  `Descripcion_simulador` varchar(255) COLLATE utf8mb4_spanish_ci NOT NULL,
+  `Tipo_simulador` varchar(50) NOT NULL,
+  `Descripcion_simulador` varchar(255) NOT NULL,
   `Status_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
 
@@ -470,7 +478,7 @@ INSERT INTO `simulador` (`id_simulador`, `Nombre_simulador`, `Sucursal_id`, `Tip
 
 CREATE TABLE `status` (
   `id_status` int(11) NOT NULL,
-  `Nombre_status` varchar(100) COLLATE utf8mb4_spanish_ci NOT NULL
+  `Nombre_status` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
 
 --
@@ -490,8 +498,8 @@ INSERT INTO `status` (`id_status`, `Nombre_status`) VALUES
 
 CREATE TABLE `sub_equipo` (
   `id_sub_equipo` int(99) NOT NULL,
-  `nombre_sub` varchar(255) COLLATE utf8mb4_spanish_ci NOT NULL,
-  `detalle_sub` varchar(255) COLLATE utf8mb4_spanish_ci NOT NULL,
+  `nombre_sub` varchar(255) NOT NULL,
+  `detalle_sub` varchar(255) NOT NULL,
   `simulador_id` int(99) DEFAULT NULL,
   `mantenimiento_id` int(99) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
@@ -513,7 +521,7 @@ INSERT INTO `sub_equipo` (`id_sub_equipo`, `nombre_sub`, `detalle_sub`, `simulad
 
 CREATE TABLE `sucursal` (
   `id_sucursal` int(11) NOT NULL,
-  `Nombre_sucursal` varchar(100) COLLATE utf8mb4_spanish_ci NOT NULL
+  `Nombre_sucursal` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
 
 --
@@ -533,7 +541,7 @@ INSERT INTO `sucursal` (`id_sucursal`, `Nombre_sucursal`) VALUES
 
 CREATE TABLE `tipo_usuario` (
   `id_tipo_usuario` int(11) NOT NULL,
-  `Nombre_tipo_usuario` varchar(100) COLLATE utf8mb4_spanish_ci NOT NULL
+  `Nombre_tipo_usuario` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
 
 --
@@ -554,7 +562,7 @@ INSERT INTO `tipo_usuario` (`id_tipo_usuario`, `Nombre_tipo_usuario`) VALUES
 
 CREATE TABLE `tipo_vehiculo` (
   `id_tipo_vehiculo` int(11) NOT NULL,
-  `Nombre` varchar(100) COLLATE utf8mb4_spanish_ci NOT NULL
+  `Nombre` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
 
 --
@@ -583,8 +591,8 @@ INSERT INTO `tipo_vehiculo` (`id_tipo_vehiculo`, `Nombre`) VALUES
 
 CREATE TABLE `transmision` (
   `id_transmision` int(11) NOT NULL,
-  `Nombre` varchar(100) COLLATE utf8mb4_spanish_ci NOT NULL,
-  `Categoria` varchar(100) COLLATE utf8mb4_spanish_ci NOT NULL
+  `Nombre` varchar(100) NOT NULL,
+  `Categoria` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
 
 --
@@ -607,12 +615,12 @@ INSERT INTO `transmision` (`id_transmision`, `Nombre`, `Categoria`) VALUES
 
 CREATE TABLE `usuario` (
   `id_usuario` int(11) NOT NULL,
-  `Nombre_us` varchar(100) COLLATE utf8mb4_spanish_ci NOT NULL,
-  `Apellido_us` varchar(100) COLLATE utf8mb4_spanish_ci NOT NULL,
-  `Correo_us` varchar(100) COLLATE utf8mb4_spanish_ci NOT NULL,
-  `Cargo_us` varchar(50) COLLATE utf8mb4_spanish_ci NOT NULL,
+  `Nombre_us` varchar(100) NOT NULL,
+  `Apellido_us` varchar(100) NOT NULL,
+  `Correo_us` varchar(100) NOT NULL,
+  `Cargo_us` varchar(50) NOT NULL,
   `Sucursal_id` int(11) NOT NULL,
-  `password_us` varchar(255) COLLATE utf8mb4_spanish_ci NOT NULL,
+  `password_us` varchar(255) NOT NULL,
   `Status_us` int(11) DEFAULT 1,
   `usuario_tipo` int(11) DEFAULT 3
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
@@ -651,8 +659,8 @@ INSERT INTO `usuario` (`id_usuario`, `Nombre_us`, `Apellido_us`, `Correo_us`, `C
 
 CREATE TABLE `vehiculo` (
   `id_vehiculo` int(11) NOT NULL,
-  `Marca` varchar(100) COLLATE utf8mb4_spanish_ci NOT NULL,
-  `Modelo` varchar(100) COLLATE utf8mb4_spanish_ci NOT NULL,
+  `Marca` varchar(100) NOT NULL,
+  `Modelo` varchar(100) NOT NULL,
   `Tipo_vehiculo_id` int(11) NOT NULL,
   `Transmision_id` int(11) NOT NULL,
   `categoria_licencia_id` int(11) NOT NULL
@@ -848,7 +856,13 @@ ALTER TABLE `categoria_licencia`
 -- AUTO_INCREMENT de la tabla `consola`
 --
 ALTER TABLE `consola`
-  MODIFY `id_consola` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_consola` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT de la tabla `dongle`
+--
+ALTER TABLE `dongle`
+  MODIFY `id_dongle` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de la tabla `elemento`
@@ -890,7 +904,7 @@ ALTER TABLE `mantenimiento`
 -- AUTO_INCREMENT de la tabla `ordenador`
 --
 ALTER TABLE `ordenador`
-  MODIFY `id_ord` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_ord` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT de la tabla `reporte`
@@ -964,58 +978,10 @@ ALTER TABLE `elemento`
   ADD CONSTRAINT `fk_sub_equipo_id` FOREIGN KEY (`sub_equipo_id`) REFERENCES `sub_equipo` (`id_sub_equipo`);
 
 --
--- Filtros para la tabla `laboratorio`
---
-ALTER TABLE `laboratorio`
-  ADD CONSTRAINT `fk_ordenador` FOREIGN KEY (`ord_id`) REFERENCES `ordenador` (`id_ord`);
-
---
 -- Filtros para la tabla `licencia`
 --
 ALTER TABLE `licencia`
   ADD CONSTRAINT `licencia_ibfk_1` FOREIGN KEY (`categoria_licencia_id`) REFERENCES `categoria_licencia` (`id_categoria_licencia`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Filtros para la tabla `ordenador`
---
-ALTER TABLE `ordenador`
-  ADD CONSTRAINT `ordenador_ibfk_1` FOREIGN KEY (`consola_id`) REFERENCES `consola` (`id_consola`);
-
---
--- Filtros para la tabla `reporte`
---
-ALTER TABLE `reporte`
-  ADD CONSTRAINT `reporte_ibfk_1` FOREIGN KEY (`Usuario_id`) REFERENCES `usuario` (`id_usuario`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `reporte_ibfk_2` FOREIGN KEY (`Categoria_id`) REFERENCES `categoria` (`id_categoria`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `reporte_ibfk_3` FOREIGN KEY (`Tipo_averia_id`) REFERENCES `averia` (`id_averia`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Filtros para la tabla `simulador`
---
-ALTER TABLE `simulador`
-  ADD CONSTRAINT `simulador_ibfk_1` FOREIGN KEY (`Sucursal_id`) REFERENCES `sucursal` (`id_sucursal`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `simulador_ibfk_2` FOREIGN KEY (`Status_id`) REFERENCES `status` (`id_status`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Filtros para la tabla `sub_equipo`
---
-ALTER TABLE `sub_equipo`
-  ADD CONSTRAINT `fk_mantenimiento` FOREIGN KEY (`mantenimiento_id`) REFERENCES `mantenimiento` (`id_mantenimiento`),
-  ADD CONSTRAINT `fk_simulador` FOREIGN KEY (`simulador_id`) REFERENCES `simulador` (`id_simulador`);
-
---
--- Filtros para la tabla `usuario`
---
-ALTER TABLE `usuario`
-  ADD CONSTRAINT `usuario_ibfk_3` FOREIGN KEY (`usuario_tipo`) REFERENCES `tipo_usuario` (`id_tipo_usuario`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Filtros para la tabla `vehiculo`
---
-ALTER TABLE `vehiculo`
-  ADD CONSTRAINT `vehiculo_ibfk_2` FOREIGN KEY (`Transmision_id`) REFERENCES `transmision` (`id_transmision`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `vehiculo_ibfk_3` FOREIGN KEY (`Tipo_vehiculo_id`) REFERENCES `tipo_vehiculo` (`id_tipo_vehiculo`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `vehiculo_ibfk_4` FOREIGN KEY (`categoria_licencia_id`) REFERENCES `categoria_licencia` (`id_categoria_licencia`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
