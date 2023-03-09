@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 07-03-2023 a las 21:52:19
+-- Tiempo de generación: 09-03-2023 a las 21:56:21
 -- Versión del servidor: 10.4.27-MariaDB
 -- Versión de PHP: 8.2.0
 
@@ -103,7 +103,9 @@ CREATE TABLE `consola` (
 INSERT INTO `consola` (`id_consola`, `serial_consola`, `dongle_id`) VALUES
 (1, 'WUG2-0981', 1),
 (2, 'WUG2-0982', 2),
-(3, 'WUG2-0983', 3);
+(3, 'WUG2-0983', 3),
+(4, 'WUG2-0984', 4),
+(5, 'WUG2-0985', 5);
 
 -- --------------------------------------------------------
 
@@ -125,7 +127,9 @@ CREATE TABLE `dongle` (
 INSERT INTO `dongle` (`id_dongle`, `identificador`, `est_psico`, `fec_ven`) VALUES
 (1, 'TDC2-3899', 'operativo', '2022-06-01'),
 (2, 'TDC2-3900', 'operativo', '2023-08-01'),
-(3, 'TDC2-3901', 'operativo', '2023-12-01');
+(3, 'TDC2-3901', 'operativo', '2023-12-01'),
+(4, 'TDC2-3902', 'operativo', '2023-12-24'),
+(5, 'TDC2-3903', 'operativo', '2023-12-31');
 
 -- --------------------------------------------------------
 
@@ -856,13 +860,13 @@ ALTER TABLE `categoria_licencia`
 -- AUTO_INCREMENT de la tabla `consola`
 --
 ALTER TABLE `consola`
-  MODIFY `id_consola` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_consola` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT de la tabla `dongle`
 --
 ALTER TABLE `dongle`
-  MODIFY `id_dongle` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_dongle` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT de la tabla `elemento`
