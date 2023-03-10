@@ -15,7 +15,11 @@ class Laboratorio{
     }
 
     function listar_lab(){
-        
+        $sql = "SELECT * FROM laboratorio";
+        $query = $this->acceso->prepare($sql);
+        $query->execute();
+        $this->objetos=$query->fetchAll();
+        return $this->objetos;
     }
 }
 

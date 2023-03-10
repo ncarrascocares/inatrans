@@ -23,6 +23,19 @@ switch ($_POST['funcion']) {
             $jsonstring = json_encode($json);
             echo $jsonstring;
         break;
+    case 'listar_consola':
+        $json = array();
+        $consola->listar_consola();
+        foreach ($consola->objetos as $objeto) {
+            $json[] = array(
+                'id_consola'=>$objeto->id_consola,
+                'serial_consola'=>$objeto->serial_consola,
+                'dongle_id'=>$objeto->dongle_id
+            );
+        }
+        $jsonstring = json_encode($json);
+        echo $jsonstring;
+        break;
 }
 
 

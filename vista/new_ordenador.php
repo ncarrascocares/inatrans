@@ -76,7 +76,7 @@ if ($_SESSION['usuario_tipo'] == 1 || $_SESSION['usuario_tipo'] == 2) {
                                 </select>
                             </div>
                             <div class="col-md-4 mt-5">
-                                <label for="name_sucursal" class="form-label">Laboratorio</label>
+                                <label for="laboratorio" class="form-label">Laboratorio</label>
                                 <select name="" class="form-control" id="laboratorio">
                                 </select>
                             </div>

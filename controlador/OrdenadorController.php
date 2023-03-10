@@ -20,6 +20,15 @@ switch ($_POST['funcion']) {
             $jsonstring = json_encode($json);
             echo $jsonstring;
         break;
+    case 'nuevo_ordenador':
+        $marca = $_POST('marca_ordenador');
+        $modelo = $_POST('modelo_ordenador');
+        $sis_ope = $_POST('sis_operativo');
+        $av = $_POST('antivirus');
+        $consola = $_POST('consola_psico');
+        $lab = $_POST('laboratorio');
+        $desc = $_POST('desc_ordenador');
+        break;
 }
 
 

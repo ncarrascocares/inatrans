@@ -24,4 +24,12 @@ class Consola{
         $this->objetos=$query->fetchAll();
         return $this->objetos;
     }
+
+    function listar_consola(){
+        $sql = "SELECT * FROM consola";
+        $query = $this->acceso->prepare($sql);
+        $query->execute();
+        $this->objetos=$query->fetchAll();
+        return $this->objetos;
+    }
 }
