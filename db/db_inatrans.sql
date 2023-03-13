@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 09-03-2023 a las 21:56:21
+-- Tiempo de generación: 13-03-2023 a las 22:31:42
 -- Versión del servidor: 10.4.27-MariaDB
 -- Versión de PHP: 8.2.0
 
@@ -93,6 +93,9 @@ INSERT INTO `categoria_licencia` (`id_categoria_licencia`, `Nombre_categoria_lic
 CREATE TABLE `consola` (
   `id_consola` int(11) NOT NULL,
   `serial_consola` varchar(100) NOT NULL,
+  `serial_pedalera` varchar(100) NOT NULL,
+  `Ubicacion` int(11) NOT NULL,
+  `Detalle` varchar(100) NOT NULL,
   `dongle_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
 
@@ -100,12 +103,12 @@ CREATE TABLE `consola` (
 -- Volcado de datos para la tabla `consola`
 --
 
-INSERT INTO `consola` (`id_consola`, `serial_consola`, `dongle_id`) VALUES
-(1, 'WUG2-0981', 1),
-(2, 'WUG2-0982', 2),
-(3, 'WUG2-0983', 3),
-(4, 'WUG2-0984', 4),
-(5, 'WUG2-0985', 5);
+INSERT INTO `consola` (`id_consola`, `serial_consola`, `serial_pedalera`, `Ubicacion`, `Detalle`, `dongle_id`) VALUES
+(1, 'WUG2-0981', 'FT2-0981', 1, '', 1),
+(2, 'WUG2-0982', 'FT2-0982', 2, '', 2),
+(3, 'WUG2-0983', 'FT2-0983', 3, '', 3),
+(4, 'WUG2-0984', 'FT2-0984', 3, '', 4),
+(5, 'WUG2-0985', 'FT2-0985', 3, '', 5);
 
 -- --------------------------------------------------------
 
@@ -116,7 +119,6 @@ INSERT INTO `consola` (`id_consola`, `serial_consola`, `dongle_id`) VALUES
 CREATE TABLE `dongle` (
   `id_dongle` int(11) NOT NULL,
   `identificador` varchar(100) NOT NULL,
-  `est_psico` varchar(100) NOT NULL,
   `fec_ven` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
 
@@ -124,12 +126,12 @@ CREATE TABLE `dongle` (
 -- Volcado de datos para la tabla `dongle`
 --
 
-INSERT INTO `dongle` (`id_dongle`, `identificador`, `est_psico`, `fec_ven`) VALUES
-(1, 'TDC2-3899', 'operativo', '2022-06-01'),
-(2, 'TDC2-3900', 'operativo', '2023-08-01'),
-(3, 'TDC2-3901', 'operativo', '2023-12-01'),
-(4, 'TDC2-3902', 'operativo', '2023-12-24'),
-(5, 'TDC2-3903', 'operativo', '2023-12-31');
+INSERT INTO `dongle` (`id_dongle`, `identificador`, `fec_ven`) VALUES
+(1, 'TDC2-3899', '2022-06-01'),
+(2, 'TDC2-3900', '2023-08-01'),
+(3, 'TDC2-3901', '2023-12-01'),
+(4, 'TDC2-3902', '2023-12-24'),
+(5, 'TDC2-3903', '2023-12-31');
 
 -- --------------------------------------------------------
 
@@ -294,7 +296,7 @@ CREATE TABLE `laboratorio` (
 --
 
 INSERT INTO `laboratorio` (`id_lab`, `nom_lab`, `est_lab`) VALUES
-(1, 'Santiago', 0),
+(1, 'Santiago', 1),
 (2, 'Antofagasta', 1),
 (3, 'Iquique', 1);
 
@@ -357,7 +359,7 @@ CREATE TABLE `ordenador` (
   `marca_ord` varchar(100) NOT NULL,
   `mod_ord` varchar(100) NOT NULL,
   `sis_ope` varchar(100) NOT NULL,
-  `antivirus` bit(1) NOT NULL,
+  `antivirus` int(11) NOT NULL,
   `Detalle` varchar(255) NOT NULL,
   `consola_id` int(11) DEFAULT NULL,
   `laboratorio_id` int(11) NOT NULL
@@ -368,11 +370,14 @@ CREATE TABLE `ordenador` (
 --
 
 INSERT INTO `ordenador` (`id_ord`, `marca_ord`, `mod_ord`, `sis_ope`, `antivirus`, `Detalle`, `consola_id`, `laboratorio_id`) VALUES
-(1, 'Lenovo', 'xx-69', 'Windows 10 pro', b'0', 'Equipo para la prestación de psico', 1, 1),
-(2, 'dell', 'del 1234', 'win 10', b'0', 'equipo para cursos e-learning', 2, 2),
-(3, 'samsung', 'samsung 123', 'won 7', b'0', 'equipo con i5, disco de 480 gb ssd. Para psico', 3, 3),
-(4, 'vostro', 'vostro 30000', 'win 12', b'1', 'equipo para cursos e-learning', 0, 2),
-(5, 'hp', 'hp 4000', 'win 8', b'1', 'equipo para cursos e-learning', 0, 3);
+(1, 'hp', 'hp one', 'win 7', 0, 'ordenador', 0, 1),
+(2, 'dell', 'del fire', 'win 10', 0, 'ordenador para cursos', 0, 2),
+(3, 'sony', 'xperia', 'win 11', 1, 'Ordenador de cursos e-learning', 0, 3),
+(4, 'sin marca', 'sin modelo', 'win 10', 0, 'Ordenador destinado a psicotecnico', 5, 1),
+(5, 'Dell', 'Dell 1414', 'Win 10', 0, 'Ordenador para psicotencnico', 3, 2),
+(6, 'Intel', 'NUC', 'win 11', 0, 'Ordenador para psicotenico', 4, 3),
+(7, 'Lenovo', 'thinkcentre', 'win 7', 1, 'Ordenador para uso e-learning', 0, 3),
+(8, 'Dell', 'dell 2023', 'Win 11', 1, 'Ordenador para psicotecnico', 2, 3);
 
 -- --------------------------------------------------------
 
@@ -908,7 +913,7 @@ ALTER TABLE `mantenimiento`
 -- AUTO_INCREMENT de la tabla `ordenador`
 --
 ALTER TABLE `ordenador`
-  MODIFY `id_ord` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id_ord` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT de la tabla `reporte`
