@@ -36,4 +36,15 @@ class Ordenador{
         echo "insert_new_ordenador";
     }
 
+    function lista_ordenador(){
+        $sql = "SELECT ord.*, con.serial_consola
+                FROM ordenador ord
+                LEFT join consola con on ord.consola_id = con.id_consola
+                GROUP BY con.serial_consola, ord.id_ord;";
+        $query = $this->acceso->prepare($sql);
+        $query->execute();
+        $this->objetos=$query->fetchAll();
+        return $this->objetos;
+    }
+
 }

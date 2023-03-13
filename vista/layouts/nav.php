@@ -85,7 +85,7 @@
                         </li>
                         <li class="nav-header">Mantenimiento</li>
                         <li class="nav-item">
-                            <a href="../vista/adm_simulador.php" class="nav-link">
+                            <a href="../vista/detalle_simulador.php" class="nav-link">
                                 <i class="nav-icon fa fa-cogs"></i>
                                 <p>
                                     Equipos
@@ -93,10 +93,18 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="../vista/laboratorios.php" class="nav-link">
+                            <a href="../vista/laboratorio.php" class="nav-link">
                             <i class="nav-icon fa fa-users"></i>
                                 <p>
                                     Laboratorios
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="../vista/psicotecnico.php" class="nav-link">
+                            <i class="nav-icon fa fa-keyboard"></i>
+                                <p>
+                                    Psicotenico
                                 </p>
                             </a>
                         </li>

@@ -158,37 +158,6 @@ if (!empty($_SESSION['usuario_tipo'])) {
                 </div>
             </div>
             <!-- Fin del Segundo card -->
-
-            <!-- tercer card del front -->
-            <div class="card">
-                <div class="card-header">
-                    <h3 class="card-title">Laboratorios</h3>
-
-                    <div class="card-tools">
-                        <a href="new_ordenador.php" class="small-box-footer">
-                            <button id="cam_est" type="button" class="btn btn-info" data-toggle="modal" data-target="#exampleModal">
-                                Insertar nuevo ordenador
-                            </button>
-                        </a>
-                        <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
-                            <i class="fas fa-minus"></i>
-                        </button>
-                        <button type="button" class="btn btn-tool" data-card-widget="remove" title="Remove">
-                            <i class="fas fa-times"></i>
-                        </button>
-                    </div>
-                </div>
-                <div class="card-body">
-                    <div class="row" id="estado_laboratorio">
-                    </div>
-                    <div class="row" id="cant_ordenador">
-                    </div>
-                    <div class="row" id="cant_console">
-                    </div>
-                </div>
-            </div>
-            <!-- fin del  tercer card -->
-
             <!-- /.card-body -->
         </section>
         <!-- /.content -->

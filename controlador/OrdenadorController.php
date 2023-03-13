@@ -37,6 +37,26 @@ switch ($_POST['funcion']) {
 
         $ordenador->insert_ordenador($marca, $modelo, $sis_ope, $av, $consola, $lab, $desc);
         break;
+    case 'lista_ordenador':
+        $json = array();
+        $ordenador->lista_ordenador();
+        foreach ($ordenador->objetos as $objeto) {
+            $json[] = array(
+                'identificador'=>'ordenador-'.$objeto->id_ord,
+                'id_ord'=>$objeto->id_ord,
+                'marca_ord'=>$objeto->marca_ord,
+                'mod_ord'=>$objeto->mod_ord,
+                'sis_ope'=>$objeto->sis_ope,
+                'antivirus'=>$objeto->antivirus,
+                'detalle'=>$objeto->detalle,
+                'consola_id'=>$objeto->consola_id,
+                'laboratorio_id'=>$objeto->laboratorio_id,
+                'serial_consola'=>$objeto->serial_consola
+            );
+        }
+        $jsonstring = json_encode($json);
+        echo $jsonstring;
+        break;
 }
 
 
