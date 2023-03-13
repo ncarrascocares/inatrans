@@ -12,33 +12,36 @@ if (!empty($_SESSION['usuario_tipo'])) {
     <!-- Inclución del fichero nav -->
     <?php include_once 'layouts/nav.php'; ?>
     <!-- Modal para la creación de sub-equipo -->
-    <div class="modal fade" id="modalSub" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" id="modalConsola" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-xl">
             <div class="modal-content">
                 <div class="modal-header bg-primary">
-                    <h3 class="modal-title fs-5" id="exampleModalLabel">Nuevo Sub equipo</h3>
+                    <h3 class="modal-title fs-5" id="exampleModalLabel">Nueva consola</h3>
                 </div>
                 <div class="modal-body">
                     <form class="row g-3 needs-validation" novalidate>
-                        <div class="col-md-4 position-relative">
-                            <label for="name_equipo" class="form-label">Nombre del sub-equipo</label>
+                        <div class="col-md-6 position-relative">
+                            <label for="name_equipo" class="form-label">N° serie consola</label>
                             <input type="text" class="form-control" id="name_equipo" value="" required>
                         </div>
-                        <div class="col-md-4 position-relative">
-                            <label for="simulador_id" class="form-label">Equipo al que pertenece</label>
+                        <div class="col-md-6 position-relative">
+                            <label for="simulador_id" class="form-label">N° serie pedalera</label>
                             <select name="" id="simulador_id" class="form-control">
                             </select>
                         </div>
-                        <div class="col-md-4 position-relative">
-                            <label for="tipo_mant" class="form-label">Mantenimiento</label>
-                            <select name="" id="tipo_mant" class="form-control">
+                        <div class="col-md-4 position-relative mt-4">
+                            <label for="simulador_id" class="form-label">Ubicación</label>
+                            <select name="" id="simulador_id" class="form-control">
                             </select>
                         </div>
-                        <div class="col-md-12 position-relative">
-                            <label for="detalle_sub" class="form-label">Detalles</label>
-                            <div class="input-group has-validation">
-                                <textarea class="form-control" id="detalle_sub" rows="3" spellcheck="false" required></textarea>
-                            </div>
+                        <div class="col-md-4 position-relative mt-4">
+                            <label for="name_equipo" class="form-label">N° serie consola</label>
+                            <input type="text" class="form-control" id="name_equipo" value="" required>
+                        </div>
+                        <div class="col-md-4 position-relative mt-4">
+                            <label for="tipo_mant" class="form-label">Dongle asociado</label>
+                            <select name="" id="tipo_mant" class="form-control">
+                            </select>
                         </div>
                         <div class="col-12">
                             <br>
@@ -54,41 +57,21 @@ if (!empty($_SESSION['usuario_tipo'])) {
         </div>
     </div>
     <!-- Modal para la creación de los elementos de los sub-equipos -->
-    <div class="modal fade" id="modalEquipo" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" id="modalDongle" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-xl">
             <div class="modal-content">
                 <div class="modal-header bg-primary">
-                    <h3 class="modal-title fs-5" id="exampleModalLabel">Nuevo Elemento</h3>
+                    <h3 class="modal-title fs-5" id="exampleModalLabel">Nuevo Dongle</h3>
                 </div>
                 <div class="modal-body">
                     <form class="row g-3 needs-validation" novalidate>
                         <div class="col-md-6 position-relative">
-                            <label for="name_equipo" class="form-label">Nombre elemento</label>
-                            <input type="text" class="form-control" id="name_equipo" value="" required>
+                            <label for="num_serial" class="form-label">N° serial</label>
+                            <input type="text" class="form-control" id="num_serial" value="" required>
                         </div>
                         <div class="col-md-6 position-relative">
-                            <label for="periocidad" class="form-label">Periocidad</label>
-                            <input type="text" class="form-control" id="periocidad">
-                        </div>
-                        <div class="col-md-4 position-relative">
-                            <label for="codigo_elemento" class="form-label">Código</label>
-                            <input type="text" class="form-control" id="codigo_elemento">
-                        </div>
-                        <div class="col-md-4 position-relative">
-                            <label for="tipo_mant" class="form-label">Sub equipo asocidado</label>
-                            <select name="" id="tipo_mant" class="form-control">
-                            </select>
-                        </div>
-                        <div class="col-md-4 position-relative">
-                            <label for="tipo_mant" class="form-label">Mantenimiento</label>
-                            <select name="" id="tipo_mant" class="form-control">
-                            </select>
-                        </div>
-                        <div class="col-md-12 position-relative">
-                            <label for="detalle_sub" class="form-label">Detalles</label>
-                            <div class="input-group has-validation">
-                                <textarea class="form-control" id="detalle_sub" rows="3" spellcheck="false" required></textarea>
-                            </div>
+                            <label for="fecha_ven" class="form-label">Fecha venciminento licencia</label>
+                            <input type="date" class="form-control" id="fecha_ven">
                         </div>
                         <div class="col-12">
                             <br>
@@ -125,8 +108,8 @@ if (!empty($_SESSION['usuario_tipo'])) {
             <div class="container-fluid">
                 <div id="" class="card-header bg-info">
                     <h4 id="">Equipos psicotecnicos</h4>
-                    <button id="button-crear-sub" type="button" class="btn btn-warning" data-toggle="modal" data-target="#modalEquipo" data-whatever="@mdo">Nueva consola</button>
-                    <button id="button-crear-sub" type="button" class="btn btn-light" data-toggle="modal" data-target="#modalEquipo" data-whatever="@mdo">Nuevo Dongle</button>
+                    <button id="button-crear-sub" type="button" class="btn btn-warning" data-toggle="modal" data-target="#modalConsola" data-whatever="@mdo">Nueva consola</button>
+                    <button id="button-crear-sub" type="button" class="btn btn-light" data-toggle="modal" data-target="#modalDongle" data-whatever="@mdo">Nuevo Dongle</button>
                     <div class="input-group">
                     </div>
                 </div>
@@ -146,14 +129,15 @@ if (!empty($_SESSION['usuario_tipo'])) {
                         <div class="card-body" style="display: block;">
                             <table class="table table-bordered" style="border:1px solid black;width: 100%;">
                             <thead style="border:1px solid black;background:teal; color:white;font-weight:bold">
-                            <td style="border:1px solid black;">Identificador interno</td>
-                                    <td style="border:1px solid black;">Marca</td>
-                                    <td style="border:1px solid black;">Modelo</td>
-                                    <td style="border:1px solid black;">Sistema Operativo</td>
-                                    <td style="border:1px solid black;">Antivirus</td>
-                                    <td style="border:1px solid black;">Uso</td>
-                                    <td style="border:1px solid black;">Consola Psico</td>
-                                    <td style="border:1px solid black;">opciones</td>
+                                <td style="border:1px solid black;">N° serie consola</td>
+                                <td style="border:1px solid black;">N° serie Pedalera</td>
+                                <td style="border:1px solid black;">N° serie Dongle</td>
+                                <td style="border:1px solid black;">Ubicación</td>
+                                <td style="border:1px solid black;">Detalle</td>
+                                <td style="border:1px solid black;">N° serie Dongle</td>
+                                <td style="border:1px solid black;">Fecha vencimieto de licencia</td>
+                                <td style="border:1px solid black;">Dias</td>
+                                <td style="border:1px solid black;">editar - borrar - detalle</td>
                             </thead>
                             <tbody id="contenido_tabla_stgo">
 
