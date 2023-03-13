@@ -92,6 +92,14 @@
                                 </p>
                             </a>
                         </li>
+                        <li class="nav-item">
+                            <a href="../vista/laboratorios.php" class="nav-link">
+                            <i class="nav-icon fa fa-users"></i>
+                                <p>
+                                    Laboratorios
+                                </p>
+                            </a>
+                        </li>
                     </ul>
                     <?php endif; ?>
                     </ul>
