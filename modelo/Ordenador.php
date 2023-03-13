@@ -23,4 +23,17 @@ class Ordenador{
         return $this->objetos;
     }
 
+    function insert_ordenador($marca, $modelo, $sis_ope, $av, $consola, $lab, $desc){
+        $sql = "INSERT INTO ordenador (marca_ord, mod_ord, sis_ope, antivirus, Detalle, consola_id, laboratorio_id) VALUES (:marca, :modelo, :so, :av, :descri, :consola, :lab)";
+        $query = $this->acceso->prepare($sql);
+        $query->execute(array(':marca'=>$marca,
+                              ':modelo'=>$modelo,
+                              ':so'=>$sis_ope,
+                              ':av'=>$av,
+                              ':consola'=>$consola,
+                              ':lab'=>$lab,
+                              ':descri'=>$desc));
+        echo "insert_new_ordenador";
+    }
+
 }

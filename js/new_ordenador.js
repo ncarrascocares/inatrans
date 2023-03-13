@@ -31,7 +31,7 @@ $(document).ready(function() {
         $.post('../controlador/ConsolaController.php', { funcion }, (response) => {
             //console.log(response);
             const consola = JSON.parse(response);
-            template_consola = `<option value="" selected>No aplica</option>`;
+            template_consola = `<option value="NULL" selected>No aplica</option>`;
             consola.forEach(consola => {
                 template_consola += `<option value="${consola.id_consola}">${consola.serial_consola}</option>`;
             });
@@ -40,7 +40,7 @@ $(document).ready(function() {
     }
     // Fin de la función
 
-    $('#form-new-ordenador').submit(e => {
+    $('#form_new_ordenador').submit(e => {
         funcion = 'nuevo_ordenador';
 
         let marca_ordenador = $('#marca_ordenador').val();
@@ -48,15 +48,26 @@ $(document).ready(function() {
         let sis_operativo = $('#sis_operativo').val();
         let antivirus = $('#antivirus').val();
         let consola_psico = $('#consola_psico').val();
-        let laboratorio = $('laboratorio').val();
         let desc_ordenador = $('#desc_ordenador').val();
+        let id_lab = $('#laboratorio').val();
+        $.post('../controlador/OrdenadorController.php', { marca_ordenador, modelo_ordenador, sis_operativo, antivirus, consola_psico, id_lab, desc_ordenador, funcion }, (response) => {
+            //console.log(response);
+            if (response == 'insert_new_ordenador') {
+                $('#ordenador-ok').hide('slow');
+                $('#ordenador-ok').show(1000);
+                $('#ordenador-ok').hide(2000);
 
+                $('#form_new_ordenador').trigger('reset');
+            } else {
+                $('#no-insert').hide('slow');
+                $('#no-insert').show(1000);
+                $('#no-insert').hide(2000);
 
-        $.post('../controlador/OrdenadorController.php', { marca_ordenador, modelo_ordenador, sis_operativo, antivirus, consola_psico, laboratorio, desc_ordenador, id_lab, funcion }, (response) => {
-            console.log(response);
+                $('#form_new_ordenador').trigger('reset');
+            }
         })
 
-        console.log(marca_ordenador, modelo_ordenador)
+        //console.log(marca_ordenador, modelo_ordenador)
 
         e.preventDefault();
     })

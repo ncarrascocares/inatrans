@@ -21,13 +21,21 @@ switch ($_POST['funcion']) {
             echo $jsonstring;
         break;
     case 'nuevo_ordenador':
-        $marca = $_POST('marca_ordenador');
-        $modelo = $_POST('modelo_ordenador');
-        $sis_ope = $_POST('sis_operativo');
-        $av = $_POST('antivirus');
-        $consola = $_POST('consola_psico');
-        $lab = $_POST('laboratorio');
-        $desc = $_POST('desc_ordenador');
+        $marca = $_POST['marca_ordenador'];
+        $modelo = $_POST['modelo_ordenador'];
+        $sis_ope = $_POST['sis_operativo'];
+        if(isset($_POST['antivirus'])){
+            if($_POST['antivirus'] == '0'){
+                $av = 0;
+            }else{
+                $av = 1;
+            }
+        };
+        $consola = $_POST['consola_psico'];
+        $lab = (int)$_POST['id_lab'];
+        $desc = $_POST['desc_ordenador'];
+
+        $ordenador->insert_ordenador($marca, $modelo, $sis_ope, $av, $consola, $lab, $desc);
         break;
 }
 

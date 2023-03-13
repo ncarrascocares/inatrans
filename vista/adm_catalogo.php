@@ -116,7 +116,7 @@ if (!empty($_SESSION['usuario_tipo'])) {
                                     <span><i class="fas fa-check"></i> Estado no actualizado</span>
                                 </div>
                                 <form id="form_estado_sim">
-                                    <input id="tipo_user" type="hidden" value="<?=$_SESSION['usuario_tipo']?>">
+                                    <input id="tipo_user" type="hidden" value="<?= $_SESSION['usuario_tipo'] ?>">
                                     <div class="form-group">
                                         <select name="" id="select_sim" class="form-control">
                                         </select>
@@ -165,6 +165,11 @@ if (!empty($_SESSION['usuario_tipo'])) {
                     <h3 class="card-title">Laboratorios</h3>
 
                     <div class="card-tools">
+                        <a href="new_ordenador.php" class="small-box-footer">
+                            <button id="cam_est" type="button" class="btn btn-info" data-toggle="modal" data-target="#exampleModal">
+                                Insertar nuevo ordenador
+                            </button>
+                        </a>
                         <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
                             <i class="fas fa-minus"></i>
                         </button>

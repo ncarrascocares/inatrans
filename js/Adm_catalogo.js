@@ -149,13 +149,6 @@ $(document).ready(function() {
                                     <li class="nav-item">
                                     <h3 class="widget-user-username">Laboratorio</h3>
                                     <div class="nav-link">
-                                        <span class="float-right badge">
-                                            <a href="new_ordenador.php?laboratorio=${est_laboratorio.id_lab}" class="small-box-footer">
-                                                <button id="" type="button" class="new-order btn btn-info">
-                                                    Nuevo Ordenador
-                                                </button>
-                                            </a>    
-                                        </span>
                                     </div>
                                     <h5 class="widget-user-desc">${est_laboratorio.nom_lab}</h5>
                                     </li>    

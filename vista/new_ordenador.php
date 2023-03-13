@@ -6,7 +6,6 @@ if ($_SESSION['usuario_tipo'] == 1 || $_SESSION['usuario_tipo'] == 2) {
     // Inclución del fichero header
     include_once 'layouts/header.php';
 
-    $id_lab = $_GET['laboratorio'];
 ?>
     <title>Adm | Ordenadores</title>
 
@@ -44,13 +43,12 @@ if ($_SESSION['usuario_tipo'] == 1 || $_SESSION['usuario_tipo'] == 2) {
                     <div class="alert alert-success text-center" id="ordenador-ok" style="display:none;">
                         <span><i class="fas fa-check"></i>Ordenador creado en la BD</span>
                     </div>
-                    <div class="alert alert-danger text-center" id="ordenador-noinsert" style="display:none;">
+                    <div class="alert alert-danger text-center" id="no-insert" style="display:none;">
                         <span><i class="fas fa-check"></i>Error, no se creo el ordenador</span>
                     </div>
                     <!-- /.card-header -->
                     <div class="card-body" style="display: block;">
-                        <form id="form-new-ordenador" class="row g-3">
-                        <input type="hidden" class="form-control" id="id_laboratorio" value="<?=$id_lab?>">
+                        <form id="form_new_ordenador" class="row g-3">
                             <div class="col-md-4">
                                 <label for="name_equipo" class="form-label">Marca del ordenador</label>
                                 <input type="text" class="form-control" id="marca_ordenador" value="">
