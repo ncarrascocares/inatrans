@@ -18,34 +18,49 @@ if (!empty($_SESSION['usuario_tipo'])) {
                 <div class="modal-header bg-primary">
                     <h3 class="modal-title fs-5" id="exampleModalLabel">Nueva consola</h3>
                 </div>
+                <div class="alert alert-success text-center" id="consola-ok" style="display:none;">
+                    <span><i class="fas fa-check"></i>Consola creada en la BD</span>
+                </div>
+                <div class="alert alert-danger text-center" id="no-insert" style="display:none;">
+                    <span><i class="fas fa-check"></i>Error, consola no creada en BD</span>
+                </div>
+                <div class="alert alert-danger text-center" id="error_consola_existe" style="display:none;">
+                    <span><i class="fas fa-check"></i>Error, consola ya existe en la BD</span>
+                </div>
+                <div class="alert alert-danger text-center" id="error_dongle_asociado" style="display:none;">
+                    <span><i class="fas fa-check"></i>Error, Dongle ya asociado a otra consola</span>
+                </div>
+                <div class="alert alert-danger text-center" id="error-datos" style="display:none;">
+                    <span><i class="fas fa-check"></i>Error, falta información requerida!</span>
+                </div>
                 <div class="modal-body">
-                    <form class="row g-3 needs-validation" novalidate>
+                    <form id="form_new_consola" class="row g-3 needs-validation" novalidate>
                         <div class="col-md-6 position-relative">
-                            <label for="name_equipo" class="form-label">N° serie consola</label>
-                            <input type="text" class="form-control" id="name_equipo" value="" required>
+                            <label for="serie_equipo" class="form-label">N° serie consola</label>
+                            <input type="text" class="form-control" id="serie_equipo" value="" required>
                         </div>
                         <div class="col-md-6 position-relative">
-                            <label for="simulador_id" class="form-label">N° serie pedalera</label>
-                            <select name="" id="simulador_id" class="form-control">
+                            <label for="serie_pedalera" class="form-label">N° serie pedalera</label>
+                            <input type="text" class="form-control" id="serie_pedalera" value="" required>
                             </select>
                         </div>
-                        <div class="col-md-4 position-relative mt-4">
-                            <label for="simulador_id" class="form-label">Ubicación</label>
-                            <select name="" id="simulador_id" class="form-control">
+                        <div class="col-md-6 position-relative mt-4">
+                            <label for="ubicacion" class="form-label">Ubicación</label>
+                            <select name="" id="ubicacion" class="form-control">
                             </select>
                         </div>
-                        <div class="col-md-4 position-relative mt-4">
-                            <label for="name_equipo" class="form-label">N° serie consola</label>
-                            <input type="text" class="form-control" id="name_equipo" value="" required>
-                        </div>
-                        <div class="col-md-4 position-relative mt-4">
-                            <label for="tipo_mant" class="form-label">Dongle asociado</label>
-                            <select name="" id="tipo_mant" class="form-control">
+                        <div class="col-md-6 position-relative mt-4">
+                            <label for="songle" class="form-label">Dongle asociado</label>
+                            <select name="" id="dongle" class="form-control">
                             </select>
+                        </div>
+                        <div class="col-md-12 position-relative mt-4">
+                            <label for="detalle_consola" class="form-label">Detalle</label>
+                            <textarea name="" class="form-control" id="detalle_consola" cols="10" rows="2" required></textarea>
                         </div>
                         <div class="col-12">
                             <br>
-                            <button class="btn btn-primary" type="submit">Crear</button>
+                            <button id="new_consola" class="btn btn-primary" type="submit">Crear</button>
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
                         </div>
                     </form>
@@ -63,8 +78,17 @@ if (!empty($_SESSION['usuario_tipo'])) {
                 <div class="modal-header bg-primary">
                     <h3 class="modal-title fs-5" id="exampleModalLabel">Nuevo Dongle</h3>
                 </div>
+                <div class="alert alert-success text-center" id="dongle-ok" style="display:none;">
+                    <span><i class="fas fa-check"></i>Nuevo dongle creado en la BD</span>
+                </div>
+                <div class="alert alert-danger text-center" id="error_dongle_existe" style="display:none;">
+                    <span><i class="fas fa-check"></i>Error, Dongle ya existe en la BD</span>
+                </div>
+                <div class="alert alert-danger text-center" id="error_datos_dongle" style="display:none;">
+                    <span><i class="fas fa-check"></i>Error, falta información requerida!</span>
+                </div>
                 <div class="modal-body">
-                    <form class="row g-3 needs-validation" novalidate>
+                    <form id="form_new_dongle" class="row g-3 needs-validation" novalidate>
                         <div class="col-md-6 position-relative">
                             <label for="num_serial" class="form-label">N° serial</label>
                             <input type="text" class="form-control" id="num_serial" value="" required>
@@ -75,7 +99,7 @@ if (!empty($_SESSION['usuario_tipo'])) {
                         </div>
                         <div class="col-12">
                             <br>
-                            <button class="btn btn-primary" type="submit">Crear</button>
+                            <button id="new_dongle" class="btn btn-primary" type="submit">Crear</button>
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
                         </div>
                     </form>
@@ -108,8 +132,8 @@ if (!empty($_SESSION['usuario_tipo'])) {
             <div class="container-fluid">
                 <div id="" class="card-header bg-info">
                     <h4 id="">Equipos psicotecnicos</h4>
-                    <button id="button-crear-sub" type="button" class="btn btn-warning" data-toggle="modal" data-target="#modalConsola" data-whatever="@mdo">Nueva consola</button>
-                    <button id="button-crear-sub" type="button" class="btn btn-light" data-toggle="modal" data-target="#modalDongle" data-whatever="@mdo">Nuevo Dongle</button>
+                    <button id="button-crear-con" type="button" class="btn btn-warning" data-toggle="modal" data-target="#modalConsola" data-whatever="@mdo">Nueva consola</button>
+                    <button id="button-crear-don" type="button" class="btn btn-light" data-toggle="modal" data-target="#modalDongle" data-whatever="@mdo">Nuevo Dongle</button>
                     <div class="input-group">
                     </div>
                 </div>
@@ -128,20 +152,20 @@ if (!empty($_SESSION['usuario_tipo'])) {
                     <div class="card-body" style="display: block;">
                         <div class="card-body" style="display: block;">
                             <table class="table table-bordered" style="border:1px solid black;width: 100%;">
-                            <thead style="border:1px solid black;background:teal; color:white;font-weight:bold">
-                                <td style="border:1px solid black;">N° serie consola</td>
-                                <td style="border:1px solid black;">N° serie Pedalera</td>
-                                <td style="border:1px solid black;">N° serie Dongle</td>
-                                <td style="border:1px solid black;">Ubicación</td>
-                                <td style="border:1px solid black;">Detalle</td>
-                                <td style="border:1px solid black;">N° serie Dongle</td>
-                                <td style="border:1px solid black;">Fecha vencimieto de licencia</td>
-                                <td style="border:1px solid black;">Dias</td>
-                                <td style="border:1px solid black;">editar - borrar - detalle</td>
-                            </thead>
-                            <tbody id="contenido_tabla_stgo">
+                                <thead style="border:1px solid black;background:teal; color:white;font-weight:bold">
+                                    <td style="border:1px solid black;">N° serie consola</td>
+                                    <td style="border:1px solid black;">N° serie Pedalera</td>
+                                    <td style="border:1px solid black;">N° serie Dongle</td>
+                                    <td style="border:1px solid black;">Ubicación</td>
+                                    <td style="border:1px solid black;">Detalle</td>
+                                    <td style="border:1px solid black;">N° serie Dongle</td>
+                                    <td style="border:1px solid black;">Fecha vencimieto de licencia</td>
+                                    <td style="border:1px solid black;">Dias de operatividad</td>
+                                    <td style="border:1px solid black;">Opciones</td>
+                                </thead>
+                                <tbody id="contenido_tabla_stgo">
 
-                            </tbody>
+                                </tbody>
                             </table>
                         </div>
                     </div>
