@@ -36,6 +36,16 @@ switch ($_POST['funcion']) {
         $jsonstring = json_encode($json);
         echo $jsonstring;
         break;
+    case 'new_consola':
+        $serie_equipo = strtoupper($_POST['serie_equipo']);
+        $serie_pedalera = strtoupper($_POST['serie_pedalera']); 
+        $ubicacion = (int)$_POST['ubicacion']; 
+        $dongle = (int)$_POST['dongle']; 
+        $detalle_consola = $_POST['detalle_consola'];
+
+        $consola->new_consola($serie_equipo, $serie_pedalera, $ubicacion, $dongle, $detalle_consola);
+
+        break;
 }
 
 

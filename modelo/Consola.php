@@ -32,4 +32,36 @@ class Consola{
         $this->objetos=$query->fetchAll();
         return $this->objetos;
     }
+
+    function new_consola($serie_equipo, $serie_pedalera, $ubicacion, $dongle, $detalle_consola){
+        $sql = "SELECT * FROM consola WHERE serial_consola = :serie";
+        $query = $this->acceso->prepare($sql);
+        $query->execute(array(':serie'=>$serie_equipo));
+        $this->objetos=$query->fetchAll();
+        if(!empty($this->objetos)){
+            echo "consola-existe";
+        }else{
+            $sql = "SELECT con.*, don.id_dongle, don.identificador FROM consola con 
+            inner join dongle don on con.dongle_id = don.id_dongle
+            where don.id_dongle = :dongle;";
+            $query = $this->acceso->prepare($sql);
+            $query->execute(array(':dongle'=>$dongle));
+            $this->objetos=$query->fetchAll();
+            if(!empty($this->objetos)){
+                echo "psico-asociado";
+            }else{
+                $sql = "INSERT INTO consola (serial_consola, serial_pedalera, Ubicacion, Detalle, dongle_id) 
+                        VALUES (:serial_consola, :serial_pedalera, :ubicacion, :detalle, :dongle_id)";
+                $query = $this->acceso->prepare($sql);
+                $query->execute(array(
+                    ':serial_consola'=>$serie_equipo, 
+                    ':serial_pedalera'=>$serie_pedalera, 
+                    ':ubicacion'=>$ubicacion,
+                    ':detalle'=>$detalle_consola,
+                    ':dongle_id'=>$dongle
+                ));
+                echo "consola-add";
+            }
+        }
+    }
 }
