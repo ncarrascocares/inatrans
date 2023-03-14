@@ -6,6 +6,7 @@ $(document).ready(function() {
 
     view_lab();
     view_dongle();
+    show_consola();
 
     nueva_consola.on('click', '#new_consola', (e) => {
         //console.log('boton de agregar nueva consola')
@@ -39,6 +40,7 @@ $(document).ready(function() {
                         $('#consola-ok').hide('slow');
                         $('#consola-ok').show(1000);
                         $('#consola-ok').hide(2500);
+                        $('#consola-ok').trigger('reset');
                         break;
                 }
             })
@@ -71,10 +73,43 @@ $(document).ready(function() {
                         $('#dongle-ok').hide('slow');
                         $('#dongle-ok').show(1000);
                         $('#dongle-ok').hide(2500);
+                        view_dongle();
                         break;
                 }
             })
         }
+
+        e.preventDefault();
+    })
+
+    function show_consola() {
+        let template_tab = '';
+        funcion = 'listar_consola';
+        $.post('../controlador/ConsolaController.php', { funcion }, (response) => {
+            const consola = JSON.parse(response);
+            consola.forEach(consola => {
+                template_tab += `
+                <tr>
+                    <td style="border:1px solid black;">${consola.serial_consola}</td>
+                    <td style="border:1px solid black;">${consola.serial_pedalera}</td>
+                    <td style="border:1px solid black;">${consola.nom_lab}</td>
+                    <td style="border:1px solid black;">${consola.detalle}</td>
+                    <td style="border:1px solid black;">${consola.identificador}</td>
+                    <td style="border:1px solid black;">${consola.fec_ven}</td>
+                    <td style="border:1px solid black;">${consola.dias_vigencia}</td>
+                    <td style="border:1px solid black;">
+                        <button id="edit_consola" type="button" class="btn btn-warning" style="font-size:50%"><i class="fas fa-edit"></i></button>
+                        <button type="button" class="btn btn-info" style="font-size:50%"><i class="fa fa-file-pdf"></i></button>
+                    </td>
+                </tr> 
+                `;
+            });
+            $('#tabla_psico').append(template_tab);
+        })
+    }
+
+    $(document).on('click', '#edit_consola', (e) => {
+        console.log('se presiono el boton de editar');
 
         e.preventDefault();
     })

@@ -30,7 +30,13 @@ switch ($_POST['funcion']) {
             $json[] = array(
                 'id_consola'=>$objeto->id_consola,
                 'serial_consola'=>$objeto->serial_consola,
-                'dongle_id'=>$objeto->dongle_id
+                'serial_pedalera'=>$objeto->serial_pedalera,
+                'nom_lab'=>$objeto->nom_lab,
+                'detalle'=>$objeto->detalle,
+                'id_dongle'=>$objeto->id_dongle,
+                'identificador'=>$objeto->identificador,
+                'fec_ven'=>$objeto->fec_ven,
+                'dias_vigencia'=>$objeto->dias_vigencia,
             );
         }
         $jsonstring = json_encode($json);

@@ -155,7 +155,6 @@ if (!empty($_SESSION['usuario_tipo'])) {
                                 <thead style="border:1px solid black;background:teal; color:white;font-weight:bold">
                                     <td style="border:1px solid black;">N° serie consola</td>
                                     <td style="border:1px solid black;">N° serie Pedalera</td>
-                                    <td style="border:1px solid black;">N° serie Dongle</td>
                                     <td style="border:1px solid black;">Ubicación</td>
                                     <td style="border:1px solid black;">Detalle</td>
                                     <td style="border:1px solid black;">N° serie Dongle</td>
@@ -163,7 +162,7 @@ if (!empty($_SESSION['usuario_tipo'])) {
                                     <td style="border:1px solid black;">Dias de operatividad</td>
                                     <td style="border:1px solid black;">Opciones</td>
                                 </thead>
-                                <tbody id="contenido_tabla_stgo">
+                                <tbody id="tabla_psico">
 
                                 </tbody>
                             </table>

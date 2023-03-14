@@ -26,7 +26,9 @@ class Consola{
     }
 
     function listar_consola(){
-        $sql = "SELECT * FROM consola";
+        $sql = "SELECT con.id_consola, con.serial_consola, con.serial_pedalera, lab.nom_lab, con.Detalle, don.id_dongle, don.identificador, don.fec_ven, DATEDIFF(don.fec_ven,curdate()) as 'dias_vigencia' FROM consola con 
+                INNER JOIN laboratorio lab on con.Ubicacion = lab.id_lab
+                INNER JOIN dongle don on con.dongle_id = don.id_dongle;";
         $query = $this->acceso->prepare($sql);
         $query->execute();
         $this->objetos=$query->fetchAll();
