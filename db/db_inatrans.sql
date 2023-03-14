@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 13-03-2023 a las 22:31:42
+-- Tiempo de generación: 14-03-2023 a las 22:15:17
 -- Versión del servidor: 10.4.27-MariaDB
 -- Versión de PHP: 8.2.0
 
@@ -108,7 +108,10 @@ INSERT INTO `consola` (`id_consola`, `serial_consola`, `serial_pedalera`, `Ubica
 (2, 'WUG2-0982', 'FT2-0982', 2, '', 2),
 (3, 'WUG2-0983', 'FT2-0983', 3, '', 3),
 (4, 'WUG2-0984', 'FT2-0984', 3, '', 4),
-(5, 'WUG2-0985', 'FT2-0985', 3, '', 5);
+(5, 'WUG2-0985', 'FT2-0985', 3, '', 5),
+(8, 'WUG2-0986', 'FT2-0986', 3, 'Nueva consola para psicotecnicos', 6),
+(9, 'WUG2-0999', 'FT2-0999', 2, 'Nueva consola', 7),
+(10, 'WUG2-1000', 'FT2-0999', 1, 'nueva consola para santiago', 8);
 
 -- --------------------------------------------------------
 
@@ -131,7 +134,10 @@ INSERT INTO `dongle` (`id_dongle`, `identificador`, `fec_ven`) VALUES
 (2, 'TDC2-3900', '2023-08-01'),
 (3, 'TDC2-3901', '2023-12-01'),
 (4, 'TDC2-3902', '2023-12-24'),
-(5, 'TDC2-3903', '2023-12-31');
+(5, 'TDC2-3903', '2023-12-31'),
+(6, 'TDC2-3904', '2023-03-31'),
+(7, 'TDC3-3905', '2023-03-20'),
+(8, 'TDC3-3906', '2023-03-31');
 
 -- --------------------------------------------------------
 
@@ -865,13 +871,13 @@ ALTER TABLE `categoria_licencia`
 -- AUTO_INCREMENT de la tabla `consola`
 --
 ALTER TABLE `consola`
-  MODIFY `id_consola` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id_consola` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT de la tabla `dongle`
 --
 ALTER TABLE `dongle`
-  MODIFY `id_dongle` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id_dongle` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT de la tabla `elemento`
