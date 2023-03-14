@@ -16,7 +16,7 @@ if (!empty($_SESSION['usuario_tipo'])) {
         <div class="modal-dialog modal-xl">
             <div class="modal-content">
                 <div class="modal-header bg-primary">
-                    <h3 class="modal-title fs-5" id="exampleModalLabel">Nueva consola</h3>
+                    <h3 id="title_consola" class="modal-title fs-5">Nueva consola</h3>
                 </div>
                 <div class="alert alert-success text-center" id="consola-ok" style="display:none;">
                     <span><i class="fas fa-check"></i>Consola creada en la BD</span>
@@ -151,16 +151,16 @@ if (!empty($_SESSION['usuario_tipo'])) {
                     <!-- /.card-header -->
                     <div class="card-body" style="display: block;">
                         <div class="card-body" style="display: block;">
-                            <table class="table table-bordered" style="border:1px solid black;width: 100%;">
+                            <table id="tabla_consola" class="table table-bordered" style="border:1px solid black;width: 100%;">
                                 <thead style="border:1px solid black;background:teal; color:white;font-weight:bold">
-                                    <td style="border:1px solid black;">N° serie consola</td>
-                                    <td style="border:1px solid black;">N° serie Pedalera</td>
-                                    <td style="border:1px solid black;">Ubicación</td>
-                                    <td style="border:1px solid black;">Detalle</td>
-                                    <td style="border:1px solid black;">N° serie Dongle</td>
-                                    <td style="border:1px solid black;">Fecha vencimieto de licencia</td>
-                                    <td style="border:1px solid black;">Dias de operatividad</td>
-                                    <td style="border:1px solid black;">Opciones</td>
+                                    <th style="border:1px solid black;">N° serie consola</th>
+                                    <th style="border:1px solid black;">N° serie Pedalera</th>
+                                    <th style="border:1px solid black;">Ubicación</th>
+                                    <th style="border:1px solid black;">Detalle</th>
+                                    <th style="border:1px solid black;">N° serie Dongle</th>
+                                    <th style="border:1px solid black;">Fecha vencimieto de licencia</th>
+                                    <th style="border:1px solid black;">Dias de operatividad</th>
+                                    <th style="border:1px solid black;">Opciones</th>
                                 </thead>
                                 <tbody id="tabla_psico">
 

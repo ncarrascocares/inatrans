@@ -3,6 +3,7 @@ $(document).ready(function() {
     let funcion = '';
     const nueva_consola = $('#form_new_consola');
     const nuevo_dongle = $('#form_new_dongle');
+    const title = document.getElementById('title_consola');
 
     view_lab();
     view_dongle();
@@ -98,7 +99,7 @@ $(document).ready(function() {
                     <td style="border:1px solid black;">${consola.fec_ven}</td>
                     <td style="border:1px solid black;">${consola.dias_vigencia}</td>
                     <td style="border:1px solid black;">
-                        <button id="edit_consola" type="button" class="btn btn-warning" style="font-size:50%"><i class="fas fa-edit"></i></button>
+                        <button id="" type="button" class="edit_consola btn btn-warning" data-toggle="modal" data-target="#modalConsola" style="font-size:50%"><i class="fas fa-edit"></i></button>
                         <button type="button" class="btn btn-info" style="font-size:50%"><i class="fa fa-file-pdf"></i></button>
                     </td>
                 </tr> 
@@ -108,10 +109,8 @@ $(document).ready(function() {
         })
     }
 
-    $(document).on('click', '#edit_consola', (e) => {
-        console.log('se presiono el boton de editar');
-
-        e.preventDefault();
+    $(document).on('click', '.edit_consola', (e) => {
+        title.textContent = "Editar Consola";
     })
 
     function view_lab() {
