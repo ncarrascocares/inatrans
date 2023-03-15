@@ -99,7 +99,7 @@ $(document).ready(function() {
                     <td style="border:1px solid black;">${consola.fec_ven}</td>
                     <td style="border:1px solid black;">${consola.dias_vigencia}</td>
                     <td style="border:1px solid black;">
-                    <a href="../vista/edit_consola?id_consola=${consola.id_consola}"><button type="button" class="edit_consola btn btn-warning" data-toggle="modal" data-target="#modalConsola" style="font-size:50%"><i class="fas fa-edit"></i></button></a>
+                    <a href="../vista/edit_consola.php?id_consola=${consola.id_consola}"><button type="button" class="edit_consola btn btn-warning" data-toggle="modal" data-target="#modalConsola" style="font-size:50%"><i class="fas fa-edit"></i></button></a>
                         <button type="button" class="btn btn-info" style="font-size:50%"><i class="fa fa-file-pdf"></i></button>
                     </td>
                 </tr> 

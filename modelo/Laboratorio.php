@@ -21,6 +21,7 @@ class Laboratorio{
         $this->objetos=$query->fetchAll();
         return $this->objetos;
     }
+
 }
 
 

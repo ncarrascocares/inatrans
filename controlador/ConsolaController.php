@@ -52,6 +52,25 @@ switch ($_POST['funcion']) {
         $consola->new_consola($serie_equipo, $serie_pedalera, $ubicacion, $dongle, $detalle_consola);
 
         break;
+    case 'select_consola_id':
+        $json = array();
+        $id_consola = (int)$_POST['dato'];
+        $consola->seleccionar_consola_id($id_consola);
+        foreach ($consola->objetos as $objeto) {
+            $json[] = array(
+                'id_consola'=>$objeto->id_consola,
+                'serial_consola'=>$objeto->serial_consola,
+                'serial_pedalera'=>$objeto->serial_pedalera,
+                'ubicacion'=>$objeto->ubicacion,
+                'detalle'=>$objeto->detalle,
+                'dongle_id'=>$objeto->dongle_id,
+                'id_dongle'=>$objeto->id_dongle,
+                'identificador'=>$objeto->identificador
+            );
+        }
+        $jsonstring = json_encode($json);
+        echo $jsonstring;
+        break;
 }
 
 

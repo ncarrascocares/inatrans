@@ -66,4 +66,15 @@ class Consola{
             }
         }
     }
+
+    function seleccionar_consola_id($id_consola){
+        $sql = "SELECT con.*, don.id_dongle, don.identificador FROM consola con 
+                inner join dongle don on con.dongle_id = don.id_dongle
+                where con.id_consola = :id_consola;";
+        $query = $this->acceso->prepare($sql);
+        $query->execute(array(':id_consola'=>$id_consola));
+        $this->objetos=$query->fetchAll();
+        return($this->objetos);
+
+    }
 }

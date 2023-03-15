@@ -19,10 +19,6 @@ switch ($_POST['funcion']) {
         $jsonstring = json_encode($json);
         echo $jsonstring;
         break;
-    
-    default:
-        # code...
-        break;
 }
 
 ?>
