@@ -30,13 +30,12 @@ $(document).ready(function() {
                 det += `${consola.detalle}`;
             });
 
-            //ESTOS SON LOS VALORES QUE SE MUESTRAN EN LOS INPUES DEL FORMULARIO
+            //ESTOS SON LOS VALORES QUE SE MUESTRAN EN LOS INPUT DEL FORMULARIO
             serie.val(ser_con);
             serie_ped.val(ser_ped);
             ubicacion.val(ubi);
             dongle.val(don);
             detalle_consola.val(det);
-            console.log(don)
             view_lab(ubi);
             view_dongle(don);
         })
@@ -67,6 +66,7 @@ $(document).ready(function() {
         $.post('../controlador/DongleController.php', { funcion }, (response) => {
             //console.log(response);
             const dongle = JSON.parse(response);
+            template_don += `<option value="">Sin dongle</option>`;
             dongle.forEach(dongle => {
                 if (`${dongle.id_dongle}` === dato) {
                     template_don += `<option value="${dongle.id_dongle}" selected style="color:red;">${dongle.identificador}</option>`;
@@ -78,6 +78,19 @@ $(document).ready(function() {
         })
     }
 
+    $('#form_update_consola').on('click', '#update_consola', (e) => {
 
+        //Variables desde los input del formulario, al presionar el boton editar estos se asignaran
+        let serial_consola = $('#serie_equipo').val();
+        let serial_pedalera = $('#serie_pedalera').val();
+        let ubicacion = $('#ubicacion').val();
+        let dongle = $('#dongle').val();
+        let detalle = $('#detalle_consola').val();
+
+        console.log(dongle);
+
+
+        e.preventDefault();
+    })
 
 })
