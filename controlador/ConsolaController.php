@@ -71,6 +71,16 @@ switch ($_POST['funcion']) {
         $jsonstring = json_encode($json);
         echo $jsonstring;
         break;
+    case 'update_consola':
+        $id_consola = $_POST['id_consola'];
+        $serial_consola = $_POST['serial_consola'];
+        $serial_pedalera = $_POST['serial_pedalera'];
+        $ubicacion = (int)$_POST['ubicacion'];
+        $dongle = (int)$_POST['dongle'];
+        $detalle = $_POST['detalle'];
+
+        $consola->update_consola($id_consola, $serial_consola, $serial_pedalera, $ubicacion, $dongle, $detalle);
+        break;
 }
 
 
