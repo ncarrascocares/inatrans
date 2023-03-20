@@ -41,7 +41,7 @@ $(document).ready(function() {
                         $('#consola-ok').hide('slow');
                         $('#consola-ok').show(1000);
                         $('#consola-ok').hide(2500);
-                        $('#consola-ok').trigger('reset');
+                        $('#form_new_consola').trigger('reset');
                         break;
                 }
             })
@@ -74,6 +74,7 @@ $(document).ready(function() {
                         $('#dongle-ok').hide('slow');
                         $('#dongle-ok').show(1000);
                         $('#dongle-ok').hide(2500);
+                        $('#form_new_dongle').trigger('reset');
                         view_dongle();
                         break;
                 }

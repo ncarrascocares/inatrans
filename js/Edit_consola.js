@@ -89,7 +89,30 @@ $(document).ready(function() {
         let detalle = $('#detalle_consola').val();
 
         $.post('../controlador/ConsolaController.php', { id_consola, serial_consola, serial_pedalera, ubicacion, dongle, detalle, funcion }, (response) => {
-            console.log(response);
+
+            switch (response) {
+                case 'serial_consola_existe':
+                    $('#serial_consola').hide('slow');
+                    $('#serial_consola').show(1000);
+                    $('#serial_consola').hide(2000);
+                    break;
+                case 'serial_pedalera_existe':
+                    $('#serial_pedalera').hide('slow');
+                    $('#serial_pedalera').show(1000);
+                    $('#serial_pedalera').hide(2000);
+                    break;
+                case 'dongle_existe':
+                    $('#dongle_existe').hide('slow');
+                    $('#dongle_existe').show(1000);
+                    $('#dongle_existe').hide(2000);
+                    break;
+                case 'update-ok':
+                    $('#update-ok').hide('slow');
+                    $('#update-ok').show(1000);
+                    $('#update-ok').hide(2000);
+                    $('#form_update_consola').trigger('reset');
+                    break;
+            }
         })
 
         e.preventDefault();

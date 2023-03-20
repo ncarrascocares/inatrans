@@ -79,11 +79,11 @@ class Consola{
     }
 
     function update_consola($id_consola, $serial_consola, $serial_pedalera, $ubicacion, $dongle, $detalle){
-
         $sql = "SELECT * FROM consola WHERE id_consola = :id_consola;";
         $query = $this->acceso->prepare($sql);
         $query->execute(array(':id_consola'=>$id_consola));
         $this->objetos = $query->fetch();
+ 
         //Validando que el nombre ingresado sea distinto al que hay en la bd
         if($serial_consola != $this->objetos->serial_consola){
             //Si es distinto entra al if y ahora valido que el nuevo serial de la consola no exista ya en la bd
@@ -105,20 +105,29 @@ class Consola{
                     echo "serial_pedalera_existe";
                 }else{
                     //Si no realizo la comprobacion del dato del dongle
-                    $sql = "SELECT * FROM consola WHERE serial_pedalera = :serial_pedalera;";
+                    $sql = "SELECT * FROM consola WHERE dongle_id = :dongle_id;";
                     $query = $this->acceso->prepare($sql);
-                    $query->execute(array(':serial_pedalera'=>$serial_pedalera));
+                    $query->execute(array(':dongle_id'=>$dongle));
                     $this->objetos = $query->fetch();
                     //Valido que la consulta no arroje resultados
                     if(!empty($this->objetos)){
                         echo "dongle_existe";
                     }else{
-                        $sql = "UPDATE consola SET serial_consola=:serial_consola,serial_pedalera=:serial_pedalera,Ubicacion=:ubicacion,Detalle=:detalle,dongle_id=:dongle_id;";
+                        $sql = "UPDATE consola SET serial_consola=:serial_consola,serial_pedalera=:serial_pedalera,Ubicacion=:ubicacion,Detalle=:detalle,dongle_id=:dongle_id WHERE id_consola=:id_consola;";
                         $query = $this->acceso->prepare($sql);
-                        $query->execute(array(':serial_pedalera'=>$serial_pedalera));
+                        $query->execute(array(':serial_consola'=>$serial_consola,
+                                              ':serial_pedalera'=>$serial_pedalera,
+                                              ':ubicacion'=>$ubicacion,
+                                              ':detalle'=>$detalle,
+                                              ':dongle_id'=>$dongle,
+                                              ':id_consola'=>$id_consola
+                                            ));
+                        echo "update-ok";
                     }
                 }
             }
+        }else{
+            echo "serial_consola_existe";
         }
                     
     }

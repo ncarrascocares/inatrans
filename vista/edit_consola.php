@@ -51,8 +51,14 @@ if (!empty($_SESSION['usuario_tipo'])) {
                     <div class="alert alert-success text-center" id="update-ok" style="display:none;">
                         <span><i class="fas fa-check"></i>Actualización realizada</span>
                     </div>
-                    <div class="alert alert-danger text-center" id="no-update" style="display:none;">
-                        <span><i class="fas fa-check"></i>Error, No se realizo la actualización</span>
+                    <div class="alert alert-danger text-center" id="serial_consola" style="display:none;">
+                        <span><i class="fas fa-check"></i>Error, Serie consola ya existe en la bs</span>
+                    </div>
+                    <div class="alert alert-danger text-center" id="serial_pedalera" style="display:none;">
+                        <span><i class="fas fa-check"></i>Error, Serie pedalera ya existe en la bs</span>
+                    </div>
+                    <div class="alert alert-danger text-center" id="dongle_existe" style="display:none;">
+                        <span><i class="fas fa-check"></i>Error, Dongle seleccionado ya se encuentra asociado a una consola</span>
                     </div>
                     <!-- /.card-header -->
                     <div class="card-body" style="display: block;">
