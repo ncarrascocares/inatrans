@@ -7,7 +7,7 @@ if ($_SESSION['usuario_tipo'] == 1 || $_SESSION['usuario_tipo'] == 2) {
     include_once 'layouts/header.php';
 
 ?>
-    <title>Adm | Ordenadores</title>
+    <title>Adm | Laboratorios</title>
 
     <!-- Inclución del fichero nav -->
     <?php include_once 'layouts/nav.php'; ?>
@@ -19,13 +19,13 @@ if ($_SESSION['usuario_tipo'] == 1 || $_SESSION['usuario_tipo'] == 2) {
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1>Gestion de ordenadores</h1>
+                        <h1>Gestion de equipamiento</h1>
                     </div>
                     <input type="hidden" id="tipo_usuario" value="<?=$_SESSION['usuario_tipo']?>">
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
                             <li class="breadcrumb-item"><a href="../vista/adm_catalogo.php">Home</a></li>
-                            <li class="breadcrumb-item active">Ordenadores</li>
+                            <li class="breadcrumb-item active">Laboratorios</li>
                         </ol>
                     </div>
                 </div>
@@ -41,10 +41,10 @@ if ($_SESSION['usuario_tipo'] == 1 || $_SESSION['usuario_tipo'] == 2) {
                 <br>
                 <div class="card card-outline card-primary">
                     <div class="alert alert-success text-center" id="ordenador-ok" style="display:none;">
-                        <span><i class="fas fa-check"></i>Ordenador creado en la BD</span>
+                        <span><i class="fas fa-check"></i>Equipo creado en la BD</span>
                     </div>
                     <div class="alert alert-danger text-center" id="no-insert" style="display:none;">
-                        <span><i class="fas fa-check"></i>Error, no se creo el ordenador</span>
+                        <span><i class="fas fa-check"></i>Error, no se creo el equipo</span>
                     </div>
                     <div class="alert alert-danger text-center" id="no-datos" style="display:none;">
                         <span><i class="fas fa-check"></i>Error, Faltan datos en el formulario!</span>
@@ -53,7 +53,7 @@ if ($_SESSION['usuario_tipo'] == 1 || $_SESSION['usuario_tipo'] == 2) {
                     <div class="card-body" style="display: block;">
                         <form id="form_new_ordenador" class="row g-3">
                             <div class="col-md-4">
-                                <label for="name_equipo" class="form-label">Marca del ordenador</label>
+                                <label for="name_equipo" class="form-label">Marca del equipo</label>
                                 <input type="text" class="form-control" id="marca_ordenador" value="" required>
                             </div>
                             <div class="col-md-4">
@@ -82,7 +82,7 @@ if ($_SESSION['usuario_tipo'] == 1 || $_SESSION['usuario_tipo'] == 2) {
                                 </select>
                             </div>
                             <div class="col-12 mt-5">
-                                <label for="desc_simulador" class="form-label">Detalles del ordenador</label>
+                                <label for="desc_simulador" class="form-label">Detalles del equipo</label>
                                 <textarea class="form-control" id="desc_ordenador" rows="3" placeholder="EJ: Ordenador para uso de cursos e-learning" required></textarea>
                                 <br>
                             </div>

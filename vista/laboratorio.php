@@ -7,7 +7,7 @@ if (!empty($_SESSION['usuario_tipo'])) {
     include_once 'layouts/header.php';
 ?>
 
-    <title>Adm | Descripción Laboratorios</title>
+    <title>Adm | Laboratorios</title>
 
     <!-- Inclución del fichero nav -->
     <?php include_once 'layouts/nav.php'; ?>
@@ -109,13 +109,13 @@ if (!empty($_SESSION['usuario_tipo'])) {
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1>Detalles de laboratorio y psico
+                        <h1>Detalles x laboratorio
                     </div>
                     <input type="hidden" id="tipo_usuario" value="<?= $_SESSION['usuario_tipo'] ?>">
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
                             <li class="breadcrumb-item"><a href="../vista/adm_catalogo.php">Home</a></li>
-                            <li class="breadcrumb-item active">Detalle por laboratorio</li>
+                            <li class="breadcrumb-item active">Detalle x laboratorio</li>
                         </ol>
                     </div>
                 </div>
@@ -125,7 +125,7 @@ if (!empty($_SESSION['usuario_tipo'])) {
             <div class="container-fluid">
                 <div id="" class="card-header bg-info">
                     <h4 id="">Laboratorios</h4>
-                    <a href="new_ordenador.php"><button id="button-crear-sub" type="button" class="btn btn-success" data-toggle="modal" data-target="#modalSub" data-whatever="@mdo">Nuevo ordenador</button></a>
+                    <a href="new_ordenador.php"><button id="button-crear-sub" type="button" class="btn btn-success" data-toggle="modal" data-target="#modalSub" data-whatever="@mdo">Ingresar equipo</button></a>
                     <div class="input-group">
                     </div>
                 </div>
