@@ -17,7 +17,7 @@ $(document).ready(function() {
             lista_ord.forEach(lista_ord => {
                 //console.log(lista_ord.laboratorio_id)
                 switch (lista_ord.laboratorio_id) {
-                    case 3:
+                    case 1:
                         template_stgo += `<tr>
                                  <td style="border:1px solid black;">${lista_ord.identificador}</td>
                                  <td style="border:1px solid black;">${lista_ord.marca_ord}</td>
@@ -43,7 +43,7 @@ $(document).ready(function() {
                                  </tr>`;
                         //console.log(template_stgo);
                         break;
-                    case 2:
+                    case 3:
                         template_iqq += `<tr>
                                  <td style="border:1px solid black;">${lista_ord.identificador}</td>
                                  <td style="border:1px solid black;">${lista_ord.marca_ord}</td>
@@ -69,7 +69,7 @@ $(document).ready(function() {
                                  </tr>`;
                         break
 
-                    case 1:
+                    case 2:
                         template_anto += `<tr>
                                  <td style="border:1px solid black;">${lista_ord.identificador}</td>
                                  <td style="border:1px solid black;">${lista_ord.marca_ord}</td>

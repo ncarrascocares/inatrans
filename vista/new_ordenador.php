@@ -46,20 +46,23 @@ if ($_SESSION['usuario_tipo'] == 1 || $_SESSION['usuario_tipo'] == 2) {
                     <div class="alert alert-danger text-center" id="no-insert" style="display:none;">
                         <span><i class="fas fa-check"></i>Error, no se creo el ordenador</span>
                     </div>
+                    <div class="alert alert-danger text-center" id="no-datos" style="display:none;">
+                        <span><i class="fas fa-check"></i>Error, Faltan datos en el formulario!</span>
+                    </div>
                     <!-- /.card-header -->
                     <div class="card-body" style="display: block;">
                         <form id="form_new_ordenador" class="row g-3">
                             <div class="col-md-4">
                                 <label for="name_equipo" class="form-label">Marca del ordenador</label>
-                                <input type="text" class="form-control" id="marca_ordenador" value="">
+                                <input type="text" class="form-control" id="marca_ordenador" value="" required>
                             </div>
                             <div class="col-md-4">
                                 <label for="name_sucursal" class="form-label">Modelo</label>
-                                <input type="text" class="form-control" id="modelo_ordenador">
+                                <input type="text" class="form-control" id="modelo_ordenador" required>
                             </div>
                             <div class="col-md-4">
                                 <label for="name_sucursal" class="form-label">Sistema Operativo</label>
-                                <input type="text" class="form-control" id="sis_operativo">
+                                <input type="text" class="form-control" id="sis_operativo" required>
                             </div>
                             <div class="col-md-4 mt-5">
                                 <label for="name_sucursal" class="form-label">Antivirus instalado</label>
@@ -80,7 +83,7 @@ if ($_SESSION['usuario_tipo'] == 1 || $_SESSION['usuario_tipo'] == 2) {
                             </div>
                             <div class="col-12 mt-5">
                                 <label for="desc_simulador" class="form-label">Detalles del ordenador</label>
-                                <textarea class="form-control" id="desc_ordenador" rows="3" placeholder="EJ: Ordenador para uso de cursos e-learning"></textarea>
+                                <textarea class="form-control" id="desc_ordenador" rows="3" placeholder="EJ: Ordenador para uso de cursos e-learning" required></textarea>
                                 <br>
                             </div>
                             <div class="col-12 mt-5">

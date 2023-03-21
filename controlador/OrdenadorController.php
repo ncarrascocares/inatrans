@@ -31,7 +31,7 @@ switch ($_POST['funcion']) {
                 $av = 1;
             }
         };
-        $consola = $_POST['consola_psico'];
+        $consola = (int)$_POST['consola_psico'];
         $lab = (int)$_POST['id_lab'];
         $desc = $_POST['desc_ordenador'];
 

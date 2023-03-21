@@ -50,22 +50,31 @@ $(document).ready(function() {
         let consola_psico = $('#consola_psico').val();
         let desc_ordenador = $('#desc_ordenador').val();
         let id_lab = $('#laboratorio').val();
-        $.post('../controlador/OrdenadorController.php', { marca_ordenador, modelo_ordenador, sis_operativo, antivirus, consola_psico, id_lab, desc_ordenador, funcion }, (response) => {
-            //console.log(response);
-            if (response == 'insert_new_ordenador') {
-                $('#ordenador-ok').hide('slow');
-                $('#ordenador-ok').show(1000);
-                $('#ordenador-ok').hide(2000);
 
-                $('#form_new_ordenador').trigger('reset');
-            } else {
-                $('#no-insert').hide('slow');
-                $('#no-insert').show(1000);
-                $('#no-insert').hide(2000);
+        //Validación en caso de llegar datos vacios desde el front
+        if (marca_ordenador == '' || modelo_ordenador == '' || sis_operativo == '' || antivirus == '' || desc_ordenador == '') {
+            $('#no-datos').hide('slow');
+            $('#no-datos').show(1000);
+            $('#no-datos').hide(2000);
+        } else {
+            $.post('../controlador/OrdenadorController.php', { marca_ordenador, modelo_ordenador, sis_operativo, antivirus, consola_psico, id_lab, desc_ordenador, funcion }, (response) => {
+                //console.log(response);
+                if (response == 'insert_new_ordenador') {
+                    $('#ordenador-ok').hide('slow');
+                    $('#ordenador-ok').show(1000);
+                    $('#ordenador-ok').hide(2000);
 
-                $('#form_new_ordenador').trigger('reset');
-            }
-        })
+                    $('#form_new_ordenador').trigger('reset');
+                } else {
+                    $('#no-insert').hide('slow');
+                    $('#no-insert').show(1000);
+                    $('#no-insert').hide(2000);
+
+                    $('#form_new_ordenador').trigger('reset');
+                }
+            })
+        }
+
 
         //console.log(marca_ordenador, modelo_ordenador)
 
