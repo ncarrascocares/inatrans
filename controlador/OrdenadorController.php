@@ -42,7 +42,7 @@ switch ($_POST['funcion']) {
         $ordenador->lista_ordenador();
         foreach ($ordenador->objetos as $objeto) {
             $json[] = array(
-                'identificador'=>'ordenador-'.$objeto->id_ord,
+                'identificador'=>'INA-LAB-'.$objeto->id_ord,
                 'id_ord'=>$objeto->id_ord,
                 'marca_ord'=>$objeto->marca_ord,
                 'mod_ord'=>$objeto->mod_ord,
