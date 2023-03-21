@@ -39,7 +39,10 @@ $(document).ready(function() {
                         }
 
                         template_stgo += `</td>
-                                 <td style="border:1px solid black;">Editar - Borrar - Detalles</td>
+                                 <td style="border:1px solid black;">
+                                    <button type="button" class="generar btn btn-info" style="font-size:50%"><i class="fa fa-file-pdf"></i></button>
+                                    <button type="button" class="editar btn btn-warning" data-toggle="modal" data-target="#editar-odt" style="font-size:50%"><i class="fas fa-edit"></i></button>
+                                 </td>
                                  </tr>`;
                         //console.log(template_stgo);
                         break;
@@ -65,7 +68,10 @@ $(document).ready(function() {
                         }
 
                         template_iqq += `</td>
-                                 <td style="border:1px solid black;">Editar - Borrar - Detalles</td>
+                                 <td style="border:1px solid black;">
+                                    <button type="button" class="generar btn btn-info" style="font-size:50%"><i class="fa fa-file-pdf"></i></button>
+                                    <button type="button" class="editar btn btn-warning" data-toggle="modal" data-target="#editar-odt" style="font-size:50%"><i class="fas fa-edit"></i></button>
+                                 </td>
                                  </tr>`;
                         break
 
@@ -91,7 +97,10 @@ $(document).ready(function() {
                         }
 
                         template_anto += `</td>
-                                 <td style="border:1px solid black;">Editar - Borrar - Detalles</td>
+                                 <td style="border:1px solid black;">
+                                    <button type="button" class="generar btn btn-info" style="font-size:50%"><i class="fa fa-file-pdf"></i></button>
+                                    <button type="button" class="editar btn btn-warning" data-toggle="modal" data-target="#editar-odt" style="font-size:50%"><i class="fas fa-edit"></i></button>
+                                 </td>
                                  </tr>`;
                         break;
                 }
