@@ -109,4 +109,4 @@ if (!empty($_SESSION['usuario_tipo'])) {
     header('Location: index.php');
 }
 ?>
-<script src="../js/Edit_consola.js"></script>
+<script src="../js/EditarConsola.js"></script>

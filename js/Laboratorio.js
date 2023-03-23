@@ -19,7 +19,7 @@ $(document).ready(function() {
                 switch (lista_ord.laboratorio_id) {
                     case 1:
                         template_stgo += `<tr>
-                                 <td style="border:1px solid black;">${lista_ord.identificador}</td>
+                                 <td id="iden" style="border:1px solid black;">${lista_ord.identificador}</td>
                                  <td style="border:1px solid black;">${lista_ord.marca_ord}</td>
                                  <td style="border:1px solid black;">${lista_ord.mod_ord}</td>
                                  <td style="border:1px solid black;">${lista_ord.sis_ope}</td>
@@ -41,7 +41,7 @@ $(document).ready(function() {
                         template_stgo += `</td>
                                  <td style="border:1px solid black;">
                                     <button type="button" class="generar btn btn-info" style="font-size:50%"><i class="fa fa-file-pdf"></i></button>
-                                    <button type="button" class="editar btn btn-warning" data-toggle="modal" data-target="#editar-odt" style="font-size:50%"><i class="fas fa-edit"></i></button>
+                                    <a href="../vista/editarOrdenador.php?idOrdenador=${lista_ord.id_ord}"><button type="button" class="editar btn btn-warning" data-toggle="modal" data-target="#editar-odt" style="font-size:50%"><i class="fas fa-edit"></i></button></a>
                                  </td>
                                  </tr>`;
                         //console.log(template_stgo);
@@ -70,7 +70,7 @@ $(document).ready(function() {
                         template_iqq += `</td>
                                  <td style="border:1px solid black;">
                                     <button type="button" class="generar btn btn-info" style="font-size:50%"><i class="fa fa-file-pdf"></i></button>
-                                    <button type="button" class="editar btn btn-warning" data-toggle="modal" data-target="#editar-odt" style="font-size:50%"><i class="fas fa-edit"></i></button>
+                                    <a href="../vista/editarOrdenador.php?idOrdenador=${lista_ord.id_ord}"><button type="button" class="editar btn btn-warning" data-toggle="modal" data-target="#editar-odt" style="font-size:50%"><i class="fas fa-edit"></i></button></a>
                                  </td>
                                  </tr>`;
                         break
@@ -99,7 +99,7 @@ $(document).ready(function() {
                         template_anto += `</td>
                                  <td style="border:1px solid black;">
                                     <button type="button" class="generar btn btn-info" style="font-size:50%"><i class="fa fa-file-pdf"></i></button>
-                                    <button type="button" class="editar btn btn-warning" data-toggle="modal" data-target="#editar-odt" style="font-size:50%"><i class="fas fa-edit"></i></button>
+                                    <a href="../vista/editarOrdenador.php?idOrdenador=${lista_ord.id_ord}"><button type="button" class="editar btn btn-warning" data-toggle="modal" data-target="#editar-odt" style="font-size:50%"><i class="fas fa-edit"></i></button></a>
                                  </td>
                                  </tr>`;
                         break;
@@ -115,6 +115,14 @@ $(document).ready(function() {
 
 
     }
+
+    $(document).on('click', '.editar', (e) => {
+
+        let elemento = document.getElementsByClassName('editar');
+        // let id = elemento[0].getAttribute('id');
+        console.log(elemento[0].getAttribute('name'));
+
+    })
 
 
 })

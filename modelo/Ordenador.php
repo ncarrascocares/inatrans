@@ -46,5 +46,15 @@ class Ordenador{
         $this->objetos=$query->fetchAll();
         return $this->objetos;
     }
+    function selectOrdenador($id_ordenador){
+        $sql = "SELECT ord.*, con.serial_consola
+                FROM ordenador ord
+                LEFT join consola con on ord.consola_id = con.id_consola
+                WHERE ord.id_ord = :id_ord;";
+        $query = $this->acceso->prepare($sql);
+        $query->execute(array(':id_ord'=>$id_ordenador));
+        $this->objetos=$query->fetchAll();
+        return $this->objetos;
+    }
 
 }

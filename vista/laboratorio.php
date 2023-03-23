@@ -125,7 +125,7 @@ if (!empty($_SESSION['usuario_tipo'])) {
             <div class="container-fluid">
                 <div id="" class="card-header bg-info">
                     <h4 id="">Laboratorios</h4>
-                    <a href="new_ordenador.php"><button id="button-crear-sub" type="button" class="btn btn-success" data-toggle="modal" data-target="#modalSub" data-whatever="@mdo">Ingresar equipo</button></a>
+                    <a href="newOrdenador.php"><button id="button-crear-sub" type="button" class="btn btn-success" data-toggle="modal" data-target="#modalSub" data-whatever="@mdo">Ingresar equipo</button></a>
                     <div class="input-group">
                     </div>
                 </div>

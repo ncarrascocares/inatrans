@@ -104,4 +104,4 @@ if ($_SESSION['usuario_tipo'] == 1 || $_SESSION['usuario_tipo'] == 2) {
 }
 ?>
 
-<script src="../js/new_ordenador.js"></script>
+<script src="../js/Ordenador.js"></script>
