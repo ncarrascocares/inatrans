@@ -76,6 +76,22 @@ switch ($_POST['funcion']) {
         $jsonstring = json_encode($json);
         echo $jsonstring;
         break;
+    case 'update_ordenador':
+        $id_ordenador = (int)$_POST['id_ordenador'];
+        $marca = strtoupper($_POST['marca']);
+        $modelo = strtoupper($_POST['modelo']);
+        $sis_ope = strtoupper($_POST['sis_ope']);
+        $av = (int)$_POST['av'];
+        $consola_psico = (int)$_POST['consola_psico'];
+        $labo = (int)$_POST['labo'];
+        $detalle = $_POST['detalle'];
+        //Validando los campos recibidos
+        if($id_ordenador == '' || $marca == '' || $modelo == '' || $sis_ope == '' || $av == '' || $consola_psico == '' || $labo == '' || $detalle == ''){           
+            echo "Faltan_datos";
+        }else{
+           $ordenador->update_ordenador($id_ordenador,$marca,$modelo,$sis_ope,$av,$consola_psico,$labo,$detalle);        
+        }
+        break;
 }
 
 

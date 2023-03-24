@@ -67,40 +67,40 @@ if (!empty($_SESSION['usuario_tipo'])) {
                                 <input type="hidden" id="id_ordenador" value="<?= $_GET['idOrdenador'] ?>">
                                 <div class="col-md-4">
                                     <label for="serie_equipo" class="form-label">Marca</label>
-                                    <input type="text" class="form-control" id="marca_equipo" value="">
+                                    <input type="text" class="form-control" id="marca_equipo" value="" required>
                                 </div>
                                 <div class="col-md-4">
                                     <label for="serie_pedalera" class="form-label">Modelo</label>
-                                    <input type="text" class="form-control" id="modelo_equipo" value="">
+                                    <input type="text" class="form-control" id="modelo_equipo" value="" required>
                                 </div>
                                 <div class="col-md-4">
                                     <label for="ubicacion" class="form-label">Sistema Operativo</label>
-                                    <input type="text" class="form-control" id="sis_operativo">
+                                    <input type="text" class="form-control" id="sis_operativo" required>
                                 </div>
                                 <div class="col-md-4 mt-3">
                                     <label for="antivirus" class="form-label">Antivirus</label>
-                                    <select name="" class="form-control" id="antivirus">
+                                    <select name="" class="form-control" id="antivirus" required>
                                         <option value="1" selected>Si</option>
                                         <option value="0">No</option>
                                     </select>
                                 </div>
                                 <div class="col-md-4 mt-3">
                                     <label for="consola_psico" class="form-label">Consola Psico</label>
-                                    <select name="" class="form-control" id="consola_psico">
+                                    <select name="" class="form-control" id="consola_psico" required>
                                     </select>
                                 </div>
                                 <div class="col-md-4 mt-3">
                                     <label for="laboratorio" class="form-label">Laboratorio</label>
-                                    <select name="" class="form-control" id="laboratorio">
+                                    <select name="" class="form-control" id="laboratorio" required>
                                     </select>
                                 </div>
                                 <div class="col-12 mt-5">
                                     <label for="detalle_equipo" class="form-label">Uso / Detalle</label>
-                                    <textarea class="form-control" id="detalle_equipo" rows="3" placeholder=""></textarea>
+                                    <textarea class="form-control" id="detalle_equipo" rows="3" placeholder="" required></textarea>
                                     <br>
                                 </div>
                                 <div class="col-12 mt-5">
-                                    <button id="update_consola" type="submit" class="btn btn-warning">Actualizar</button>
+                                    <button id="update_ordenador" type="submit" class="btn btn-warning">Actualizar</button>
                                     <a href="laboratorio.php" class="btn btn-secondary" type="button">Cancelar</a>
                                 </div>
                             </form>

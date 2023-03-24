@@ -56,5 +56,54 @@ class Ordenador{
         $this->objetos=$query->fetchAll();
         return $this->objetos;
     }
+    function update_ordenador($id_ordenador,$marca,$modelo,$sis_ope,$av,$consola_psico,$labo,$detalle){
+        $sql = "SELECT * FROM ordenador WHERE id_ord = :id_ord, consola_id = :con_id;";
+        $query = $this->acceso->prepare($sql);
+        $query->execute(array(':id_ord'=>$id_ordenador,':con_id'=>$consola_psico));
+        $this->objetos=$query->fetchAll();
+
+        if($consola_psico == 0){
+            $sql = "UPDATE ordenador SET marca_ord=:marca,mod_ord=:modelo,sis_ope=:sistema,antivirus=:av,Detalle=:deta,consola_id=:con_id,laboratorio_id=:lab WHERE id_ord = :id_ord;";
+            $query = $this->acceso->prepare($sql);
+            $query->execute(array(':id_ord'=>$id_ordenador,
+                                  ':marca'=>$marca,
+                                  ':modelo'=>$modelo,
+                                  ':sistema'=>$sis_ope,
+                                  ':av'=>$av,
+                                  ':deta'=>$detalle,
+                                  ':con_id'=>$consola_psico,
+                                  ':lab'=>$labo));
+            echo 'update-ok';
+        }
+
+        if($this->objetos['id_ord'] == $consola_psico){
+            $sql = "UPDATE ordenador SET marca_ord=:marca,mod_ord=:modelo,sis_ope=:sistema,antivirus=:av,Detalle=:deta,consola_id=:con_id,laboratorio_id=:lab WHERE id_ord = :id_ord;";
+            $query = $this->acceso->prepare($sql);
+            $query->execute(array(':id_ord'=>$id_ordenador,
+                                  ':marca'=>$marca,
+                                  ':modelo'=>$modelo,
+                                  ':sistema'=>$sis_ope,
+                                  ':av'=>$av,
+                                  ':deta'=>$detalle,
+                                  ':con_id'=>$consola_psico,
+                                  ':lab'=>$labo));
+            echo 'update-ok';
+            if (!empty($this->objetos)) {
+                echo 'consola-ocupada';
+            }else{
+                $sql = "UPDATE ordenador SET marca_ord=:marca,mod_ord=:modelo,sis_ope=:sistema,antivirus=:av,Detalle=:deta,consola_id=:con_id,laboratorio_id=:lab WHERE id_ord = :id_ord;";
+                $query = $this->acceso->prepare($sql);
+                $query->execute(array(':id_ord'=>$id_ordenador,
+                                  ':marca'=>$marca,
+                                  ':modelo'=>$modelo,
+                                  ':sistema'=>$sis_ope,
+                                  ':av'=>$av,
+                                  ':deta'=>$detalle,
+                                  ':con_id'=>$consola_psico,
+                                  ':lab'=>$labo));
+                echo 'update-ok';
+            }
+        }
+    }
 
 }

@@ -1,53 +1,103 @@
 $(document).ready(function() {
     let id_ordenador = $('#id_ordenador').val();
+
     let funcion = '';
 
     console.log(id_ordenador)
     selectOrdenador(id_ordenador);
 
     function selectOrdenador(dato) {
+        let id_ordenador = '';
         let marca = '';
         let modelo = '';
         let sis_ope = '';
         let av = '';
-        let consola = '';
+        let consola_id = '';
+        let serial_consola = '';
         let labo = '';
         let detalle = '';
         funcion = 'selectOrdenador';
         $.post('../controlador/OrdenadorController.php', { dato, funcion }, (response) => {
-            let ordenador = JSON.parse(response);
+            const ordenador = JSON.parse(response);
             ordenador.forEach(ordenador => {
-
+                id_ordenador += `${ordenador.id_ord}`;
+                marca += `${ordenador.marca_ord}`;
+                modelo += `${ordenador.mod_ord}`;
+                sis_ope += `${ordenador.sis_ope}`;
+                av += `${ordenador.antivirus}`;
+                consola_id += `${ordenador.consola_id}`;
+                labo += `${ordenador.laboratorio_id}`;
+                detalle += `${ordenador.detalle}`;
+                serial_consola += `${ordenador.serial_consola}`;
             })
+
+            $('#marca_equipo').val(marca);
+            $('#modelo_equipo').val(modelo);
+            $('#sis_operativo').val(sis_ope);
+            $('#antivirus').val(av);
+            $('#consola_psico').val(consola_id);
+            $('#laboratorio').val(labo);
+            $('#detalle_equipo').val(detalle);
+            view_lab(labo)
+            view_consola(consola_id)
         })
+
+
     }
 
-    function view_lab() {
-        template_lab = "";
+    function view_lab(dato) {
+        let template_lab = "";
         funcion = 'listar_lab';
         $.post('../controlador/LaboratorioController.php', { funcion }, (response) => {
-            //console.log(response);
+
             const laboratorios = JSON.parse(response);
             laboratorios.forEach(laboratorios => {
-                template_lab += `<option value="${laboratorios.id_lab}">${laboratorios.nom_lab}</option>`;
+                if (`${laboratorios.id_lab}` === dato) {
+                    template_lab += `<option value=${laboratorios.id_lab} selected style="color:red;">${laboratorios.nom_lab}</option>`;
+                } else {
+                    template_lab += `<option value=${laboratorios.id_lab}>${laboratorios.nom_lab}</option>`;
+                }
             });
             $('#laboratorio').html(template_lab);
         })
     }
 
     // Inicio de la  funcion para obtener el listado de dongles para luego mostrarlos en el front a traves de los option del select del formulario
-    function view_consola() {
+    function view_consola(dato) {
+        console.log(dato);
         template_consola = "";
         funcion = 'listar_consola';
         $.post('../controlador/ConsolaController.php', { funcion }, (response) => {
-            //console.log(response);
             const consola = JSON.parse(response);
-            template_consola = `<option value="NULL" selected>No aplica</option>`;
+            template_consola += `<option value="0">No aplica</option>`;
             consola.forEach(consola => {
                 template_consola += `<option value="${consola.id_consola}">${consola.serial_consola}</option>`;
+                if (`${consola.id_consola}` === dato) {
+                    template_consola += `<option value="${consola.id_consola}" selected style="color:red;">${consola.serial_consola}</option>`;
+                }
             });
+
             $('#consola_psico').html(template_consola);
         })
     }
     // Fin de la función
+
+    $('#update_ordenador').on('click', (e) => {
+        funcion = 'update_ordenador'
+        let id_ordenador = $('#id_ordenador').val();
+        let marca = $('#marca_equipo').val();
+        let modelo = $('#modelo_equipo').val();
+        let sis_ope = $('#sis_operativo').val();
+        let av = $('#antivirus').val();
+        let consola_psico = $('#consola_psico').val();
+        let labo = $('#laboratorio').val();
+        let detalle = $('#detalle_equipo').val();
+
+        $.post('../controlador/OrdenadorController.php', { id_ordenador, marca, modelo, sis_ope, av, consola_psico, labo, detalle, funcion }, (response) => {
+                console.log(response);
+            })
+            //console.log(id_ordenador);
+
+        e.preventDefault();
+    })
 })
