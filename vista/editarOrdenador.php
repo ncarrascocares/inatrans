@@ -75,13 +75,7 @@ if (!empty($_SESSION['usuario_tipo'])) {
                                 </div>
                                 <div class="col-md-4">
                                     <label for="ubicacion" class="form-label">Sistema Operativo</label>
-                                    <select name="" class="form-control" id="sis_operativo">
-                                        <option value="WIN 11" selected>WIN 11</option>
-                                        <option value="WIN 10">WIN 10</option>
-                                        <option value="WIN 8">WIN 8</option>
-                                        <option value="WIN 7">WIN 7</option>
-                                        <option value="ANDROID">ANDROID</option>
-                                    </select>
+                                    <input type="text" class="form-control" id="sis_operativo">
                                 </div>
                                 <div class="col-md-4 mt-3">
                                     <label for="antivirus" class="form-label">Antivirus</label>
@@ -101,7 +95,7 @@ if (!empty($_SESSION['usuario_tipo'])) {
                                     </select>
                                 </div>
                                 <div class="col-12 mt-5">
-                                    <label for="detalle_consola" class="form-label">Uso / Detalle</label>
+                                    <label for="detalle_equipo" class="form-label">Uso / Detalle</label>
                                     <textarea class="form-control" id="detalle_equipo" rows="3" placeholder=""></textarea>
                                     <br>
                                 </div>
