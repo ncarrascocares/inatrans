@@ -107,7 +107,7 @@ if (!empty($_SESSION['usuario_tipo'])) {
                                 </div>
                                 <div class="col-12 mt-5">
                                     <button id="update_consola" type="submit" class="btn btn-warning">Actualizar</button>
-                                    <a href="psicotecnico.php" class="btn btn-secondary" type="button">Cancelar</a>
+                                    <a href="laboratorio.php" class="btn btn-secondary" type="button">Cancelar</a>
                                 </div>
                             </form>
                         </div>
