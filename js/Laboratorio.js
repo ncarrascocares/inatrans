@@ -19,19 +19,19 @@ $(document).ready(function() {
                 switch (lista_ord.laboratorio_id) {
                     case 1:
                         template_stgo += `<tr>
-                                 <td id="iden" style="border:1px solid black;">${lista_ord.identificador}</td>
-                                 <td style="border:1px solid black;">${lista_ord.marca_ord}</td>
-                                 <td style="border:1px solid black;">${lista_ord.mod_ord}</td>
-                                 <td style="border:1px solid black;">${lista_ord.sis_ope}</td>
-                                 <td style="border:1px solid black;">`;
+                                 <td style="border:1px solid black;width:5%;">${lista_ord.identificador}</td>
+                                 <td style="border:1px solid black;width:8%;">${lista_ord.marca_ord}</td>
+                                 <td style="border:1px solid black;width:10%;">${lista_ord.mod_ord}</td>
+                                 <td style="border:1px solid black;width:5%;">${lista_ord.sis_ope}</td>
+                                 <td style="border:1px solid black;width:10%;">`;
                         if (lista_ord.antivirus == 0) {
                             template_stgo += `Sin antivirus`;
                         } else {
                             template_stgo += `Antivirus activo`;
                         }
                         template_stgo += `</td>
-                                 <td style="border:1px solid black;">${lista_ord.detalle}</td>
-                                 <td style="border:1px solid black;">`;
+                                 <td style="border:1px solid black;width:46%;">${lista_ord.detalle}</td>
+                                 <td style="border:1px solid black;width:9%;">`;
                         if (lista_ord.consola_id == 0) {
                             template_stgo += `No aplica`;
                         } else {
@@ -39,7 +39,7 @@ $(document).ready(function() {
                         }
 
                         template_stgo += `</td>
-                                 <td style="border:1px solid black;">
+                                 <td style="border:1px solid black;width:7%;">
                                     <button type="button" class="generar btn btn-info" style="font-size:50%"><i class="fa fa-file-pdf"></i></button>
                                     <a href="../vista/editarOrdenador.php?idOrdenador=${lista_ord.id_ord}"><button type="button" class="editar btn btn-warning" data-toggle="modal" data-target="#editar-odt" style="font-size:50%"><i class="fas fa-edit"></i></button></a>
                                  </td>
@@ -48,19 +48,19 @@ $(document).ready(function() {
                         break;
                     case 3:
                         template_iqq += `<tr>
-                                 <td style="border:1px solid black;">${lista_ord.identificador}</td>
-                                 <td style="border:1px solid black;">${lista_ord.marca_ord}</td>
-                                 <td style="border:1px solid black;">${lista_ord.mod_ord}</td>
-                                 <td style="border:1px solid black;">${lista_ord.sis_ope}</td>
-                                 <td style="border:1px solid black;">`;
+                                 <td style="border:1px solid black;width:5%;">${lista_ord.identificador}</td>
+                                 <td style="border:1px solid black;width:8%;">${lista_ord.marca_ord}</td>
+                                 <td style="border:1px solid black;width:10%;">${lista_ord.mod_ord}</td>
+                                 <td style="border:1px solid black;width:5%;">${lista_ord.sis_ope}</td>
+                                 <td style="border:1px solid black;width:10%;">`;
                         if (lista_ord.antivirus == 0) {
                             template_iqq += `Sin antivirus`;
                         } else {
                             template_iqq += `Antivirus activo`;
                         }
                         template_iqq += `</td>
-                                 <td style="border:1px solid black;">${lista_ord.detalle}</td>
-                                 <td style="border:1px solid black;">`;
+                                 <td style="border:1px solid black;width:46%;">${lista_ord.detalle}</td>
+                                 <td style="border:1px solid black;width:9%;">`;
                         if (lista_ord.consola_id == 0) {
                             template_iqq += `No aplica`;
                         } else {
@@ -68,7 +68,7 @@ $(document).ready(function() {
                         }
 
                         template_iqq += `</td>
-                                 <td style="border:1px solid black;">
+                                 <td style="border:1px solid black;width:7%;">
                                     <button type="button" class="generar btn btn-info" style="font-size:50%"><i class="fa fa-file-pdf"></i></button>
                                     <a href="../vista/editarOrdenador.php?idOrdenador=${lista_ord.id_ord}"><button type="button" class="editar btn btn-warning" data-toggle="modal" data-target="#editar-odt" style="font-size:50%"><i class="fas fa-edit"></i></button></a>
                                  </td>
@@ -77,19 +77,19 @@ $(document).ready(function() {
 
                     case 2:
                         template_anto += `<tr>
-                                 <td style="border:1px solid black;">${lista_ord.identificador}</td>
-                                 <td style="border:1px solid black;">${lista_ord.marca_ord}</td>
-                                 <td style="border:1px solid black;">${lista_ord.mod_ord}</td>
-                                 <td style="border:1px solid black;">${lista_ord.sis_ope}</td>
-                                 <td style="border:1px solid black;">`;
+                                 <td style="border:1px solid black;width:5%;">${lista_ord.identificador}</td>
+                                 <td style="border:1px solid black;width:8%;">${lista_ord.marca_ord}</td>
+                                 <td style="border:1px solid black;width:10%;">${lista_ord.mod_ord}</td>
+                                 <td style="border:1px solid black;width:5%;">${lista_ord.sis_ope}</td>
+                                 <td style="border:1px solid black;width:10%;">`;
                         if (lista_ord.antivirus == 0) {
                             template_anto += `Sin antivirus`;
                         } else {
                             template_anto += `Antivirus activo`;
                         }
                         template_anto += `</td>
-                                 <td style="border:1px solid black;">${lista_ord.detalle}</td>
-                                 <td style="border:1px solid black;">`;
+                                 <td style="border:1px solid black;width:46%;">${lista_ord.detalle}</td>
+                                 <td style="border:1px solid black;width:9%;">`;
                         if (lista_ord.consola_id == 0) {
                             template_anto += `No aplica`;
                         } else {
@@ -97,7 +97,7 @@ $(document).ready(function() {
                         }
 
                         template_anto += `</td>
-                                 <td style="border:1px solid black;">
+                                 <td style="border:1px solid black;width:7%;">
                                     <button type="button" class="generar btn btn-info" style="font-size:50%"><i class="fa fa-file-pdf"></i></button>
                                     <a href="../vista/editarOrdenador.php?idOrdenador=${lista_ord.id_ord}"><button type="button" class="editar btn btn-warning" data-toggle="modal" data-target="#editar-odt" style="font-size:50%"><i class="fas fa-edit"></i></button></a>
                                  </td>

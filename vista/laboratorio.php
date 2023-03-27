@@ -207,7 +207,7 @@ if (!empty($_SESSION['usuario_tipo'])) {
                     <!-- /.card-header -->
                     <div class="card-body" style="display: block;">
                         <div class="card-body" style="display: block;">
-                            <table class="table table-bordered" style="border:1px solid black;width: 100%;">
+                            <table align="center" border="1" style="width:100%; height:20px;" class="table table-condensed table-bordered table-hover">
                             <thead style="border:1px solid black;background:teal; color:white;font-weight:bold">
                             <td style="border:1px solid black;">Identificador interno</td>
                                     <td style="border:1px solid black;">Marca</td>

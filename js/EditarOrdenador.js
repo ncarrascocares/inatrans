@@ -2,8 +2,6 @@ $(document).ready(function() {
     let id_ordenador = $('#id_ordenador').val();
 
     let funcion = '';
-
-    console.log(id_ordenador)
     selectOrdenador(id_ordenador);
 
     function selectOrdenador(dato) {
@@ -83,6 +81,8 @@ $(document).ready(function() {
     // Fin de la función
 
     $('#update_ordenador').on('click', (e) => {
+        let test = false;
+        let conta = 0;
         funcion = 'update_ordenador'
         let id_ordenador = $('#id_ordenador').val();
         let marca = $('#marca_equipo').val();
@@ -94,10 +94,54 @@ $(document).ready(function() {
         let detalle = $('#detalle_equipo').val();
 
         $.post('../controlador/OrdenadorController.php', { id_ordenador, marca, modelo, sis_ope, av, consola_psico, labo, detalle, funcion }, (response) => {
-                console.log(response);
-            })
-            //console.log(id_ordenador);
+            if (response == 'mismos-datos') {
+                $('#mismos-datos').hide('slow');
+                $('#mismos-datos').show(1500);
+                $('#mismos-datos').hide(2000);
+                $('#mensaje').hide();
+            } else {
+                const ordenador = JSON.parse(response);
+                ordenador.forEach(ordenador => {
 
+                    if (ordenador[0] === 'marca_update') {
+                        conta += 1;
+                    }
+                    if (ordenador[1] === 'modelo_update') {
+                        conta += 1;
+                    }
+                    if (ordenador[2] === 'so_update') {
+                        conta += 1;
+                    }
+                    if (ordenador[3] === 'antivirus_update') {
+                        conta += 1;
+                    }
+                    if (ordenador[4] === 'detalle_update') {
+                        conta += 1;
+                    }
+                    if (ordenador[5] === 'laboratorio_update') {
+                        conta += 1;
+                    }
+                    if (ordenador[6] === 'consola_update') {
+                        conta += 1;
+                    } else {
+                        test = true;
+                        if (test = true) {
+                            $('#mensaje').show(500);
+                        }
+                    }
+                })
+            }
+            if (conta >= 1) {
+                $('#ordenador_ok').hide('slow');
+                $('#ordenador_ok').show(1500);
+                $('#ordenador_ok').hide(2000);
+                $('#form_update_ordenador').trigger('reset');
+                $('#mensaje').hide();
+                $('#update_ordenador').hide();
+            }
+        })
         e.preventDefault();
     })
+
+
 })

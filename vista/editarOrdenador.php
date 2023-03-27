@@ -48,22 +48,16 @@ if (!empty($_SESSION['usuario_tipo'])) {
                         </div>
                         <!-- /.card-tools -->
                     </div>
-                    <div class="alert alert-success text-center" id="update-ok" style="display:none;">
+                    <div class="alert alert-warning text-center" id="mismos-datos" style="display:none;">
+                        <span><i class="fas fa-check"></i>Advertencia, Se estan ingresando los mismos datos</span>
+                    </div>
+                    <div class="alert alert-success text-center" id="ordenador_ok" style="display:none;">
                         <span><i class="fas fa-check"></i>Actualización realizada</span>
-                    </div>
-                    <div class="alert alert-danger text-center" id="serial_consola" style="display:none;">
-                        <span><i class="fas fa-check"></i>Error, Serie consola ya existe en la bs</span>
-                    </div>
-                    <div class="alert alert-danger text-center" id="serial_pedalera" style="display:none;">
-                        <span><i class="fas fa-check"></i>Error, Serie pedalera ya existe en la bs</span>
-                    </div>
-                    <div class="alert alert-danger text-center" id="dongle_existe" style="display:none;">
-                        <span><i class="fas fa-check"></i>Error, Dongle seleccionado ya se encuentra asociado a una consola</span>
                     </div>
                     <!-- /.card-header -->
                     <div class="card-body" style="display: block;">
                         <div class="card-body" style="display: block;">
-                            <form id="form_update_consola" class="row g-3">
+                            <form id="form_update_ordenador" class="row g-3">
                                 <input type="hidden" id="id_ordenador" value="<?= $_GET['idOrdenador'] ?>">
                                 <div class="col-md-4">
                                     <label for="serie_equipo" class="form-label">Marca</label>
@@ -88,6 +82,9 @@ if (!empty($_SESSION['usuario_tipo'])) {
                                     <label for="consola_psico" class="form-label">Consola Psico</label>
                                     <select name="" class="form-control" id="consola_psico" required>
                                     </select>
+                                    <div class="invalid-feedback" id="mensaje" style="display:none;">
+                                        <span>Consola asignda a otro ordenador</span>
+                                    </div>
                                 </div>
                                 <div class="col-md-4 mt-3">
                                     <label for="laboratorio" class="form-label">Laboratorio</label>

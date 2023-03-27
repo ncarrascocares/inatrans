@@ -58,6 +58,7 @@ switch ($_POST['funcion']) {
         echo $jsonstring;
         break;
     case 'selectOrdenador':
+        $json = array();
         $id_ordenador = (int)$_POST['dato'];
         $ordenador->selectOrdenador($id_ordenador);
         foreach ($ordenador->objetos as $objeto) {
@@ -77,6 +78,7 @@ switch ($_POST['funcion']) {
         echo $jsonstring;
         break;
     case 'update_ordenador':
+        $json = array();
         $id_ordenador = (int)$_POST['id_ordenador'];
         $marca = strtoupper($_POST['marca']);
         $modelo = strtoupper($_POST['modelo']);
@@ -89,7 +91,16 @@ switch ($_POST['funcion']) {
         if($id_ordenador == '' || $marca == '' || $modelo == '' || $sis_ope == '' || $av == '' || $consola_psico == '' || $labo == '' || $detalle == ''){           
             echo "Faltan_datos";
         }else{
-           $ordenador->update_ordenador($id_ordenador,$marca,$modelo,$sis_ope,$av,$consola_psico,$labo,$detalle);        
+           $resul = $ordenador->update_ordenador($id_ordenador,$marca,$modelo,$sis_ope,$av,$consola_psico,$labo,$detalle);
+           
+           if (sizeof($resul) == 0) {
+             echo 'mismos-datos';
+           }else{
+            $json[] = $resul;
+
+            $jsonstring = json_encode($json);
+            echo $jsonstring;
+           }
         }
         break;
 }
