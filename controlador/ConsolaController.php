@@ -72,14 +72,30 @@ switch ($_POST['funcion']) {
         echo $jsonstring;
         break;
     case 'update_consola':
-        $id_consola = $_POST['id_consola'];
-        $serial_consola = $_POST['serial_consola'];
-        $serial_pedalera = $_POST['serial_pedalera'];
+        $json = array();
+        $id_consola = (int)$_POST['id_consola'];
+        $serial_consola = strtoupper($_POST['serial_consola']);
+        $serial_pedalera = strtoupper($_POST['serial_pedalera']);
         $ubicacion = (int)$_POST['ubicacion'];
         $dongle = (int)$_POST['dongle'];
         $detalle = $_POST['detalle'];
 
-        $consola->update_consola($id_consola, $serial_consola, $serial_pedalera, $ubicacion, $dongle, $detalle);
+         //Validando los campos recibidos
+         if($id_consola == '' || $serial_consola == '' || $serial_pedalera == '' || $ubicacion == '' || $dongle == '' || $detalle == ''){           
+            echo "Faltan_datos";
+        }else{
+            $resul = $consola->update_consola($id_consola, $serial_consola, $serial_pedalera, $ubicacion, $dongle, $detalle);
+           print_r($resul);
+           die();
+           if (sizeof($resul) == 0) {
+             echo 'mismos-datos';
+           }else{
+            $json[] = $resul;
+
+            $jsonstring = json_encode($json);
+            echo $jsonstring;
+           }
+        }
         break;
 }
 

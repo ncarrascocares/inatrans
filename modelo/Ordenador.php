@@ -65,17 +65,7 @@ class Ordenador{
         $query->execute(array(':id_ord'=>$id_ordenador));
         $this->objetos=$query->fetchObject();
         $resultado = $this->objetos;
-        //print_r($resultado);
-        //     (
-        //     [id_ord] => 4
-        //     [marca_ord] => DELL
-        //     [mod_ord] => DELL 1414
-        //     [sis_ope] => WIN 11
-        //     [antivirus] => 1
-        //     [detalle] => Ordenador para cursos e-learningGGGG
-        //     [consola_id] => 0
-        //     [laboratorio_id] => 1
-
+      
         //Validar que todos los datos sean los mismos, en el caso de haber un dato distinto se realizara la modificación respectiva
         if($resultado->marca_ord == $marca && $resultado->mod_ord == $modelo && $resultado->sis_ope == $sis_ope && $resultado->antivirus == $av && $resultado->detalle == $detalle && $resultado->laboratorio_id == $labo && $resultado->consola_id == $consola_psico){
            $a;
@@ -151,7 +141,7 @@ class Ordenador{
             }else{
                 array_push($a,'consola_no_update');
             }
-
+            
         }
         return $a;
     }

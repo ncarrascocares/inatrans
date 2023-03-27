@@ -79,56 +79,92 @@ class Consola{
     }
 
     function update_consola($id_consola, $serial_consola, $serial_pedalera, $ubicacion, $dongle, $detalle){
+        $a = array();
+        $b = false;
+        $resultado = array();
         $sql = "SELECT * FROM consola WHERE id_consola = :id_consola;";
         $query = $this->acceso->prepare($sql);
         $query->execute(array(':id_consola'=>$id_consola));
-        $this->objetos = $query->fetch();
- 
+        $this->objetos = $query->fetchObject();
+        $resultado = $this->objetos;
         //Validando que el nombre ingresado sea distinto al que hay en la bd
-        if($serial_consola != $this->objetos->serial_consola){
-            //Si es distinto entra al if y ahora valido que el nuevo serial de la consola no exista ya en la bd
-            $sql = "SELECT * FROM consola WHERE serial_consola = :serial_consola;";
-            $query = $this->acceso->prepare($sql);
-            $query->execute(array(':serial_consola'=>$serial_consola));
-            $this->objetos=$query->fetchAll();
-            //Si la consulta me trae un dato es por que el nuevo serial ya existe en la bd
-            if(!empty($this->objetos)){
-                echo "serial_consola_existe";
+        if($resultado->serial_consola == $serial_consola && $resultado->serial_pedalera == $serial_pedalera && $resultado->ubicacion == $ubicacion && $resultado->detalle == $detalle && $resultado->dongle_id == $dongle){
+           $a;
+        }else{
+            if ($resultado->serial_consola != $serial_consola) {
+                $sql = "SELECT * FROM consola WHERE serial_consola = :serial_consola;";
+                $query = $this->acceso->prepare($sql);
+                $query->execute(array(':serial_consola'=>$serial_consola));
+                $this->objetos=$query->fetchAll();
+                if (!empty($this->objetos)) {
+                    $sql = "UPDATE consola SET serial_consola=:serial_consola WHERE id_consola = :id_consola;";
+                    $query = $this->acceso->prepare($sql);
+                    $query->execute(array(':id_consola'=>$id_consola,
+                                          ':serial_consola'=>$serial_consola));
+                    array_push($a,'consola_update');
+                }else{
+                    array_push($a,'consola_no_update');
+                }       
             }else{
-                //Si no realizo la comprobacion del dato de la pedalera
+                array_push($a,'consola_no_update');
+            }
+
+            if ($resultado->serial_pedalera != $serial_pedalera) {
                 $sql = "SELECT * FROM consola WHERE serial_pedalera = :serial_pedalera;";
                 $query = $this->acceso->prepare($sql);
                 $query->execute(array(':serial_pedalera'=>$serial_pedalera));
-                $this->objetos = $query->fetch();
-                //Valido que la consulta no arroje resultados
-                if(!empty($this->objetos)){
-                    echo "serial_pedalera_existe";
-                }else{
-                    //Si no realizo la comprobacion del dato del dongle
-                    $sql = "SELECT * FROM consola WHERE dongle_id = :dongle_id;";
+                $this->objetos=$query->fetchAll();
+                if (!empty($this->objetos)) {
+                    $sql = "UPDATE consola SET serial_pedalera=:serial_pedalera WHERE id_consola = :id_consola;";
                     $query = $this->acceso->prepare($sql);
-                    $query->execute(array(':dongle_id'=>$dongle));
-                    $this->objetos = $query->fetch();
-                    //Valido que la consulta no arroje resultados
-                    if(!empty($this->objetos)){
-                        echo "dongle_existe";
-                    }else{
-                        $sql = "UPDATE consola SET serial_consola=:serial_consola,serial_pedalera=:serial_pedalera,Ubicacion=:ubicacion,Detalle=:detalle,dongle_id=:dongle_id WHERE id_consola=:id_consola;";
-                        $query = $this->acceso->prepare($sql);
-                        $query->execute(array(':serial_consola'=>$serial_consola,
-                                              ':serial_pedalera'=>$serial_pedalera,
-                                              ':ubicacion'=>$ubicacion,
-                                              ':detalle'=>$detalle,
-                                              ':dongle_id'=>$dongle,
-                                              ':id_consola'=>$id_consola
-                                            ));
-                        echo "update-ok";
-                    }
-                }
+                    $query->execute(array(':id_consola'=>$id_consola,
+                                          ':serial_pedalera'=>$serial_pedalera));
+                    array_push($a,'pedalera_update');
+                }else{
+                    array_push($a,'pedalera_no_update');
+                }      
+            }else{
+                array_push($a,'pedalera_no_update');
             }
-        }else{
-            echo "serial_consola_existe";
+            if ($resultado->ubicacion != $ubicacion) {
+                    $sql = "UPDATE consola SET ubicacion=:ubicacion WHERE id_consola = :id_consola;";
+                    $query = $this->acceso->prepare($sql);
+                    $query->execute(array(':id_consola'=>$id_consola,
+                                          ':ubicacion'=>$ubicacion));
+                    array_push($a,'ubiacion_update');
+            }else{
+                array_push($a,'ubicacion_no_update');
+            }
+            if ($resultado->detalle != $detalle) {
+                    $sql = "UPDATE consola SET detalle=:detalle WHERE id_consola = :id_consola;";
+                    $query = $this->acceso->prepare($sql);
+                    $query->execute(array(':id_consola'=>$id_consola,
+                                          ':detalle'=>$detalle));
+                    array_push($a,'detalle_update');
+            }else{
+                array_push($a,'detalle_no_update');
+            }
+            if ($resultado->dongle_id != $dongle) {
+                $sql = "SELECT * FROM consola WHERE dongle_id = :dongle;";
+                $query = $this->acceso->prepare($sql);
+                $query->execute(array(':dongle'=>$dongle));
+                $this->objetos=$query->fetchAll();
+                if (empty($this->objetos)) {
+                    $sql = "UPDATE consola SET dongle_id=:dongle WHERE id_consola = :id_consola;";
+                    $query = $this->acceso->prepare($sql);
+                    $query->execute(array(':id_consola'=>$id_consola,
+                                          ':dongle'=>$dongle));
+                    array_push($a,'dongle_update');
+                }else{
+                    array_push($a,'dongle_no_update');
+                }      
+            }else{
+                array_push($a,'dongle_no_update');
+            }
+           
         }
-                    
+
+        return $a;
+
     }
 }
