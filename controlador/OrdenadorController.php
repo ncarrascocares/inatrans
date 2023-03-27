@@ -21,9 +21,9 @@ switch ($_POST['funcion']) {
             echo $jsonstring;
         break;
     case 'nuevo_ordenador':
-        $marca = $_POST['marca_ordenador'];
-        $modelo = $_POST['modelo_ordenador'];
-        $sis_ope = $_POST['sis_operativo'];
+        $marca = strtoupper($_POST['marca_ordenador']);
+        $modelo = strtoupper($_POST['modelo_ordenador']);
+        $sis_ope = strtoupper($_POST['sis_operativo']);
         if(isset($_POST['antivirus'])){
             if($_POST['antivirus'] == '0'){
                 $av = 0;
