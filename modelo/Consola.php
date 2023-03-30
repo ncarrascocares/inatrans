@@ -131,7 +131,7 @@ class Consola{
                     $query = $this->acceso->prepare($sql);
                     $query->execute(array(':id_consola'=>$id_consola,
                                           ':ubicacion'=>$ubicacion));
-                    array_push($a,'ubiacion_update');
+                    array_push($a,'ubicacion_update');
             }else{
                 array_push($a,'ubicacion_no_update');
             }
