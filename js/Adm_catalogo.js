@@ -135,7 +135,7 @@ $(document).ready(function() {
                 funcion = 'estado_laboratorio';
                 let template = '';
                 $.post('../controlador/SimuladorController.php', { funcion }, (response) => {
-                            console.log(response);
+                            //console.log(response);
                             const est_laboratorio = JSON.parse(response);
                             est_laboratorio.forEach(est_laboratorio => {
                                         template += `
@@ -203,7 +203,7 @@ $(document).ready(function() {
         funcion = 'total_consola';
         
         $.post('../controlador/ConsolaController.php', { funcion }, (response) => {
-            console.log(response);
+            //console.log(response);
             const cant_consola = JSON.parse(response);
             cant_consola.forEach(cant_consola => {
                 template += `<div class="col-md-4 m-0">

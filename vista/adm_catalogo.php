@@ -21,6 +21,9 @@ if (!empty($_SESSION['usuario_tipo'])) {
                 <div class="row mb-2">
                     <div class="col-sm-6">
                         <h1>Resumen</h1>
+                        <button type="button" class="btn btn-warning" data-toggle="" data-target="">
+                            Generar reporte en PDF
+                        </button>
                     </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
