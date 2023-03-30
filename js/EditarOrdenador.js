@@ -62,7 +62,7 @@ $(document).ready(function() {
 
     // Inicio de la  funcion para obtener el listado de dongles para luego mostrarlos en el front a traves de los option del select del formulario
     function view_consola(dato) {
-        console.log(dato);
+        //console.log(dato);
         template_consola = "";
         funcion = 'listar_consola';
         $.post('../controlador/ConsolaController.php', { funcion }, (response) => {

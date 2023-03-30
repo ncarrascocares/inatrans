@@ -79,7 +79,8 @@ $(document).ready(function() {
     }
 
     $('#form_update_consola').on('click', '#update_consola', (e) => {
-
+        let test = false;
+        let conta = 0;
         funcion = 'update_consola';
         //Variables desde los input del formulario, al presionar el boton editar estos se asignaran
         let serial_consola = $('#serie_equipo').val();
@@ -89,31 +90,48 @@ $(document).ready(function() {
         let detalle = $('#detalle_consola').val();
 
         $.post('../controlador/ConsolaController.php', { id_consola, serial_consola, serial_pedalera, ubicacion, dongle, detalle, funcion }, (response) => {
-
             console.log(response);
-            // switch (response) {
-            //     case 'serial_consola_existe':
-            //         $('#serial_consola').hide('slow');
-            //         $('#serial_consola').show(1000);
-            //         $('#serial_consola').hide(2000);
-            //         break;
-            //     case 'serial_pedalera_existe':
-            //         $('#serial_pedalera').hide('slow');
-            //         $('#serial_pedalera').show(1000);
-            //         $('#serial_pedalera').hide(2000);
-            //         break;
-            //     case 'dongle_existe':
-            //         $('#dongle_existe').hide('slow');
-            //         $('#dongle_existe').show(1000);
-            //         $('#dongle_existe').hide(2000);
-            //         break;
-            //     case 'update-ok':
-            //         $('#update-ok').hide('slow');
-            //         $('#update-ok').show(1000);
-            //         $('#update-ok').hide(2000);
-            //         $('#form_update_consola').trigger('reset');
-            //         break;
-            // }
+
+            if (response == 'mismos-datos') {
+                $('#mismos-datos').hide('slow');
+                $('#mismos-datos').show(1500);
+                $('#mismos-datos').hide(2000);
+                $('#mensaje').hide();
+            } else {
+                const ordenador = JSON.parse(response);
+                ordenador.forEach(ordenador => {
+
+                    if (ordenador[0] === 'consola_update') {
+                        conta += 1;
+                    }
+                    if (ordenador[1] === 'pedalera_update') {
+                        conta += 1;
+                    }
+                    if (ordenador[2] === 'ubicacion_update') {
+                        conta += 1;
+                    }
+                    if (ordenador[3] === 'detalle_update') {
+                        conta += 1;
+                    }
+                    if (ordenador[4] === 'dongle_update') {
+                        conta += 1;
+                    } else {
+                        test = true;
+                        if (test = true) {
+                            $('#mensaje').show(500);
+                        }
+                    }
+                })
+            }
+            if (conta >= 1) {
+                $('#consola_ok').hide('slow');
+                $('#consola_ok').show(1500);
+                $('#consola_ok').hide(2000);
+                $('#form_update_consola').trigger('reset');
+                $('#mensaje').hide();
+                $('#update_consola').hide();
+            }
+
         })
 
         e.preventDefault();

@@ -85,8 +85,6 @@ switch ($_POST['funcion']) {
             echo "Faltan_datos";
         }else{
             $resul = $consola->update_consola($id_consola, $serial_consola, $serial_pedalera, $ubicacion, $dongle, $detalle);
-           print_r($resul);
-           die();
            if (sizeof($resul) == 0) {
              echo 'mismos-datos';
            }else{

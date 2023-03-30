@@ -48,17 +48,11 @@ if (!empty($_SESSION['usuario_tipo'])) {
                         </div>
                         <!-- /.card-tools -->
                     </div>
-                    <div class="alert alert-success text-center" id="update-ok" style="display:none;">
+                    <div class="alert alert-warning text-center" id="mismos-datos" style="display:none;">
+                        <span><i class="fas fa-check"></i>Advertencia, Se estan ingresando los mismos datos</span>
+                    </div>
+                    <div class="alert alert-success text-center" id="consola_ok" style="display:none;">
                         <span><i class="fas fa-check"></i>Actualización realizada</span>
-                    </div>
-                    <div class="alert alert-danger text-center" id="serial_consola" style="display:none;">
-                        <span><i class="fas fa-check"></i>Error, Serie consola ya existe en la bs</span>
-                    </div>
-                    <div class="alert alert-danger text-center" id="serial_pedalera" style="display:none;">
-                        <span><i class="fas fa-check"></i>Error, Serie pedalera ya existe en la bs</span>
-                    </div>
-                    <div class="alert alert-danger text-center" id="dongle_existe" style="display:none;">
-                        <span><i class="fas fa-check"></i>Error, Dongle seleccionado ya se encuentra asociado a una consola</span>
                     </div>
                     <!-- /.card-header -->
                     <div class="card-body" style="display: block;">
@@ -82,6 +76,9 @@ if (!empty($_SESSION['usuario_tipo'])) {
                                     <label for="dongle" class="form-label">Dongle asociado</label>
                                     <select name="" class="form-control" id="dongle">
                                     </select>
+                                    <div class="invalid-feedback" id="mensaje" style="display:none;">
+                                        <span>Dongle asigndo a otra consola</span>
+                                    </div>
                                 </div>
                                 <div class="col-12 mt-5">
                                     <label for="detalle_consola" class="form-label">Detalle</label>
