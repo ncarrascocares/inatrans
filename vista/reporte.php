@@ -26,12 +26,30 @@
     </header>
     <section class="container mt-5">
         <div class="row">
-            <div class="col">
-                <div class="card">
-                    <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                    </div>
+            <div class="card" style="width: 18rem;">
+                <div class="card-body">
+                    <h5 class="card-title">Simulador 1</h5>
+                </div>
+                <table>
+                    <tr>
+                        <th>Tiempo funcionamiento</th>
+                        <td>100 horas</td>
+                    </tr>
+                    <tr>
+                        <th>Horas fuera de servicio</th>
+                        <td>15 horas</td>
+                    </tr>
+                    <tr>
+                        <th>Programado</th>
+                        <td>10 horas</td>
+                    </tr>
+                    <tr>
+                        <th>No Programado</th>
+                        <td>5 horas</td>
+                    </tr>
+                </table>
+                <div class="card-body">
+                    <h5>Graficos</h5>
                 </div>
             </div>
         </div>
