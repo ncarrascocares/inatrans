@@ -1,6 +1,14 @@
+<?php
+
+include_once '../modelo/Reporte.php';
+$reporte = new Reporte();
+$resultado = $reporte->horas_funcionamiento_simulador();
+print_r($resultado);
+?>
+
 <!DOCTYPE html>
 <html lang="en">
-    Se tendra que crear objetos de las clases para obtener la información necesaria, el js arroja un error que complica,
+<!-- Se tendra que crear objetos de las clases para obtener la información necesaria, el js arroja un error que complica,
     es por ello que se trabajara con php de forma directa para traer los datos y mostrarlos en este fichero
 
     Simuladores:
@@ -27,7 +35,7 @@
     Laboratorios
     1. Numerar la cantidad de ordenadores en funcionamiento
     2. Numerar las intervenciones por laboratorio
-    3. informar sobre el psico: numero de serie, numero de dongle y los días de licencia que quedan
+    3. informar sobre el psico: numero de serie, numero de dongle y los días de licencia que quedan -->
 
 <head>
     <meta charset="UTF-8">
@@ -38,52 +46,56 @@
 </head>
 
 <body>
-    <header>
-        <div class="container">
-            <div class="row mt-5">
-                <div class="col">
-                    <div class="card">
-                        <div class="card-body">
-                            <h1 class="card-title">Reporte área de Mantenimiento</h1>
-                            <p class="card-text">Reporte sobre intervenciones y estado de los Laboratorios y Simuladores</p>
+    <div class="container text-center">
+        <header>
+            <div class="row">
+                <div class="row mt-5">
+                    <div class="col">
+                        <div class="card">
+                            <div class="card-body">
+                                <h1 class="card-title">Reporte área de Mantenimiento</h1>
+                                <p class="card-text">Reporte sobre intervenciones y estado de los Laboratorios y Simuladores</p>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </header>
-    <section class="container mt-5">
-        <div class="row">
-            <div class="card" style="width: 18rem;">
-                <div class="card-body">
-                    <h5 class="card-title">Simulador 1</h5>
-                </div>
-                <table>
-                    <tr>
-                        <th>Tiempo funcionamiento</th>
-                        <td>100 horas</td>
-                    </tr>
-                    <tr>
-                        <th>Horas fuera de servicio</th>
-                        <td>15 horas</td>
-                    </tr>
-                    <tr>
-                        <th>Programado</th>
-                        <td>10 horas</td>
-                    </tr>
-                    <tr>
-                        <th>No Programado</th>
-                        <td>5 horas</td>
-                    </tr>
-                </table>
-                <div class="card-body">
-                    <h5>Graficos</h5>
-                </div>
+        </header>
+        <section class="container">
+            <div class="row">
+                <?php foreach ($resultado as $r) : ?>
+                    <div class="card col-4 m-3" style="width: 18rem;">
+                        <div class="card-body">
+                            <h5 class="card-title"><?= $r->nombre_simulador ?></h5>
+                        </div>
+                        <table>
+                            <tr>
+                                <th>Tiempo funcionamiento</th>
+                                <td><?= $r->horas_servicios ?></td>
+                            </tr>
+                            <tr>
+                                <th>Horas fuera de servicio</th>
+                                <td>15 horas</td>
+                            </tr>
+                            <tr>
+                                <th>Programado</th>
+                                <td>10 horas</td>
+                            </tr>
+                            <tr>
+                                <th>No Programado</th>
+                                <td>5 horas</td>
+                            </tr>
+                        </table>
+                        <div class="card-body">
+                            <h5>Graficos</h5>
+                        </div>
+                    </div>
+                <?php endforeach; ?>
             </div>
-        </div>
-    </section>
+        </section>
+    </div>
 </body>
 
 </html>
 
-
+<script src="../js/Reporte.js"></script>
