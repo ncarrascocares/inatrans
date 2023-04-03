@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 14-03-2023 a las 22:15:17
+-- Tiempo de generación: 03-04-2023 a las 23:22:50
 -- Versión del servidor: 10.4.27-MariaDB
 -- Versión de PHP: 8.2.0
 
@@ -20,8 +20,6 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `db_inatrans`
 --
-CREATE DATABASE IF NOT EXISTS `db_inatrans` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci;
-USE `db_inatrans`;
 
 -- --------------------------------------------------------
 
@@ -104,14 +102,9 @@ CREATE TABLE `consola` (
 --
 
 INSERT INTO `consola` (`id_consola`, `serial_consola`, `serial_pedalera`, `Ubicacion`, `Detalle`, `dongle_id`) VALUES
-(1, 'WUG2-0981', 'FT2-0981', 1, '', 1),
-(2, 'WUG2-0982', 'FT2-0982', 2, '', 2),
-(3, 'WUG2-0983', 'FT2-0983', 3, '', 3),
-(4, 'WUG2-0984', 'FT2-0984', 3, '', 4),
-(5, 'WUG2-0985', 'FT2-0985', 3, '', 5),
-(8, 'WUG2-0986', 'FT2-0986', 3, 'Nueva consola para psicotecnicos', 6),
-(9, 'WUG2-0999', 'FT2-0999', 2, 'Nueva consola', 7),
-(10, 'WUG2-1000', 'FT2-0999', 1, 'nueva consola para santiago', 8);
+(1, 'WUG2-1001', 'FT2-1001', 2, 'Consola de santiago', 5),
+(2, 'WUG2-1002', 'FT2-1002', 1, 'Consola de Antofagasta', 2),
+(3, 'WUG2-1003', 'FT2-1003', 3, 'Consola de Iquiquee', 4);
 
 -- --------------------------------------------------------
 
@@ -137,7 +130,11 @@ INSERT INTO `dongle` (`id_dongle`, `identificador`, `fec_ven`) VALUES
 (5, 'TDC2-3903', '2023-12-31'),
 (6, 'TDC2-3904', '2023-03-31'),
 (7, 'TDC3-3905', '2023-03-20'),
-(8, 'TDC3-3906', '2023-03-31');
+(8, 'TDC3-3906', '2023-03-31'),
+(9, 'UUUUUU-UUUUUUU', '2023-03-31'),
+(10, 'RRRRRRRRRRRRRRRR', '2023-03-30'),
+(11, 'FFFFFFFFFF', '2023-03-22'),
+(12, 'HHHHHHHHHHHHHHHHHHH', '2023-06-30');
 
 -- --------------------------------------------------------
 
@@ -283,7 +280,11 @@ INSERT INTO `historial_reporte` (`id_historial_reporte`, `Usuario_id`, `Reporte_
 (62, 9, 28, '2023-02-15 14:18:52', 'Se revisa conexiones eléctricas y el ordenador se encontraba desconectado. Se vuelve a conectar y equipo funciona sin inconvenientes. Operativo.'),
 (63, 1, 39, '2023-02-21 10:00:04', 'Se realiza revisión y equipo se encontraba desconectado.'),
 (64, 1, 17, '2023-02-21 11:12:22', 'test'),
-(65, 1, 41, '2023-02-23 11:22:57', 'Se informa a jefe zonal y encargada de laboratorio que se debe contactar al soporte de pullman para solicitar ayuda para este problema.');
+(65, 1, 41, '2023-02-23 11:22:57', 'Se informa a jefe zonal y encargada de laboratorio que se debe contactar al soporte de pullman para solicitar ayuda para este problema.'),
+(66, 1, 13, '2023-04-03 11:23:52', 'Se realiza reparación de plataforma, elemento operativo'),
+(67, 1, 13, '2023-04-03 11:23:54', 'Cierre de ODT'),
+(68, 1, 42, '2023-04-03 14:42:13', 'Se realiza aprete del volante y se agrega golilla'),
+(69, 1, 42, '2023-04-03 14:42:15', 'Cierre de ODT');
 
 -- --------------------------------------------------------
 
@@ -376,14 +377,12 @@ CREATE TABLE `ordenador` (
 --
 
 INSERT INTO `ordenador` (`id_ord`, `marca_ord`, `mod_ord`, `sis_ope`, `antivirus`, `Detalle`, `consola_id`, `laboratorio_id`) VALUES
-(1, 'hp', 'hp one', 'win 7', 0, 'ordenador', 0, 1),
-(2, 'dell', 'del fire', 'win 10', 0, 'ordenador para cursos', 0, 2),
-(3, 'sony', 'xperia', 'win 11', 1, 'Ordenador de cursos e-learning', 0, 3),
-(4, 'sin marca', 'sin modelo', 'win 10', 0, 'Ordenador destinado a psicotecnico', 5, 1),
-(5, 'Dell', 'Dell 1414', 'Win 10', 0, 'Ordenador para psicotencnico', 3, 2),
-(6, 'Intel', 'NUC', 'win 11', 0, 'Ordenador para psicotenico', 4, 3),
-(7, 'Lenovo', 'thinkcentre', 'win 7', 1, 'Ordenador para uso e-learning', 0, 3),
-(8, 'Dell', 'dell 2023', 'Win 11', 1, 'Ordenador para psicotecnico', 2, 3);
+(1, 'AAAAA', 'AAAA', 'A', 0, 'ordenador para cursos', 0, 2),
+(2, 'BURRO', 'BURRO 1', 'WIN 11', 0, 'burro xpira', 2, 1),
+(3, 'C', 'CCCCC', 'CCCCCC', 0, 'ccccc', 0, 3),
+(4, 'SONY', 'SONY 2040', 'WIN 11', 1, 'Ordenador para laboratorio y cursos psicotecnico 2023', 3, 2),
+(5, 'CS', 'CS', 'WIN 10', 1, 'videos de programacionn', 1, 2),
+(6, 'DELLK', 'DELL 2023', 'WIN 7', 0, 'dellk 2023', 0, 2);
 
 -- --------------------------------------------------------
 
@@ -423,12 +422,12 @@ INSERT INTO `reporte` (`id_reporte`, `Simulador_id`, `Usuario_id`, `Instructor`,
 (10, 2, 1, 'Maglio Santana', 'Cremallera suena al realizar volanteo', 2, 'Correctivo', 0, '2023-01-24 00:00:00', NULL, 0, 2),
 (11, 3, 1, 'Sin instructor', 'Ruta MEL con problemas al grabar tramos', 3, 'Correctivo', 0, '2023-01-24 00:00:00', NULL, 0, 1),
 (12, 1, 1, 'Aaa', 'aaaa', 1, 'Correctivo', 0, '2023-01-24 00:00:00', NULL, 1, 2),
-(13, 1, 1, 'Daniel Quiñones', 'Plataforma', 1, 'Correctivo', 0, '2023-01-24 00:00:00', NULL, 1, 3),
+(13, 1, 1, 'Daniel Quiñones', 'Plataforma', 1, 'Correctivo', 0, '2023-01-24 00:00:00', '2023-04-03 11:23:54', 0, 3),
 (14, 1, 1, 'Erick Noack', 'Volante de apoyo descalibrado', 1, 'Correctivo', 0, '2023-01-24 00:00:00', '2023-02-14 13:36:59', 0, 4),
 (15, 1, 1, 'Zzzz', 'zzzzz', 1, 'Correctivo', 0, '2023-01-24 00:00:00', NULL, 0, 4),
 (16, 1, 1, '', '', 1, 'Correctivo', 0, '0000-00-00 00:00:00', NULL, 0, 1),
 (17, 5, 1, 'Williams salinas', 'UPS secundaría con problemas', 1, 'Correctivo', 0, '2023-01-23 00:00:00', NULL, 1, 3),
-(18, 3, 2, 'ivan ramirez', 'malo', 1, 'Correctivo', 0, '2023-01-24 20:32:25', NULL, 1, 4),
+(18, 3, 2, 'ivan ramirez', 'malo', 1, 'Correctivo', 0, '2023-01-24 20:32:25', '2023-01-24 22:32:35', 1, 4),
 (19, 6, 1, 'Cristian saa', 'Cable de la cámara cortado', 1, 'Correctivo', 0, '2023-01-24 00:00:00', NULL, 0, 4),
 (20, 1, 1, 'Rrr', 'rrrr', 3, 'Correctivo', 0, '2023-01-24 00:00:00', NULL, 1, 4),
 (21, 1, 1, 'Qqq', 'qqqq', 1, 'Correctivo', 0, '2023-01-24 00:00:00', NULL, 1, 4),
@@ -451,7 +450,32 @@ INSERT INTO `reporte` (`id_reporte`, `Simulador_id`, `Usuario_id`, `Instructor`,
 (38, 2, 1, 'Maglio Santana', 'Cambio de volante', 1, 'Otro', 1, '2023-02-20 10:00:00', NULL, 1, 4),
 (39, 17, 1, 'Héctor Ortega', 'Pc del laboratorio no enciende', 1, 'Correctivo', 1, '2023-02-21 08:31:00', NULL, 1, 2),
 (40, 13, 1, 'Pepito', 'no se puede actualizar', 1, 'Otro', 1, '2023-02-23 11:21:00', NULL, 1, 4),
-(41, 12, 1, 'Sindy', 'No se puede acceder a sesión', 1, 'Otro', 1, '2023-02-23 11:22:00', NULL, 1, 4);
+(41, 12, 1, 'Sindy', 'No se puede acceder a sesión', 1, 'Otro', 1, '2023-02-23 11:22:00', NULL, 1, 4),
+(42, 2, 1, 'Maglio Santana', 'Volante suelto', 1, 'Correctivo', 1, '2023-04-03 14:30:00', '2023-04-03 14:42:15', 0, 2);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `servicios`
+--
+
+CREATE TABLE `servicios` (
+  `id_servicio` int(11) NOT NULL,
+  `nombre_servicio` varchar(100) NOT NULL,
+  `horas_servicios` int(11) NOT NULL,
+  `inicio_servicio` date NOT NULL,
+  `fin_servicio` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+--
+-- Volcado de datos para la tabla `servicios`
+--
+
+INSERT INTO `servicios` (`id_servicio`, `nombre_servicio`, `horas_servicios`, `inicio_servicio`, `fin_servicio`) VALUES
+(1, '7x7', 360, '2023-04-01', '2023-04-30'),
+(2, '5x2', 180, '2023-04-01', '2023-04-30'),
+(3, 'FXS', 0, '2023-04-01', '2023-04-30'),
+(4, '8x6', 360, '2023-04-01', '2023-04-30');
 
 -- --------------------------------------------------------
 
@@ -465,25 +489,26 @@ CREATE TABLE `simulador` (
   `Sucursal_id` int(11) NOT NULL,
   `Tipo_simulador` varchar(50) NOT NULL,
   `Descripcion_simulador` varchar(255) NOT NULL,
-  `Status_id` int(11) NOT NULL
+  `Status_id` int(11) NOT NULL,
+  `servicio_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
 
 --
 -- Volcado de datos para la tabla `simulador`
 --
 
-INSERT INTO `simulador` (`id_simulador`, `Nombre_simulador`, `Sucursal_id`, `Tipo_simulador`, `Descripcion_simulador`, `Status_id`) VALUES
-(1, 'Simulador 1', 1, 'Movil', 'Simulador modelo antiguo', 2),
-(2, 'Simulador 2', 3, 'Fijo', 'Simulador modelo antiguo', 1),
-(3, 'Simulador 3', 1, 'Movil', 'Simulador modelo antiguo', 2),
-(4, 'Simulador 4', 2, 'Fijo', 'Simulador modelo antiguo', 1),
-(5, 'Simulador 5', 2, 'Movil', 'Simulador modelo antiguo', 1),
-(6, 'Simulador 6', 1, 'Fijo', 'Simulador nuevo modelo', 1),
-(7, 'Simulador 7', 3, 'Movil', 'Simulador nuevo modelo', 1),
-(8, 'Simulador 8', 2, 'Fijo', 'Simulador nuevo modelo', 1),
-(9, 'Simulador 9', 1, 'Fijo', 'Simulador nuevo modelo', 1),
-(10, 'Simulador 10', 3, 'Fijo', 'Simulador nuevo modelo', 1),
-(11, 'Simulador 11', 1, 'Fijo', 'Simulador nuevo modelo', 3);
+INSERT INTO `simulador` (`id_simulador`, `Nombre_simulador`, `Sucursal_id`, `Tipo_simulador`, `Descripcion_simulador`, `Status_id`, `servicio_id`) VALUES
+(1, 'Simulador 1', 1, 'Movil', 'Simulador modelo antiguo', 2, 1),
+(2, 'Simulador 2', 3, 'Fijo', 'Simulador modelo antiguo', 1, 1),
+(3, 'Simulador 3', 1, 'Movil', 'Simulador modelo antiguo', 2, 3),
+(4, 'Simulador 4', 2, 'Fijo', 'Simulador modelo antiguo', 1, 4),
+(5, 'Simulador 5', 2, 'Movil', 'Simulador modelo antiguo', 1, 1),
+(6, 'Simulador 6', 1, 'Fijo', 'Simulador nuevo modelo', 1, 1),
+(7, 'Simulador 7', 3, 'Movil', 'Simulador nuevo modelo', 1, 3),
+(8, 'Simulador 8', 2, 'Fijo', 'Simulador nuevo modelo', 1, 1),
+(9, 'Simulador 9', 1, 'Fijo', 'Simulador nuevo modelo', 1, 1),
+(10, 'Simulador 10', 3, 'Fijo', 'Simulador nuevo modelo', 1, 2),
+(11, 'Simulador 11', 1, 'Fijo', 'Simulador nuevo modelo', 3, 3);
 
 -- --------------------------------------------------------
 
@@ -544,9 +569,9 @@ CREATE TABLE `sucursal` (
 --
 
 INSERT INTO `sucursal` (`id_sucursal`, `Nombre_sucursal`) VALUES
-(1, 'Antofagasta'),
-(2, 'Iquique'),
-(3, 'Santiago');
+(1, 'Santiago'),
+(2, 'Antofagasta'),
+(3, 'Iquique');
 
 -- --------------------------------------------------------
 
@@ -782,6 +807,12 @@ ALTER TABLE `reporte`
   ADD KEY `Tipo_averia_id` (`Tipo_averia_id`);
 
 --
+-- Indices de la tabla `servicios`
+--
+ALTER TABLE `servicios`
+  ADD PRIMARY KEY (`id_servicio`);
+
+--
 -- Indices de la tabla `simulador`
 --
 ALTER TABLE `simulador`
@@ -871,13 +902,13 @@ ALTER TABLE `categoria_licencia`
 -- AUTO_INCREMENT de la tabla `consola`
 --
 ALTER TABLE `consola`
-  MODIFY `id_consola` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id_consola` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de la tabla `dongle`
 --
 ALTER TABLE `dongle`
-  MODIFY `id_dongle` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id_dongle` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT de la tabla `elemento`
@@ -895,7 +926,7 @@ ALTER TABLE `eventos`
 -- AUTO_INCREMENT de la tabla `historial_reporte`
 --
 ALTER TABLE `historial_reporte`
-  MODIFY `id_historial_reporte` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=66;
+  MODIFY `id_historial_reporte` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=70;
 
 --
 -- AUTO_INCREMENT de la tabla `laboratorio`
@@ -919,13 +950,19 @@ ALTER TABLE `mantenimiento`
 -- AUTO_INCREMENT de la tabla `ordenador`
 --
 ALTER TABLE `ordenador`
-  MODIFY `id_ord` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id_ord` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT de la tabla `reporte`
 --
 ALTER TABLE `reporte`
-  MODIFY `id_reporte` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
+  MODIFY `id_reporte` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
+
+--
+-- AUTO_INCREMENT de la tabla `servicios`
+--
+ALTER TABLE `servicios`
+  MODIFY `id_servicio` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de la tabla `simulador`
