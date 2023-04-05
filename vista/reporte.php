@@ -75,7 +75,7 @@ print_r($resultado);
                             </tr>
                             <tr>
                                 <th>Horas fuera de servicio</th>
-                                <td>15 horas</td>
+                                <td><?= $r->horas_paradas ?></td>
                             </tr>
                             <tr>
                                 <th>Programado</th>

@@ -18,26 +18,18 @@ class Reporte{
          * introducidos manualmente
          */
         $sql = "SELECT si.Nombre_simulador,
-                si.servicio_id,
-                ser.nombre_servicio ,
-                re.id_reporte, 
-                re.Fecha_crea, 
-                re.Fecha_cierre,
-                DATEDIFF(re.Fecha_cierre,re.Fecha_crea) AS 'dias',
-                CASE  
-                WHEN DATEDIFF(re.Fecha_cierre,re.Fecha_crea) > 0 THEN (DATEDIFF(re.Fecha_cierre,re.Fecha_crea)*12)
-                WHEN DATEDIFF(re.Fecha_cierre,re.Fecha_crea) <= 0 THEN TIMEDIFF(re.Fecha_cierre,re.Fecha_crea)
-                END AS 'Horas de trabajo',
-                CASE
-                WHEN HOUR(TIMEDIFF(re.Fecha_cierre,re.Fecha_crea)) <=0 THEN 1
-                ELSE
-                HOUR(TIMEDIFF(re.Fecha_cierre,re.Fecha_crea))
-                END AS 'test'
-                FROM simulador si
-                INNER JOIN reporte re ON si.id_simulador = re.Simulador_id
-                INNER JOIN servicios ser ON si.servicio_id = ser.id_servicio
-                WHERE re.Estatus_reporte = 1 AND re.id_reporte = 18  
-                GROUP BY si.Nombre_simulador,si.Nombre_simulador, si.servicio_id,ser.nombre_servicio ,re.id_reporte, re.Fecha_crea, re.Fecha_cierre;";
+        ser.horas_servicios,
+        count(re.id_reporte) AS 'total reportes',
+        CASE
+        WHEN sum(HOUR(TIMEDIFF(re.Fecha_cierre,re.Fecha_crea))) <=0 THEN 1
+        ELSE
+        sum(HOUR(TIMEDIFF(re.Fecha_cierre,re.Fecha_crea)))
+        END AS 'horas_paradas'
+        FROM simulador si
+        INNER JOIN reporte re ON si.id_simulador = re.Simulador_id
+        INNER JOIN servicios ser ON si.servicio_id = ser.id_servicio
+        WHERE re.Estatus_reporte = 1 AND re.Fecha_crea BETWEEN '2023-03-01' AND '2023-03-31'
+        GROUP BY si.Nombre_simulador,ser.horas_servicios;";
         $query = $this->acceso->prepare($sql);
         $query->execute();
         $this->objetos = $query->fetchAll();
