@@ -13,13 +13,9 @@ class Reporte{
     }
 
     function horas_funcionamiento_simulador(){
-        /**Corroborar los datos para que nos arroje las fechas correspondientes
-         * en estos momentos el where no esta siendo dinamico y tiene valores
-         * introducidos manualmente
-         */
         $sql = "SELECT si.Nombre_simulador,
         ser.horas_servicios,
-        count(re.id_reporte) AS 'total reportes',
+        count(re.id_reporte) AS 'total_reportes',
         CASE
         WHEN sum(HOUR(TIMEDIFF(re.Fecha_cierre,re.Fecha_crea))) <=0 THEN 1
         ELSE

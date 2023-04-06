@@ -1,11 +1,3 @@
-<?php
-
-include_once '../modelo/Reporte.php';
-$reporte = new Reporte();
-$resultado = $reporte->horas_funcionamiento_simulador();
-print_r($resultado);
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 <!-- Se tendra que crear objetos de las clases para obtener la información necesaria, el js arroja un error que complica,
@@ -46,56 +38,30 @@ print_r($resultado);
 </head>
 
 <body>
-    <div class="container text-center">
-        <header>
-            <div class="row">
-                <div class="row mt-5">
-                    <div class="col">
-                        <div class="card">
-                            <div class="card-body">
-                                <h1 class="card-title">Reporte área de Mantenimiento</h1>
-                                <p class="card-text">Reporte sobre intervenciones y estado de los Laboratorios y Simuladores</p>
-                            </div>
-                        </div>
+    <div class="content-wrapper container">
+        <section class="content-header">
+            <div class="container-fluid">
+                <div class="row mb-2">
+                    <div class="col-sm-6">
+                        <h1>Reporte área de mantenimiento</h1>
                     </div>
                 </div>
-            </div>
-        </header>
-        <section class="container">
-            <div class="row">
-                <?php foreach ($resultado as $r) : ?>
-                    <div class="card col-4 m-3" style="width: 18rem;">
-                        <div class="card-body">
-                            <h5 class="card-title"><?= $r->nombre_simulador ?></h5>
-                        </div>
-                        <table>
-                            <tr>
-                                <th>Tiempo funcionamiento</th>
-                                <td><?= $r->horas_servicios ?></td>
-                            </tr>
-                            <tr>
-                                <th>Horas fuera de servicio</th>
-                                <td><?= $r->horas_paradas ?></td>
-                            </tr>
-                            <tr>
-                                <th>Programado</th>
-                                <td>10 horas</td>
-                            </tr>
-                            <tr>
-                                <th>No Programado</th>
-                                <td>5 horas</td>
-                            </tr>
-                        </table>
-                        <div class="card-body">
-                            <h5>Graficos</h5>
-                        </div>
+            </div><!-- /.container-fluid -->
+        </section>
+        <section class="content">
+            <div class="card">
+                <div class="card-body">
+                <h5>Equipos con reportes durante el mes de Abril</h5>
+                    <div class="row" id="tabla_reporte">
                     </div>
-                <?php endforeach; ?>
+                </div>
             </div>
         </section>
     </div>
 </body>
 
 </html>
-
+<?php
+include_once 'layouts/footer.php';
+?>
 <script src="../js/Reporte.js"></script>
