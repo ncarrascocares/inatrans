@@ -1,7 +1,7 @@
 <?php
 session_start();
 // Validando que solo pueda ingresar un usuario root o administrador a este fichero
-if ($_SESSION['usuario_tipo'] == 1 || $_SESSION['usuario_tipo'] == 2) {
+if ($_SESSION['usuario_tipo'] == 1) {
 
     // Inclución del fichero header
     include_once 'layouts/header.php';

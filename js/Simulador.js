@@ -4,8 +4,9 @@ $(document).ready(function() {
 
     console.log(boton_crear)
 
+    //las siguientes lineas se activan cuando se da click al btn crear, lo cual nos envía hacia el fichero creaEquipo.php
     boton_crear.addEventListener('click', () => {
-        window.location.href = '../vista/adm_Crea_Equipo.php';
+        window.location.href = '../vista/creaEquipo.php';
     })
 
 })

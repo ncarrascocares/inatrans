@@ -47,22 +47,28 @@ if ($_SESSION['usuario_tipo'] == 1) {
                     <!-- /.card-header -->
                     <div class="card-body" style="display: block;">
                         <form id="form-new-equipo" class="row g-3">
-                            <div class="col-md-4">
+                            <div class="col-md-3">
                                 <label for="name_equipo" class="form-label">Nombre del equipo</label>
                                 <input type="text" class="form-control" id="name_equipo">
                             </div>
-                            <div class="col-md-4">
+                            <div class="col-md-3">
                                 <label for="name_sucursal" class="form-label">Sucursal</label>
                                 <select class="form-control" id="name_sucursal">
 
                                 </select>
                             </div>
-                            <div id="contenedor_tipo_simulador" class="form-group col-md-4">
+                            <div id="contenedor_tipo_simulador" class="form-group col-md-3">
                                 <label for="tipo_equipo">Tipo</label>
                                 <select class="form-control" id="tipo_equipo">
                                     <option value="Movil">Móvil</option>
                                     <option value="Fijo" selected>Fijo</option>
                                     <option value="Laboratorio">Laboratorio</option>
+                                </select>
+                            </div>
+                            <div class="col-md-3">
+                                <label for="servicio" class="form-label">Servicio</label>
+                                <select class="form-control" id="servicio">
+
                                 </select>
                             </div>
                             <div class="col-12">

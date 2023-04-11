@@ -58,7 +58,7 @@ $(document).ready(function() {
     $('#tabla_reporte tbody').on('click', '.ver', function() {
         let datos = tabla_tarea.row($(this).parents()).data();
         let id = datos.id_reporte;
-        location.href = "../vista/adm_odt_detalles.php?reporte=" + id + "&estado=" + estado;
+        location.href = "../vista/ordenesDetalles.php?reporte=" + id + "&estado=" + estado;
     });
 
     $('#tabla_reporte tbody').on('click', '.generar', function() {

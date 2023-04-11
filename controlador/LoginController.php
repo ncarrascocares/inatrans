@@ -11,16 +11,16 @@ $usuario = new Usuario();
 if (!empty($_SESSION['usuario_tipo'])) {
     switch ($_SESSION['usuario_tipo']) {
         case 1:
-            header('Location: ../vista/adm_catalogo.php');
+            header('Location: ../vista/catalogo.php');
             break;
         case 2:
-            header('Location: ../vista/adm_catalogo.php');
+            header('Location: ../vista/catalogo.php');
             break;
         case 3:
-            header('Location: ../vista/adm_catalogo.php');
+            header('Location: ../vista/catalogo.php');
             break;
         case 4:
-            header('Location: ../vista/adm_catalogo.php');
+            header('Location: ../vista/catalogo.php');
             break;
     }// Fin del switch
 }else{
@@ -47,19 +47,19 @@ if (!empty($usuario->objetos)) {
     // Segun el tipo de usuario, el switch nos re dirijira a la pagina correspondiente
     switch ($_SESSION['usuario_tipo']) {
         case 1:
-            header('Location: ../vista/adm_catalogo.php');
+            header('Location: ../vista/catalogo.php');
             break;
         case 2:
-            header('Location: ../vista/adm_catalogo.php');
+            header('Location: ../vista/catalogo.php');
             break;
         case 3:
-            header('Location: ../vista/adm_catalogo.php');
+            header('Location: ../vista/catalogo.php');
             break;
         case 4:
-            header('Location: ../vista/adm_catalogo.php');
+            header('Location: ../vista/catalogo.php');
             break;
     }// Fin del switch
 }else{
-    header('Location: ../index.php');
+    header('Location: ../vista/index.php');
 }
 }

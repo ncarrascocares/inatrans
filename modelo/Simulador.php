@@ -62,14 +62,15 @@ class Simulador{
         return $this->objetos;
     }
 
-    function crear_equipo($name_equipo, $name_sucursal, $desc_equipo, $tipo_equipo){
-        $sql = "INSERT INTO simulador (Nombre_simulador, Sucursal_id, Tipo_simulador, Descripcion_simulador, Status_id)
-                VALUES ( :name_equipo, :sucursal, :tipo, :descripcion, 1);";
+    function crear_equipo($name_equipo, $name_sucursal, $desc_equipo, $tipo_equipo, $servicio){
+        $sql = "INSERT INTO simulador (Nombre_simulador, Sucursal_id, Tipo_simulador, Descripcion_simulador, Status_id, servicio_id)
+                VALUES ( :name_equipo, :sucursal, :tipo, :descripcion, 1, :servicio);";
         $query = $this->acceso->prepare($sql);
         $query->execute(array(':name_equipo'=>$name_equipo,
                               ':sucursal'=>$name_sucursal,
                               ':tipo'=>$tipo_equipo,
-                              ':descripcion'=>$desc_equipo));
+                              ':descripcion'=>$desc_equipo,
+                              ':servicio'=>$servicio));
         echo 'insertado';
         
     }

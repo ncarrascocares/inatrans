@@ -120,10 +120,6 @@ if (!empty($_SESSION['usuario_tipo'])) {
                             <label for="averia_reporte_edit">Motivo de atención</label>
                             <textarea class="form-control" id="averia_reporte_edit" spellcheck="false" rows="3"></textarea>
                         </div>
-                        <!-- <div class="form-group">
-                            <label for="averia_reporte_edit">Comentario</label>
-                            <textarea class="form-control" id="comentario_edit" rows="3"></textarea>
-                        </div> -->
                         <div class="form-group">
                             <label for="tipo_odt_edit">Mantenimiento</label>
                             <select class="form-control" id="tipo_odt_edit">
