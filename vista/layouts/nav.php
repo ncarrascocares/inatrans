@@ -6,6 +6,7 @@
 <link rel="stylesheet" href="../css/css/adminlte.min.css">
 <!-- Datatable -->
 <link rel="stylesheet" href="../css/datatables.css">
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
 </head>
 

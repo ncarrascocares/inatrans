@@ -34,6 +34,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp" crossorigin="anonymous">
+    <!-- Fichero de chart para los graficos -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <title>Reporte</title>
 </head>
 
@@ -53,6 +56,7 @@
                 <div class="card-body">
                 <h5>Equipos con reportes durante el mes de Abril</h5>
                     <div class="row" id="tabla_reporte">
+                    <canvas id="miGrafico"></canvas>
                     </div>
                 </div>
             </div>
@@ -62,6 +66,6 @@
 
 </html>
 <?php
-include_once 'layouts/footer.php';
+include_once '../layouts/footer.php';
 ?>
-<script src="../js/Reporte.js"></script>
+<script src="Reporte.js"></script>

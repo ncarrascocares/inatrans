@@ -21,7 +21,7 @@ if (!empty($_SESSION['usuario_tipo'])) {
                 <div class="row mb-2">
                     <div class="col-sm-6">
                         <h1>Resumen</h1>
-                        <a href="reporte.php">
+                        <a href="Reporte/reporte.php">
                             <button type="button" class="btn btn-warning" data-toggle="" data-target="">
                                 Generar reporte en PDF
                             </button>
