@@ -25,8 +25,8 @@ if (!empty($_SESSION['usuario_tipo'])) {
                             <input type="text" class="form-control" id="name_equipo" value="" required>
                         </div>
                         <div class="col-md-4 position-relative">
-                            <label for="simulador_id" class="form-label">Equipo al que pertenece</label>
-                            <select name="" id="simulador_id" class="form-control">
+                            <label for="simulador" class="form-label">Equipo al que pertenece</label>
+                            <select name="" id="selectsimulador" class="form-control">
                             </select>
                         </div>
                         <div class="col-md-4 position-relative">
@@ -61,7 +61,7 @@ if (!empty($_SESSION['usuario_tipo'])) {
                     <h3 class="modal-title fs-5" id="exampleModalLabel">Nuevo Elemento</h3>
                 </div>
                 <div class="modal-body">
-                    <form class="row g-3 needs-validation" novalidate>
+                    <form class="row g-3 needs-validation" id="new_element" novalidate>
                         <div class="col-md-6 position-relative">
                             <label for="name_equipo" class="form-label">Nombre elemento</label>
                             <input type="text" class="form-control" id="name_equipo" value="" required>
@@ -76,7 +76,7 @@ if (!empty($_SESSION['usuario_tipo'])) {
                         </div>
                         <div class="col-md-4 position-relative">
                             <label for="tipo_mant" class="form-label">Sub equipo asocidado</label>
-                            <select name="" id="tipo_mant" class="form-control">
+                            <select name="" id="sub_equipo" class="form-control">
                             </select>
                         </div>
                         <div class="col-md-4 position-relative">
@@ -92,7 +92,7 @@ if (!empty($_SESSION['usuario_tipo'])) {
                         </div>
                         <div class="col-12">
                             <br>
-                            <button class="btn btn-primary" type="submit">Crear</button>
+                            <button class="btn btn-primary" id="btnModalCrear" type="submit">Crear</button>
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
                         </div>
                     </form>
