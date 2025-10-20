@@ -22,6 +22,13 @@ class Mantenimiento{
         return $this->objetos;
     }
 
+    // Función para crear una nueva mantención
+    function crear_mantencion($nombre,$descripcion){
+        $sql = "INSERT INTO mantenimiento (nombre, descripcion) VALUES (:nombre, :descripcion)";
+        $query = $this->acceso->prepare($sql);
+        $query->execute(array(':nombre'=>$nombre, ':descripcion'=>$descripcion));
+    }
+
 }
 
 
