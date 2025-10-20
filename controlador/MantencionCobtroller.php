@@ -22,10 +22,10 @@ switch ($_POST['funcion']) {
     case 'new_mantencion':
 
         // Para este caso se debera realizar la logica para agregar una nueva mantencion
-
-        $num_serial = strtoupper($_POST['num_serial']);
-        $fecha_ven = $_POST['fecha_ven'];
-        $dongle->new_dongle($num_serial,$fecha_ven);
+        // validar los datos antes de enviarlos al modelo
+        $nombre = ucfirst(trim($_POST['nombre'])); // Quitando los espacios y poniendo la primera letra en mayuscula
+        $nombre = ucfirst(trim($_POST['descripcion'])); // Quitando los espacios y poniendo la primera letra en mayuscula
+        $man->crear_mantencion($_POST['nombre'], $_POST['descripcion']); // aca deben ir los parametros necesarios para crear una mantencion
         break;
 }
 
