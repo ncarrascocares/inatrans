@@ -19,7 +19,10 @@ switch ($_POST['funcion']) {
         $jsonstring = json_encode($json);
         echo $jsonstring;
         break;
-    case 'new_dongle':
+    case 'new_mantencion':
+
+        // Para este caso se debera realizar la logica para agregar una nueva mantencion
+
         $num_serial = strtoupper($_POST['num_serial']);
         $fecha_ven = $_POST['fecha_ven'];
         $dongle->new_dongle($num_serial,$fecha_ven);
