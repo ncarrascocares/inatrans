@@ -15,7 +15,7 @@ class Mantenimiento{
     }
 
     function lista_mantencion(){
-        $sql = "SELECT * FROM mantenimiento";
+        $sql = "SELECT * FROM mantenimiento where 1";
         $query = $this->acceso->prepare($sql);
         $query->execute();
         $this->objetos=$query->fetchAll();
