@@ -18,15 +18,15 @@ $(document).ready(function() {
     }
 
     function cargarmantencion() {
-        funcion = 'carga_mantencion';
-        $.post('../controlador/SimuladorController.php', { funcion }, (response) => {
-            const simulador = JSON.parse(response);
-            let template = '<option>Selecciona simulador</option>';
-            simulador.forEach(simulador => {
-                template += `<option value="${simulador.id_simulador}">${simulador.nombre_simulador}</option>`;
+        funcion = 'listar_mantencion';
+        $.post('../controlador/MantencionController.php', { funcion }, (response) => {
+            const manten = JSON.parse(response);
+            let template = '<option>Selecciona mantención</option>';
+            manten.forEach(manten => {
+                template += `<option value="${manten.id_mantenimiento}">${manten.nombre_mantenimiento}</option>`;
             });
 
-            selectsimulador.innerHTML = template;
+            tipo_mant.innerHTML = template;
         });
     }
 
