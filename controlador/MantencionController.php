@@ -19,14 +19,7 @@ switch ($_POST['funcion']) {
         $jsonstring = json_encode($json);
         echo $jsonstring;
         break;
-    case 'new_mantencion':
-
-        // Para este caso se debera realizar la logica para agregar una nueva mantencion
-        // validar los datos antes de enviarlos al modelo
-        $nombre = ucfirst(trim($_POST['nombre'])); // Quitando los espacios y poniendo la primera letra en mayuscula
-        $nombre = ucfirst(trim($_POST['descripcion'])); // Quitando los espacios y poniendo la primera letra en mayuscula
-        $man->crear_mantencion($_POST['nombre'], $_POST['descripcion']); // aca deben ir los parametros necesarios para crear una mantencion
-        break;
+    
 }
 
 ?>
