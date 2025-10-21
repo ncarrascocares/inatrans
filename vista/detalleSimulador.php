@@ -19,7 +19,7 @@ if (!empty($_SESSION['usuario_tipo'])) {
                     <h3 class="modal-title fs-5" id="exampleModalLabel">Nuevo Sub equipo</h3>
                 </div>
                 <div class="modal-body">
-                    <form class="row g-3 needs-validation" novalidate>
+                    <form class="row g-3 needs-validation" id="form_new_sub" novalidate>
                         <div class="col-md-4 position-relative">
                             <label for="name_equipo" class="form-label">Nombre del sub-equipo</label>
                             <input type="text" class="form-control" id="name_equipo" value="" required>
@@ -145,6 +145,17 @@ if (!empty($_SESSION['usuario_tipo'])) {
                     </div>
                     <!-- /.card-header -->
                     <div class="card-body" style="display: block;">
+                        <!-- BANNER CON EL MENSAJE DE LA ACCIÓN AL INSERTAR UN NUEVO SUB EQUIPO-->
+                        <div class="alert alert-success text-center" id="subequipo-ok" style="display:none;">
+                            <span><i class="fas fa-check"></i>Sub Equipo creado con exito!</span>
+                        </div>
+                        <div class="alert alert-danger text-center" id="no-insert" style="display:none;">
+                            <span><i class="fas fa-check"></i>Error, no se creo el sub equipo</span>
+                        </div>
+                        <div class="alert alert-danger text-center" id="no-datos" style="display:none;">
+                            <span><i class="fas fa-check"></i>Error, Faltan datos en el formulario!</span>
+                        </div>
+                        <!-- FIN BANNER -->
                         <table style="border:1px solid black;width: 100%;">
                             <tr style="border:1px solid black;">
                                 <td style="border:1px solid black;">Sub Equipo</td>
