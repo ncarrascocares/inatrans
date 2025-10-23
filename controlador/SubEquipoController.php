@@ -6,21 +6,22 @@ session_start();
 $sub = new SubEquipo();
 
 switch ($_POST['funcion']) {
-    case 'listar_mantencion':
+    case 'listar_sub':
         $json = array();
         $sub->listar();
-        foreach ($this->sub->objetos as $objeto) {
+        foreach ($sub->objetos as $objeto) {
             $json[] = array(
-            'id_manten'=>$objeto->id_mantenimiento,
-            'nom_manten'=>$objeto->nombre_mantenimiento,
-            'desc_manten'=>$objeto->descripcion_mantenimiento
+            'nombre'=>$objeto->nombre_sub,
+            'detalle'=>$objeto->detalle_sub,
+            'sim'=>$objeto->nombre_simulador,
+            'mante'=>$objeto->nombre_mantenimiento,
+            'descrip'=>$objeto->descripcion_mantenimiento
             );
         }
         $jsonstring = json_encode($json);
         echo $jsonstring;
         break;
     case 'nuevo_sub':
-        // name, sim, manten, detalle
         // Para este caso se debera realizar la logica para agregar una nueva mantencion
         // validar los datos antes de enviarlos al modelo
         $nombre = ucfirst(trim($_POST['name'])); // Quitando los espacios y poniendo la primera letra en mayuscula
