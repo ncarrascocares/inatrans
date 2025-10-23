@@ -13,11 +13,22 @@ if (!empty($_SESSION['usuario_tipo'])) {
     <?php include_once 'layouts/nav.php'; ?>
     <!-- Modal para la creación de sub-equipo -->
     <div class="modal fade" id="modalSub" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-xl">
+        <div class="modal-dialog modal-xl" id="modal_sub">
             <div class="modal-content">
                 <div class="modal-header bg-primary">
                     <h3 class="modal-title fs-5" id="exampleModalLabel">Nuevo Sub equipo</h3>
                 </div>
+                        <!-- BANNER CON EL MENSAJE DE LA ACCIÓN AL INSERTAR UN NUEVO SUB EQUIPO-->
+                        <div class="alert alert-success text-center" id="add-sub" style="display:none;">
+                            <span><i class="fas fa-check"></i>Sub Equipo creado con exito!</span>
+                        </div>
+                        <div class="alert alert-warning text-center" id="no-add-sub" style="display:none;">
+                            <span><i class="fas fa-check"></i>Sub equipo ya se encuentra asignado al simulador</span>
+                        </div>
+                        <div class="alert alert-danger text-center" id="no-datos-sub" style="display:none;">
+                            <span><i class="fas fa-check"></i>Error, Faltan datos en el formulario!</span>
+                        </div>
+                        <!-- FIN BANNER -->
                 <div class="modal-body">
                     <form class="row g-3 needs-validation" id="form_new_sub" novalidate>
                         <div class="col-md-4 position-relative">
@@ -145,61 +156,17 @@ if (!empty($_SESSION['usuario_tipo'])) {
                     </div>
                     <!-- /.card-header -->
                     <div class="card-body" style="display: block;">
-                        <!-- BANNER CON EL MENSAJE DE LA ACCIÓN AL INSERTAR UN NUEVO SUB EQUIPO-->
-                        <div class="alert alert-success text-center" id="subequipo-ok" style="display:none;">
-                            <span><i class="fas fa-check"></i>Sub Equipo creado con exito!</span>
-                        </div>
-                        <div class="alert alert-danger text-center" id="no-insert" style="display:none;">
-                            <span><i class="fas fa-check"></i>Error, no se creo el sub equipo</span>
-                        </div>
-                        <div class="alert alert-danger text-center" id="no-datos" style="display:none;">
-                            <span><i class="fas fa-check"></i>Error, Faltan datos en el formulario!</span>
-                        </div>
-                        <!-- FIN BANNER -->
                         <table style="border:1px solid black;width: 100%;">
-                            <tr style="border:1px solid black;">
-                                <td style="border:1px solid black;">Sub Equipo</td>
-                                <td style="border:1px solid black;">Elemento</td>
-                                <td style="border:1px solid black;">Mantenimiento</td>
-                                <td style="border:1px solid black;">Periocidad</td>
-                                <td style="border:1px solid black;">Responsable</td>
-                                <td style="border:1px solid black;">Stock por sucursal</td>
-                                <td style="border:1px solid black;">opciones</td>
-                            </tr>
-                            <tr>
-                                <td style="border:1px solid black;">TV</td>
-                                <td style="border:1px solid black;">No aplica</td>
-                                <td style="border:1px solid black;">Correctivo</td>
-                                <td style="border:1px solid black;">Semanal</td>
-                                <td style="border:1px solid black;">Instructor</td>
-                                <td style="border:1px solid black;">1</td>
-                                <td style="border:1px solid black;">Editar - Borrar - Detalles</td>
-                            </tr>
-                            <tr>
-                                <td style="border:1px solid black;" rowspan="3">Motor</td>
-                                <td style="border:1px solid black;">Ejes</td>
-                                <td style="border:1px solid black;">Preventivo</td>
-                                <td style="border:1px solid black;">Anual</td>
-                                <td style="border:1px solid black;">Motores Gonzalez</td>
-                                <td style="border:1px solid black;">2</td>
-                                <td style="border:1px solid black;">Editar - Borrar - Detalles</td>
-                            </tr>
-                            <tr>
-                                <td style="border:1px solid black;">Sellos</td>
-                                <td style="border:1px solid black;">Preventivo</td>
-                                <td style="border:1px solid black;">Anual</td>
-                                <td style="border:1px solid black;">Motores Gonzalez</td>
-                                <td style="border:1px solid black;">0</td>
-                                <td style="border:1px solid black;">Editar - Borrar - Detalles</td>
-                            </tr>
-                            <tr>
-                                <td style="border:1px solid black;">Aceite</td>
-                                <td style="border:1px solid black;">Preventivo</td>
-                                <td style="border:1px solid black;">Anual</td>
-                                <td style="border:1px solid black;">Motores Gonzalez</td>
-                                <td style="border:1px solid black;">0</td>
-                                <td style="border:1px solid black;">Editar - Borrar - Detalles</td>
-                            </tr>
+                            <thead>
+                                <tr>Sub Equipo</tr>
+                                <tr>Detalles</tr>
+                                <tr>Simulador</tr>
+                                <tr>Mantenimiento|</tr>
+                                <tr>descripcion</tr>
+                            </thead>
+                            <tbody id="cuerpoTabla">
+                                <!-- Aquí se llenará la tabla dinámicamente -->
+                            </tbody>                        
                         </table>
                     </div>
                     <!-- /.card-body -->
