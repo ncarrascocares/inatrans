@@ -1,11 +1,11 @@
 $(document).ready(function() {
-    let funcion = '';
 
     cargarsimulador();
     cargarmantencion();
+    listar();
 
     function cargarsimulador() {
-        funcion = 'listar_simuladores';
+        const funcion = 'listar_simuladores';
         $.post('../controlador/SimuladorController.php', { funcion }, (response) => {
             const simulador = JSON.parse(response);
             let template = '<option>Selecciona simulador</option>';
@@ -18,7 +18,7 @@ $(document).ready(function() {
     }
 
     function cargarmantencion() {
-        funcion = 'listar_mantencion';
+        const funcion = 'listar_mantencion';
         $.post('../controlador/MantencionController.php', { funcion }, (response) => {
             const manten = JSON.parse(response);
             let template = '<option>Selecciona mantención</option>';
@@ -30,12 +30,20 @@ $(document).ready(function() {
         });
     }
 
+    function listar(){
+        const funcion = 'listar_sub';
+        $.post('../controlador/SubEquipoController.php', { funcion }, (response) => {
+            const datos = JSON.parse(response);
+            llenarTabla(datos, 'cuerpoTabla');
+        });
+    }
+
 
     // Este es el submit del formulario para agregar un nuevo sub-equipo
     // Se activa al presionar el btn crear del tipo submit del modal
      $('#form_new_sub').submit(e => {
 
-        funcion = 'nuevo_sub';
+        const funcion = 'nuevo_sub';
         let name = $('#name_equipo').val();
         let sim = $('#selectsimulador').val();
         let manten = $('#tipo_mant').val();
@@ -54,11 +62,15 @@ $(document).ready(function() {
                     $('#add-sub').show(1000);
                     $('#add-sub').hide(2000);
                     $('#form_new_sub').trigger('reset');
+                    $('#modal_sub').modal('hide');
+
                 }   else {
                     $('#no-add-sub').hide('slow');
                     $('#no-add-sub').show(1000);
                     $('#no-add-sub').hide(2000);
                     $('#form_new_sub').trigger('reset');
+                    $('#modal_sub').modal('hide');
+                    
                 }
             });
         } 
@@ -77,7 +89,24 @@ $(document).ready(function() {
         console.log(name,periocidad,codigo,sub,tipo,detalles);
 
         e.preventDefault();
-     });
+    });
+
+    function llenarTabla(datos, idCuerpoTabla) {
+        const cuerpoTabla = document.getElementById(idCuerpoTabla);
+        cuerpoTabla.innerHTML = '';
+
+        datos.forEach(item => {
+            const fila = document.createElement('tr');
+            fila.innerHTML = `
+                <td>${item.nombre}</td>
+                <td>${item.detalle}</td>
+                <td>${item.sim}</td>
+                <td>${item.mante}</td>
+                <td>${item.descrip}</td>
+            `;
+            cuerpoTabla.appendChild(fila);
+        });
+    }
+
 
 })
-
