@@ -11,6 +11,7 @@ switch ($_POST['funcion']) {
         $sub->listar();
         foreach ($sub->objetos as $objeto) {
             $json[] = array(
+            'id'=>$objeto->id_sub_equipo,
             'nombre'=>$objeto->nombre_sub,
             'detalle'=>$objeto->detalle_sub,
             'sim'=>$objeto->nombre_simulador,
