@@ -15,7 +15,7 @@ class SubEquipo{
     }
 
     function listar(){
-        $sql = "select sub.nombre_sub,sub.detalle_sub,si.Nombre_simulador,ma.nombre_mantenimiento,ma.descripcion_mantenimiento from sub_equipo sub
+        $sql = "select sub.id_sub_equipo,sub.nombre_sub,sub.detalle_sub,si.Nombre_simulador,ma.nombre_mantenimiento,ma.descripcion_mantenimiento from sub_equipo sub
                 left join simulador si on sub.simulador_id = si.id_simulador
                 left join mantenimiento ma on sub.mantenimiento_id = ma.id_mantenimiento
                 where 1;";
