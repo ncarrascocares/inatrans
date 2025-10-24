@@ -154,20 +154,23 @@ if (!empty($_SESSION['usuario_tipo'])) {
                         </div>
                         <!-- /.card-tools -->
                     </div>
-                    <!-- /.card-header -->
+                    <!-- /.card-body -->
                     <div class="card-body" style="display: block;">
-                        <table style="border:1px solid black;width: 100%;">
-                            <thead>
-                                <tr>Sub Equipo</tr>
-                                <tr>Detalles</tr>
-                                <tr>Simulador</tr>
-                                <tr>Mantenimiento|</tr>
-                                <tr>descripcion</tr>
+                        <div class="card-body" style="display: block;">
+                            <table class="table table-bordered" style="border:1px solid black;width: 100%;">
+                            <thead style="border:1px solid black;background:teal; color:white;font-weight:bold">
+                            <td style="border:1px solid black;">Sub Equipo</td>
+                                    <td style="border:1px solid black;">Detalles</td>
+                                    <td style="border:1px solid black;">Simulador</td>
+                                    <td style="border:1px solid black;">Mantenimiento</td>
+                                    <td style="border:1px solid black;">Descripcion</td>
+                                    <td style="border:1px solid black;">opciones</td>
                             </thead>
                             <tbody id="cuerpoTabla">
-                                <!-- Aquí se llenará la tabla dinámicamente -->
-                            </tbody>                        
-                        </table>
+
+                            </tbody>
+                            </table>
+                        </div>
                     </div>
                     <!-- /.card-body -->
                 </div>
