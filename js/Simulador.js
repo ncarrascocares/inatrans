@@ -92,21 +92,33 @@ $(document).ready(function() {
     });
 
     function llenarTabla(datos, idCuerpoTabla) {
-        const cuerpoTabla = document.getElementById(idCuerpoTabla);
-        cuerpoTabla.innerHTML = '';
+    const cuerpoTabla = document.getElementById(idCuerpoTabla);
+    cuerpoTabla.innerHTML = '';
 
-        datos.forEach(item => {
-            const fila = document.createElement('tr');
-            fila.innerHTML = `
-                <td>${item.nombre}</td>
-                <td>${item.detalle}</td>
-                <td>${item.sim}</td>
-                <td>${item.mante}</td>
-                <td>${item.descrip}</td>
-            `;
-            cuerpoTabla.appendChild(fila);
-        });
-    }
+    datos.forEach(item => {
+        const fila = document.createElement('tr');
+        fila.innerHTML = `
+            <td>${item.nombre}</td>
+            <td>${item.detalle}</td>
+            <td>${item.sim}</td>
+            <td>${item.mante}</td>
+            <td>${item.descrip}</td>
+            <td style="width:7%;">
+                <button type="button" class="generar btn btn-info" style="font-size:50%">
+                    <i class="fa fa-file-pdf"></i>
+                </button>
+                <a href="../vista/editarSubequipo.php?id_sub=${item.id}">
+                    <button type="button" class="editar btn btn-warning" data-toggle="modal" data-target="#editar-odt" style="font-size:50%">
+                        <i class="fas fa-edit"></i>
+                    </button>
+                </a>
+            </td>
+        `;
+
+        cuerpoTabla.appendChild(fila);
+    });
+}
+
 
 
 })
