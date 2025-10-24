@@ -53,56 +53,6 @@ if (!empty($_SESSION['usuario_tipo'])) {
             </div>
         </div>
     </div>
-    <!-- Modal para la creación de los elementos de los sub-equipos -->
-    <div class="modal fade" id="modalEquipo" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-xl">
-            <div class="modal-content">
-                <div class="modal-header bg-primary">
-                    <h3 class="modal-title fs-5" id="exampleModalLabel">Nuevo Elemento</h3>
-                </div>
-                <div class="modal-body">
-                    <form class="row g-3 needs-validation" novalidate>
-                        <div class="col-md-6 position-relative">
-                            <label for="name_equipo" class="form-label">Nombre elemento</label>
-                            <input type="text" class="form-control" id="name_equipo" value="" required>
-                        </div>
-                        <div class="col-md-6 position-relative">
-                            <label for="periocidad" class="form-label">Periocidad</label>
-                            <input type="text" class="form-control" id="periocidad">
-                        </div>
-                        <div class="col-md-4 position-relative">
-                            <label for="codigo_elemento" class="form-label">Código</label>
-                            <input type="text" class="form-control" id="codigo_elemento">
-                        </div>
-                        <div class="col-md-4 position-relative">
-                            <label for="tipo_mant" class="form-label">Sub equipo asocidado</label>
-                            <select name="" id="tipo_mant" class="form-control">
-                            </select>
-                        </div>
-                        <div class="col-md-4 position-relative">
-                            <label for="tipo_mant" class="form-label">Mantenimiento</label>
-                            <select name="" id="tipo_mant" class="form-control">
-                            </select>
-                        </div>
-                        <div class="col-md-12 position-relative">
-                            <label for="detalle_sub" class="form-label">Detalles</label>
-                            <div class="input-group has-validation">
-                                <textarea class="form-control" id="detalle_sub" rows="3" spellcheck="false" required></textarea>
-                            </div>
-                        </div>
-                        <div class="col-12">
-                            <br>
-                            <button class="btn btn-primary" type="submit">Crear</button>
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                        </div>
-                    </form>
-                </div>
-                <div class="modal-footer">
-
-                </div>
-            </div>
-        </div>
-    </div>
     <div class="content-wrapper">
         <!-- Content Header (Page header) -->
         <section class="content-header">
