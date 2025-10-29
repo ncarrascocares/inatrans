@@ -7,8 +7,9 @@ $sub = new SubEquipo();
 
 switch ($_POST['funcion']) {
     case 'listar_sub':
+        $pagina = isset($_GET['page']) ? (int)$_GET['page'] : 5;
         $json = array();
-        $sub->listar();
+        $sub->listar($pagina);
         foreach ($sub->objetos as $objeto) {
             $json[] = array(
             'id'=>$objeto->id_sub_equipo,

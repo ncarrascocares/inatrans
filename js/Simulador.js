@@ -38,6 +38,29 @@ $(document).ready(function() {
         });
     }
 
+    function paginar(page){
+        const funcion = 'listar_sub';
+        $.post('../controlador/SubEquipoController.php?page='+page, { funcion }, (response) => {
+            const datos = JSON.parse(response);
+            llenarTabla(datos, 'cuerpoTabla');
+        });
+    }
+
+    $('#pagina5').click(function(){
+        let page = 5;
+        paginar(page);
+    });
+
+    $('#pagina10').click(function(){
+        let page = 10;
+        paginar(page);
+    });
+
+    $('#pagina15').click(function(){
+        let page = 15;
+        paginar(page);
+    }); 
+
 
     // Este es el submit del formulario para agregar un nuevo sub-equipo
     // Se activa al presionar el btn crear del tipo submit del modal

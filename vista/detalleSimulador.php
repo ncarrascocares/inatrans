@@ -146,16 +146,30 @@ if (!empty($_SESSION['usuario_tipo'])) {
                             <button id="button-crear-sub" type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalSub" data-whatever="@mdo">Crear Sub Equipo</button>
                             <button id="button-crear-sub" type="button" class="btn btn-info" data-toggle="modal" data-target="#modalEquipo" data-whatever="@mdo">Crear Elemento</button>
                         </h3>
-
-                        <div class="card-tools">
-                            <button type="button" class="btn btn-tool" data-card-widget="collapse">
-                                <i class="fas fa-minus"></i>
-                            </button>
-                        </div>
-                        <!-- /.card-tools -->
                     </div>
                     <!-- /.card-body -->
                     <div class="card-body" style="display: block;">
+                        <!-- PAGINACION -->
+                        <nav aria-label="Page navigation example">
+                            <ul class="pagination justify-content-end">
+                                <li class="page-item">
+                                <a class="page-link" href="#" aria-label="Previous">
+                                    <span aria-hidden="true">&laquo;</span>
+                                    <span class="sr-only">Previous</span>
+                                </a>
+                                </li>
+                                    <li class="page-item"><a class="page-link" id="pagina5">1</a></li>
+                                    <li class="page-item"><a class="page-link" id="pagina10">2</a></li>
+                                    <li class="page-item"><a class="page-link" id="pagina15">3</a></li>
+                                    <li class="page-item">
+                                    <a class="page-link" href="#" aria-label="Next">
+                                        <span aria-hidden="true">&raquo;</span>
+                                        <span class="sr-only">Next</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </nav>
+                        <!-- PAGINACION -->
                         <div class="card-body" style="display: block;">
                             <table class="table table-bordered" style="border:1px solid black;width: 100%;">
                             <thead style="border:1px solid black;background:teal; color:white;font-weight:bold">
@@ -172,75 +186,10 @@ if (!empty($_SESSION['usuario_tipo'])) {
                             </table>
                         </div>
                     </div>
-                    <!-- /.card-body -->
-                </div>
-                <div class="card card-outline card-primary">
-                    <div class="card-header">
-                        <h3 class="card-title">Simulador 2 <button id="button-crear-sub" type="button" data-toggle="modal" data-target="#crear-odt" class="btn bg-gradient-success ml-2">Crear Sub Equipo</button></h3>
-
-                        <div class="card-tools">
-                            <button type="button" class="btn btn-tool" data-card-widget="collapse">
-                                <i class="fas fa-minus"></i>
-                            </button>
-                        </div>
-                        <!-- /.card-tools -->
-                    </div>
-                    <!-- /.card-header -->
-                    <div class="card-body" style="display: block;">
-                        <table style="border:1px solid black;width: 100%;">
-                            <tr style="border:1px solid black;">
-                                <td style="border:1px solid black;">Sub Equipo</td>
-                                <td style="border:1px solid black;">Elemento</td>
-                                <td style="border:1px solid black;">Mantenimiento</td>
-                                <td style="border:1px solid black;">Periocidad</td>
-                                <td style="border:1px solid black;">Responsable</td>
-                                <td style="border:1px solid black;">Stock por sucursal</td>
-                                <td style="border:1px solid black;">opciones</td>
-                            </tr>
-                            <tr>
-                                <td style="border:1px solid black;">TV</td>
-                                <td style="border:1px solid black;">No aplica</td>
-                                <td style="border:1px solid black;">Correctivo</td>
-                                <td style="border:1px solid black;">Semanal</td>
-                                <td style="border:1px solid black;">Instructor</td>
-                                <td style="border:1px solid black;">1</td>
-                                <td style="border:1px solid black;">Editar - Borrar - Detalles</td>
-                            </tr>
-                            <tr>
-                                <td style="border:1px solid black;" rowspan="3">Motor</td>
-                                <td style="border:1px solid black;">Ejes</td>
-                                <td style="border:1px solid black;">Preventivo</td>
-                                <td style="border:1px solid black;">Anual</td>
-                                <td style="border:1px solid black;">Motores Gonzalez</td>
-                                <td style="border:1px solid black;">2</td>
-                                <td style="border:1px solid black;">Editar - Borrar - Detalles</td>
-                            </tr>
-                            <tr>
-                                <td style="border:1px solid black;">Sellos</td>
-                                <td style="border:1px solid black;">Preventivo</td>
-                                <td style="border:1px solid black;">Anual</td>
-                                <td style="border:1px solid black;">Motores Gonzalez</td>
-                                <td style="border:1px solid black;">0</td>
-                                <td style="border:1px solid black;">Editar - Borrar - Detalles</td>
-                            </tr>
-                            <tr>
-                                <td style="border:1px solid black;">Aceite</td>
-                                <td style="border:1px solid black;">Preventivo</td>
-                                <td style="border:1px solid black;">Anual</td>
-                                <td style="border:1px solid black;">Motores Gonzalez</td>
-                                <td style="border:1px solid black;">0</td>
-                                <td style="border:1px solid black;">Editar - Borrar - Detalles</td>
-                            </tr>
-                        </table>
-                    </div>
-                    <!-- /.card-body -->
                 </div>
             </div>
         </section>
-        <!-- /.content -->
     </div>
-    <!-- /.content-wrapper -->
-
 <?php
     include_once 'layouts/footer.php';
 } else {
