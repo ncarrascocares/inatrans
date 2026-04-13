@@ -41,8 +41,8 @@ if (!empty($_SESSION['usuario_tipo'])) {
                             </select>
                         </div>
                         <div class="col-md-4 position-relative">
-                            <label for="tipo_mant" class="form-label">Mantenimiento</label>
-                            <select name="" id="tipo_mant" class="form-control">
+                            <label for="tipo_mant_sub" class="form-label">Mantenimiento</label>
+                            <select name="" id="tipo_mant_sub" class="form-control">
                             </select>
                         </div>
                         <div class="col-md-12 position-relative">
@@ -91,8 +91,8 @@ if (!empty($_SESSION['usuario_tipo'])) {
                             </select>
                         </div>
                         <div class="col-md-4 position-relative">
-                            <label for="tipo_mant" class="form-label">Mantenimiento</label>
-                            <select name="" id="tipo_mant" class="form-control">
+                            <label for="tipo_mant_elem" class="form-label">Mantenimiento</label>
+                            <select name="" id="tipo_mant_elem" class="form-control">
                             </select>
                         </div>
                         <div class="col-md-12 position-relative">
@@ -115,6 +115,17 @@ if (!empty($_SESSION['usuario_tipo'])) {
         </div>
     </div>
     <div class="content-wrapper">
+        <section>
+    <div class="container-fluid">
+        <div id="" class="card-header bg-info">
+            <h4 id="">Detalle</h4>
+            <div class="input-group">
+                <!-- SELECTOR DE SIMULADORES -->
+                <select id="filtro_simulador" class="form-control col-md-4">
+                    <option value="">-- Todos los simuladores --</option>
+                </select>
+            </div>
+        </div>
         <!-- Content Header (Page header) -->
         <section class="content-header">
             <div class="container-fluid">
@@ -149,27 +160,6 @@ if (!empty($_SESSION['usuario_tipo'])) {
                     </div>
                     <!-- /.card-body -->
                     <div class="card-body" style="display: block;">
-                        <!-- PAGINACION -->
-                        <nav aria-label="Page navigation example">
-                            <ul class="pagination justify-content-end">
-                                <li class="page-item">
-                                <a class="page-link" href="#" aria-label="Previous">
-                                    <span aria-hidden="true">&laquo;</span>
-                                    <span class="sr-only">Previous</span>
-                                </a>
-                                </li>
-                                    <li class="page-item"><a class="page-link" id="pagina5">1</a></li>
-                                    <li class="page-item"><a class="page-link" id="pagina10">2</a></li>
-                                    <li class="page-item"><a class="page-link" id="pagina15">3</a></li>
-                                    <li class="page-item">
-                                    <a class="page-link" href="#" aria-label="Next">
-                                        <span aria-hidden="true">&raquo;</span>
-                                        <span class="sr-only">Next</span>
-                                    </a>
-                                </li>
-                            </ul>
-                        </nav>
-                        <!-- PAGINACION -->
                         <div class="card-body" style="display: block;">
                             <table class="table table-bordered" style="border:1px solid black;width: 100%;">
                             <thead style="border:1px solid black;background:teal; color:white;font-weight:bold">
@@ -197,3 +187,5 @@ if (!empty($_SESSION['usuario_tipo'])) {
 }
 ?>
 <script src="../js/Simulador.js"></script>
+<script src="../js/datatables.js"></script>
+<script src="../js/Utils.js"></script>

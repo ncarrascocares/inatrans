@@ -1,8 +1,14 @@
 $(document).ready(function() {
 
+    $('#filtro_simulador').on('change', function() {
+        const id_simulador = $(this).val();
+        listar(id_simulador);
+    });
+
     cargarsimulador();
     cargarmantencion();
     listar();
+
 
     function cargarsimulador() {
         const funcion = 'listar_simuladores';
@@ -26,41 +32,42 @@ $(document).ready(function() {
                 template += `<option value="${manten.id_manten}">${manten.nom_manten}</option>`;
             });
 
-            tipo_mant.innerHTML = template;
+            //LLenado de ambos modales de detalleSumulador.php (tipo_mant_sub y tipo_mant_elem)
+            tipo_mant_sub.innerHTML = template;
+            tipo_mant_elem.innerHTML = template;
         });
     }
 
-    function listar(){
+    function listar(id_simulador = '') {
         const funcion = 'listar_sub';
-        $.post('../controlador/SubEquipoController.php', { funcion }, (response) => {
+        $.post('../controlador/SubEquipoController.php', { funcion, id_simulador }, (response) => {
+            console.log(response);
             const datos = JSON.parse(response);
             llenarTabla(datos, 'cuerpoTabla');
         });
     }
 
-    function paginar(page){
-        const funcion = 'listar_sub';
-        $.post('../controlador/SubEquipoController.php?page='+page, { funcion }, (response) => {
-            const datos = JSON.parse(response);
-            llenarTabla(datos, 'cuerpoTabla');
+    function cargarsimulador() {
+        const funcion = 'listar_simuladores';
+        $.post('../controlador/SimuladorController.php', { funcion }, (response) => {
+            const simuladores = JSON.parse(response);
+
+            let templateModal = '<option value="">Selecciona simulador</option>';
+            let templateFiltro = '<option value="">-- Todos los simuladores --</option>';
+
+            simuladores.forEach(sim => {
+                const opt = `<option value="${sim.id_simulador}">${sim.nombre_simulador}</option>`;
+                templateModal  += opt;
+                templateFiltro += opt;
+            });
+
+            // Select del modal (ya existía)
+            document.getElementById('selectsimulador').innerHTML = templateModal;
+
+            // Select del filtro en la página principal (nuevo)
+            document.getElementById('filtro_simulador').innerHTML = templateFiltro;
         });
     }
-
-    $('#pagina5').click(function(){
-        let page = 5;
-        paginar(page);
-    });
-
-    $('#pagina10').click(function(){
-        let page = 10;
-        paginar(page);
-    });
-
-    $('#pagina15').click(function(){
-        let page = 15;
-        paginar(page);
-    }); 
-
 
     // Este es el submit del formulario para agregar un nuevo sub-equipo
     // Se activa al presionar el btn crear del tipo submit del modal
@@ -69,7 +76,10 @@ $(document).ready(function() {
         const funcion = 'nuevo_sub';
         let name = $('#name_equipo').val();
         let sim = $('#selectsimulador').val();
-        let manten = $('#tipo_mant').val();
+        // En #form_new_sub
+        let manten = $('#tipo_mant_sub').val();
+        // En #new_element
+        let tipo = $('#tipo_mant_elem').val();
         let detalle = $('#detalle_sub').val();
 
         // Validación de los campos del formulario
@@ -86,6 +96,7 @@ $(document).ready(function() {
                     $('#add-sub').hide(2000);
                     $('#form_new_sub').trigger('reset');
                     $('#modal_sub').modal('hide');
+                    listar(); // Recargar la tabla para mostrar el nuevo sub-equipo     
 
                 }   else {
                     $('#no-add-sub').hide('slow');

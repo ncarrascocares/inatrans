@@ -85,7 +85,23 @@ function modal_(datos) {
 
     return template_;
 }
+<div class="card-body" style="display: block;">
+                        <div class="card-body" style="display: block;">
+                            <table class="table table-bordered" style="border:1px solid black;width: 100%;">
+                            <thead style="border:1px solid black;background:teal; color:white;font-weight:bold">
+                            <td style="border:1px solid black;">Sub Equipo</td>
+                                    <td style="border:1px solid black;">Detalles</td>
+                                    <td style="border:1px solid black;">Simulador</td>
+                                    <td style="border:1px solid black;">Mantenimiento</td>
+                                    <td style="border:1px solid black;">Descripcion</td>
+                                    <td style="border:1px solid black;">opciones</td>
+                            </thead>
+                            <tbody id="cuerpoTabla">
 
+                            </tbody>
+                            </table>
+                        </div>
+                    </div>
 function idiomaDataTable() {
     espanol = {
         "aria": {
