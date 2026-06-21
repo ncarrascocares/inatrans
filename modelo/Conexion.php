@@ -1,7 +1,7 @@
 <?php
 
 class Conexion{
-    private $servidor = "localhost";
+    private $servidor = "127.0.0.1";
     private $db = "db_inatrans";
     private $puerto = 3306;
     private $charset = "utf8";
