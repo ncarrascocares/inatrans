@@ -4,6 +4,15 @@ include_once '../modelo/Usuario.php';
 session_start();
 $id_usuario = $_SESSION['id'];
 
+// CSRF validation for POST requests
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $token = $_POST['csrf_token'] ?? ($_SERVER['HTTP_X_CSRF_TOKEN'] ?? '');
+    if (empty($token) || !hash_equals($_SESSION['csrf_token'] ?? '', $token)) {
+        echo json_encode(['error'=>'csrf']);
+        exit;
+    }
+}
+
 //Variable global(instancia de la clase Usuario)
 $usuario = new Usuario();
 
@@ -17,7 +26,6 @@ if ($_POST['funcion'] == 'buscar_usuario') {
             'correo_us'=>$objeto->correo_us,
             'cargo_us'=>$objeto->cargo_us, 
             'sucursal_id'=>$objeto->sucursal_id,
-            'password_us'=>$objeto->password_us,
             'status_us'=>$objeto->status_us,
             'usuario_tipo'=>$objeto->usuario_tipo,
             'id_tipo_usuario'=>$objeto->id_tipo_usuario,
@@ -27,8 +35,11 @@ if ($_POST['funcion'] == 'buscar_usuario') {
         );
     }
 
-    $jsonstring = json_encode($json[0]);
-    echo $jsonstring;
+    if (!empty($json)) {
+        echo json_encode($json[0]);
+    } else {
+        echo json_encode((object)[]);
+    }
 }
 
 if ($_POST['funcion'] == 'capturar_datos') {
@@ -41,7 +52,6 @@ if ($_POST['funcion'] == 'capturar_datos') {
             'correo_us'=>$objeto->correo_us,
             'cargo_us'=>$objeto->cargo_us, 
             'sucursal_id'=>$objeto->sucursal_id,
-            'password_us'=>$objeto->password_us,
             'status_us'=>$objeto->status_us,
             'usuario_tipo'=>$objeto->usuario_tipo,
             'id_tipo_usuario'=>$objeto->id_tipo_usuario,
@@ -51,8 +61,11 @@ if ($_POST['funcion'] == 'capturar_datos') {
         );
     }
 
-    $jsonstring = json_encode($json[0]);
-    echo $jsonstring;
+    if (!empty($json)) {
+        echo json_encode($json[0]);
+    } else {
+        echo json_encode((object)[]);
+    }
 }
 
 if ($_POST['funcion'] == 'editar-usuario') {
@@ -98,7 +111,6 @@ if ($_POST['funcion'] == 'buscar_usuario_gestion') {
             'correo_us'=>$objeto->correo_us,
             'cargo_us'=>$objeto->cargo_us, 
             'sucursal_id'=>$objeto->sucursal_id,
-            'password_us'=>$objeto->password_us,
             'status_us'=>$objeto->status_us,
             'usuario_tipo'=>$objeto->usuario_tipo,
             'id_tipo_usuario'=>$objeto->id_tipo_usuario,

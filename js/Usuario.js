@@ -17,7 +17,6 @@ $(document).ready(function() {
             let correo_us = '';
             let cargo_us = '';
             let sucursal_id = '';
-            let password_us = '';
             let status_us = '';
             let usuario_tipo = '';
             let id_tipo_usuario = '';
@@ -30,7 +29,6 @@ $(document).ready(function() {
             correo_us += `${usuario.correo_us}`;
             cargo_us += `${usuario.cargo_us}`;
             sucursal_id += `${usuario.sucursal_id}`;
-            password_us += `${usuario.password_us}`;
             status_us += `${usuario.status_us}`;
             usuario_tipo += `${usuario.usuario_tipo}`;
             id_tipo_usuario += `${usuario.id_tipo_usuario}`;

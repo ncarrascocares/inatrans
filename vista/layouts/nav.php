@@ -7,7 +7,23 @@
 <!-- Datatable -->
 <link rel="stylesheet" href="../css/datatables.css">
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    // Añadir el token CSRF sin reemplazar los datos de cada petición.
+    $.ajaxPrefilter(function(options) {
+        if ((options.type || 'GET').toUpperCase() !== 'POST') return;
 
+        var token = <?php echo json_encode($_SESSION['csrf_token'] ?? ''); ?>;
+        if (!token) return;
+
+        if (options.data instanceof FormData) {
+            options.data.append('csrf_token', token);
+        } else if (typeof options.data === 'string') {
+            options.data += (options.data ? '&' : '') + $.param({ csrf_token: token });
+        } else {
+            options.data = $.extend({}, options.data, { csrf_token: token });
+        }
+    });
+</script>
 </head>
 
 <body class="hold-transition sidebar-mini">
@@ -21,7 +37,7 @@
                     <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
                 </li>
                 <li class="nav-item d-none d-sm-inline-block">
-                    <a href="adm_catalogo.php" class="nav-link">Home</a>
+                    <a href="catalogo.php" class="nav-link">Home</a>
                 </li>
             </ul>
             <ul class="navbar-nav ml-auto">
@@ -33,7 +49,7 @@
         <!-- Main Sidebar Container -->
         <aside class="main-sidebar sidebar-dark-primary elevation-4">
             <!-- Brand Logo -->
-            <a href="../vista/catalogo.php" class="brand-link">
+            <a href="/inatrans/vista/catalogo.php" class="brand-link">
                 <img src="../img/logo.jpg" alt="Inatrans Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
                 <span class="brand-text font-weight-light">Inatrans</span>
             </a>
@@ -106,7 +122,7 @@
                     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                     <li class="nav-header">Ordenes de trabajo</li>
                         <li class="nav-item">
-                            <a href="../vista/ordenesTrabajo.php?estado=1" class="nav-link">
+                            <a href="ordenesTrabajo.php?estado=1" class="nav-link">
                                 <i class="nav-icon fas fa-list"></i>
                                 <p>
                                     Abiertas
@@ -114,7 +130,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="../vista/ordenesTrabajo.php?estado=0" class="nav-link">
+                            <a href="ordenesTrabajo.php?estado=0" class="nav-link">
                                 <i class="nav-icon fas fa-check-double"></i>
                                 <p>
                                     Cerradas

@@ -1,7 +1,14 @@
-<!DOCTYPE html>
-<?php session_start();
-  session_destroy();
+<?php
+if (session_status() == PHP_SESSION_NONE) session_start();
+if (!isset($_SESSION['csrf_token'])) {
+    $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
+}
+if (!empty($_SESSION['usuario_tipo'])) {
+    header('Location: /inatrans/vista/catalogo.php');
+    exit;
+}
 ?>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -10,14 +17,6 @@
     <link rel="stylesheet" href="css/style.css">
     <title>Mantenimiento || Inatrans</title>
 </head>
-<?php 
-  session_start();
-  if (!empty($_SESSION['usuario_tipo'])) {
-   
-      header('Location: controlador/LoginController.php');
-  }else{
-    session_destroy();
-?>
 <hgroup>
   <h1>Área de mantenimiento Inatrans</h1>
   <h3>By Nicolás Carrasco Cares</h3>
@@ -31,6 +30,7 @@
     <input type="password" name="txtPassword"><span class="highlight"></span><span class="bar"></span>
     <label>Password</label>
   </div>
+  <input type="hidden" name="csrf_token" value="<?php echo $_SESSION['csrf_token'] ?? ''; ?>">
   <button type="submit" class="button buttonBlue">Logearse</button>
 </form>
 <!--
@@ -40,6 +40,3 @@
 -->
 </body>
 </html>
-<?php     
-}
-?>

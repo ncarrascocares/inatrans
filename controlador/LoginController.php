@@ -2,8 +2,15 @@
 
 include_once '../modelo/Usuario.php';
 session_start();
-$correo = $_POST['txtEmail'];
-$pass = $_POST['txtPassword'];
+$correo = $_POST['txtEmail'] ?? '';
+$pass = $_POST['txtPassword'] ?? '';
+
+// CSRF check for login (always enforced)
+$token = $_POST['csrf_token'] ?? ($_SERVER['HTTP_X_CSRF_TOKEN'] ?? '');
+if ($_SERVER['REQUEST_METHOD'] !== 'POST' || empty($token) || !hash_equals($_SESSION['csrf_token'] ?? '', $token)) {
+    header('Location: /inatrans/index.php');
+    exit;
+}
 
 $usuario = new Usuario();
 
@@ -11,16 +18,16 @@ $usuario = new Usuario();
 if (!empty($_SESSION['usuario_tipo'])) {
     switch ($_SESSION['usuario_tipo']) {
         case 1:
-            header('Location: ../vista/catalogo.php');
+            header('Location: /inatrans/vista/catalogo.php');
             break;
         case 2:
-            header('Location: ../vista/catalogo.php');
+            header('Location: /inatrans/vista/catalogo.php');
             break;
         case 3:
-            header('Location: ../vista/catalogo.php');
+            header('Location: /inatrans/vista/catalogo.php');
             break;
         case 4:
-            header('Location: ../vista/catalogo.php');
+            header('Location: /inatrans/vista/catalogo.php');
             break;
     }// Fin del switch
 }else{
@@ -42,24 +49,27 @@ if (!empty($usuario->objetos)) {
         $_SESSION['correo'] = $objeto->correo_us;
         $_SESSION['id'] = $objeto->id_usuario;
 
+        // Regenerar id de sesión tras login
+        session_regenerate_id(true);
+
     }
 
     // Segun el tipo de usuario, el switch nos re dirijira a la pagina correspondiente
     switch ($_SESSION['usuario_tipo']) {
         case 1:
-            header('Location: ../vista/catalogo.php');
+            header('Location: /inatrans/vista/catalogo.php');
             break;
         case 2:
-            header('Location: ../vista/catalogo.php');
+            header('Location: /inatrans/vista/catalogo.php');
             break;
         case 3:
-            header('Location: ../vista/catalogo.php');
+            header('Location: /inatrans/vista/catalogo.php');
             break;
         case 4:
-            header('Location: ../vista/catalogo.php');
+            header('Location: /inatrans/vista/catalogo.php');
             break;
     }// Fin del switch
 }else{
-    header('Location: ../vista/index.php');
+    header('Location: /inatrans/index.php');
 }
 }
