@@ -77,7 +77,7 @@ if ($_SESSION['usuario_tipo'] == 1 || $_SESSION['usuario_tipo'] == 2) {
                     </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
-                            <li class="breadcrumb-item"><a href="../vista/adm_catalogo.php">Home</a></li>
+                            <li class="breadcrumb-item"><a href="/inatrans/vista/catalogo.php">Home</a></li>
                             <li class="breadcrumb-item active">Datos Personales</li>
                         </ol>
                     </div>
@@ -188,7 +188,7 @@ if ($_SESSION['usuario_tipo'] == 1 || $_SESSION['usuario_tipo'] == 2) {
 <?php
     include_once 'layouts/footer.php';
 } else {
-    header('Location: index.php');
+    header('Location: /inatrans/index.php');
 }
 ?>
 

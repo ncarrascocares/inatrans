@@ -79,7 +79,7 @@ if (!empty($_SESSION['usuario_tipo'])) {
                                 <div class="icon">
 
                                 </div>
-                                <a href="adm_odt.php?estado=0" class="small-box-footer">Más información <i class="fas fa-arrow-circle-right"></i></a>
+                                <a href="ordenesTrabajo.php?estado=0" class="small-box-footer">Más información <i class="fas fa-arrow-circle-right"></i></a>
                             </div>
                         </div>
                         <!-- ./col -->
@@ -92,7 +92,7 @@ if (!empty($_SESSION['usuario_tipo'])) {
                                 <div class="icon">
 
                                 </div>
-                                <a href="adm_odt.php?estado=1" class="small-box-footer">Más información <i class="fas fa-arrow-circle-right"></i></a>
+                                <a href="ordenesTrabajo.php?estado=1" class="small-box-footer">Más información <i class="fas fa-arrow-circle-right"></i></a>
                             </div>
                         </div>
                     </div>
@@ -171,7 +171,7 @@ if (!empty($_SESSION['usuario_tipo'])) {
 <?php
     include_once 'layouts/footer.php';
 } else {
-    header('Location: index.php');
+    header('Location: /inatrans/index.php');
 }
 ?>
 

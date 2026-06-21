@@ -121,7 +121,7 @@ if (!empty($_SESSION['usuario_tipo'])) {
                     <input type="hidden" id="tipo_usuario" value="<?= $_SESSION['usuario_tipo'] ?>">
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
-                            <li class="breadcrumb-item"><a href="../vista/adm_catalogo.php">Home</a></li>
+                            <li class="breadcrumb-item"><a href="/inatrans/vista/catalogo.php">Home</a></li>
                             <li class="breadcrumb-item active">Psicotecnicos/Dongle</li>
                         </ol>
                     </div>
@@ -179,7 +179,7 @@ if (!empty($_SESSION['usuario_tipo'])) {
 <?php
     include_once 'layouts/footer.php';
 } else {
-    header('Location: index.php');
+    header('Location: /inatrans/index.php');
 }
 ?>
 <script src="../js/Psico.js"></script>
